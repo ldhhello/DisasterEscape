@@ -13,10 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\ImageLayer">
+      <UniqueIdentifier>{4d95339a-0dd9-4922-8770-623dc93e212e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageFading.h">
+      <Filter>헤더 파일\ImageLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLayer.h">
+      <Filter>헤더 파일\ImageLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLayerImpl.h">
+      <Filter>헤더 파일\ImageLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLayerInterface.h">
+      <Filter>헤더 파일\ImageLayer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
