@@ -1,12 +1,12 @@
-//#include "StartWindow.h"
-#include "Include.h"
+#include "StartWindow.h"
+#include "Game.h"
 
 Image startwindow_image[3];
 
 char* menu_text[] = {
 	"시작하기",
-	"게임 정보",
-	"testst!!!!!"
+	"불러오기",
+	"게임 정보"
 };
 int menu_cnt = 3;
 int current_idx = 0;
@@ -35,12 +35,14 @@ void StartWindow_draw()
 	}
 }
 
+void StartWindow_select();
+
 void StartWindow_modal()
 {
 	Image a = { "D:\\test3.bmp", 0, 0 };
-	Image b = { "D:\\start.bmp", 400, 740 };
+	//Image b = { "D:\\start.bmp", 400, 740 };
 	startwindow_image[0] = a;
-	startwindow_image[1] = b;
+	//startwindow_image[1] = b;
 
 	image_layer.imageCount = 1;
 	image_layer.images = startwindow_image;
@@ -71,7 +73,22 @@ void StartWindow_modal()
 		{
 			image_layer.fadeOut(&image_layer, NULL);
 
-			printf("selected #%d", current_idx);
+			//printf("selected #%d", current_idx);
+
+			StartWindow_select();
 		}
+	}
+}
+
+void StartWindow_select()
+{
+	if (current_idx == 0) // 시작하기
+	{
+		Game_modal();
+
+		image_layer.imageCount = 1;
+		image_layer.images = startwindow_image;
+
+		StartWindow_draw();
 	}
 }
