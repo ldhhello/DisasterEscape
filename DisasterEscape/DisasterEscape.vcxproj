@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="StartWindow.c" />
+    <ClCompile Include="Utils.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h" />

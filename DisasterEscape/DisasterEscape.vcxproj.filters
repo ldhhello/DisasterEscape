@@ -24,6 +24,9 @@
     <ClCompile Include="StartWindow.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h">
