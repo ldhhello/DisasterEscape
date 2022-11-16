@@ -11,8 +11,10 @@
 
 #define DEFAULT_RESOLUTION_SCALE 16
 static double RESOLUTION_MULTIPLIER = 1;
-static int WINDOW_WIDTH = 0;
-static int WINDOW_HEIGHT = 0;
+
+// in main.c
+extern int WINDOW_WIDTH;
+extern int WINDOW_HEIGHT;
 
 typedef struct {
 	int width, height;
