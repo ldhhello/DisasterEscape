@@ -1,6 +1,8 @@
 #pragma once
 #include <Windows.h>
 
+// ¸¶°³Á¶ by Donghyun Lee (https://github.com/ldhhello)
+
 #ifndef IMAGE_LAYER_INTERFACE_H
 #define IMAGE_LAYER_INTERFACE_H
 

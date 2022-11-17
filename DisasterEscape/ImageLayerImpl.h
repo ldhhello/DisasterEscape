@@ -3,6 +3,8 @@
 #include <Windows.h>
 #include "ImageLayer.h"
 
+// ¸¶°³Á¶ by Donghyun Lee (https://github.com/ldhhello)
+
 #ifndef IMAGE_LAYER_IMPL_H
 #define IMAGE_LAYER_IMPL_H
 

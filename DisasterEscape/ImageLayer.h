@@ -3,6 +3,8 @@
 #include "ImageLayerImpl.h"
 #include "ImageFading.h"
 
+// ¸¶°³Á¶ by Donghyun Lee (https://github.com/ldhhello)
+
 #ifndef IMAGE_LAYER_H
 #define IMAGE_LAYER_H
 
