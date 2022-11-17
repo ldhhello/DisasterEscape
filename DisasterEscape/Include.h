@@ -5,6 +5,8 @@
 #include <conio.h>
 #include "ImageLayer.h"
 
+#include "resource.h"
+
 // on main.c
 extern HWND hWnd;
 extern ImageLayer image_layer;
@@ -26,3 +28,8 @@ const static bool true = 1;
 extern HBITMAP bitmap_start_screen;
 extern HBITMAP bitmap_loading_image;
 extern HBITMAP bitmap_speech_bubble;
+extern HBITMAP bitmap_jandi;
+extern HBITMAP bitmap_player;
+
+const static int SCREEN_X = 180;
+const static int SCREEN_Y = 96;

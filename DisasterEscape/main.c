@@ -11,6 +11,8 @@ int WINDOW_HEIGHT;
 HBITMAP bitmap_start_screen;
 HBITMAP bitmap_loading_image;
 HBITMAP bitmap_speech_bubble;
+HBITMAP bitmap_jandi; // 잔디 테스트
+HBITMAP bitmap_player; // 플레이어 테스트
 
 void clear_cursor()
 {
@@ -24,9 +26,12 @@ void clear_cursor()
 
 void load_image()
 {
-	bitmap_start_screen = (HBITMAP)LoadImage(NULL, "D:\\test3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	//bitmap_start_screen = (HBITMAP)LoadImage(NULL, "D:\\test3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_start_screen = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAINSCREEN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_loading_image = (HBITMAP)LoadImage(NULL, "D:\\loading.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	bitmap_speech_bubble = (HBITMAP)LoadImage(NULL, "D:\\speechbubble.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_jandi = (HBITMAP)LoadImage(NULL, "D:\\jandi.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_player = (HBITMAP)LoadImage(NULL, "D:\\player.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 }
 
 void initialize()
