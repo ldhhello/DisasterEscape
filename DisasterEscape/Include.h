@@ -21,3 +21,8 @@ extern void printText(HDC hdc, int left, int top, int right, int bottom, char* f
 typedef char bool;
 const static bool false = 0;
 const static bool true = 1;
+
+// on main.c
+extern HBITMAP bitmap_start_screen;
+extern HBITMAP bitmap_loading_image;
+extern HBITMAP bitmap_speech_bubble;

@@ -8,6 +8,10 @@ ImageLayer image_layer;
 int WINDOW_WIDTH;
 int WINDOW_HEIGHT;
 
+HBITMAP bitmap_start_screen;
+HBITMAP bitmap_loading_image;
+HBITMAP bitmap_speech_bubble;
+
 void clear_cursor()
 {
 	CONSOLE_CURSOR_INFO cc;
@@ -18,8 +22,17 @@ void clear_cursor()
 		&cc);
 }
 
+void load_image()
+{
+	bitmap_start_screen = (HBITMAP)LoadImage(NULL, "D:\\test3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_loading_image = (HBITMAP)LoadImage(NULL, "D:\\loading.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_speech_bubble = (HBITMAP)LoadImage(NULL, "D:\\speechbubble.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+}
+
 void initialize()
 {
+	load_image();
+
 	hWnd = GetConsoleWindow();
 	image_layer = DEFAULT_IMAGE_LAYER;
 	image_layer.transparentColor = RGB(29, 222, 38);

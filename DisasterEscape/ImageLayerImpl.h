@@ -45,7 +45,18 @@ inline HDC createNewBackDC(HDC compatibleDC) {
 
 inline void putBitmapToBackDC(HDC backDC, Image image, UINT transparentColor) {
 	const HDC bitmapDC = CreateCompatibleDC(backDC);
-	const HBITMAP bitmap = (HBITMAP)LoadImage(NULL, (LPCSTR)image.fileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	HBITMAP bitmap;
+
+	int no_delete = 0;
+
+	if (image.fileName[0] != 0)
+		bitmap = (HBITMAP)LoadImage(NULL, (LPCSTR)image.fileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	else
+	{
+		bitmap = image.bitmap;
+		no_delete = 1;
+	}
+
 	SelectObject(bitmapDC, bitmap);
 
 	double scale = image.scale * RESOLUTION_MULTIPLIER;
@@ -59,7 +70,9 @@ inline void putBitmapToBackDC(HDC backDC, Image image, UINT transparentColor) {
 	TransparentBlt(backDC, x, y, width, height,
 		bitmapDC, 0, 0, bitmapSize.width, bitmapSize.height, transparentColor);
 
-	DeleteObject(bitmap);
+	if(!no_delete)
+		DeleteObject(bitmap);
+
 	DeleteDC(bitmapDC);
 }
 

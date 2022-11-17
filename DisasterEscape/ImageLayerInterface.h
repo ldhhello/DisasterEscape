@@ -9,6 +9,8 @@ typedef struct {
 	int x, y;
 	double scale;
 	int isHide;
+
+	HBITMAP bitmap;
 }Image;
 
 typedef struct _ImageLayer {

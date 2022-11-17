@@ -39,7 +39,7 @@ void StartWindow_select();
 
 void StartWindow_modal()
 {
-	Image a = { "D:\\test3.bmp", 0, 0 };
+	Image a = { "", 0, 0, 0, 0, bitmap_start_screen };
 	//Image b = { "D:\\start.bmp", 400, 740 };
 	startwindow_image[0] = a;
 	//startwindow_image[1] = b;

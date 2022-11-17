@@ -19,7 +19,7 @@ void Game_erase_image()
 
 void Game_speechbubble(const char* str)
 {
-	Image im = { "D:\\speechbubble.bmp", 0, 52 * 16 };
+	Image im = { "", 0, 52 * 16, 0, 0, bitmap_speech_bubble };
 	Game_append_image(im);
 
 	int sz = strlen(str);
@@ -57,7 +57,7 @@ void Game_modal()
 	Game game;
 	memset(&game, 0, sizeof(Game));
 
-	Image a = { "D:\\loading.bmp", 0, 0 };
+	Image a = { "", 0, 0, 0, 0, bitmap_loading_image };
 	game_image[0] = a;
 
 	image_layer.imageCount = 1;
