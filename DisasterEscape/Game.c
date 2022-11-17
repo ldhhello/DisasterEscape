@@ -34,6 +34,20 @@ void Game_speechbubble(const char* str)
 
 	for (int i = 0; i < sz; i++)
 	{
+		if (_kbhit())
+		{
+			_getch();
+
+			memcpy(now_str, str, sz+1);
+
+			image_layer.startRender(&image_layer);
+
+			printText(image_layer.bufferDC, 10, 52 * 8 + 10, 180 * 8 - 10, 96 * 8 - 10, "¸¼Àº °íµñ", 100, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+
+			image_layer.endRender(&image_layer);
+			
+			break;
+		}
 		now_str[i] = str[i];
 		now_str[i + 1] = 0;
 
