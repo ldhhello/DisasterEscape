@@ -17,3 +17,7 @@ extern ImageLayer image_layer;
 
 extern void printTextWithAngle(HDC hdc, int x, int y, char* fontName, int size, int weight, int angle, COLORREF textColor, int align, char* text);
 extern void printText(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, char* text);
+
+typedef char bool;
+const static bool false = 0;
+const static bool true = 1;
