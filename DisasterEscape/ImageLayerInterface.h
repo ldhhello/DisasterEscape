@@ -21,11 +21,17 @@ typedef struct _ImageLayer {
 	HWND _windowHandle;
 	HDC _consoleDC;
 
+	HDC bufferDC;
+
 	void (*initialize)(struct _ImageLayer*);
 	void (*renderAll)(struct _ImageLayer*);
 	void (*fadeIn)(struct _ImageLayer*, void(*applyToBackDC)(HDC));
 	void (*fadeOut)(struct _ImageLayer*, void(*applyToBackDC)(HDC));
 	void (*applyToDC)(HDC);
+
+	// ImageLayer 외의 다른 작업 시 화면 깜박임 현상 방지를 위한 더블 버퍼링 관련 코드!!
+	void (*startRender)(struct _ImageLayer*);
+	void (*endRender)(struct _ImageLayer*);
 }ImageLayer;
 
 #endif

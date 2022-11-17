@@ -13,11 +13,12 @@ int current_idx = 0;
 
 void StartWindow_draw()
 {
-	image_layer.renderAll(&image_layer);
+	//image_layer.renderAll(&image_layer);
+	image_layer.startRender(&image_layer);
 
 	RECT rect = { WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 + 100, WINDOW_WIDTH / 2 + 150, WINDOW_HEIGHT / 2 + 300 };
 
-	Rectangle(image_layer._consoleDC, rect.left, rect.top, rect.right, rect.bottom);
+	Rectangle(image_layer.bufferDC, rect.left, rect.top, rect.right, rect.bottom);
 
 	for (int i = 0; i < menu_cnt; i++)
 	{
@@ -27,12 +28,14 @@ void StartWindow_draw()
 		{
 			color = RGB(255, 0, 0);
 
-			Rectangle(image_layer._consoleDC, WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT / 2 + 110 + 60 * i, WINDOW_WIDTH / 2 + 80, WINDOW_HEIGHT / 2 + 150 + 60 * i);
+			Rectangle(image_layer.bufferDC, WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT / 2 + 110 + 60 * i, WINDOW_WIDTH / 2 + 80, WINDOW_HEIGHT / 2 + 150 + 60 * i);
 		}
 
-		printText(image_layer._consoleDC, WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 + 110 + 60*i, WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2 + 150 + 60*i,
+		printText(image_layer.bufferDC, WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 + 110 + 60*i, WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2 + 150 + 60*i,
 			"¸¼Àº °íµñ", 30, color, DT_CENTER, menu_text[i]);
 	}
+
+	image_layer.endRender(&image_layer);
 }
 
 void StartWindow_select();

@@ -108,4 +108,22 @@ inline void _renderAll(ImageLayer* self) {
 	DeleteDC(backDC);
 }
 
+inline void _startRender(ImageLayer* self) {
+	if (self->bufferDC != NULL)
+		return;
+
+	self->bufferDC = getRenderedBackDC(self);
+}
+
+inline void _endRender(ImageLayer* self) {
+	if (self->bufferDC == NULL)
+		return;
+
+	if (self->applyToDC != NULL) self->applyToDC(self->bufferDC);
+	applyToDC(self->_consoleDC, self->bufferDC);
+	DeleteDC(self->bufferDC);
+
+	self->bufferDC = NULL;
+}
+
 #endif

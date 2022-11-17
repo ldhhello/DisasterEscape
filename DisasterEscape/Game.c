@@ -38,8 +38,12 @@ void Game_speechbubble(const char* str)
 
 		if (now_str[i] >= 0 || ignored)
 		{
-			image_layer.renderAll(&image_layer);
-			printText(image_layer._consoleDC, 10, 52*8 + 10, 180*8 - 10, 96*8 - 10, "¸¼Àº °íµñ", 100, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			//image_layer.renderAll(&image_layer);
+			image_layer.startRender(&image_layer);
+
+			printText(image_layer.bufferDC, 10, 52*8 + 10, 180*8 - 10, 96*8 - 10, "¸¼Àº °íµñ", 100, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+
+			image_layer.endRender(&image_layer);
 			Sleep(120);
 
 			ignored = false;
