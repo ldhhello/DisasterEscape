@@ -26,6 +26,9 @@ void Game_speechbubble(const char* str)
 
 	char* now_str = malloc(sz + 1);
 
+	// 글자 하나씩 하나씩 출력하는 코드
+	// 1바이트씩 해도 되지 않냐고 할 수 있지만 그러면 문제가 한글이 2바이트다! (ansi 인코딩 기준)
+	// 그래서 그거 해결하기 위해 이런 코드를 구현했다!!
 	bool ignored = false;
 
 	for (int i = 0; i < sz; i++)
