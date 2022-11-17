@@ -6,7 +6,9 @@
 // 예를들어 이사람이 어떤 스테이지를 깼는지, 등등...
 typedef struct
 {
-	char ch;
+	int last_stage;
+
+
 } Game;
 
 extern void Game_modal();
