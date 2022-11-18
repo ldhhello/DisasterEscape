@@ -166,6 +166,50 @@ bool Game_check_block()
 	return false;
 }
 
+int Game_modal_select_box(char (*str)[100], int cnt)
+{
+	int last_image_cnt = image_layer.imageCount;
+
+	int now = 0;
+
+	//Image im = {"", ((player_x-map_x)*16*8) + 10, ((player_y-map_y)*16*8) + 10, 0, 0,}
+	//image_layer.appendImage(&image_layer, )
+
+	while (true)
+	{
+		image_layer.startRender(&image_layer);
+
+		Rectangle_(image_layer.bufferDC, ((player_x - map_x + 1) * 16 * 8) - 40, ((player_y - map_y + 1) * 16 * 8) - 40,
+			((player_x - map_x + 1) * 16 * 8) + 160, ((player_y - map_y + 1) * 16 * 8) + 40 * cnt - 40);
+
+		for (int i = 0; i < cnt; i++)
+		{
+			COLORREF color = RGB(0, 0, 0);
+			if (i == now)
+				color = RGB(255, 0, 0);
+
+			printText(image_layer.bufferDC, ((player_x - map_x + 1) * 16 * 8) - 40, ((player_y - map_y + 1) * 16 * 8) + 40 * i - 40,
+				((player_x - map_x + 1) * 16 * 8) + 160, ((player_y - map_y + 1) * 16 * 8) + 40 * i,
+				"맑은 고딕", 40, color, DT_CENTER, str[i]);
+		}
+
+		image_layer.endRender(&image_layer);
+
+		int ch = _getch();
+
+		if (ch == UP && now > 0)
+			now--;
+		else if (ch == DOWN && now < cnt-1)
+			now++;
+		else if (ch == VK_SPACE || ch == VK_RETURN)
+		{
+			image_layer.renderAll(&image_layer);
+			return now;
+		}
+	}
+	//image_layer.renderAll(&image_layer);
+}
+
 void Game_modal()
 {
 	Structure s = { 3, 3, 4, 8, bitmap_house };
@@ -229,7 +273,31 @@ void Game_modal()
 			Game_modify_player_pos();
 
 			if (ch == UP && player_y == last_y && player_y != 0)
-				Game_speechbubble("들어가면 안 될 것 같다!");
+				//Game_speechbubble("들어가면 안 될 것 같다!");
+			{
+				char str[4][100] = {
+					"들어가기",
+					"도망가기",
+					"잡아먹기",
+					"사용하기"
+				};
+
+				switch (Game_modal_select_box(str, 4))
+				{
+				case 0:
+					Game_speechbubble("들어가는데 실패했다!");
+					break;
+				case 1:
+					Game_speechbubble("도망가는데 실패했다!");
+					break;
+				case 2:
+					Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
+					break;
+				case 3:
+					Game_speechbubble("집을 사용한다고??? 집 사용은 어떻게 하는 거니??");
+					break;
+				}
+			}
 
 			Game_print_map();
 		}
