@@ -17,6 +17,9 @@ HBITMAP bitmap_loading_image;
 HBITMAP bitmap_speech_bubble;
 HBITMAP bitmap_jandi; // 잔디 테스트
 HBITMAP bitmap_player; // 플레이어 테스트
+HBITMAP bitmap_house; // 집 테스트
+
+HBITMAP bitmap_button[3][2]; // [버튼 종류][활성 여부]
 
 void clear_cursor()
 {
@@ -32,10 +35,20 @@ void load_image()
 {
 	//bitmap_start_screen = (HBITMAP)LoadImage(NULL, "D:\\test3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	bitmap_start_screen = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAINSCREEN), IMAGE_BITMAP, 0, 0, 0);
-	bitmap_loading_image = (HBITMAP)LoadImage(NULL, "D:\\loading.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_loading_image = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_speech_bubble = (HBITMAP)LoadImage(NULL, "D:\\speechbubble.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	bitmap_jandi = (HBITMAP)LoadImage(NULL, "D:\\jandi.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	bitmap_player = (HBITMAP)LoadImage(NULL, "D:\\player.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_house = (HBITMAP)LoadImage(NULL, "D:\\house.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
+	// 일단 어떻게 나오는지 테스트하게 파일명으로..ㅋㅋ
+	bitmap_button[0][0] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_start.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_button[0][1] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_start_active.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_button[1][0] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_load.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_button[1][1] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_load_active.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_button[2][0] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_gameinfo.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_button[2][1] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_gameinfo_active.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
 }
 
 void initialize()

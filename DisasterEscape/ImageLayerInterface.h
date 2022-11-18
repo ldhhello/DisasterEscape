@@ -13,6 +13,7 @@ typedef struct {
 	int isHide;
 
 	HBITMAP bitmap;
+	int isCenter;
 }Image;
 
 typedef struct _ImageLayer {
@@ -34,6 +35,10 @@ typedef struct _ImageLayer {
 	// ImageLayer 외의 다른 작업 시 화면 깜박임 현상 방지를 위한 더블 버퍼링 관련 코드!!
 	void (*startRender)(struct _ImageLayer*);
 	void (*endRender)(struct _ImageLayer*);
+
+	void (*appendImage)(struct _ImageLayer*, Image im, int redraw);
+	void (*eraseImage)(struct _ImageLayer*, int redraw);
+	void (*clearImage)(struct _ImageLayer*, int redraw);
 }ImageLayer;
 
 #endif

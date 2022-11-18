@@ -1,27 +1,13 @@
 #include "Game.h"
+#include "Structure.h"
 
-Image game_image[1000];
-
-void Game_append_image(Image im, bool redraw)
-{
-	game_image[image_layer.imageCount] = im;
-	image_layer.imageCount++;
-
-	if(redraw)
-		image_layer.renderAll(&image_layer);
-}
-
-void Game_erase_image()
-{
-	image_layer.imageCount--;
-
-	image_layer.renderAll(&image_layer);
-}
+Image game_image[1500];
 
 void Game_speechbubble(const char* str)
 {
 	Image im = { "", 0, 52 * 16, 0, 0, bitmap_speech_bubble };
-	Game_append_image(im, true);
+	//Game_append_image(im, true);
+	image_layer.appendImage(&image_layer, im, true);
 
 	int sz = strlen(str);
 
@@ -42,7 +28,7 @@ void Game_speechbubble(const char* str)
 
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 200, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			
@@ -56,10 +42,10 @@ void Game_speechbubble(const char* str)
 			//image_layer.renderAll(&image_layer);
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52*16 + 10, 180*16 - 10, 96*16 - 10, "¸¼Àº °íµñ", 200, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 10, 52*16 + 10, 180*16 - 10, 96*16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
-			Sleep(50);
+			Sleep(40);
 
 			ignored = false;
 		}
@@ -71,11 +57,12 @@ void Game_speechbubble(const char* str)
 
 	_getch();
 
-	Game_erase_image();
+	//Game_erase_image();
+	image_layer.eraseImage(&image_layer, true);
 }
 
 int map_x = 0, map_y = 0;
-int player_x = 5, player_y = 5;
+int player_x = 2, player_y = 3;
 
 int map_[100][100] = {
 	{ 0, 0, 0, 0, 0},
@@ -85,6 +72,9 @@ int map_[100][100] = {
 	{ 0, 0, 1, 0, 0},
 };
 int max_x = 100, max_y = 100;
+
+Structure structure[100];
+int structure_cnt;
 
 int next_start_pos(int prev, int cursor, int screen_size, int max_pos)
 {
@@ -140,9 +130,18 @@ void Game_print_map()
 			{
 				a.x = x * 16 * 8;
 				a.y = y * 16 * 8;
-				Game_append_image(a, false);
+				image_layer.appendImage(&image_layer, a, false);
 			}
 		}
+	}
+
+	for (int i = 0; i < structure_cnt; i++)
+	{
+		a.bitmap = structure[i].bitmap;
+		a.x = (structure[i].x - map_x) * 16 * 8;
+		a.y = (structure[i].y - map_y) * 16 * 8;
+
+		image_layer.appendImage(&image_layer, a, false);
 	}
 
 	a.bitmap = bitmap_player;
@@ -150,17 +149,39 @@ void Game_print_map()
 	a.y = (player_y-map_y) * 16 * 8;
 	a.scale = 8;
 
-	Game_append_image(a, false);
+	image_layer.appendImage(&image_layer, a, false);
 
 	image_layer.renderAll(&image_layer);
 }
 
+bool Game_check_block()
+{
+	for (int i = 0; i < structure_cnt; i++)
+	{
+		if (structure[i].x <= player_x && player_x < structure[i].x + structure[i].width &&
+			structure[i].y <= player_y && player_y < structure[i].y + structure[i].height)
+			return true;
+	}
+
+	return false;
+}
+
 void Game_modal()
 {
+	Structure s = { 3, 3, 4, 8, bitmap_house };
+	structure[0] = s;
+	s.x = 10; s.y = 3;
+	structure[1] = s;
+	s.x = 17; s.y = 3;
+	structure[2] = s;
+	s.x = 24; s.y = 3;
+	structure[3] = s;
+	structure_cnt = 4;
+
 	Game game;
 	memset(&game, 0, sizeof(Game));
 
-	Image a = { "", 0, 0, 0, 0, bitmap_loading_image };
+	Image a = { "", 0, 0, 2, 0, bitmap_loading_image };
 	game_image[0] = a;
 
 	image_layer.imageCount = 1;
@@ -180,6 +201,7 @@ void Game_modal()
 		if (_kbhit())
 		{
 			int ch = _getch();
+			int last_x = player_x, last_y = player_y;
 
 			if (ch == UP)
 			{
@@ -197,7 +219,17 @@ void Game_modal()
 			{
 				player_x++;
 			}
+
+			if (Game_check_block())
+			{
+				player_x = last_x;
+				player_y = last_y;
+			}
+
 			Game_modify_player_pos();
+
+			if (ch == UP && player_y == last_y)
+				Game_speechbubble("µé¾î°¡¸é ¾È µÉ °Í °°´Ù!");
 
 			Game_print_map();
 		}

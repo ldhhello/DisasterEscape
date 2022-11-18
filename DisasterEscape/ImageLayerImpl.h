@@ -65,11 +65,18 @@ inline void putBitmapToBackDC(HDC backDC, Image image, UINT transparentColor) {
 	double scale = image.scale * RESOLUTION_MULTIPLIER;
 	if (scale == 0) scale = DEFAULT_RESOLUTION_SCALE * RESOLUTION_MULTIPLIER;
 
-	const int x = (int)(image.x * RESOLUTION_MULTIPLIER);
-	const int y = (int)(image.y * RESOLUTION_MULTIPLIER);
+	int x = (int)(image.x * RESOLUTION_MULTIPLIER);
+	int y = (int)(image.y * RESOLUTION_MULTIPLIER);
 	const Size bitmapSize = getBitmapSize(bitmap);
 	const int width = (int)(bitmapSize.width * scale);
 	const int height = (int)(bitmapSize.height * scale);
+
+	if (image.isCenter)
+	{
+		x -= width / 2;
+		y -= height / 2;
+	}
+
 	TransparentBlt(backDC, x, y, width, height,
 		bitmapDC, 0, 0, bitmapSize.width, bitmapSize.height, transparentColor);
 
@@ -127,6 +134,31 @@ inline void _endRender(ImageLayer* self) {
 	DeleteDC(self->bufferDC);
 
 	self->bufferDC = NULL;
+}
+
+inline void _appendImage(ImageLayer* self, Image im, int redraw)
+{
+	self->images[self->imageCount] = im;
+	self->imageCount++;
+
+	if (redraw)
+		self->renderAll(self);
+}
+
+inline void _eraseImage(ImageLayer* self, int redraw)
+{
+	self->imageCount--;
+
+	if(redraw)
+		self->renderAll(self);
+}
+
+inline void _clearImage(ImageLayer* self, int redraw)
+{
+	self->imageCount = 0;
+
+	if (redraw)
+		self->renderAll(self);
 }
 
 #endif

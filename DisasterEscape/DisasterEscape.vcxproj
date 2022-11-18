@@ -141,6 +141,7 @@
     <ClInclude Include="Include.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StartWindow.h" />
+    <ClInclude Include="Structure.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DisasterEscape.rc" />
@@ -148,8 +149,10 @@
   <ItemGroup>
     <Image Include="..\..\..\icon1.ico" />
     <Image Include="..\..\..\test3.bmp" />
+    <Image Include="background.bmp" />
     <Image Include="bitmap1.bmp" />
     <Image Include="disasterescape.ico" />
+    <Image Include="loading.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

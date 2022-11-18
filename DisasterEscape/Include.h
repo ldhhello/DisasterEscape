@@ -31,6 +31,9 @@ extern HBITMAP bitmap_loading_image;
 extern HBITMAP bitmap_speech_bubble;
 extern HBITMAP bitmap_jandi;
 extern HBITMAP bitmap_player;
+extern HBITMAP bitmap_house;
+
+extern HBITMAP bitmap_button[3][2];
 
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;
