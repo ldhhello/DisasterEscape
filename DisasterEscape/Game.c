@@ -228,7 +228,7 @@ void Game_modal()
 
 			Game_modify_player_pos();
 
-			if (ch == UP && player_y == last_y)
+			if (ch == UP && player_y == last_y && player_y != 0)
 				Game_speechbubble("들어가면 안 될 것 같다!");
 
 			Game_print_map();
