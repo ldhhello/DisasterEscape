@@ -12,7 +12,8 @@
 #define CONSOLE_HEIGHT 48
 
 #define DEFAULT_RESOLUTION_SCALE 16
-static double RESOLUTION_MULTIPLIER = 1;
+
+extern double RESOLUTION_MULTIPLIER;
 
 // in main.c
 extern int WINDOW_WIDTH;

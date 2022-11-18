@@ -42,7 +42,7 @@ void Game_speechbubble(const char* str)
 
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52 * 8 + 10, 180 * 8 - 10, 96 * 8 - 10, "¸¼Àº °íµñ", 100, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 200, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			
@@ -56,7 +56,7 @@ void Game_speechbubble(const char* str)
 			//image_layer.renderAll(&image_layer);
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52*8 + 10, 180*8 - 10, 96*8 - 10, "¸¼Àº °íµñ", 100, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 10, 52*16 + 10, 180*16 - 10, 96*16 - 10, "¸¼Àº °íµñ", 200, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			Sleep(50);

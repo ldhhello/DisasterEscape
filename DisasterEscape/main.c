@@ -5,6 +5,10 @@
 HWND hWnd;
 ImageLayer image_layer;
 
+// extern in ImageLayerImpl.h
+
+double RESOLUTION_MULTIPLIER = 1;
+
 int WINDOW_WIDTH;
 int WINDOW_HEIGHT;
 

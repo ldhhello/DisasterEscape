@@ -16,9 +16,9 @@ void StartWindow_draw()
 	//image_layer.renderAll(&image_layer);
 	image_layer.startRender(&image_layer);
 
-	RECT rect = { WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 + 100, WINDOW_WIDTH / 2 + 150, WINDOW_HEIGHT / 2 + 300 };
+	RECT rect = { SCREEN_X*16/2 - 300, SCREEN_Y * 16 / 2 + 200, SCREEN_X * 16 / 2 + 300, SCREEN_Y * 16 / 2 + 600 };
 
-	Rectangle(image_layer.bufferDC, rect.left, rect.top, rect.right, rect.bottom);
+	Rectangle_(image_layer.bufferDC, rect.left, rect.top, rect.right, rect.bottom);
 
 	for (int i = 0; i < menu_cnt; i++)
 	{
@@ -28,11 +28,13 @@ void StartWindow_draw()
 		{
 			color = RGB(255, 0, 0);
 
-			Rectangle(image_layer.bufferDC, WINDOW_WIDTH / 2 - 80, WINDOW_HEIGHT / 2 + 110 + 60 * i, WINDOW_WIDTH / 2 + 80, WINDOW_HEIGHT / 2 + 150 + 60 * i);
+			Rectangle_(image_layer.bufferDC, SCREEN_X*16 / 2 - 160, SCREEN_Y*16 / 2 + 220 + 120 * i,
+				SCREEN_X*16 / 2 + 160, SCREEN_Y*16 / 2 + 300 + 120 * i);
 		}
 
-		printText(image_layer.bufferDC, WINDOW_WIDTH / 2 - 100, WINDOW_HEIGHT / 2 + 110 + 60*i, WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2 + 150 + 60*i,
-			"¸¼Àº °íµñ", 30, color, DT_CENTER, menu_text[i]);
+		printText(image_layer.bufferDC, SCREEN_X*16 / 2 - 200, SCREEN_Y*16 / 2 + 220 + 120*i, 
+			SCREEN_X*16 / 2 + 200, SCREEN_Y*16 / 2 + 300 + 120*i,
+			"¸¼Àº °íµñ", 60, color, DT_CENTER, menu_text[i]);
 	}
 
 	image_layer.endRender(&image_layer);
