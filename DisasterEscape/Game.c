@@ -151,16 +151,16 @@ void Game_print_map()
 	image_layer.renderAll(&image_layer);
 }
 
-bool Game_check_block()
+int Game_check_block()
 {
 	for (int i = 0; i < structure_cnt; i++)
 	{
 		if (structure[i].x <= player_x && player_x < structure[i].x + structure[i].width &&
 			structure[i].y <= player_y && player_y < structure[i].y + structure[i].height)
-			return true;
+			return i;
 	}
 
-	return false;
+	return -1;
 }
 
 int Game_modal_select_box(char (*str)[100], int cnt)
@@ -256,6 +256,8 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 	//image_layer.renderAll(&image_layer);
 }
 
+void (*Game_on_structure_active)(int st, int dir);
+
 void Game_modal()
 {
 	/*Structure s = {3, 3, 4, 8, bitmap_house};
@@ -272,6 +274,8 @@ void Game_modal()
 
 	map_ = sc.load_map(&max_x, &max_y);
 	structure = sc.load_structure(&structure_cnt);
+
+	Game_on_structure_active = sc.on_structure_active;
 
 	Game game;
 	memset(&game, 0, sizeof(Game));
@@ -317,40 +321,16 @@ void Game_modal()
 				player_x++;
 			}
 
-			if (Game_check_block())
+			int check_st = 0;
+			if ((check_st = Game_check_block()) != -1)
 			{
 				player_x = last_x;
 				player_y = last_y;
+
+				Game_on_structure_active(check_st, ch);
 			}
 
 			Game_modify_player_pos();
-
-			if (ch == UP && player_y == last_y && player_y != 0)
-				//Game_speechbubble("들어가면 안 될 것 같다!");
-			{
-				char str[4][100] = {
-					"들어가기",
-					"도망가기",
-					"잡아먹기",
-					"사용하기"
-				};
-
-				switch (Game_modal_select_box_speech("집이다! 들어갈까?", str, 4))
-				{
-				case 0:
-					Game_speechbubble("들어가는데 실패했다!");
-					break;
-				case 1:
-					Game_speechbubble("도망가는데 실패했다!");
-					break;
-				case 2:
-					Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
-					break;
-				case 3:
-					Game_speechbubble("집을 사용한다고??? 집 사용은 어떻게 하는 거니??");
-					break;
-				}
-			}
 
 			Game_print_map();
 		}

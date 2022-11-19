@@ -1,4 +1,5 @@
 #include "SceneDimigo.h"
+#include "Game.h"
 
 int scene_dimigo_map[100][100] = {
 	{ 0, 0, 1, 0, 0},
@@ -18,6 +19,7 @@ Scene SceneDimigo_load()
 
 	scene.load_map = SceneDimigo_load_map;
 	scene.load_structure = SceneDimigo_load_structure;
+	scene.on_structure_active = SceneDimigo_on_structure_active;
 
 	return scene;
 }
@@ -64,3 +66,31 @@ Structure* SceneDimigo_load_structure(int* sz)
 	return structure;
 }
 
+void SceneDimigo_on_structure_active(int st, int dir)
+{
+	if (dir != UP)
+		return;
+
+	char str[4][100] = {
+					"들어가기",
+					"도망가기",
+					"잡아먹기",
+					"사용하기"
+	};
+
+	switch (Game_modal_select_box_speech("집이다! 들어갈까?", str, 4))
+	{
+	case 0:
+		Game_speechbubble("들어가는데 실패했다!");
+		break;
+	case 1:
+		Game_speechbubble("도망가는데 실패했다!");
+		break;
+	case 2:
+		Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
+		break;
+	case 3:
+		Game_speechbubble("집을 사용한다고??? 집 사용은 어떻게 하는 거니??");
+		break;
+	}
+}
