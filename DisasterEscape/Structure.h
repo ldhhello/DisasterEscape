@@ -7,4 +7,7 @@ typedef struct
 	int width, height;
 	
 	HBITMAP bitmap;
+
+	bool is_hide;
+
 } Structure;

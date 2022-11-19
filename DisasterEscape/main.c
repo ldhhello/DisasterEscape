@@ -19,6 +19,8 @@ HBITMAP bitmap_jandi; // 잔디 테스트
 HBITMAP bitmap_player; // 플레이어 테스트
 HBITMAP bitmap_house; // 집 테스트
 
+HBITMAP bitmap_tile[20]; // 맵 바닥 타일
+
 HBITMAP bitmap_button[3][2]; // [버튼 종류][활성 여부]
 
 void clear_cursor()
@@ -37,17 +39,22 @@ void load_image()
 	bitmap_start_screen = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAINSCREEN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_loading_image = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_speech_bubble = (HBITMAP)LoadImage(NULL, "D:\\speechbubble.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_jandi = (HBITMAP)LoadImage(NULL, "D:\\jandi.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
+	bitmap_tile[0] = bitmap_jandi = (HBITMAP)LoadImage(NULL, "D:\\jandi.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_tile[1] = (HBITMAP)LoadImage(NULL, "D:\\path.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
 	bitmap_player = (HBITMAP)LoadImage(NULL, "D:\\player.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	bitmap_house = (HBITMAP)LoadImage(NULL, "D:\\house.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
+	
+
 	// 일단 어떻게 나오는지 테스트하게 파일명으로..ㅋㅋ
-	bitmap_button[0][0] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_start.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_button[0][1] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_start_active.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_button[1][0] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_load.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_button[1][1] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_load_active.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_button[2][0] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_gameinfo.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_button[2][1] = (HBITMAP)LoadImage(NULL, "D:\\VisualStudio\\DisasterEscape\\DisasterEscape\\button_gameinfo_active.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_button[0][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_START), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_button[0][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_START_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_button[1][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOAD), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_button[1][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOAD_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_button[2][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_button[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
 
 }
 

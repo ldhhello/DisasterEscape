@@ -8,4 +8,5 @@ typedef struct
 	int** (*load_map)(int* x, int* y);
 	Structure* (*load_structure)(int* sz);
 	void (*on_structure_active)(int st, int dir);
+	void (*on_start)();
 } Scene;

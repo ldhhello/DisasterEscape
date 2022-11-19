@@ -154,6 +154,12 @@
     <Image Include="..\..\..\test3.bmp" />
     <Image Include="background.bmp" />
     <Image Include="bitmap1.bmp" />
+    <Image Include="button_gameinfo.bmp" />
+    <Image Include="button_gameinfo_active.bmp" />
+    <Image Include="button_load.bmp" />
+    <Image Include="button_load_active.bmp" />
+    <Image Include="button_start.bmp" />
+    <Image Include="button_start_active.bmp" />
     <Image Include="disasterescape.ico" />
     <Image Include="loading.bmp" />
   </ItemGroup>

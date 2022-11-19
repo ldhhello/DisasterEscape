@@ -2,11 +2,50 @@
 #include "Game.h"
 
 int scene_dimigo_map[100][100] = {
-	{ 0, 0, 1, 0, 0},
-	{ 0, 1, 0, 1, 0},
-	{ 1, 0, 0, 0, 1},
-	{ 0, 1, 0, 1, 0},
-	{ 0, 0, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0},
+	{ 0, 1, 1, 0, 0}
 };
 int scene_dimigo_x = 100, scene_dimigo_y = 100;
 
@@ -20,6 +59,7 @@ Scene SceneDimigo_load()
 	scene.load_map = SceneDimigo_load_map;
 	scene.load_structure = SceneDimigo_load_structure;
 	scene.on_structure_active = SceneDimigo_on_structure_active;
+	scene.on_start = SceneDimigo_on_start;
 
 	return scene;
 }
@@ -45,25 +85,27 @@ Structure* SceneDimigo_load_structure(int* sz)
 {
 	Structure* structure = scene_dimigo_structure;
 
-	Structure st = { 3, 5, 4, 8, bitmap_house };
-	scene_dimigo_structure[0] = st;
-
-	st.x += 7;
-	scene_dimigo_structure[1] = st;
-	
-	st.x += 7;
-	scene_dimigo_structure[2] = st;
-
-	st.x += 7;
-	scene_dimigo_structure[3] = st;
-
-	st.x += 7;
-	scene_dimigo_structure[4] = st;
+	Structure st[5] = {
+		{3, 5, 4, 8, bitmap_house},
+		{10, 5, 4, 8, bitmap_house},
+		{15, 7, 4, 8, bitmap_house},
+		{17, 14, 4, 8, bitmap_house},
+		{3, 24, 4, 8, bitmap_house}
+	};
 
 	scene_dimigo_struct_cnt = 5;
 	*sz = scene_dimigo_struct_cnt;
 
+	memcpy(structure, st, sizeof(st));
+
 	return structure;
+}
+
+void SceneDimigo_on_start()
+{
+	Game_speechbubble("내이름은 동현이.");
+	Game_speechbubble("디미고에 불이 나서 갇혔다.");
+	Game_speechbubble("살려줘!!!!@!@!@!@!@!");
 }
 
 void SceneDimigo_on_structure_active(int st, int dir)
@@ -87,7 +129,15 @@ void SceneDimigo_on_structure_active(int st, int dir)
 		Game_speechbubble("도망가는데 실패했다!");
 		break;
 	case 2:
-		Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
+		//Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
+		scene_dimigo_structure[st].is_hide = true;
+
+		Sleep(100);
+		Game_print_map();
+		Sleep(500);
+
+		Game_speechbubble("집을 잡아먹었다!!");
+
 		break;
 	case 3:
 		Game_speechbubble("집을 사용한다고??? 집 사용은 어떻게 하는 거니??");

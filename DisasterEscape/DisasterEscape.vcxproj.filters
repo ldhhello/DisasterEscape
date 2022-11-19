@@ -93,5 +93,23 @@
     <Image Include="loading.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="button_gameinfo.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="button_gameinfo_active.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="button_load.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="button_load_active.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="button_start.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="button_start_active.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

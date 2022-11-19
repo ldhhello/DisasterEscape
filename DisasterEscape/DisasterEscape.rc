@@ -64,6 +64,18 @@ IDB_BITMAP_MAINSCREEN   BITMAP                  "background.bmp"
 
 IDB_BITMAP_LOADING      BITMAP                  "loading.bmp"
 
+IDB_BITMAP_GAMEINFO     BITMAP                  "button_gameinfo.bmp"
+
+IDB_BITMAP_GAMEINFO_ACTIVE BITMAP                  "button_gameinfo_active.bmp"
+
+IDB_BITMAP_LOAD         BITMAP                  "button_load.bmp"
+
+IDB_BITMAP_LOAD_ACTIVE  BITMAP                  "button_load_active.bmp"
+
+IDB_BITMAP_START        BITMAP                  "button_start.bmp"
+
+IDB_BITMAP_START_ACTIVE BITMAP                  "button_start_active.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

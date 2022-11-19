@@ -35,6 +35,8 @@ extern HBITMAP bitmap_jandi;
 extern HBITMAP bitmap_player;
 extern HBITMAP bitmap_house;
 
+extern HBITMAP bitmap_tile[20]; // ¸Ê ¹Ù´Ú Å¸ÀÏ
+
 extern HBITMAP bitmap_button[3][2];
 
 const static int SCREEN_X = 180;

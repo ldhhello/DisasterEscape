@@ -5,6 +5,29 @@
 
 Image game_image[1500];
 
+#ifdef _DEBUG
+bool _trace(TCHAR* format, ...)
+{
+	TCHAR buffer[1000];
+
+	va_list argptr;
+	va_start(argptr, format);
+	wvsprintf(buffer, format, argptr);
+	va_end(argptr);
+
+	OutputDebugString(buffer);
+
+	return true;
+}
+#endif
+
+#ifdef _DEBUG
+bool _trace(TCHAR* format, ...);
+#define TRACE _trace
+#else
+#define TRACE false && _trace
+#endif
+
 void Game_speech_nowait(const char* str)
 {
 	Image im = { "", 0, 52 * 16, 0, 0, bitmap_speech_bubble };
@@ -50,7 +73,7 @@ void Game_speech_nowait(const char* str)
 			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
-			Sleep(40);
+			Sleep(45);
 
 			ignored = false;
 		}
@@ -123,17 +146,25 @@ void Game_print_map()
 			int ax = map_x + x;
 			int ay = map_y + y;
 
-			if (map_[ay][ax] == 0)
+			/*if (map_[ay][ax] == 0)
 			{
 				a.x = x * 16 * 8;
 				a.y = y * 16 * 8;
 				image_layer.appendImage(&image_layer, a, false);
-			}
+			}*/
+
+			a.x = x * 16 * 8;
+			a.y = y * 16 * 8;
+			a.bitmap = bitmap_tile[map_[ay][ax]];
+			image_layer.appendImage(&image_layer, a, false);
 		}
 	}
 
 	for (int i = 0; i < structure_cnt; i++)
 	{
+		if (structure[i].is_hide)
+			continue;
+
 		a.bitmap = structure[i].bitmap;
 		a.x = (structure[i].x - map_x) * 16 * 8;
 		a.y = (structure[i].y - map_y) * 16 * 8;
@@ -149,12 +180,17 @@ void Game_print_map()
 	image_layer.appendImage(&image_layer, a, false);
 
 	image_layer.renderAll(&image_layer);
+
+	TRACE("image_layer size: %d\n", image_layer.imageCount);
 }
 
 int Game_check_block()
 {
 	for (int i = 0; i < structure_cnt; i++)
 	{
+		if (structure[i].is_hide)
+			continue;
+
 		if (structure[i].x <= player_x && player_x < structure[i].x + structure[i].width &&
 			structure[i].y <= player_y && player_y < structure[i].y + structure[i].height)
 			return i;
@@ -196,12 +232,17 @@ int Game_modal_select_box(char (*str)[100], int cnt)
 
 		if (ch == UP && now > 0)
 			now--;
-		else if (ch == DOWN && now < cnt-1)
+		else if (ch == DOWN && now < cnt - 1)
 			now++;
 		else if (ch == VK_SPACE || ch == VK_RETURN)
 		{
 			image_layer.renderAll(&image_layer);
 			return now;
+		}
+		else if (ch == VK_ESCAPE)
+		{
+			image_layer.renderAll(&image_layer);
+			return -1;
 		}
 	}
 	//image_layer.renderAll(&image_layer);
@@ -252,23 +293,21 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 			image_layer.renderAll(&image_layer);
 			return now;
 		}
+		else if (ch == VK_ESCAPE)
+		{
+			image_layer.renderAll(&image_layer);
+			return -1;
+		}
 	}
 	//image_layer.renderAll(&image_layer);
 }
 
 void (*Game_on_structure_active)(int st, int dir);
+void (*Game_on_start)();
 
 void Game_modal()
 {
-	/*Structure s = {3, 3, 4, 8, bitmap_house};
-	structure[0] = s;
-	s.x = 10; s.y = 3;
-	structure[1] = s;
-	s.x = 17; s.y = 3;
-	structure[2] = s;
-	s.x = 24; s.y = 3;
-	structure[3] = s;
-	structure_cnt = 4;*/
+	Sleep(500);
 
 	Scene sc = SceneDimigo_load();
 
@@ -276,6 +315,7 @@ void Game_modal()
 	structure = sc.load_structure(&structure_cnt);
 
 	Game_on_structure_active = sc.on_structure_active;
+	Game_on_start = sc.on_start;
 
 	Game game;
 	memset(&game, 0, sizeof(Game));
@@ -288,14 +328,16 @@ void Game_modal()
 
 	image_layer.renderAll(&image_layer);
 
-	Sleep(3000);
+	Sleep(2000);
 
 	image_layer.clearImage(&image_layer, true);
 
-	Game_speechbubble("¾È³çÇÏ¼¼¿ä!, Hello!d sfdfsdfsdf sdfdfsf dfsdfs dfsdfsd fsdfsdf");
+	//Game_speechbubble("¾È³çÇÏ¼¼¿ä!, Hello!d sfdfsdfsdf sdfdfsf dfsdfs dfsdfsd fsdfsdf");
 
 	Game_print_map();
-	Sleep(1000);
+	//Sleep(1000);
+
+	Game_on_start();
 
 	for (;;)
 	{
