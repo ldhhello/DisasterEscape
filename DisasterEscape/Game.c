@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "Structure.h"
 
+#include "SceneDimigo.h"
+
 Image game_image[1500];
 
 void Game_speech_nowait(const char* str)
@@ -75,39 +77,23 @@ void Game_speechbubble(const char* str)
 int map_x = 0, map_y = 0;
 int player_x = 2, player_y = 3;
 
-int map_[100][100] = {
-	{ 0, 0, 0, 0, 0},
-	{ 0, 1, 0, 1, 0},
-	{ 0, 0, 0, 0, 0},
-	{ 0, 1, 0, 1, 0},
-	{ 0, 0, 1, 0, 0},
-};
-int max_x = 100, max_y = 100;
+//int map_[100][100] = {
+//	{ 0, 0, 0, 0, 0},
+//	{ 0, 1, 0, 1, 0},
+//	{ 0, 0, 0, 0, 0},
+//	{ 0, 1, 0, 1, 0},
+//	{ 0, 0, 1, 0, 0},
+//};
+//int max_x = 100, max_y = 100;
+//
+//Structure structure[100];
+//int structure_cnt;
 
-Structure structure[100];
+int** map_;
+int max_x, max_y;
+
+Structure* structure;
 int structure_cnt;
-
-int next_start_pos(int prev, int cursor, int screen_size, int max_pos)
-{
-	int s = prev + 3, e = prev + screen_size - 3;
-
-	if (s <= cursor && cursor <= e)
-		return prev;
-
-	int res = 0;
-
-	if (s > cursor)
-		res = cursor-3;
-	else if (cursor > e)
-		res = cursor - screen_size + 3;
-	
-	if (res < 0)
-		return 0;
-	if (res > max_pos - screen_size)
-		return max_pos - screen_size;
-
-	return res;
-}
 
 void Game_modify_player_pos()
 {
@@ -272,7 +258,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 
 void Game_modal()
 {
-	Structure s = { 3, 3, 4, 8, bitmap_house };
+	/*Structure s = {3, 3, 4, 8, bitmap_house};
 	structure[0] = s;
 	s.x = 10; s.y = 3;
 	structure[1] = s;
@@ -280,7 +266,12 @@ void Game_modal()
 	structure[2] = s;
 	s.x = 24; s.y = 3;
 	structure[3] = s;
-	structure_cnt = 4;
+	structure_cnt = 4;*/
+
+	Scene sc = SceneDimigo_load();
+
+	map_ = sc.load_map(&max_x, &max_y);
+	structure = sc.load_structure(&structure_cnt);
 
 	Game game;
 	memset(&game, 0, sizeof(Game));
@@ -294,6 +285,8 @@ void Game_modal()
 	image_layer.renderAll(&image_layer);
 
 	Sleep(3000);
+
+	image_layer.clearImage(&image_layer, true);
 
 	Game_speechbubble("æ»≥Á«œººø‰!, Hello!d sfdfsdfsdf sdfdfsf dfsdfs dfsdfsd fsdfsdf");
 

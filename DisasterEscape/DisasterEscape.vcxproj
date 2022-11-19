@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="SceneDimigo.c" />
     <ClCompile Include="StartWindow.c" />
     <ClCompile Include="Utils.c" />
   </ItemGroup>
@@ -140,6 +141,8 @@
     <ClInclude Include="ImageLayerInterface.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneDimigo.h" />
     <ClInclude Include="StartWindow.h" />
     <ClInclude Include="Structure.h" />
   </ItemGroup>
