@@ -3,7 +3,7 @@
 
 Image game_image[1500];
 
-void Game_speechbubble(const char* str)
+void Game_speech_nowait(const char* str)
 {
 	Image im = { "", 0, 52 * 16, 0, 0, bitmap_speech_bubble };
 	//Game_append_image(im, true);
@@ -24,14 +24,14 @@ void Game_speechbubble(const char* str)
 		{
 			_getch();
 
-			memcpy(now_str, str, sz+1);
+			memcpy(now_str, str, sz + 1);
 
 			image_layer.startRender(&image_layer);
 
 			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
-			
+
 			break;
 		}
 		now_str[i] = str[i];
@@ -42,7 +42,7 @@ void Game_speechbubble(const char* str)
 			//image_layer.renderAll(&image_layer);
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52*16 + 10, 180*16 - 10, 96*16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			Sleep(40);
@@ -54,6 +54,11 @@ void Game_speechbubble(const char* str)
 	}
 
 	free(now_str);
+}
+
+void Game_speechbubble(const char* str)
+{
+	Game_speech_nowait(str);
 
 	_getch();
 
@@ -210,6 +215,55 @@ int Game_modal_select_box(char (*str)[100], int cnt)
 	//image_layer.renderAll(&image_layer);
 }
 
+int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
+{
+	Game_speech_nowait(speech);
+
+	int last_image_cnt = image_layer.imageCount;
+
+	int now = 0;
+
+	//Image im = {"", ((player_x-map_x)*16*8) + 10, ((player_y-map_y)*16*8) + 10, 0, 0,}
+	//image_layer.appendImage(&image_layer, )
+
+	while (true)
+	{
+		image_layer.startRender(&image_layer);
+
+		printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, speech);
+
+		// 180 * 16 - 10 - 200, 52 * 16 - 10 - 200
+		Rectangle_(image_layer.bufferDC, 180 * 16 - 210, 52 * 16 - 10 - 40*cnt,
+			180 * 16 - 10, 52 * 16 - 10);
+
+		for (int i = 0; i < cnt; i++)
+		{
+			COLORREF color = RGB(0, 0, 0);
+			if (i == now)
+				color = RGB(255, 0, 0);
+
+			printText(image_layer.bufferDC, 180 * 16 - 210, 52*16 - 10 - 40*cnt + 40 * i,
+				180*16 - 10, 52*16 - 10 - 40*cnt + 40 * i + 40,
+				"¸¼Àº °íµñ", 40, color, DT_CENTER, str[i]);
+		}
+
+		image_layer.endRender(&image_layer);
+
+		int ch = _getch();
+
+		if (ch == UP && now > 0)
+			now--;
+		else if (ch == DOWN && now < cnt - 1)
+			now++;
+		else if (ch == VK_SPACE || ch == VK_RETURN)
+		{
+			image_layer.renderAll(&image_layer);
+			return now;
+		}
+	}
+	//image_layer.renderAll(&image_layer);
+}
+
 void Game_modal()
 {
 	Structure s = { 3, 3, 4, 8, bitmap_house };
@@ -282,7 +336,7 @@ void Game_modal()
 					"»ç¿ëÇÏ±â"
 				};
 
-				switch (Game_modal_select_box(str, 4))
+				switch (Game_modal_select_box_speech("ÁýÀÌ´Ù! µé¾î°¥±î?", str, 4))
 				{
 				case 0:
 					Game_speechbubble("µé¾î°¡´Âµ¥ ½ÇÆÐÇß´Ù!");
