@@ -22,7 +22,10 @@ void Game_speech_nowait(const char* str)
 	{
 		if (_kbhit())
 		{
-			_getch();
+			int a = _getch();
+
+			if (a == 224)
+				_getch();
 
 			memcpy(now_str, str, sz + 1);
 
@@ -60,7 +63,10 @@ void Game_speechbubble(const char* str)
 {
 	Game_speech_nowait(str);
 
-	_getch();
+	int a = _getch();
+
+	if (a == 224)
+		_getch();
 
 	//Game_erase_image();
 	image_layer.eraseImage(&image_layer, true);
