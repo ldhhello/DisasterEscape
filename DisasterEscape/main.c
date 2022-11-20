@@ -90,8 +90,8 @@ void load_image()
 	bitmap_button[2][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_button[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
 
-	void* image = NULL;
-	int res = GdipLoadImageFromFile("D:\\bongwan.png", &image);
+	/*void* image = NULL;
+	int res = GdipLoadImageFromFile("D:\\bongwan.png", &image);*/
 }
 
 void initialize()
