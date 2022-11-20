@@ -9,5 +9,10 @@ typedef struct
 	HBITMAP bitmap;
 
 	bool is_hide;
+	bool passable;
+
+	void (*on_active)(int st, int dir);
+
+	double scale;
 
 } Structure;

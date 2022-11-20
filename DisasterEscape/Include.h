@@ -24,16 +24,24 @@ extern void Rectangle_(HDC hdc, int left, int top, int right, int bottom);
 extern int next_start_pos(int prev, int cursor, int screen_size, int max_pos);
 
 typedef char bool;
-const static bool false = 0;
-const static bool true = 1;
+//const static bool false = 0;
+//const static bool true = 1;
+
+#define false 0
+#define true 1
 
 // on main.c
 extern HBITMAP bitmap_start_screen;
 extern HBITMAP bitmap_loading_image;
+extern HBITMAP bitmap_loading_none;
 extern HBITMAP bitmap_speech_bubble;
-extern HBITMAP bitmap_jandi;
 extern HBITMAP bitmap_player;
 extern HBITMAP bitmap_house;
+extern HBITMAP bitmap_hakbonggwan;
+extern HBITMAP bitmap_singwan;
+
+extern HBITMAP bitmap_bongwan1;
+extern HBITMAP bitmap_bongwan2;
 
 extern HBITMAP bitmap_tile[20]; // ¸Ê ¹Ù´Ú Å¸ÀÏ
 

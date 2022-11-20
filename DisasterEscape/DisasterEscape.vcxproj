@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="SceneCafeteria.c" />
     <ClCompile Include="SceneDimigo.c" />
     <ClCompile Include="StartWindow.c" />
     <ClCompile Include="Utils.c" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Include.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneCafeteria.h" />
     <ClInclude Include="SceneDimigo.h" />
     <ClInclude Include="StartWindow.h" />
     <ClInclude Include="Structure.h" />
@@ -154,6 +156,8 @@
     <Image Include="..\..\..\test3.bmp" />
     <Image Include="background.bmp" />
     <Image Include="bitmap1.bmp" />
+    <Image Include="bongwan_1.bmp" />
+    <Image Include="bongwan_2.bmp" />
     <Image Include="button_gameinfo.bmp" />
     <Image Include="button_gameinfo_active.bmp" />
     <Image Include="button_load.bmp" />
@@ -161,7 +165,10 @@
     <Image Include="button_start.bmp" />
     <Image Include="button_start_active.bmp" />
     <Image Include="disasterescape.ico" />
+    <Image Include="hakbonggwan.bmp" />
+    <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
+    <Image Include="singwan.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

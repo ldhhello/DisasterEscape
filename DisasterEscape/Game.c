@@ -98,7 +98,13 @@ void Game_speechbubble(const char* str)
 }
 
 int map_x = 0, map_y = 0;
-int player_x = 2, player_y = 3;
+int player_x = 10, player_y = 10;
+
+// 이거는 스택처럼 사용됨
+int last_x_arr[100];
+int last_y_arr[100];
+
+int last_arr_sz = 0;
 
 //int map_[100][100] = {
 //	{ 0, 0, 0, 0, 0},
@@ -133,11 +139,11 @@ void Game_modify_player_pos()
 	map_y = next_start_pos(map_y, player_y, SCREEN_Y / 8-1, max_y);
 }
 
-void Game_print_map()
+void Game_print_map(bool fade_in)
 {
 	image_layer.imageCount = 0;
 
-	Image a = { "", 0, 0, 0, 0, bitmap_jandi };
+	Image a = { "", 0, 0, 0, 0, bitmap_tile[0] };
 
 	for (int y = 0; y < SCREEN_Y/8+1; y++)
 	{
@@ -156,6 +162,7 @@ void Game_print_map()
 			a.x = x * 16 * 8;
 			a.y = y * 16 * 8;
 			a.bitmap = bitmap_tile[map_[ay][ax]];
+
 			image_layer.appendImage(&image_layer, a, false);
 		}
 	}
@@ -165,9 +172,14 @@ void Game_print_map()
 		if (structure[i].is_hide)
 			continue;
 
+		if (a.bitmap == NULL)
+			continue;
+
 		a.bitmap = structure[i].bitmap;
 		a.x = (structure[i].x - map_x) * 16 * 8;
 		a.y = (structure[i].y - map_y) * 16 * 8;
+
+		a.scale = structure[i].scale;
 
 		image_layer.appendImage(&image_layer, a, false);
 	}
@@ -179,9 +191,12 @@ void Game_print_map()
 
 	image_layer.appendImage(&image_layer, a, false);
 
-	image_layer.renderAll(&image_layer);
+	if (fade_in)
+		image_layer.fadeIn(&image_layer, NULL);
+	else
+		image_layer.renderAll(&image_layer);
 
-	TRACE("image_layer size: %d\n", image_layer.imageCount);
+	//TRACE("image_layer size: %d\n", image_layer.imageCount);
 }
 
 int Game_check_block()
@@ -189,6 +204,9 @@ int Game_check_block()
 	for (int i = 0; i < structure_cnt; i++)
 	{
 		if (structure[i].is_hide)
+			continue;
+
+		if (structure[i].passable)
 			continue;
 
 		if (structure[i].x <= player_x && player_x < structure[i].x + structure[i].width &&
@@ -305,6 +323,41 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 void (*Game_on_structure_active)(int st, int dir);
 void (*Game_on_start)();
 
+void Game_change_scene(Scene sc, bool is_enter)
+{
+	image_layer.fadeOut(&image_layer, NULL);
+
+	map_ = sc.load_map(&max_x, &max_y);
+	structure = sc.load_structure(&structure_cnt);
+
+	Game_on_structure_active = sc.on_structure_active;
+	Game_on_start = sc.on_start;
+
+	if (is_enter)
+	{
+		last_x_arr[last_arr_sz] = player_x;
+		last_y_arr[last_arr_sz] = player_y;
+		last_arr_sz++;
+
+		player_x = 3; player_y = 3;
+		map_x = 0; map_y = 0;
+	}
+	else
+	{
+		player_x = last_x_arr[last_arr_sz - 1];
+		player_y = last_y_arr[last_arr_sz - 1];
+		last_arr_sz--;
+
+		Game_modify_player_pos();
+	}
+
+	Sleep(1000);
+
+	Game_print_map(true);
+
+	Game_on_start();
+}
+
 void Game_modal()
 {
 	Sleep(500);
@@ -320,7 +373,7 @@ void Game_modal()
 	Game game;
 	memset(&game, 0, sizeof(Game));
 
-	Image a = { "", 0, 0, 2, 0, bitmap_loading_image };
+	Image a = { "", 0, 0, 2, 0, bitmap_loading_none };
 	game_image[0] = a;
 
 	image_layer.imageCount = 1;
@@ -328,13 +381,23 @@ void Game_modal()
 
 	image_layer.renderAll(&image_layer);
 
+	Sleep(1000);
+
+	game_image[0].bitmap = bitmap_loading_image;
+
+	image_layer.renderAll(&image_layer);
+
 	Sleep(2000);
 
 	image_layer.clearImage(&image_layer, true);
 
+	Sleep(1000);
+
+	Game_modify_player_pos();
+
 	//Game_speechbubble("안녕하세요!, Hello!d sfdfsdfsdf sdfdfsf dfsdfs dfsdfsd fsdfsdf");
 
-	Game_print_map();
+	Game_print_map(true);
 	//Sleep(1000);
 
 	Game_on_start();
@@ -369,12 +432,15 @@ void Game_modal()
 				player_x = last_x;
 				player_y = last_y;
 
-				Game_on_structure_active(check_st, ch);
+				if (structure[check_st].on_active != NULL)
+					structure[check_st].on_active(check_st, ch);
+				else
+					Game_on_structure_active(check_st, ch);
 			}
 
 			Game_modify_player_pos();
 
-			Game_print_map();
+			Game_print_map(false);
 		}
 
 		//Sleep(50);

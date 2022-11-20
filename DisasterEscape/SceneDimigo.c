@@ -1,56 +1,45 @@
 #include "SceneDimigo.h"
 #include "Game.h"
 
+#include "SceneCafeteria.h"
+
 int scene_dimigo_map[100][100] = {
-	{ 0, 1, 1, 0, 0},
-	{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0},
-	{ 0, 1, 1, 0, 0}
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1},//5
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},//10
+	{0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},//15
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1}
 };
 int scene_dimigo_x = 100, scene_dimigo_y = 100;
 
 Structure scene_dimigo_structure[100];
 int scene_dimigo_struct_cnt = 0;
+bool struct_loaded_dimigo = false;
+
+bool is_first_dimigo = true;
 
 Scene SceneDimigo_load()
 {
@@ -64,11 +53,18 @@ Scene SceneDimigo_load()
 	return scene;
 }
 
+int** dimigo_map_return;
+
 // 이 코드 사실 메모리 누수 문제가 있다!
 // 그런데 어차피 맵 로딩은 한번밖에 안하니까 약간 누수 나도 상관 없을 것 같다
 // 문제 생기면 나중에 고치지 머,,
 int** SceneDimigo_load_map(int* x, int* y)
 {
+	*x = scene_dimigo_x; *y = scene_dimigo_y;
+	
+	if (dimigo_map_return != NULL)
+		return dimigo_map_return;
+
 	int** res = malloc(sizeof(int*) * scene_dimigo_y);
 
 	for (int i = 0; i < scene_dimigo_y; i++)
@@ -76,36 +72,106 @@ int** SceneDimigo_load_map(int* x, int* y)
 		res[i] = scene_dimigo_map[i];
 	}
 
-	*x = scene_dimigo_x; *y = scene_dimigo_y;
-
-	return res;
+	return dimigo_map_return = res;
 }
 
 Structure* SceneDimigo_load_structure(int* sz)
 {
 	Structure* structure = scene_dimigo_structure;
 
-	Structure st[5] = {
-		{3, 5, 4, 8, bitmap_house},
-		{10, 5, 4, 8, bitmap_house},
-		{15, 7, 4, 8, bitmap_house},
-		{17, 14, 4, 8, bitmap_house},
-		{3, 24, 4, 8, bitmap_house}
+	Structure st[8] = {
+		{3, 15, 6, 8, bitmap_hakbonggwan, false, false, SceneDimigo_on_hakbonggwan, 4},
+		{3, 1, 6, 10, bitmap_bongwan1, false, false, SceneDimigo_on_active_cafeteria, 4.5},
+		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
+		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
+		{3, 24, 4, 8, bitmap_house, false, true},
+		{3, 11, 1, 4, NULL, false, false, SceneDimigo_on_door},
+		{9, 22, 3, 1, NULL, false, false, SceneDimigo_on_door},
+		{37, 0, 1, 20, NULL, false, false, SceneDimigo_on_ujunghaksa}
 	};
 
-	scene_dimigo_struct_cnt = 5;
+	scene_dimigo_struct_cnt = 8;
 	*sz = scene_dimigo_struct_cnt;
+
+	if (struct_loaded_dimigo)
+		return structure;
 
 	memcpy(structure, st, sizeof(st));
 
+	struct_loaded_dimigo = true;
 	return structure;
 }
 
 void SceneDimigo_on_start()
 {
-	Game_speechbubble("내이름은 동현이.");
-	Game_speechbubble("디미고에 불이 나서 갇혔다.");
-	Game_speechbubble("살려줘!!!!@!@!@!@!@!");
+	if (!is_first_dimigo)
+		return;
+
+	is_first_dimigo = false;
+
+	Game_speechbubble("나는 디미고 1학년 4반 김산천이다.");
+	Game_speechbubble("방금 전에 4교시 수학 수업이 끝났다!");
+}
+
+void SceneDimigo_on_active_cafeteria(int st, int dir)
+{
+	if (dir == LEFT)
+	{
+		SceneDimigo_on_bongwan(st, UP);
+		return;
+	}
+
+	if (dir != UP)
+		return;
+
+	char str[1][100] = { "들어가기" };
+
+	if (Game_modal_select_box_speech("급식실에 들어갈까?", str, 1) == 0)
+	{
+		//image_layer.fadeOut(&image_layer, NULL);
+		//Sleep(1000);
+
+		Game_change_scene(SceneCafeteria_load(), true);
+	}
+}
+
+void SceneDimigo_on_bongwan(int st, int dir)
+{
+	if (dir != UP)
+		return;
+
+	Game_speechbubble("디미고 본관이다. 왠지 멋있게 생겼다.");
+}
+
+void SceneDimigo_on_hakbonggwan(int st, int dir)
+{
+	if (dir != LEFT)
+		return;
+
+	Game_speechbubble("학봉관이다. 금요귀가 하고 싶게 생겼다.");
+}
+
+void SceneDimigo_on_door(int st, int dir)
+{
+	Game_speechbubble("왠지 나가면 무단외출로 경위서를 쓰게 될 것 같다!");
+}
+
+void SceneDimigo_on_ujunghaksa(int st, int dir)
+{
+	Game_speechbubble("우정학사 공사 중이다. 우정학사 공사는 3년 전에 끝나지 않았나?");
+}
+
+void SceneDimigo_on_singwan(int st, int dir)
+{
+	if (dir == UP)
+	{
+		Game_speechbubble("신관이다. 내가 만든 사물인터넷 프로젝트가 저기에 있다.");
+		return;
+	}
+	else if (dir == LEFT)
+	{
+		Game_speechbubble("매점이다. 왠지 모구모구가 팔고 있을 것만 같다.");
+	}
 }
 
 void SceneDimigo_on_structure_active(int st, int dir)
@@ -133,8 +199,8 @@ void SceneDimigo_on_structure_active(int st, int dir)
 		scene_dimigo_structure[st].is_hide = true;
 
 		Sleep(100);
-		Game_print_map();
-		Sleep(500);
+		Game_print_map(false);
+		Sleep(1000);
 
 		Game_speechbubble("집을 잡아먹었다!!");
 

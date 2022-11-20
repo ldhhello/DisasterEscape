@@ -76,6 +76,16 @@ IDB_BITMAP_START        BITMAP                  "button_start.bmp"
 
 IDB_BITMAP_START_ACTIVE BITMAP                  "button_start_active.bmp"
 
+IDB_BITMAP_LOADING_NONE BITMAP                  "loading-none.bmp"
+
+IDB_BITMAP_HAKBONGGWAN  BITMAP                  "hakbonggwan.bmp"
+
+IDB_BITMAP_BONGWAN1     BITMAP                  "bongwan_1.bmp"
+
+IDB_BITMAP_BONGWAN2     BITMAP                  "bongwan_2.bmp"
+
+IDB_BITMAP_SINGWAN      BITMAP                  "singwan.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 
