@@ -158,6 +158,7 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 		return;
 
 	Game_speechbubble("학봉관이다. 금요귀가 하고 싶게 생겼다.");
+	Game_system_message("쌤한테 허락맡고 하면 된다.");
 }
 
 void SceneDimigo_on_door(int st, int dir)

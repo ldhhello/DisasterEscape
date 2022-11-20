@@ -42,6 +42,24 @@ inline void _renderAndFade(ImageLayer* self, void(*applyToBackDC)(HDC), int isFa
 	DeleteDC(backDC);
 }
 
+inline void _renderAndFade_value(ImageLayer* self, void(*applyToBackDC)(HDC), int isFadeIn, int value) {
+	const HDC consoleDC = self->_consoleDC;
+	const HDC backDC = getRenderedBackDC(self);
+	if (applyToBackDC != NULL) applyToBackDC(backDC);
+	BLENDFUNCTION bf = getBlendFunction();
+
+	if (isFadeIn) {
+		for (int alpha = value; alpha <= 255; alpha += 17)
+			_fade(consoleDC, backDC, bf, alpha);
+	}
+	else {
+		for (int alpha = 255; alpha >= value; alpha -= 17)
+			_fade(consoleDC, backDC, bf, alpha);
+	}
+
+	DeleteDC(backDC);
+}
+
 inline void _renderAndFadeIn(ImageLayer* self, void(*applyToBackDC)(HDC)) {
 	_renderAndFade(self, applyToBackDC, 1);
 }

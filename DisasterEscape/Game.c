@@ -105,7 +105,24 @@ void Game_speechbubble(const char* str)
 // 시스템 메시지 (화면 가운데에 뜨는 메시지) 출력
 void Game_system_message(const char* str)
 {
-	
+	int center_x = SCREEN_X * 16 / 2;
+	int center_y = SCREEN_Y * 16 / 2;
+	//Image im = { "", center_x, center_y, 16, 0, bitmap_system_msg, true };
+
+	//image_layer.appendImage(&image_layer, im, false);
+
+	//image_layer.startRender(&image_layer);
+	_renderAndFade_value(&image_layer, NULL, false, 90);
+
+	printText(image_layer._consoleDC, 0, center_y - 30, center_x * 2, center_y + 30, 
+		"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
+
+	Sleep(1500);
+
+	//image_layer.endRender(&image_layer);
+	_renderAndFade_value(&image_layer, NULL, true, 90);
+
+	image_layer.renderAll(&image_layer);
 }
 
 int map_x = 0, map_y = 0;

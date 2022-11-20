@@ -41,6 +41,7 @@ extern HBITMAP bitmap_house;
 extern HBITMAP bitmap_hakbonggwan;
 extern HBITMAP bitmap_singwan;
 extern HBITMAP bitmap_cafeteria;
+extern HBITMAP bitmap_system_msg;
 extern HBITMAP bitmap_youdie;
 
 extern HBITMAP bitmap_bongwan1;
