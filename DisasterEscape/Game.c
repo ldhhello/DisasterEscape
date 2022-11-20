@@ -35,7 +35,7 @@ bool _trace(TCHAR* format, ...);
 // ¾ê´Â ¸»Ç³¼±¸¸ µü ¶ç¿ì°í ±×´ë·Î Á¾·áµÈ´Ù!
 void Game_speech_nowait(const char* str)
 {
-	Image im = { "", 0, 52 * 16, 0, 0, bitmap_speech_bubble };
+	Image im = { "", 40, 60 * 16, 2, 0, bitmap_speech_bubble };
 	//Game_append_image(im, true);
 	image_layer.appendImage(&image_layer, im, true);
 
@@ -61,7 +61,7 @@ void Game_speech_nowait(const char* str)
 
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 20, 52 * 16 + 20, 180 * 16 - 20, 96 * 16 - 20, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 -85, 96 * 16 - 20, "°­¿ø±³À°Æ°Æ°", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 
@@ -75,7 +75,7 @@ void Game_speech_nowait(const char* str)
 			//image_layer.renderAll(&image_layer);
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 20, 52 * 16 + 20, 180 * 16 - 20, 96 * 16 - 20, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 - 85, 96 * 16 - 20, "°­¿ø±³À°Æ°Æ°", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			Sleep(45);
@@ -264,7 +264,7 @@ int Game_modal_select_box(char (*str)[100], int cnt)
 
 			printText(image_layer.bufferDC, ((player_x - map_x + 1) * 16 * 8) - 40, ((player_y - map_y + 1) * 16 * 8) + 40 * i - 40,
 				((player_x - map_x + 1) * 16 * 8) + 160, ((player_y - map_y + 1) * 16 * 8) + 40 * i,
-				"¸¼Àº °íµñ", 40, color, DT_CENTER, str[i]);
+				"°­¿ø±³À°Æ°Æ°", 40, color, DT_CENTER, str[i]);
 		}
 
 		image_layer.endRender(&image_layer);
@@ -303,7 +303,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 	int width = 0;
 	for (int i = 0; i < cnt; i++)
 	{
-		int sz = getTextWidth(image_layer.bufferDC, "¸¼Àº °íµñ", 40, str[i]);
+		int sz = getTextWidth(image_layer.bufferDC, "°­¿ø±³À°Æ°Æ°", 40, str[i]);
 
 		if (width < sz)
 			width = sz;
@@ -313,7 +313,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 	{
 		image_layer.startRender(&image_layer);
 
-		printText(image_layer.bufferDC, 20, 52 * 16 + 20, 180 * 16 - 20, 96 * 16 - 20, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, speech);
+		printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 - 85, 96 * 16 - 20, "°­¿ø±³À°Æ°Æ°", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, speech);
 
 		// 180 * 16 - 10 - 200, 52 * 16 - 10 - 200
 		Rectangle_(image_layer.bufferDC, 180 * 16 - 10 - width, 52 * 16 - 10 - 40*cnt,
@@ -327,7 +327,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 
 			printText(image_layer.bufferDC, 180 * 16 - 10 - width, 52*16 - 10 - 40*cnt + 40 * i,
 				180*16 - 10, 52*16 - 10 - 40*cnt + 40 * i + 40,
-				"¸¼Àº °íµñ", 40, color, DT_CENTER, str[i]);
+				"°­¿ø±³À°Æ°Æ°", 40, color, DT_CENTER, str[i]);
 		}
 
 		image_layer.endRender(&image_layer);

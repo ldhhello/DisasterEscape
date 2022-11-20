@@ -160,7 +160,7 @@ goto_a:
 		Game_speechbubble("³È³È...");
 		break;
 	case 1:
-		Game_speechbubble("À¹.. ¹è°íÆÄ..");
+		Game_speechbubble("À¹.. ¹è°íÆÄ?..");
 		Game_speechbubble("±¾¾î Á×À» °Í °°¾Æ..");
 
 		Game_die();
