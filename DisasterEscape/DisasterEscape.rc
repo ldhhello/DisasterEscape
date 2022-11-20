@@ -94,6 +94,8 @@ IDB_BITMAP_JANDI        BITMAP                  "jandi.bmp"
 
 IDB_BITMAP_PATH         BITMAP                  "path.bmp"
 
+IDB_BITMAP_MESSAGEBOX   BITMAP                  "speechbubble.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

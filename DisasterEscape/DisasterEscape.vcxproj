@@ -172,6 +172,7 @@
     <Image Include="loading.bmp" />
     <Image Include="path.bmp" />
     <Image Include="singwan.bmp" />
+    <Image Include="speechbubble.bmp" />
     <Image Include="you-die.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
