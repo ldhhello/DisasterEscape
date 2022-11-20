@@ -102,6 +102,12 @@ void Game_speechbubble(const char* str)
 	image_layer.eraseImage(&image_layer, true);
 }
 
+// 시스템 메시지 (화면 가운데에 뜨는 메시지) 출력
+void Game_system_message(const char* str)
+{
+	
+}
+
 int map_x = 0, map_y = 0;
 int player_x = 10, player_y = 10;
 

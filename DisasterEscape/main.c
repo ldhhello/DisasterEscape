@@ -2,6 +2,26 @@
 #include "Include.h"
 #include "StartWindow.h"
 
+//#include <gdiplusflat.h>
+
+//#pragma comment(lib, "gdiplus.lib")
+//
+//struct GdiplusStartupInput {
+//	UINT32         GdiplusVersion;
+//	DebugEventProc DebugEventCallback;
+//	BOOL           SuppressBackgroundThread;
+//	BOOL           SuppressExternalCodecs;
+//};
+
+//extern int __stdcall
+//GdipLoadImageFromFile(const char* filename, void** image);
+//
+//extern int GdiplusStartup(ULONG_PTR* token,
+//
+//	const void* input,
+//
+//	void* output);
+
 HWND hWnd;
 ImageLayer image_layer;
 
@@ -25,6 +45,8 @@ HBITMAP bitmap_bongwan2;
 HBITMAP bitmap_singwan;
 HBITMAP bitmap_cafeteria;
 HBITMAP bitmap_youdie;
+
+HBITMAP bitmap_pngtest;
 
 HBITMAP bitmap_tile[20]; // ¸Ê ¹Ù´Ú Å¸ÀÏ
 
@@ -68,6 +90,8 @@ void load_image()
 	bitmap_button[2][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_button[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
 
+	void* image = NULL;
+	int res = GdipLoadImageFromFile("D:\\bongwan.png", &image);
 }
 
 void initialize()
