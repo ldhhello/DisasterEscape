@@ -31,6 +31,8 @@ bool _trace(TCHAR* format, ...);
 #define TRACE false && _trace
 #endif
 
+// 말풍선 띄우는 함수
+// 얘는 말풍선만 딱 띄우고 그대로 종료된다!
 void Game_speech_nowait(const char* str)
 {
 	Image im = { "", 0, 52 * 16, 0, 0, bitmap_speech_bubble };
@@ -212,6 +214,8 @@ void Game_print_map(bool fade_in)
 	//TRACE("image_layer size: %d\n", image_layer.imageCount);
 }
 
+// 건물에 막혀서 앞으로 갈수 없는 지 판단하는 함수
+// 만약 막혀서 앞으로 못 간다면 어디에 막혔는지 반환한다!
 int Game_check_block()
 {
 	for (int i = 0; i < structure_cnt; i++)
