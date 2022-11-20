@@ -164,11 +164,15 @@
     <Image Include="button_load_active.bmp" />
     <Image Include="button_start.bmp" />
     <Image Include="button_start_active.bmp" />
+    <Image Include="cafeteria.bmp" />
     <Image Include="disasterescape.ico" />
     <Image Include="hakbonggwan.bmp" />
+    <Image Include="jandi.bmp" />
     <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
+    <Image Include="path.bmp" />
     <Image Include="singwan.bmp" />
+    <Image Include="you-die.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

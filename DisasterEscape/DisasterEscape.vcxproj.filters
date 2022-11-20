@@ -132,5 +132,17 @@
     <Image Include="singwan.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="cafeteria.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="you-die.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="jandi.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="path.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -2,8 +2,11 @@
 #include "Structure.h"
 
 #include "SceneDimigo.h"
+#include "SceneCafeteria.h"
 
 Image game_image[1500];
+
+int Game_return_val = -1;
 
 #ifdef _DEBUG
 bool _trace(TCHAR* format, ...)
@@ -56,7 +59,7 @@ void Game_speech_nowait(const char* str)
 
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 20, 52 * 16 + 20, 180 * 16 - 20, 96 * 16 - 20, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 
@@ -70,7 +73,7 @@ void Game_speech_nowait(const char* str)
 			//image_layer.renderAll(&image_layer);
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			printText(image_layer.bufferDC, 20, 52 * 16 + 20, 180 * 16 - 20, 96 * 16 - 20, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			Sleep(45);
@@ -100,6 +103,8 @@ void Game_speechbubble(const char* str)
 int map_x = 0, map_y = 0;
 int player_x = 10, player_y = 10;
 
+bool is_died = 0;
+
 // ÀÌ°Å´Â ½ºÅÃÃ³·³ »ç¿ëµÊ
 int last_x_arr[100];
 int last_y_arr[100];
@@ -121,6 +126,8 @@ int last_arr_sz = 0;
 int** map_;
 int max_x, max_y;
 
+bool fixed_map;
+
 Structure* structure;
 int structure_cnt;
 
@@ -132,8 +139,11 @@ void Game_modify_player_pos()
 		player_x = max_x;
 	if (player_y < 0)
 		player_y = 0;
-	if (player_y >= max_x)
-		player_y = max_x;
+	if (player_y >= max_y)
+		player_y = max_y;
+
+	if (fixed_map)
+		return;
 
 	map_x = next_start_pos(map_x, player_x, SCREEN_X / 8-1, max_x);
 	map_y = next_start_pos(map_y, player_y, SCREEN_Y / 8-1, max_y);
@@ -145,7 +155,7 @@ void Game_print_map(bool fade_in)
 
 	Image a = { "", 0, 0, 0, 0, bitmap_tile[0] };
 
-	for (int y = 0; y < SCREEN_Y/8+1; y++)
+	for (int y = 0; y < SCREEN_Y/8; y++)
 	{
 		for (int x = 0; x < SCREEN_X / 8 + 1; x++)
 		{
@@ -158,6 +168,9 @@ void Game_print_map(bool fade_in)
 				a.y = y * 16 * 8;
 				image_layer.appendImage(&image_layer, a, false);
 			}*/
+
+			if (map_[ay][ax] == -1)
+				continue;
 
 			a.x = x * 16 * 8;
 			a.y = y * 16 * 8;
@@ -277,14 +290,23 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 	//Image im = {"", ((player_x-map_x)*16*8) + 10, ((player_y-map_y)*16*8) + 10, 0, 0,}
 	//image_layer.appendImage(&image_layer, )
 
+	int width = 0;
+	for (int i = 0; i < cnt; i++)
+	{
+		int sz = getTextWidth(image_layer.bufferDC, "¸¼Àº °íµñ", 40, str[i]);
+
+		if (width < sz)
+			width = sz;
+	}
+
 	while (true)
 	{
 		image_layer.startRender(&image_layer);
 
-		printText(image_layer.bufferDC, 10, 52 * 16 + 10, 180 * 16 - 10, 96 * 16 - 10, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, speech);
+		printText(image_layer.bufferDC, 20, 52 * 16 + 20, 180 * 16 - 20, 96 * 16 - 20, "¸¼Àº °íµñ", 150, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, speech);
 
 		// 180 * 16 - 10 - 200, 52 * 16 - 10 - 200
-		Rectangle_(image_layer.bufferDC, 180 * 16 - 210, 52 * 16 - 10 - 40*cnt,
+		Rectangle_(image_layer.bufferDC, 180 * 16 - 10 - width, 52 * 16 - 10 - 40*cnt,
 			180 * 16 - 10, 52 * 16 - 10);
 
 		for (int i = 0; i < cnt; i++)
@@ -293,7 +315,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 			if (i == now)
 				color = RGB(255, 0, 0);
 
-			printText(image_layer.bufferDC, 180 * 16 - 210, 52*16 - 10 - 40*cnt + 40 * i,
+			printText(image_layer.bufferDC, 180 * 16 - 10 - width, 52*16 - 10 - 40*cnt + 40 * i,
 				180*16 - 10, 52*16 - 10 - 40*cnt + 40 * i + 40,
 				"¸¼Àº °íµñ", 40, color, DT_CENTER, str[i]);
 		}
@@ -308,12 +330,12 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 			now++;
 		else if (ch == VK_SPACE || ch == VK_RETURN)
 		{
-			image_layer.renderAll(&image_layer);
+			image_layer.eraseImage(&image_layer, true);
 			return now;
 		}
 		else if (ch == VK_ESCAPE)
 		{
-			image_layer.renderAll(&image_layer);
+			image_layer.eraseImage(&image_layer, true);
 			return -1;
 		}
 	}
@@ -333,14 +355,20 @@ void Game_change_scene(Scene sc, bool is_enter)
 	Game_on_structure_active = sc.on_structure_active;
 	Game_on_start = sc.on_start;
 
+	fixed_map = sc.fixed_map;
+
 	if (is_enter)
 	{
 		last_x_arr[last_arr_sz] = player_x;
 		last_y_arr[last_arr_sz] = player_y;
 		last_arr_sz++;
 
-		player_x = 3; player_y = 3;
+		player_x = sc.start_x; player_y = sc.start_y;
 		map_x = 0; map_y = 0;
+
+		Game_modify_player_pos();
+
+		Game_return_val = -1;
 	}
 	else
 	{
@@ -356,6 +384,43 @@ void Game_change_scene(Scene sc, bool is_enter)
 	Game_print_map(true);
 
 	Game_on_start();
+
+	if (Game_return_val != -1 && sc.on_return != NULL)
+		sc.on_return(Game_return_val);
+}
+
+void Game_die()
+{
+	image_layer.fadeOut(&image_layer, NULL);
+
+	Sleep(1000);
+
+	image_layer.clearImage(&image_layer, false);
+
+	Image im = { "", 0, 0, 2, 0, bitmap_youdie };
+	image_layer.appendImage(&image_layer, im, false);
+
+	image_layer.fadeIn(&image_layer, NULL);
+
+	Sleep(2000);
+
+	image_layer.fadeOut(&image_layer, NULL);
+
+	image_layer.clearImage(&image_layer, false);
+
+	Sleep(1000);
+
+	Game_return_val = -1;
+
+	SceneDimigo_reset();
+	SceneCafeteria_reset();
+
+	is_died = true;
+}
+
+void Game_set_return(int ret)
+{
+	Game_return_val = ret;
 }
 
 void Game_modal()
@@ -367,8 +432,13 @@ void Game_modal()
 	map_ = sc.load_map(&max_x, &max_y);
 	structure = sc.load_structure(&structure_cnt);
 
+	player_x = sc.start_x;
+	player_y = sc.start_y;
+
 	Game_on_structure_active = sc.on_structure_active;
 	Game_on_start = sc.on_start;
+
+	fixed_map = sc.fixed_map;
 
 	Game game;
 	memset(&game, 0, sizeof(Game));
@@ -443,8 +513,12 @@ void Game_modal()
 			Game_print_map(false);
 		}
 
+		if (is_died)
+		{
+			is_died = false;
+			break;
+		}
+
 		//Sleep(50);
 	}
-
-	Sleep(3000);
 }

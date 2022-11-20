@@ -86,6 +86,14 @@ IDB_BITMAP_BONGWAN2     BITMAP                  "bongwan_2.bmp"
 
 IDB_BITMAP_SINGWAN      BITMAP                  "singwan.bmp"
 
+IDB_BITMAP_CAFETERIA    BITMAP                  "cafeteria.bmp"
+
+IDB_BITMAP_YOUDIE       BITMAP                  "you-die.bmp"
+
+IDB_BITMAP_JANDI        BITMAP                  "jandi.bmp"
+
+IDB_BITMAP_PATH         BITMAP                  "path.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

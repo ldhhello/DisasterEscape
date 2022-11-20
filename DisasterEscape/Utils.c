@@ -29,6 +29,35 @@ void Rectangle_(HDC hdc, int left, int top, int right, int bottom)
 		right * RESOLUTION_MULTIPLIER, bottom * RESOLUTION_MULTIPLIER);
 }
 
+int getTextWidth(HDC hdc, char* fontName, int size, char* text)
+{
+	//int weight = 1;
+	//int angle = 0;
+	//if (weight == 0) weight = 900;
+	//size = (int)(size * RESOLUTION_MULTIPLIER);
+	//const HFONT font = CreateFont(size, 0, angle, 0, weight, 0, 0, 0, HANGEUL_CHARSET,
+	//	0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT(fontName));
+
+	//SelectObject(hdc, font);
+	//SetBkMode(hdc, TRANSPARENT);
+	////SetTextAlign(hdc, align);
+	//
+	////TextOut(hdc, x, y, text, lstrlen(text));
+	////RECT rect = {0, 0, 0, 0};
+	////DrawText(hdc, text, -1, &rect, DT_CALCRECT);
+	//SIZE sz;
+	//int a = GetTextExtentPointA(hdc, text, strlen(text), &sz);
+
+	//PAINTSTRUCT paint;
+	//EndPaint(hWnd, &paint);
+
+	//DeleteObject(font);
+
+	//return sz.cx / RESOLUTION_MULTIPLIER;
+
+	return strlen(text) * 27;
+}
+
 void printText(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, char* text)
 {
 	int weight = 1;

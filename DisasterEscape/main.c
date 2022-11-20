@@ -23,6 +23,8 @@ HBITMAP bitmap_hakbonggwan;
 HBITMAP bitmap_bongwan1;
 HBITMAP bitmap_bongwan2;
 HBITMAP bitmap_singwan;
+HBITMAP bitmap_cafeteria;
+HBITMAP bitmap_youdie;
 
 HBITMAP bitmap_tile[20]; // 맵 바닥 타일
 
@@ -40,15 +42,13 @@ void clear_cursor()
 
 void load_image()
 {
-	//bitmap_start_screen = (HBITMAP)LoadImage(NULL, "D:\\test3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-
 	bitmap_start_screen = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAINSCREEN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_loading_image = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_loading_none = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING_NONE), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_speech_bubble = (HBITMAP)LoadImage(NULL, "D:\\speechbubble.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
-	bitmap_tile[0] = (HBITMAP)LoadImage(NULL, "D:\\jandi.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	bitmap_tile[1] = (HBITMAP)LoadImage(NULL, "D:\\path.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_tile[0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_JANDI), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_tile[1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PATH), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_player = (HBITMAP)LoadImage(NULL, "D:\\player.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	bitmap_house = (HBITMAP)LoadImage(NULL, "D:\\house.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
@@ -57,6 +57,9 @@ void load_image()
 	bitmap_bongwan1 = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN1), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_bongwan2 = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN2), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_singwan = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_cafeteria = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_CAFETERIA), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_youdie = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_YOUDIE), IMAGE_BITMAP, 0, 0, 0);
 
 	// 일단 어떻게 나오는지 테스트하게 파일명으로..ㅋㅋ
 	bitmap_button[0][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_START), IMAGE_BITMAP, 0, 0, 0);

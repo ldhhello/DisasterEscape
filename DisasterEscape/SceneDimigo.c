@@ -44,20 +44,21 @@ bool is_first_dimigo = true;
 Scene SceneDimigo_load()
 {
 	Scene scene;
+	memset(&scene, 0, sizeof(Scene));
 
 	scene.load_map = SceneDimigo_load_map;
 	scene.load_structure = SceneDimigo_load_structure;
 	scene.on_structure_active = SceneDimigo_on_structure_active;
 	scene.on_start = SceneDimigo_on_start;
+	scene.on_return = SceneDimigo_on_return;
+
+	scene.start_x = 10; scene.start_y = 10;
 
 	return scene;
 }
 
 int** dimigo_map_return;
 
-// 이 코드 사실 메모리 누수 문제가 있다!
-// 그런데 어차피 맵 로딩은 한번밖에 안하니까 약간 누수 나도 상관 없을 것 같다
-// 문제 생기면 나중에 고치지 머,,
 int** SceneDimigo_load_map(int* x, int* y)
 {
 	*x = scene_dimigo_x; *y = scene_dimigo_y;
@@ -100,6 +101,14 @@ Structure* SceneDimigo_load_structure(int* sz)
 
 	struct_loaded_dimigo = true;
 	return structure;
+}
+
+void SceneDimigo_on_return(int ret)
+{
+	if (ret == RETURNVAL_CAFETERIA_MISSION)
+	{
+		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
+	}
 }
 
 void SceneDimigo_on_start()
@@ -209,4 +218,11 @@ void SceneDimigo_on_structure_active(int st, int dir)
 		Game_speechbubble("집을 사용한다고??? 집 사용은 어떻게 하는 거니??");
 		break;
 	}
+}
+
+// 죽거나 등등의 이유로 게임을 종료할때 호출되는 코드
+void SceneDimigo_reset()
+{
+	struct_loaded_dimigo = false;
+	is_first_dimigo = true;
 }
