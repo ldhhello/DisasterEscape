@@ -476,7 +476,7 @@ void Game_modal()
 	image_layer.imageCount = 1;
 	image_layer.images = game_image;
 
-	image_layer.renderAll(&image_layer);
+	image_layer.fadeIn(&image_layer, NULL);
 
 	Sleep(1000);
 
@@ -486,7 +486,8 @@ void Game_modal()
 
 	Sleep(2000);
 
-	image_layer.clearImage(&image_layer, true);
+	image_layer.fadeOut(&image_layer, NULL);
+	image_layer.clearImage(&image_layer, false);
 
 	Sleep(1000);
 
