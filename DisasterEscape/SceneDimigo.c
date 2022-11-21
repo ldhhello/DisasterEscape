@@ -188,7 +188,7 @@ void SceneDimigo_on_key_pressed(char ch)
 			scene_dimigo_structure[1].bitmap = bitmap_bongwan[0][0];
 			scene_dimigo_structure[2].bitmap = bitmap_bongwan[0][1];
 			Game_print_map(false);
-
+			Game_system_message("화재 진압 성공!");
 			Game_speechbubble("소방관을 도와 불을 끄는데 성공했어!");
 			Game_speechbubble("너무 보람찬 하루인 것 같아.");
 
