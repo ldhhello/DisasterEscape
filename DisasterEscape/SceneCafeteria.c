@@ -102,7 +102,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
 		{10, 5, 1, 2, bitmap_house, false, false, SceneCafeteria_on_rice, 4},
 		{10, 10, 1, 1, bitmap_house, false, false, SceneCafeteria_on_towel, 2},
-		{6, 15, 1, 1, bitmap_house, false, false, SceneCafeteria_on_water, 2}
+		{6, 8, 1, 1, bitmap_house, false, false, SceneCafeteria_on_water, 2},
 
 		{14, 12, 7, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
