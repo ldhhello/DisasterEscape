@@ -4,23 +4,25 @@
 
 //#include <gdiplusflat.h>
 
-//#pragma comment(lib, "gdiplus.lib")
-//
-//struct GdiplusStartupInput {
-//	UINT32         GdiplusVersion;
-//	DebugEventProc DebugEventCallback;
-//	BOOL           SuppressBackgroundThread;
-//	BOOL           SuppressExternalCodecs;
-//};
+#pragma comment(lib, "gdiplus.lib")
 
-//extern int __stdcall
-//GdipLoadImageFromFile(const char* filename, void** image);
-//
-//extern int GdiplusStartup(ULONG_PTR* token,
-//
-//	const void* input,
-//
-//	void* output);
+struct GdiplusStartupInput {
+	UINT32         GdiplusVersion;
+	void* DebugEventCallback;
+	BOOL           SuppressBackgroundThread;
+	BOOL           SuppressExternalCodecs;
+};
+
+struct GdiplusStartupOutput {
+	void *a, *b;
+};
+
+extern int __stdcall
+GdipCreateBitmapFromFile(const char* filename, void** image);
+
+extern int GdiplusStartup(ULONG_PTR* token, const void* input, void* output);
+
+extern int GdipCreateHBITMAPFromBitmap(void* image, HBITMAP* hbitmap, int background);
 
 HWND hWnd;
 ImageLayer image_layer;
@@ -94,8 +96,17 @@ void load_image()
 	bitmap_button[2][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_button[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
 
-	/*void* image = NULL;
-	int res = GdipLoadImageFromFile("D:\\bongwan.png", &image);*/
+	/*ULONG_PTR gp_token;
+	struct GdiplusStartupInput gpsi;
+	memset(&gpsi, 0, sizeof(struct GdiplusStartupInput));
+	gpsi.GdiplusVersion = 1;
+
+	int res1 = GdiplusStartup(&gp_token, &gpsi, NULL);
+
+	void* bitmap = NULL;
+	int res2 = GdipCreateBitmapFromFile(L"D:\\bongwan.png", &bitmap);
+
+	int res3 = GdipCreateHBITMAPFromBitmap(bitmap, &bitmap_house, 0xff000000);*/
 }
 
 void initialize()

@@ -36,6 +36,9 @@
     <ClCompile Include="SceneCafeteria.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Music.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h">
@@ -72,6 +75,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="SceneCafeteria.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

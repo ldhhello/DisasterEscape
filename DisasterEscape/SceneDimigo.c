@@ -85,7 +85,7 @@ Structure* SceneDimigo_load_structure(int* sz)
 		{3, 1, 6, 10, bitmap_bongwan1, false, false, SceneDimigo_on_active_cafeteria, 4.5},
 		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
 		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
-		{3, 24, 4, 8, bitmap_house, false, true},
+		{3, 24, 4, 8, bitmap_house, false, true, NULL, 1},
 		{3, 11, 1, 4, NULL, false, false, SceneDimigo_on_door},
 		{9, 22, 3, 1, NULL, false, false, SceneDimigo_on_door},
 		{37, 0, 1, 20, NULL, false, false, SceneDimigo_on_ujunghaksa}

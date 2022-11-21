@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Music.c" />
     <ClCompile Include="SceneCafeteria.c" />
     <ClCompile Include="SceneDimigo.c" />
     <ClCompile Include="StartWindow.c" />
@@ -141,6 +142,7 @@
     <ClInclude Include="ImageLayerImpl.h" />
     <ClInclude Include="ImageLayerInterface.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneCafeteria.h" />
