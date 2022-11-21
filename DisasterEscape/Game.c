@@ -464,7 +464,15 @@ void Game_set_return(int ret)
 
 int Game_select_save_file()
 {
+	Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 / 2, 1.8, 0, bitmap_youdie, true };
 
+	image_layer.appendImage(&image_layer, im, true);
+
+	_getch();
+
+	image_layer.eraseImage(&image_layer, true);
+
+	return 1;
 }
 
 void Game_modal()
@@ -548,7 +556,8 @@ void Game_modal()
 			}
 			else if (ch == VK_ESCAPE)
 			{
-				Game_speechbubble("왠지 저장 버튼이 뜰 것 같다!");
+				//Game_speechbubble("왠지 저장 버튼이 뜰 것 같다!");
+				Game_select_save_file();
 			}
 
 			int check_st = 0;
