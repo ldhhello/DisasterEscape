@@ -118,8 +118,9 @@ void SceneDimigo_on_start()
 
 	is_first_dimigo = false;
 
-	Game_speechbubble("나는 디미고 1학년 4반 김산천이다.");
-	Game_speechbubble("방금 전에 4교시 수학 수업이 끝났다!");
+	Game_speechbubble("나는 1학년 7반 김산천.");
+	Game_speechbubble("오늘 학교에 입학해서 아직 아무것도 모르겠다.");
+	Game_speechbubble("학교를 탐방해보면서 학교에 대해서 익혀봐야겠군!");
 }
 
 void SceneDimigo_on_active_cafeteria(int st, int dir)
