@@ -134,9 +134,9 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 	if (dir != UP)
 		return;
 
-	char str[1][100] = { "들어가기" };
+	char str[2][100] = { "들어가보자!","아니야, 안 갈래."};
 
-	if (Game_modal_select_box_speech("맛있는 냄새가 난다! \n급식실에 들어갈까?", str, 1) == 0)
+	if (Game_modal_select_box_speech("맛있는 냄새가 난다!\n\n급식실에 들어가볼까?", str, 2) == 0)
 	{
 		//image_layer.fadeOut(&image_layer, NULL);
 		//Sleep(1000);
@@ -168,8 +168,14 @@ void SceneDimigo_on_door(int st, int dir)
 }
 
 void SceneDimigo_on_ujunghaksa(int st, int dir)
-{
-	Game_speechbubble("저기에 뭐라고 써져있는 거지? 도.. 서관 공사중?");
+{ 
+	char str[2][100] = { "들어가보자!","위험한 것 같아. 돌아가자." };
+
+	if (Game_modal_select_box_speech("저기 팻말에 뭐라고 써져있는 거지?\n\n도.. 서관 공사중?", str, 2) == 0)
+	{
+
+		Game_die();
+	}
 }
 
 void SceneDimigo_on_singwan(int st, int dir)
