@@ -3,6 +3,8 @@
 
 #include "SceneCafeteria.h"
 
+#include "SceneBongwan.h"
+
 int scene_dimigo_map[100][100] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -288,6 +290,7 @@ void SceneDimigo_on_bongwan(int st, int dir)
 		}
 		else {
 			Game_speechbubble("»ì¾Ò´Ù.");
+			Game_change_scene(SceneBongwan_load(), true);
 		}
 	}
 }

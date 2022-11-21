@@ -42,6 +42,9 @@
     <ClCompile Include="GameInfo.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="SceneBongwan.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h">
@@ -84,6 +87,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="GameInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBongwan.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
