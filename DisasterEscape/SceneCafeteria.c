@@ -188,9 +188,9 @@ void SceneCafeteria_on_rice(int st, int dir)
 			};
 			if (Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2) == 1)
 			{
-				Game_speechbubble("신고에 성공했어\n\n이제 젖은 수건을 찾으러 가보자!");
+				Game_speechbubble("신고에 성공했어!\n\n이제 젖은 수건을 찾으러 가보자!");
 
-				Game_system_message("수건을 찾자.");
+				Game_system_message("급식실에서 수건을 찾아보자!");
 				quest_progress = 1;
 				return;
 			}
@@ -241,12 +241,13 @@ void SceneCafeteria_on_towel(int st, int dir)
 {
 	if (quest_progress != 1)
 	{
-		Game_speechbubble("수건이다. 이게 급식실에 왜 있지?");
+		Game_speechbubble("수건이 여기 왜 있지?");
 		return;
 	}
 
 	// 수정 ㄱㄱ ㅋㅋㅋㅋ
-	Game_speechbubble("와 수건을 찾았다!! 샌즈!!@#!@#!@#");
+	Game_speechbubble("수건을 찾았어! 이제 물을 찾으러 가 보자.");
+	Game_system_message("급식실에서 물을 찾아보자!");
 }
 
 void SceneCafeteria_on_structure_active(int st, int dir)
