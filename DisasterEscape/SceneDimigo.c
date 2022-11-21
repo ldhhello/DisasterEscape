@@ -197,6 +197,42 @@ void SceneDimigo_on_key_pressed(char ch)
 			Game_system_message("퀘스트 완료: 급식실 화재");
 
 			quest_progress_cafeteria = 11;
+
+			char oong[2][100] = {
+			"미세먼지인가 봐!",
+			"하늘이 내린 저주야!",
+			
+			//답변
+			};
+			if (Game_modal_select_box_speech("콜록콜록! 켁켁! 숨이 안 쉬어져.", oong, 2) == 1)
+			{
+				Game_speechbubble("신이 노하셨다!! 우어억!!");
+				Game_print_earthquake(1000);
+				Game_die();
+				return;
+			}
+			else {
+				char ooong[2][100] = {
+					"내 코가 필터다!! 마스크따윈 필요 없어!",
+					"KF94 마스크를 쓰자!",
+
+					//답변
+				};
+				if (Game_modal_select_box_speech("마스크를 써야 할 것 같아..", ooong, 2) == 1)
+				{
+					Game_speechbubble("휴, 살았다.\n\n미세먼지를 피해 본관 안으로 들어가보자.");
+					
+				}
+				else {
+					Game_system_message("숨이 안 쉬어져!");
+					
+					Game_die();
+					return;
+
+				}
+			}
+
+			
 		}
 	}
 }
