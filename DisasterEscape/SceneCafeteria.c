@@ -207,7 +207,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 
 		}
 		else {
-			Game_system_message("화재를 재때 알리지 않아 대형 인명피해로 이어졌습니다.");
+			Game_system_message("화재를 재때 알리지 않으면 대형 인명피해로 이어집니다.");
 			Game_die();
 
 		}
