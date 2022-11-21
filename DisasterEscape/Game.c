@@ -8,6 +8,8 @@ Image game_image[1500];
 
 int Game_return_val = -1;
 
+int player_idx = 0; // ÇÃ·¹ÀÌ¾î »çÁø ¹¹¶ç¿ïÁö
+
 #ifdef _DEBUG
 bool _trace(TCHAR* format, ...)
 {
@@ -222,10 +224,12 @@ void Game_print_map(bool fade_in)
 		image_layer.appendImage(&image_layer, a, false);
 	}
 
-	a.bitmap = bitmap_player;
-	a.x = (player_x-map_x) * 16 * 8;
-	a.y = (player_y-map_y) * 16 * 8;
-	a.scale = 8;
+	a.bitmap = bitmap_player[player_idx];
+	a.x = (player_x-map_x) * 16 * 8 + 16*4;
+	a.y = (player_y-map_y) * 16 * 8 + 16*4;
+	a.scale = .7;
+
+	a.isCenter = true;
 
 	image_layer.appendImage(&image_layer, a, false);
 
@@ -390,6 +394,8 @@ void Game_change_scene(Scene sc, bool is_enter)
 
 	fixed_map = sc.fixed_map;
 
+	player_idx = 0;
+
 	if (is_enter)
 	{
 		last_x_arr[last_arr_sz] = player_x;
@@ -473,6 +479,8 @@ void Game_modal()
 
 	fixed_map = sc.fixed_map;
 
+	player_idx = 0;
+
 	Game game;
 	memset(&game, 0, sizeof(Game));
 
@@ -516,18 +524,22 @@ void Game_modal()
 			if (ch == UP)
 			{
 				player_y--;
+				player_idx = 0;
 			}
 			else if (ch == DOWN)
 			{
 				player_y++;
+				player_idx = 1;
 			}
 			else if (ch == LEFT)
 			{
 				player_x--;
+				player_idx = 2;
 			}
 			else if (ch == RIGHT)
 			{
 				player_x++;
+				player_idx = 3;
 			}
 
 			int check_st = 0;

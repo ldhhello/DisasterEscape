@@ -39,7 +39,7 @@ HBITMAP bitmap_loading_image;
 HBITMAP bitmap_loading_none;
 HBITMAP bitmap_speech_bubble;
 HBITMAP bitmap_jandi; // 잔디 테스트
-HBITMAP bitmap_player; // 플레이어 테스트
+HBITMAP bitmap_player[4]; // 플레이어 테스트
 HBITMAP bitmap_house; // 집 테스트
 HBITMAP bitmap_hakbonggwan;
 HBITMAP bitmap_bongwan1;
@@ -76,7 +76,12 @@ void load_image()
 	bitmap_tile[0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_JANDI), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_tile[1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PATH), IMAGE_BITMAP, 0, 0, 0);
 
-	bitmap_player = (HBITMAP)LoadImage(NULL, "D:\\player.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	//bitmap_player = (HBITMAP)LoadImage(NULL, "D:\\player.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	bitmap_player[0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PLAYER_UP), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_player[1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PLAYER_DOWN), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_player[2] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PLAYER_LEFT), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_player[3] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PLAYER_RIGHT), IMAGE_BITMAP, 0, 0, 0);
+
 	bitmap_house = (HBITMAP)LoadImage(NULL, "D:\\house.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
 	bitmap_hakbonggwan = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_HAKBONGGWAN), IMAGE_BITMAP, 0, 0, 0);

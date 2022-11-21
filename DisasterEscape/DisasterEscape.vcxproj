@@ -173,6 +173,10 @@
     <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
     <Image Include="path.bmp" />
+    <Image Include="player-down.bmp" />
+    <Image Include="player-left.bmp" />
+    <Image Include="player-right.bmp" />
+    <Image Include="player-up.bmp" />
     <Image Include="singwan.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="you-die.bmp" />

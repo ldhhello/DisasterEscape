@@ -96,6 +96,14 @@ IDB_BITMAP_PATH         BITMAP                  "path.bmp"
 
 IDB_BITMAP_MESSAGEBOX   BITMAP                  "speechbubble.bmp"
 
+IDB_BITMAP_PLAYER_UP    BITMAP                  "player-up.bmp"
+
+IDB_BITMAP_PLAYER_DOWN  BITMAP                  "player-down.bmp"
+
+IDB_BITMAP_PLAYER_LEFT  BITMAP                  "player-left.bmp"
+
+IDB_BITMAP_PLAYER_RIGHT BITMAP                  "player-right.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

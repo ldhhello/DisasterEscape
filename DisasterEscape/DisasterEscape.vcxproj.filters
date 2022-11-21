@@ -153,5 +153,17 @@
     <Image Include="speechbubble.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="player-up.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="player-down.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="player-left.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="player-right.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

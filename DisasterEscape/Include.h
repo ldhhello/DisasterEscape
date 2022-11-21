@@ -36,7 +36,7 @@ extern HBITMAP bitmap_start_screen;
 extern HBITMAP bitmap_loading_image;
 extern HBITMAP bitmap_loading_none;
 extern HBITMAP bitmap_speech_bubble;
-extern HBITMAP bitmap_player;
+extern HBITMAP bitmap_player[4];
 extern HBITMAP bitmap_house;
 extern HBITMAP bitmap_hakbonggwan;
 extern HBITMAP bitmap_singwan;
