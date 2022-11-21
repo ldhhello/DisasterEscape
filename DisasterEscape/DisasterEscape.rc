@@ -116,6 +116,8 @@ IDB_BITMAP_NaOH         BITMAP                  "NaOH.bmp"
 
 IDB_BITMAP_TOWEL        BITMAP                  "towel.bmp"
 
+IDB_BITMAP_BIBIMBAP     BITMAP                  "bibimbap.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

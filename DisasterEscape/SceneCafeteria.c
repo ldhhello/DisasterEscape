@@ -100,11 +100,11 @@ Structure* SceneCafeteria_load_structure(int* sz)
 
 	Structure st[8] = {
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
-		{10, 5, 1, 2, bitmap_house, false, false, SceneCafeteria_on_rice, 4},
+		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneCafeteria_on_rice, 1.6},
 		{10, 10, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
 		{6, 8, 1, 1, bitmap_naoh, false, false, SceneCafeteria_on_water, 2},
 
-		{14, 12, 7, 1, NULL, false, false, SceneCafeteria_on_door},
+		{0, 12, 21, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
 		//{17, 14, 4, 8, bitmap_house},
 		{0, 12, 14, 1, NULL},
@@ -247,6 +247,11 @@ void SceneCafeteria_on_towel(int st, int dir)
 		return;
 	}
 
+	scene_cafeteria_structure[2].is_hide = true;
+	Game_print_map(false);
+
+	Sleep(300);
+
 	Game_speechbubble("수건을 찾았어! 이제 물을 찾으러 가 보자.");
 	Game_system_message("급식실에서 물을 찾아보자!");
 
@@ -273,6 +278,11 @@ void SceneCafeteria_on_water(int st, int dir)
 		}
 		return;
 	}
+
+	scene_cafeteria_structure[3].is_hide = true;
+	Game_print_map(false);
+
+	Sleep(300);
 
 	Game_speechbubble("물을 찾았어!");
 	char oong_[2][100] = {

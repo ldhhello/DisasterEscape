@@ -65,6 +65,7 @@ HBITMAP bitmap_water;
 
 HBITMAP bitmap_naoh;
 HBITMAP bitmap_towel;
+HBITMAP bitmap_bibimbap;
 
 void clear_cursor()
 {
@@ -121,6 +122,7 @@ void load_image()
 	bitmap_water = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_WATER), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_naoh = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_NaOH), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_towel = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_TOWEL), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bibimbap = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BIBIMBAP), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

@@ -58,6 +58,7 @@ extern HBITMAP bitmap_water;
 
 extern HBITMAP bitmap_naoh;
 extern HBITMAP bitmap_towel;
+extern HBITMAP bitmap_bibimbap;
 
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;

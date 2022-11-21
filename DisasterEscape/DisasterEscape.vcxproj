@@ -159,6 +159,7 @@
     <Image Include="..\..\..\icon1.ico" />
     <Image Include="..\..\..\test3.bmp" />
     <Image Include="background.bmp" />
+    <Image Include="bibimbap.bmp" />
     <Image Include="bitmap1.bmp" />
     <Image Include="bongwan_1.bmp" />
     <Image Include="bongwan_2.bmp" />
