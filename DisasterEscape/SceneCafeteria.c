@@ -180,7 +180,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 		"나만 살면 되는거야! 혼자 도망가자."
 		//답변
 		};
-		if (Game_modal_select_box_speech("콜록콜록! 화재가 발생한 것 같아!", oong, 3) == 1)
+		if (Game_modal_select_box_speech("콜록콜록! 불이야!", oong, 3) == 1)
 		{
 			Game_speechbubble("다행히 주변 모두가 나의 목소리를 들은 것 같아!");
 			char oong_[2][100] = {
