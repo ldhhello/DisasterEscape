@@ -274,7 +274,21 @@ void SceneCafeteria_on_water(int st, int dir)
 		return;
 	}
 
-	Game_speechbubble("물을 찾앗어 와샌즈");
+	Game_speechbubble("물을 찾았어!");
+	char oong_[2][100] = {
+		"입을 막고 밖으로 나가자!",
+		"아잇! 수건이 너무 걸리적거려. 버리자!"
+		//답변
+	};
+	if (Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2) == 0)
+	{
+		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");
+
+	}
+	else {
+		Game_system_message("화재 상황에서 젖은 수건은 입으로 들어가는 연기를 차단하기에 가장 효과적인 수단입니다.");
+		Game_die();
+	}
 
 	
 }
