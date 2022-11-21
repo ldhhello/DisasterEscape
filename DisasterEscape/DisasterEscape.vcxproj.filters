@@ -165,5 +165,11 @@
     <Image Include="player-right.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="bongwan_fire1_1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="bongwan_fire1_2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>
