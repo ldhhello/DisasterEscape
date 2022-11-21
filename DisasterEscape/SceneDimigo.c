@@ -139,18 +139,10 @@ void SceneDimigo_on_key_pressed(char ch)
 	{
 		//Game_speechbubble("왠지 불을 끌수 있을것 같은 버튼이다!");
 
-		int water_x = player_x, water_y = player_y;
+		if (player_idx != 0)
+			return;
 
-		if (player_idx == 0)
-			water_y--;
-		else if (player_idx == 1)
-			water_y++;
-		else if (player_idx == 2)
-			water_x--;
-		else if (player_idx == 3)
-			water_x++;
-
-		scene_dimigo_structure[5].x = water_x; scene_dimigo_structure[5].y = water_y;
+		scene_dimigo_structure[5].x = player_x; scene_dimigo_structure[5].y = player_y-3;
 
 		scene_dimigo_structure[5].is_hide = false;
 		Game_print_map(false);
