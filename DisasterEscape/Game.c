@@ -61,6 +61,9 @@ void Game_speech_nowait(const char* str)
 
 			memcpy(now_str, str, sz + 1);
 
+			Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 50, 1, 0, bitmap_arrow, true };
+			image_layer.appendImage(&image_layer, im, false);
+
 			image_layer.startRender(&image_layer);
 
 			printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 -85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
@@ -75,6 +78,13 @@ void Game_speech_nowait(const char* str)
 		if (now_str[i] >= 0 || ignored)
 		{
 			//image_layer.renderAll(&image_layer);
+
+			if (i == sz - 1)
+			{
+				Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 50, 1, 0, bitmap_arrow, true };
+				image_layer.appendImage(&image_layer, im, false);
+			}
+
 			image_layer.startRender(&image_layer);
 
 			printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 - 85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
