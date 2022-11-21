@@ -51,6 +51,8 @@ extern HBITMAP bitmap_tile[20]; // ¸Ê ¹Ù´Ú Å¸ÀÏ
 
 extern HBITMAP bitmap_button[3][2];
 
+extern HBITMAP bitmap_gameinfo;
+
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;
 

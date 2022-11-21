@@ -25,6 +25,8 @@ extern int GdiplusStartup(ULONG_PTR* token, const void* input, void* output);
 
 extern int GdipCreateHBITMAPFromBitmap(void* image, HBITMAP* hbitmap, int background);
 
+extern int GdipCreateBitmapFromResource(HINSTANCE hInstance, const char* lpBitmapName, void** image);
+
 HWND hWnd;
 ImageLayer image_layer;
 
@@ -56,6 +58,8 @@ HBITMAP bitmap_pngtest;
 HBITMAP bitmap_tile[20]; // 맵 바닥 타일
 
 HBITMAP bitmap_button[3][2]; // [버튼 종류][활성 여부]
+
+HBITMAP bitmap_gameinfo;
 
 void clear_cursor()
 {
@@ -102,17 +106,20 @@ void load_image()
 	bitmap_button[2][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_button[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
 
-	/*ULONG_PTR gp_token;
-	struct GdiplusStartupInput gpsi;
-	memset(&gpsi, 0, sizeof(struct GdiplusStartupInput));
-	gpsi.GdiplusVersion = 1;
+	bitmap_gameinfo = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_GAMEINFO_SCREEN), IMAGE_BITMAP, 0, 0, 0);
 
-	int res1 = GdiplusStartup(&gp_token, &gpsi, NULL);
+	//ULONG_PTR gp_token;
+	//struct GdiplusStartupInput gpsi;
+	//memset(&gpsi, 0, sizeof(struct GdiplusStartupInput));
+	//gpsi.GdiplusVersion = 1;
 
-	void* bitmap = NULL;
-	int res2 = GdipCreateBitmapFromFile(L"D:\\bongwan.png", &bitmap);
+	//int res1 = GdiplusStartup(&gp_token, &gpsi, NULL);
 
-	int res3 = GdipCreateHBITMAPFromBitmap(bitmap, &bitmap_house, 0xff000000);*/
+	//void* bitmap = NULL;
+	//int res2 = GdipCreateBitmapFromResource(GetModuleHandle(NULL), MAKEINTRESOURCEA(IDB_BITMAP_GAMEINFO), &bitmap);
+	////GdipCreateBitmapFromFile(L"D:\\bongwan.png", &bitmap);
+
+	//int res3 = GdipCreateHBITMAPFromBitmap(bitmap, &bitmap_start_screen, 0xff000000);
 }
 
 void initialize()
@@ -128,6 +135,7 @@ void initialize()
 
 void initialize_screen()
 {
+	system("title 재난 탈출 시뮬레이션");
 	//SetWindowPos(hWnd, HWND_TOP, 0, 0, 1366, 768, SWP_NOMOVE);
 	system("mode con cols=180 lines=48");
 	clear_cursor();

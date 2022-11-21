@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.c" />
+    <ClCompile Include="GameInfo.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Music.c" />
     <ClCompile Include="SceneCafeteria.c" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameInfo.h" />
     <ClInclude Include="ImageFading.h" />
     <ClInclude Include="ImageLayer.h" />
     <ClInclude Include="ImageLayerImpl.h" />
@@ -170,6 +172,8 @@
     <Image Include="button_start_active.bmp" />
     <Image Include="cafeteria.bmp" />
     <Image Include="disasterescape.ico" />
+    <Image Include="gameinfo.bmp" />
+    <Image Include="gameinfo.png" />
     <Image Include="hakbonggwan.bmp" />
     <Image Include="jandi.bmp" />
     <Image Include="loading-none.bmp" />
@@ -179,6 +183,7 @@
     <Image Include="player-left.bmp" />
     <Image Include="player-right.bmp" />
     <Image Include="player-up.bmp" />
+    <Image Include="png1.png" />
     <Image Include="singwan.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="you-die.bmp" />

@@ -39,6 +39,9 @@
     <ClCompile Include="Music.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="GameInfo.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h">
@@ -78,6 +81,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Music.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -169,6 +175,15 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="bongwan_fire1_2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="png1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="gameinfo.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="gameinfo.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

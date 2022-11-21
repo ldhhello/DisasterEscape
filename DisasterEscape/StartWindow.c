@@ -1,5 +1,6 @@
 #include "StartWindow.h"
 #include "Game.h"
+#include "GameInfo.h"
 
 Image startwindow_image[12];
 
@@ -79,10 +80,21 @@ void StartWindow_select()
 	if (current_idx == 0) // 시작하기
 	{
 		Game_modal();
-
-		image_layer.imageCount = 1;
-		image_layer.images = startwindow_image;
-
-		StartWindow_draw();
 	}
+	else if (current_idx == 1)
+	{
+		// 여기에 코드 추가
+
+
+	}
+	else if (current_idx == 2)
+	{
+		GameInfo_modal();
+	}
+
+	image_layer.imageCount = 1;
+	image_layer.images = startwindow_image;
+
+	image_layer.fadeIn(&image_layer, NULL);
+	StartWindow_draw();
 }
