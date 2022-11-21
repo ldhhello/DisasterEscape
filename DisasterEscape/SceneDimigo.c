@@ -35,6 +35,8 @@ int scene_dimigo_map[100][100] = {
 };
 int scene_dimigo_x = 100, scene_dimigo_y = 100;
 
+int cafeteria_health = 100;
+
 Structure scene_dimigo_structure[100];
 int scene_dimigo_struct_cnt = 0;
 bool struct_loaded_dimigo = false;
@@ -151,6 +153,19 @@ void SceneDimigo_on_key_pressed(char ch)
 
 		scene_dimigo_structure[5].is_hide = true;
 		Game_print_map(false);
+
+		cafeteria_health -= 5;
+
+		if (cafeteria_health <= 0)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[0][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[0][1];
+			Game_print_map(false);
+
+			Game_speechbubble("¿Í ºÒ±æÀÌ ¸ØÃè¾î!!");
+			Game_speechbubble("¿Í»÷Áî!@!@#@@@");
+			quest_progress_cafeteria = 11;
+		}
 	}
 }
 
