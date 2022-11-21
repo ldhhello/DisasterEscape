@@ -102,6 +102,8 @@ Structure* SceneCafeteria_load_structure(int* sz)
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
 		{10, 5, 1, 2, bitmap_house, false, false, SceneCafeteria_on_rice, 4},
 		{10, 10, 1, 1, bitmap_house, false, false, SceneCafeteria_on_towel, 2},
+		{6, 15, 1, 1, bitmap_house, false, false, SceneCafeteria_on_water, 2}
+
 		{14, 12, 7, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
 		//{17, 14, 4, 8, bitmap_house},
@@ -110,7 +112,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 		{21, 0, 1, 20, NULL}
 	};
 
-	scene_cafeteria_struct_cnt = 5;
+	scene_cafeteria_struct_cnt = 8;
 	*sz = scene_cafeteria_struct_cnt;
 
 	if (struct_loaded_cafeteria)
@@ -245,9 +247,23 @@ void SceneCafeteria_on_towel(int st, int dir)
 		return;
 	}
 
-	// 수정 ㄱㄱ ㅋㅋㅋㅋ
 	Game_speechbubble("수건을 찾았어! 이제 물을 찾으러 가 보자.");
 	Game_system_message("급식실에서 물을 찾아보자!");
+
+	quest_progress = 2;
+}
+
+void SceneCafeteria_on_water(int st, int dir)
+{
+	if (quest_progress != 2)
+	{
+		Game_speechbubble("수돗물이다. 먹으면 안 될 것 같다.");
+		return;
+	}
+
+	Game_speechbubble("물을 찾앗어 와샌즈");
+
+	
 }
 
 void SceneCafeteria_on_structure_active(int st, int dir)
