@@ -122,17 +122,18 @@ Structure* SceneCafeteria_load_structure(int* sz)
 
 void SceneCafeteria_on_start()
 {
-	Game_speechbubble("아 배고프다.");
-	Game_speechbubble("앗, 저기 밥이 보인다!");
+	Game_speechbubble("아, 배고파!");
+	Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
 }
 
 void SceneCafeteria_on_door(int st, int dir)
 {
-	char str[1][100] = {
-		"나가기"
+	char str[2][100] = {
+		"나가기", 
+		"머무르기"
 	};
 
-	if (Game_modal_select_box_speech("밖으로 나갈까?", str, 1) == 0)
+	if (Game_modal_select_box_speech("밖으로 나가볼까?", str, 2) == 0)
 		Game_change_scene(SceneDimigo_load(), false);
 }
 
@@ -143,7 +144,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 
 	char str[9][100] = {
 		"먹는다",
-		"먹지 않는다", // 일단 이렇게 테스트하고 가변길이 텍스트 하고 하는걸로
+		"먹지 않는다",
 		"가까이 가본다",
 		"도망간다",
 		"불이야라고 외치자!",
@@ -153,78 +154,35 @@ void SceneCafeteria_on_rice(int st, int dir)
 		"그래도 크게 외쳐보자"
 	};
 
-goto_a:
-	switch (Game_modal_select_box_speech("밥을 먹을까?", str, 2))
-	{
-	case 0:
-		Game_speechbubble("냠냠...");
-		break;
-	case 1:
-		Game_speechbubble("윽.. 배고파?..");
-		Game_speechbubble("굶어 죽을 것 같아..");
 
+	char talk[3][100] = {
+		"먹어보자!",
+		"허락도 없이 먹는건 아닌 것 같아.",
+		"비빔밥이 뭐지? 먹는 건가?"
+		//답변
+	};
+	int result = Game_modal_select_box_speech("비빔밥을 먹어볼까?", talk, 3);
+
+	if (result == 0) {
+		Game_speechbubble("너무 맛있는걸!\n\n덕분에 배를 채웠어!");
+	}
+	else if (result == 1) {
+		Game_speechbubble("살려줘.. 너무 배가 고파.");
+		Game_system_message("밥을 재때 먹지 못하여 아사했습니다.");
 		Game_die();
-		return;
-	default:
-		goto goto_a;
+	} else if (result == 2){
+		char oong[3][100] = {
+		"그러게..",
+		"여기가 어디지?",
+		"나는 누구지?"
+		//답변
+		};
+		if (Game_modal_select_box_speech("나는 아는게 뭘까?", oong, 3) < 10)
+		{
+			Game_system_message("지식을 수양하러 떠납니다.");
+			Game_die();
+		}
 	}
-	
-	image_layer.renderAll(&image_layer);
-	Sleep(2000);
-
-goto_b:
-	switch (Game_modal_select_box_speech("어, 저쪽에 빨간 불꽃이 있다. 저게 뭐지?", str+2, 2))
-	{
-	case 0: // 가까이 가보기
-		break;
-		
-	case 1:
-		//Game_speechbubble("도망가야 할 것 같아!");
-		//Game_set_return(RETURNVAL_CAFETERIA_MISSION);
-		//Game_change_scene(SceneDimigo_load(), false);
-
-		goto goto_d;
-
-		break;
-
-	default:
-		goto goto_b;
-	}
-
-	Sleep(1000);
-
-goto_c:
-	switch (Game_modal_select_box_speech("콜록콜록! 저건 연기잖아! 화재가 발생한 것 같아.", str + 4, 3))
-	{
-	case 0: // 불이야라고 외치자!
-		Game_speechbubble("어제 노래방에서 노래를 너무 크게 불렀더니 목소리가 안 나온다.");
-		break;
-	case 1: // 나만 살면 되지. 조용히 도망가!
-		Game_speechbubble("너무 조용히 나가서 구조대원에 발견되지 못했다!");
-		// 일단 임시로 이 선택지는 여기까지
-
-		Game_die();
-		return;
-		break;
-	case 2:
-		
-	default:
-		goto goto_c;
-	}
-
-goto_d:
-	switch (Game_modal_select_box_speech("어제 노래 적당히 부를걸! 이제 어떡하지?", str + 7, 2))
-	{
-	case 0: // 나의 운명, 받아들이자
-		Game_die();
-		return;
-	case 1:
-		break;
-	default:
-		goto goto_d;
-	}
-
-	return;
 }
 
 void SceneCafeteria_on_structure_active(int st, int dir)
