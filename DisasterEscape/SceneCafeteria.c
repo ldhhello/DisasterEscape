@@ -50,6 +50,7 @@ int scene_cafeteria_map[100][100] = {
 	{ 0, 1, 1, 0, 0}
 };
 int scene_cafeteria_x = 100, scene_cafeteria_y = 20;
+int quest_progress = 0;
 
 Structure scene_cafeteria_structure[100];
 int scene_cafeteria_struct_cnt = 0;
@@ -100,6 +101,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 	Structure st[8] = {
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
 		{10, 5, 1, 2, bitmap_house, false, false, SceneCafeteria_on_rice, 4},
+		{10, 10, 1, 1, bitmap_house, false, false, SceneCafeteria_on_towel, 2},
 		{14, 12, 7, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
 		//{17, 14, 4, 8, bitmap_house},
@@ -140,6 +142,9 @@ void SceneCafeteria_on_door(int st, int dir)
 void SceneCafeteria_on_rice(int st, int dir)
 {
 	if (dir != UP)
+		return;
+
+	if (quest_progress != 0)
 		return;
 
 	char str[9][100] = {
@@ -185,6 +190,9 @@ void SceneCafeteria_on_rice(int st, int dir)
 			{
 				Game_speechbubble("신고에 성공했어\n\n이제 젖은 수건을 찾으러 가보자!");
 
+				Game_system_message("수건을 찾자.");
+				quest_progress = 1;
+				return;
 			}
 			else {
 				Game_system_message("엄마가 전화를 안 받아!");
@@ -227,6 +235,18 @@ void SceneCafeteria_on_rice(int st, int dir)
 		
 		}
 	}
+}
+
+void SceneCafeteria_on_towel(int st, int dir)
+{
+	if (quest_progress != 1)
+	{
+		Game_speechbubble("수건이다. 이게 급식실에 왜 있지?");
+		return;
+	}
+
+	// 수정 ㄱㄱ ㅋㅋㅋㅋ
+	Game_speechbubble("와 수건을 찾았다!! 샌즈!!@#!@#!@#");
 }
 
 void SceneCafeteria_on_structure_active(int st, int dir)
