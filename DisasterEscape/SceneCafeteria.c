@@ -266,7 +266,7 @@ void SceneCafeteria_on_water(int st, int dir)
 		if (Game_modal_select_box_speech("여기 물이 왜 있지?\n\n자세히 보니 양잿물이라고 적혀 있어.", oong, 3) < 2)
 		{
 			Game_speechbubble("우웩! 너무 쓰잖아!\n\n켁켁! 맛은 또 왜 이래! 우웩! 크억!");
-			Game_system_message("양잿");
+			Game_system_message("양잿물은 마시면 사망에 이를 수 있는 위험한 물질이다.");
 			Game_die();
 		}else{
 			Game_speechbubble("휴.. 먹었으면 큰일 날 뻔 했어.");
