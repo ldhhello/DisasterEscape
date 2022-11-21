@@ -114,8 +114,8 @@ void SceneDimigo_on_return(int ret)
 		// 본관 불타는 이미지 1
 		//scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
 		//scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
-		SceneDimigo_change_cafeteria_skin();
 		cafeteria_health = 50;
+		SceneDimigo_change_cafeteria_skin();
 		Game_print_map(false);
 
 		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
@@ -200,9 +200,12 @@ void SceneDimigo_on_key_pressed(char ch)
 
 void SceneDimigo_on_tick()
 {
-	cafeteria_health++;
-	SceneDimigo_change_cafeteria_skin();
-	Game_print_map(false);
+	if (quest_progress_cafeteria == 10)
+	{
+		cafeteria_health++;
+		SceneDimigo_change_cafeteria_skin();
+		Game_print_map(false);
+	}
 }
 
 void SceneDimigo_on_active_cafeteria(int st, int dir)
@@ -249,12 +252,11 @@ void SceneDimigo_on_bongwan(int st, int dir)
 	if (Game_modal_select_box_speech("들어가 볼까?", oong, 2) == 0)
 	{
 		Game_speechbubble("으악!!!!!");
+		Game_print_earthquake(1000);
 		Game_system_message("벽에 돌진하면 심각한 부상을 입을 수 있습니다.");
 		Game_die();
-	
+		return;
 	}
-
-	Game_print_earthquake(1000);
 }
 
 void SceneDimigo_on_hakbonggwan(int st, int dir)
