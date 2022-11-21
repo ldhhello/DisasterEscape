@@ -50,7 +50,7 @@ int scene_cafeteria_map[100][100] = {
 	{ 0, 1, 1, 0, 0}
 };
 int scene_cafeteria_x = 100, scene_cafeteria_y = 20;
-int quest_progress = 0;
+int quest_progress_cafeteria = 0;
 
 Structure scene_cafeteria_structure[100];
 int scene_cafeteria_struct_cnt = 0;
@@ -146,7 +146,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 	if (dir != UP)
 		return;
 
-	if (quest_progress != 0)
+	if (quest_progress_cafeteria != 0)
 		return;
 
 	char str[9][100] = {
@@ -193,7 +193,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 				Game_speechbubble("신고에 성공했어!\n\n이제 젖은 수건을 찾으러 가보자!");
 
 				Game_system_message("급식실에서 수건을 찾아보자!");
-				quest_progress = 1;
+				quest_progress_cafeteria = 1;
 				return;
 			}
 			else {
@@ -241,7 +241,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 
 void SceneCafeteria_on_towel(int st, int dir)
 {
-	if (quest_progress != 1)
+	if (quest_progress_cafeteria != 1)
 	{
 		Game_speechbubble("수건이 여기 왜 있지?");
 		return;
@@ -250,12 +250,12 @@ void SceneCafeteria_on_towel(int st, int dir)
 	Game_speechbubble("수건을 찾았어! 이제 물을 찾으러 가 보자.");
 	Game_system_message("급식실에서 물을 찾아보자!");
 
-	quest_progress = 2;
+	quest_progress_cafeteria = 2;
 }
 
 void SceneCafeteria_on_water(int st, int dir)
 {
-	if (quest_progress != 2)
+	if (quest_progress_cafeteria != 2)
 	{
 		char oong[3][100] = {
 		"인생은 스릴이야! 피하지 말고 마시자!",
@@ -284,6 +284,9 @@ void SceneCafeteria_on_water(int st, int dir)
 	{
 		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");
 
+		Game_set_return(RETURNVAL_CAFETERIA_MISSION);
+		//Game_change_scene(SceneDimigo_load(), false);
+		return;
 	}
 	else {
 		Game_system_message("화재 상황에서 젖은 수건은 입으로 들어가는 연기를 차단하기에 가장 효과적인 수단입니다.");
