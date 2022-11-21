@@ -190,9 +190,9 @@ void SceneDimigo_on_key_pressed(char ch)
 			scene_dimigo_structure[1].bitmap = bitmap_bongwan[0][0];
 			scene_dimigo_structure[2].bitmap = bitmap_bongwan[0][1];
 			Game_print_map(false);
-
-			Game_speechbubble("와 불길이 멈췄어!!");
-			Game_speechbubble("와샌즈!@!@#@@@");
+			Game_system_message("화재 진압 성공!");
+			Game_speechbubble("소방관을 도와 불을 끄는데 성공했어!");
+			Game_speechbubble("너무 보람찬 하루인 것 같아.");
 
 			Game_system_message("퀘스트 완료: 급식실 화재");
 
@@ -215,7 +215,7 @@ void SceneDimigo_on_tick()
 
 			Game_print_map(false);
 
-			Game_speechbubble("헉 디미고가 다 타서 재가 되었어..");
+			Game_speechbubble("이런! 디미고가 전소되었어.");
 			Game_die();
 			return;
 		}
