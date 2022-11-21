@@ -54,6 +54,7 @@ Scene SceneDimigo_load()
 	scene.on_start = SceneDimigo_on_start;
 	scene.on_return = SceneDimigo_on_return;
 	scene.on_key_pressed = SceneDimigo_on_key_pressed;
+	scene.on_tick = SceneDimigo_on_tick;
 
 	scene.start_x = 10; scene.start_y = 10;
 
@@ -204,6 +205,19 @@ void SceneDimigo_on_tick()
 	{
 		cafeteria_health++;
 		SceneDimigo_change_cafeteria_skin();
+
+		if (cafeteria_health > 100)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[5][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[5][1];
+
+			Game_print_map(false);
+
+			Game_speechbubble("헉 디미고가 다 타서 재가 되었어..");
+			Game_die();
+			return;
+		}
+
 		Game_print_map(false);
 	}
 }
