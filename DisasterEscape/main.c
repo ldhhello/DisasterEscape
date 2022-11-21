@@ -156,6 +156,8 @@ void initialize()
 	image_layer.transparentColor = RGB(29, 222, 38);
 
 	image_layer.initialize(&image_layer);
+
+	srand(time(NULL));
 }
 
 void initialize_screen()

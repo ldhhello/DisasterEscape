@@ -176,15 +176,15 @@ void Game_modify_player_pos()
 	map_y = next_start_pos(map_y, player_y, SCREEN_Y / 8-1, max_y);
 }
 
-void Game_print_map(bool fade_in)
+void Game_print_map_impl(bool fade_in, int x_offset, int y_offset)
 {
 	image_layer.imageCount = 0;
 
 	Image a = { "", 0, 0, 0, 0, bitmap_tile[0] };
 
-	for (int y = 0; y < SCREEN_Y/8; y++)
+	for (int y = -1; y < SCREEN_Y / 8 + 1; y++)
 	{
-		for (int x = 0; x < SCREEN_X / 8 + 1; x++)
+		for (int x = -1; x < SCREEN_X / 8 + 1; x++)
 		{
 			int ax = map_x + x;
 			int ay = map_y + y;
@@ -196,12 +196,20 @@ void Game_print_map(bool fade_in)
 				image_layer.appendImage(&image_layer, a, false);
 			}*/
 
+			if (ax < 0 || ay < 0)
+				continue;
+
 			if (map_[ay][ax] == -1)
 				continue;
 
-			a.x = x * 16 * 8;
-			a.y = y * 16 * 8;
+			a.x = x * 16 * 8 + x_offset;
+			a.y = y * 16 * 8 + y_offset;
 			a.bitmap = bitmap_tile[map_[ay][ax]];
+
+			if (map_[ay][ax] == 0)
+				a.scale = 2;
+			else
+				a.scale = 0;
 
 			image_layer.appendImage(&image_layer, a, false);
 		}
@@ -216,8 +224,8 @@ void Game_print_map(bool fade_in)
 			continue;
 
 		a.bitmap = structure[i].bitmap;
-		a.x = (structure[i].x - map_x) * 16 * 8;
-		a.y = (structure[i].y - map_y) * 16 * 8;
+		a.x = (structure[i].x - map_x) * 16 * 8 + x_offset;
+		a.y = (structure[i].y - map_y) * 16 * 8 + y_offset;
 
 		a.scale = structure[i].scale;
 
@@ -225,8 +233,8 @@ void Game_print_map(bool fade_in)
 	}
 
 	a.bitmap = bitmap_player[player_idx];
-	a.x = (player_x-map_x) * 16 * 8 + 16*4;
-	a.y = (player_y-map_y) * 16 * 8 + 16*4;
+	a.x = (player_x - map_x) * 16 * 8 + 16 * 4 + x_offset;
+	a.y = (player_y - map_y) * 16 * 8 + 16 * 4 + y_offset;
 	a.scale = .7;
 
 	a.isCenter = true;
@@ -237,8 +245,26 @@ void Game_print_map(bool fade_in)
 		image_layer.fadeIn(&image_layer, NULL);
 	else
 		image_layer.renderAll(&image_layer);
+}
+
+void Game_print_map(bool fade_in)
+{
+	Game_print_map_impl(fade_in, 0, 0);
 
 	//TRACE("image_layer size: %d\n", image_layer.imageCount);
+}
+
+void Game_print_earthquake(int ms)
+{
+	for (int i = 0; i < ms; i += 25)
+	{
+		int ax = rand() % 21 - 10;
+		int ay = rand() % 21 - 10;
+
+		Game_print_map_impl(false, ax, ay);
+
+		Sleep(25);
+	}
 }
 
 // 건물에 막혀서 앞으로 갈수 없는 지 판단하는 함수

@@ -228,6 +228,8 @@ void SceneDimigo_on_bongwan(int st, int dir)
 		return;
 
 	Game_speechbubble("오, 이 건물이 디미고 본관인가봐!");
+
+	Game_print_earthquake(1000);
 }
 
 void SceneDimigo_on_hakbonggwan(int st, int dir)
