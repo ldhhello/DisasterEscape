@@ -136,7 +136,7 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 
 	char str[1][100] = { "들어가기" };
 
-	if (Game_modal_select_box_speech("급식실에 들어갈까?", str, 1) == 0)
+	if (Game_modal_select_box_speech("맛있는 냄새가 난다! \n급식실에 들어갈까?", str, 1) == 0)
 	{
 		//image_layer.fadeOut(&image_layer, NULL);
 		//Sleep(1000);
