@@ -167,9 +167,19 @@ void SceneCafeteria_on_rice(int st, int dir)
 		Game_speechbubble("너무 맛있는걸!\n\n덕분에 배를 채웠어!");
 	}
 	else if (result == 1) {
-		Game_speechbubble("살려줘.. 너무 배가 고파.");
-		Game_system_message("밥을 재때 먹지 못하여 아사했습니다.");
-		Game_die();
+		Game_speechbubble("윽.. 배가 너무 고파.");
+		char oong[2][100] = {
+		"나는 정직한 아이야. 허락을 맡고 먹어야지!",
+		"배가 너무 고파서 앞이 안 보여. 으윽..",
+		//답변
+		};
+		if (Game_modal_select_box_speech("다시 한번 생각해보자. 비빔밥을 먹을까?", oong, 2) < 10)
+		{
+			Game_system_message("밥을 재때 먹지 못하여 아사했습니다.");
+			Game_die();
+
+		}
+		
 	} else if (result == 2){
 		char oong[3][100] = {
 		"그러게..",
@@ -181,6 +191,7 @@ void SceneCafeteria_on_rice(int st, int dir)
 		{
 			Game_system_message("지식을 수양하러 떠납니다.");
 			Game_die();
+		
 		}
 	}
 }
