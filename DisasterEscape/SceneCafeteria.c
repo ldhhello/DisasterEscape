@@ -101,8 +101,8 @@ Structure* SceneCafeteria_load_structure(int* sz)
 	Structure st[8] = {
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
 		{10, 5, 1, 2, bitmap_house, false, false, SceneCafeteria_on_rice, 4},
-		{10, 10, 1, 1, bitmap_house, false, false, SceneCafeteria_on_towel, 2},
-		{6, 8, 1, 1, bitmap_house, false, false, SceneCafeteria_on_water, 2},
+		{10, 10, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
+		{6, 8, 1, 1, bitmap_naoh, false, false, SceneCafeteria_on_water, 2},
 
 		{14, 12, 7, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
@@ -285,6 +285,7 @@ void SceneCafeteria_on_water(int st, int dir)
 		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");
 
 		Game_set_return(RETURNVAL_CAFETERIA_MISSION);
+		quest_progress_cafeteria = 3;
 		//Game_change_scene(SceneDimigo_load(), false);
 		return;
 	}
@@ -338,5 +339,6 @@ void SceneCafeteria_on_structure_active(int st, int dir)
 void SceneCafeteria_reset()
 {
 	struct_loaded_cafeteria = false;
+	quest_progress_cafeteria = 0;
 	//is_first_cafeteria = true;
 }

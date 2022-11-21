@@ -186,5 +186,14 @@
     <Image Include="gameinfo.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="water.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="NaOH.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="towel.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

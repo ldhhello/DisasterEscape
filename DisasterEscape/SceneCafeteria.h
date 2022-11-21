@@ -14,3 +14,5 @@ extern void SceneCafeteria_on_water(int st, int dir);
 extern void SceneCafeteria_on_structure_active(int st, int dir);
 
 extern void SceneCafeteria_reset();
+
+extern int quest_progress_cafeteria;

@@ -14,4 +14,6 @@ typedef struct
 	int start_x, start_y;
 
 	bool fixed_map;
+
+	void (*on_key_pressed)(char ch);
 } Scene;

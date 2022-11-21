@@ -110,6 +110,12 @@ IDB_BITMAP_BONGWAN_FIRE1_2 BITMAP                  "bongwan_fire1_2.bmp"
 
 IDB_GAMEINFO_SCREEN     BITMAP                  "gameinfo.bmp"
 
+IDB_BITMAP_WATER        BITMAP                  "water.bmp"
+
+IDB_BITMAP_NaOH         BITMAP                  "NaOH.bmp"
+
+IDB_BITMAP_TOWEL        BITMAP                  "towel.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

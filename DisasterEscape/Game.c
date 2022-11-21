@@ -381,6 +381,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 
 void (*Game_on_structure_active)(int st, int dir);
 void (*Game_on_start)();
+void (*Game_on_key_pressed)(char ch);
 
 void Game_change_scene(Scene sc, bool is_enter)
 {
@@ -391,6 +392,7 @@ void Game_change_scene(Scene sc, bool is_enter)
 
 	Game_on_structure_active = sc.on_structure_active;
 	Game_on_start = sc.on_start;
+	Game_on_key_pressed = sc.on_key_pressed;
 
 	fixed_map = sc.fixed_map;
 
@@ -492,6 +494,8 @@ void Game_modal()
 
 	fixed_map = sc.fixed_map;
 
+	Game_on_key_pressed = sc.on_key_pressed;
+
 	player_idx = 0;
 
 	Game game;
@@ -558,6 +562,11 @@ void Game_modal()
 			{
 				//Game_speechbubble("왠지 저장 버튼이 뜰 것 같다!");
 				Game_select_save_file();
+			}
+			else if(ch != 224)
+			{
+				if (Game_on_key_pressed != NULL)
+					Game_on_key_pressed(ch);
 			}
 
 			int check_st = 0;

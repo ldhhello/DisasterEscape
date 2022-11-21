@@ -12,6 +12,9 @@ typedef struct
 	int x, y;
 } Game;
 
+extern int player_x, player_y;
+extern int player_idx;
+
 extern void Game_print_map(bool fade_in);
 
 extern void Game_change_scene(Scene sc, bool is_enter);

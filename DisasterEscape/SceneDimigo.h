@@ -8,6 +8,7 @@ extern Structure* SceneDimigo_load_structure(int* sz);
 
 extern void SceneDimigo_on_return(int ret);
 extern void SceneDimigo_on_start();
+extern void SceneDimigo_on_key_pressed(char ch);
 extern void SceneDimigo_on_active_cafeteria(int st, int dir);
 extern void SceneDimigo_on_bongwan(int st, int dir);
 extern void SceneDimigo_on_hakbonggwan(int st, int dir);

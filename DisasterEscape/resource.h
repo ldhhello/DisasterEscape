@@ -30,15 +30,18 @@
 #define IDB_BITMAP_PLAYER_RIGHT         130
 #define IDB_BITMAP_BONGWAN_FIRE1_1      131
 #define IDB_BITMAP_BONGWAN_FIRE1_2      132
-#define IDB_BITMAP1                     135
 #define IDB_GAMEINFO_SCREEN             135
+#define IDB_BITMAP_WATER                136
+#define IDB_BITMAP_NaOH                 137
+#define IDB_BITMAP4                     138
+#define IDB_BITMAP_TOWEL                138
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        136
+#define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

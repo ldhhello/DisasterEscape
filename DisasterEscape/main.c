@@ -51,15 +51,20 @@ HBITMAP bitmap_singwan;
 HBITMAP bitmap_cafeteria;
 HBITMAP bitmap_youdie;
 
+HBITMAP bitmap_bongwan[5][2];
+
 HBITMAP bitmap_system_msg;
 
 HBITMAP bitmap_pngtest;
 
 HBITMAP bitmap_tile[20]; // 맵 바닥 타일
-
 HBITMAP bitmap_button[3][2]; // [버튼 종류][활성 여부]
 
 HBITMAP bitmap_gameinfo;
+HBITMAP bitmap_water;
+
+HBITMAP bitmap_naoh;
+HBITMAP bitmap_towel;
 
 void clear_cursor()
 {
@@ -107,6 +112,15 @@ void load_image()
 	bitmap_button[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAMEINFO_ACTIVE), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_gameinfo = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_GAMEINFO_SCREEN), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_bongwan[0][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[0][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN2), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[1][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE1_1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[1][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE1_2), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_water = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_WATER), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_naoh = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_NaOH), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_towel = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_TOWEL), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

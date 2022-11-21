@@ -51,6 +51,7 @@ Scene SceneDimigo_load()
 	scene.on_structure_active = SceneDimigo_on_structure_active;
 	scene.on_start = SceneDimigo_on_start;
 	scene.on_return = SceneDimigo_on_return;
+	scene.on_key_pressed = SceneDimigo_on_key_pressed;
 
 	scene.start_x = 10; scene.start_y = 10;
 
@@ -80,18 +81,19 @@ Structure* SceneDimigo_load_structure(int* sz)
 {
 	Structure* structure = scene_dimigo_structure;
 
-	Structure st[8] = {
+	Structure st[9] = {
 		{3, 15, 6, 8, bitmap_hakbonggwan, false, false, SceneDimigo_on_hakbonggwan, 4},
 		{3, 1, 6, 10, bitmap_bongwan1, false, false, SceneDimigo_on_active_cafeteria, 4.5},
 		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
 		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
 		{3, 24, 4, 8, bitmap_house, false, true, NULL, 1},
+		{7, 7, 0, 0, bitmap_water, true, true, NULL},
 		{3, 11, 1, 4, NULL, false, false, SceneDimigo_on_door},
 		{9, 22, 3, 1, NULL, false, false, SceneDimigo_on_door},
 		{37, 0, 1, 20, NULL, false, false, SceneDimigo_on_ujunghaksa}
 	};
 
-	scene_dimigo_struct_cnt = 8;
+	scene_dimigo_struct_cnt = 9;
 	*sz = scene_dimigo_struct_cnt;
 
 	if (struct_loaded_dimigo)
@@ -107,7 +109,15 @@ void SceneDimigo_on_return(int ret)
 {
 	if (ret == RETURNVAL_CAFETERIA_MISSION)
 	{
+		// 본관 불타는 이미지 1
+		scene_dimigo_structure[1].bitmap = bitmap_bongwan[1][0];
+		scene_dimigo_structure[2].bitmap = bitmap_bongwan[1][1];
+		Game_print_map(false);
+
 		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
+		Game_speechbubble("소방관을 도와 불을 꺼보자!\n\n[N]키를 누르면 물을 발사할 수 있어.");
+		quest_progress_cafeteria = 10;
+		return;
 	}
 }
 
@@ -121,6 +131,35 @@ void SceneDimigo_on_start()
 	Game_speechbubble("나는 1학년 7반 김산천.");
 	Game_speechbubble("오늘 학교에 입학해서 아직 아무것도 모르겠다.");
 	Game_speechbubble("학교를 탐방해보면서 학교에 대해서 익혀봐야겠군!");
+}
+
+void SceneDimigo_on_key_pressed(char ch)
+{
+	if ((ch == 'n' || ch == 'N') && quest_progress_cafeteria == 10)
+	{
+		//Game_speechbubble("왠지 불을 끌수 있을것 같은 버튼이다!");
+
+		int water_x = player_x, water_y = player_y;
+
+		if (player_idx == 0)
+			water_y--;
+		else if (player_idx == 1)
+			water_y++;
+		else if (player_idx == 2)
+			water_x--;
+		else if (player_idx == 3)
+			water_x++;
+
+		scene_dimigo_structure[5].x = water_x; scene_dimigo_structure[5].y = water_y;
+
+		scene_dimigo_structure[5].is_hide = false;
+		Game_print_map(false);
+
+		Sleep(50);
+
+		scene_dimigo_structure[5].is_hide = true;
+		Game_print_map(false);
+	}
 }
 
 void SceneDimigo_on_active_cafeteria(int st, int dir)
@@ -138,6 +177,14 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 
 	if (Game_modal_select_box_speech("맛있는 냄새가 난다!\n\n급식실에 들어가볼까?", str, 2) == 0)
 	{
+		if (quest_progress_cafeteria == 10)
+		{
+			Game_speechbubble("으악! 뜨거워!");
+
+			Game_die();
+			return;
+		}
+
 		//image_layer.fadeOut(&image_layer, NULL);
 		//Sleep(1000);
 
