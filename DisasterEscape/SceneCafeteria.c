@@ -165,6 +165,24 @@ void SceneCafeteria_on_rice(int st, int dir)
 
 	if (result == 0) {
 		Game_speechbubble("너무 맛있는걸!\n\n덕분에 배를 채웠어!");
+		Game_speechbubble("엇, 저게 뭐지? 불꽃인것 같아!");
+		
+		char oong[3][100] = {
+		"그래, 이 또한 나의 운명. 상황을 받아들이자.",
+		"'불이야'라고 크게 외쳐보자!",
+		"나만 살면 되는거야! 혼자 도망가자."
+		//답변
+		};
+		if (Game_modal_select_box_speech("콜록콜록! 화재가 발생한 것 같아!", oong, 3) == 1)
+		{
+			Game_speechbubble("다행히 주변 모두가 나의 목소리를 들은 것 같아!");
+
+		}
+		else {
+			Game_system_message("화재를 재때 알리지 않아 대형 인명피해로 이어졌습니다.");
+			Game_die();
+
+		}
 	}
 	else if (result == 1) {
 		Game_speechbubble("윽.. 배가 너무 고파.");
@@ -182,14 +200,14 @@ void SceneCafeteria_on_rice(int st, int dir)
 		
 	} else if (result == 2){
 		char oong[3][100] = {
-		"그러게..",
+		"1+1은 뭘까? 3인가?",
 		"여기가 어디지?",
 		"나는 누구지?"
 		//답변
 		};
 		if (Game_modal_select_box_speech("나는 아는게 뭘까?", oong, 3) < 10)
 		{
-			Game_system_message("지식을 수양하러 떠납니다.");
+			Game_system_message("지식을 수양하기 위해 광덕산으로 떠납니다.");
 			Game_die();
 		
 		}
