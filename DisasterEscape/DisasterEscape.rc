@@ -104,6 +104,10 @@ IDB_BITMAP_PLAYER_LEFT  BITMAP                  "player-left.bmp"
 
 IDB_BITMAP_PLAYER_RIGHT BITMAP                  "player-right.bmp"
 
+IDB_BITMAP_BONGWAN_FIRE1_1 BITMAP                  "bongwan_fire1_1.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE1_2 BITMAP                  "bongwan_fire1_2.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

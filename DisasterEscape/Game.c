@@ -548,6 +548,9 @@ void Game_modal()
 				player_x = last_x;
 				player_y = last_y;
 
+				Game_modify_player_pos();
+				Game_print_map(false);
+
 				if (structure[check_st].on_active != NULL)
 					structure[check_st].on_active(check_st, ch);
 				else
@@ -555,7 +558,6 @@ void Game_modal()
 			}
 
 			Game_modify_player_pos();
-
 			Game_print_map(false);
 		}
 
