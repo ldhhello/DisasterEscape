@@ -95,7 +95,7 @@ void load_image()
 	bitmap_singwan = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_cafeteria = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_CAFETERIA), IMAGE_BITMAP, 0, 0, 0);
 
-	bitmap_system_msg = (HBITMAP)LoadImage(NULL, "D:\\system-msg.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	//bitmap_system_msg = (HBITMAP)LoadImage(NULL, "D:\\system-msg.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
 	bitmap_youdie = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_YOUDIE), IMAGE_BITMAP, 0, 0, 0);
 

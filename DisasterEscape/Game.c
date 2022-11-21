@@ -462,6 +462,11 @@ void Game_set_return(int ret)
 	Game_return_val = ret;
 }
 
+int Game_select_save_file()
+{
+
+}
+
 void Game_modal()
 {
 	Sleep(500);
@@ -540,6 +545,10 @@ void Game_modal()
 			{
 				player_x++;
 				player_idx = 3;
+			}
+			else if (ch == VK_ESCAPE)
+			{
+				Game_speechbubble("왠지 저장 버튼이 뜰 것 같다!");
 			}
 
 			int check_st = 0;
