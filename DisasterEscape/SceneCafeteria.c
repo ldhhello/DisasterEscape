@@ -176,6 +176,21 @@ void SceneCafeteria_on_rice(int st, int dir)
 		if (Game_modal_select_box_speech("콜록콜록! 화재가 발생한 것 같아!", oong, 3) == 1)
 		{
 			Game_speechbubble("다행히 주변 모두가 나의 목소리를 들은 것 같아!");
+			char oong_[2][100] = {
+				"엄마한테 전화하자!", 
+				"119에 전화해서 화재 사실을 알리자!"
+				//답변
+			};
+			if (Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2) == 1)
+			{
+				Game_speechbubble("신고에 성공했어\n\n이제 젖은 수건을 찾으러 가보자!");
+
+			}
+			else {
+				Game_system_message("엄마가 전화를 안 받아!");
+				Game_die();
+
+			}
 
 		}
 		else {
