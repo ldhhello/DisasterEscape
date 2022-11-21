@@ -370,11 +370,11 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 			image_layer.eraseImage(&image_layer, true);
 			return now;
 		}
-		else if (ch == VK_ESCAPE)
+		/*else if (ch == VK_ESCAPE)
 		{
 			image_layer.eraseImage(&image_layer, true);
 			return -1;
-		}
+		}*/
 	}
 	//image_layer.renderAll(&image_layer);
 }
