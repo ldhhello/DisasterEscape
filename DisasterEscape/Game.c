@@ -408,6 +408,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 void (*Game_on_structure_active)(int st, int dir);
 void (*Game_on_start)();
 void (*Game_on_key_pressed)(char ch);
+void (*Game_on_tick)();
 
 void Game_change_scene(Scene sc, bool is_enter)
 {
@@ -421,6 +422,8 @@ void Game_change_scene(Scene sc, bool is_enter)
 	Game_on_key_pressed = sc.on_key_pressed;
 
 	fixed_map = sc.fixed_map;
+
+	Game_on_tick = sc.on_tick;
 
 	player_idx = 0;
 
@@ -522,6 +525,8 @@ void Game_modal()
 
 	Game_on_key_pressed = sc.on_key_pressed;
 
+	Game_on_tick = sc.on_tick;
+
 	player_idx = 0;
 
 	Game game;
@@ -557,6 +562,7 @@ void Game_modal()
 
 	Game_on_start();
 
+	clock_t last = clock();
 	for (;;)
 	{
 		if (_kbhit())
@@ -618,6 +624,16 @@ void Game_modal()
 		{
 			is_died = false;
 			break;
+		}
+
+		clock_t now = clock();
+
+		if (now - last >= 50)
+		{
+			if(Game_on_tick != NULL)
+				Game_on_tick();
+
+			last = now;
 		}
 
 		//Sleep(50);

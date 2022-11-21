@@ -112,8 +112,10 @@ void SceneDimigo_on_return(int ret)
 	if (ret == RETURNVAL_CAFETERIA_MISSION)
 	{
 		// 본관 불타는 이미지 1
-		scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
-		scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
+		//scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
+		//scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
+		SceneDimigo_change_cafeteria_skin();
+		cafeteria_health = 50;
 		Game_print_map(false);
 
 		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
@@ -133,6 +135,30 @@ void SceneDimigo_on_start()
 	Game_speechbubble("나는 1학년 7반 김산천.");
 	Game_speechbubble("오늘 학교에 입학해서 아직 아무것도 모르겠다.");
 	Game_speechbubble("학교를 탐방해보면서 학교에 대해서 익혀봐야겠군!");
+}
+
+void SceneDimigo_change_cafeteria_skin()
+{
+	if (70 < cafeteria_health && cafeteria_health <= 100)
+	{
+		scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
+		scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
+	}
+	else if (50 < cafeteria_health && cafeteria_health <= 70)
+	{
+		scene_dimigo_structure[1].bitmap = bitmap_bongwan[3][0];
+		scene_dimigo_structure[2].bitmap = bitmap_bongwan[3][1];
+	}
+	else if (20 < cafeteria_health && cafeteria_health <= 50)
+	{
+		scene_dimigo_structure[1].bitmap = bitmap_bongwan[2][0];
+		scene_dimigo_structure[2].bitmap = bitmap_bongwan[2][1];
+	}
+	else if (0 < cafeteria_health && cafeteria_health <= 20)
+	{
+		scene_dimigo_structure[1].bitmap = bitmap_bongwan[1][0];
+		scene_dimigo_structure[2].bitmap = bitmap_bongwan[1][1];
+	}
 }
 
 void SceneDimigo_on_key_pressed(char ch)
@@ -156,27 +182,7 @@ void SceneDimigo_on_key_pressed(char ch)
 
 		cafeteria_health -= 5;
 
-		if (70 < cafeteria_health && cafeteria_health <= 100)
-		{
-			scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
-			scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
-		}
-		else if (50 < cafeteria_health && cafeteria_health <= 70)
-		{
-			scene_dimigo_structure[1].bitmap = bitmap_bongwan[3][0];
-			scene_dimigo_structure[2].bitmap = bitmap_bongwan[3][1];
-		}
-		else if (20 < cafeteria_health && cafeteria_health <= 50)
-		{
-			scene_dimigo_structure[1].bitmap = bitmap_bongwan[2][0];
-			scene_dimigo_structure[2].bitmap = bitmap_bongwan[2][1];
-		}
-		else if (0 < cafeteria_health && cafeteria_health <= 20)
-		{
-			scene_dimigo_structure[1].bitmap = bitmap_bongwan[1][0];
-			scene_dimigo_structure[2].bitmap = bitmap_bongwan[1][1];
-		}
-		else if (cafeteria_health <= 0)
+		if (cafeteria_health <= 0)
 		{
 			scene_dimigo_structure[1].bitmap = bitmap_bongwan[0][0];
 			scene_dimigo_structure[2].bitmap = bitmap_bongwan[0][1];
@@ -190,6 +196,13 @@ void SceneDimigo_on_key_pressed(char ch)
 			quest_progress_cafeteria = 11;
 		}
 	}
+}
+
+void SceneDimigo_on_tick()
+{
+	cafeteria_health++;
+	SceneDimigo_change_cafeteria_skin();
+	Game_print_map(false);
 }
 
 void SceneDimigo_on_active_cafeteria(int st, int dir)

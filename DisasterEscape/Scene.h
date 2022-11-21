@@ -16,4 +16,5 @@ typedef struct
 	bool fixed_map;
 
 	void (*on_key_pressed)(char ch);
+	void (*on_tick)();
 } Scene;
