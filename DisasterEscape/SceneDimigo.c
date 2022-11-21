@@ -112,8 +112,8 @@ void SceneDimigo_on_return(int ret)
 	if (ret == RETURNVAL_CAFETERIA_MISSION)
 	{
 		// 본관 불타는 이미지 1
-		scene_dimigo_structure[1].bitmap = bitmap_bongwan[1][0];
-		scene_dimigo_structure[2].bitmap = bitmap_bongwan[1][1];
+		scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
+		scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
 		Game_print_map(false);
 
 		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
@@ -156,7 +156,27 @@ void SceneDimigo_on_key_pressed(char ch)
 
 		cafeteria_health -= 5;
 
-		if (cafeteria_health <= 0)
+		if (70 < cafeteria_health && cafeteria_health <= 100)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
+		}
+		else if (50 < cafeteria_health && cafeteria_health <= 70)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[3][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[3][1];
+		}
+		else if (20 < cafeteria_health && cafeteria_health <= 50)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[2][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[2][1];
+		}
+		else if (0 < cafeteria_health && cafeteria_health <= 20)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[1][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[1][1];
+		}
+		else if (cafeteria_health <= 0)
 		{
 			scene_dimigo_structure[1].bitmap = bitmap_bongwan[0][0];
 			scene_dimigo_structure[2].bitmap = bitmap_bongwan[0][1];

@@ -198,5 +198,29 @@
     <Image Include="bibimbap.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Frame 14.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 15.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 16.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 17.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 18.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 20.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 19.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Frame 21.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

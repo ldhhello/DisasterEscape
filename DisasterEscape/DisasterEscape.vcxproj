@@ -173,6 +173,14 @@
     <Image Include="button_start_active.bmp" />
     <Image Include="cafeteria.bmp" />
     <Image Include="disasterescape.ico" />
+    <Image Include="Frame 14.bmp" />
+    <Image Include="Frame 15.bmp" />
+    <Image Include="Frame 16.bmp" />
+    <Image Include="Frame 17.bmp" />
+    <Image Include="Frame 18.bmp" />
+    <Image Include="Frame 19.bmp" />
+    <Image Include="Frame 20.bmp" />
+    <Image Include="Frame 21.bmp" />
     <Image Include="gameinfo.bmp" />
     <Image Include="gameinfo.png" />
     <Image Include="hakbonggwan.bmp" />

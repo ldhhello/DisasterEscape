@@ -34,15 +34,23 @@
 #define IDB_BITMAP_WATER                136
 #define IDB_BITMAP_NaOH                 137
 #define IDB_BITMAP_TOWEL                138
-#define IDB_BITMAP1                     139
 #define IDB_BITMAP_BIBIMBAP             139
+#define IDB_BITMAP_BONGWAN_FIRE2_1      140
+#define IDB_BITMAP_BONGWAN_FIRE2_2      141
+#define IDB_BITMAP_BONGWAN_FIRE3_1      142
+#define IDB_BITMAP_BONGWAN_FIRE3_2      143
+#define IDB_BITMAP_BONGWAN_FIRE4_1      144
+#define IDB_BITMAP_BONGWAN_FIRE4_2      145
+#define IDB_BITMAP_BONGWAN_FIRE5_1      146
+#define IDB_BITMAP1                     147
+#define IDB_BITMAP_BONGWAN_FIRE5_2      147
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        140
+#define _APS_NEXT_RESOURCE_VALUE        148
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

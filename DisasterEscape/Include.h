@@ -47,7 +47,7 @@ extern HBITMAP bitmap_youdie;
 extern HBITMAP bitmap_bongwan1;
 extern HBITMAP bitmap_bongwan2;
 
-extern HBITMAP bitmap_bongwan[5][2];
+extern HBITMAP bitmap_bongwan[6][2];
 
 extern HBITMAP bitmap_tile[20]; // ¸Ê ¹Ù´Ú Å¸ÀÏ
 

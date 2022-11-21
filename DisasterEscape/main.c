@@ -51,7 +51,7 @@ HBITMAP bitmap_singwan;
 HBITMAP bitmap_cafeteria;
 HBITMAP bitmap_youdie;
 
-HBITMAP bitmap_bongwan[5][2];
+HBITMAP bitmap_bongwan[6][2];
 
 HBITMAP bitmap_system_msg;
 
@@ -118,6 +118,15 @@ void load_image()
 	bitmap_bongwan[0][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN2), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_bongwan[1][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE1_1), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_bongwan[1][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE1_2), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[2][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE2_1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[2][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE2_2), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[3][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE3_1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[3][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE3_2), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[4][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE4_1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[4][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE4_2), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[5][0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE5_1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_bongwan[5][1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_FIRE5_2), IMAGE_BITMAP, 0, 0, 0);
+
 
 	bitmap_water = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_WATER), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_naoh = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_NaOH), IMAGE_BITMAP, 0, 0, 0);

@@ -118,6 +118,22 @@ IDB_BITMAP_TOWEL        BITMAP                  "towel.bmp"
 
 IDB_BITMAP_BIBIMBAP     BITMAP                  "bibimbap.bmp"
 
+IDB_BITMAP_BONGWAN_FIRE2_1 BITMAP                  "Frame 14.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE2_2 BITMAP                  "Frame 15.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE3_1 BITMAP                  "Frame 16.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE3_2 BITMAP                  "Frame 17.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE4_1 BITMAP                  "Frame 18.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE4_2 BITMAP                  "Frame 20.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE5_1 BITMAP                  "Frame 19.bmp"
+
+IDB_BITMAP_BONGWAN_FIRE5_2 BITMAP                  "Frame 21.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 
