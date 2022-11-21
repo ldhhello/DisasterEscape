@@ -150,7 +150,7 @@ void SceneDimigo_on_bongwan(int st, int dir)
 	if (dir != UP)
 		return;
 
-	Game_speechbubble("디미고 본관이다. 왠지 멋있게 생겼다.");
+	Game_speechbubble("오, 이 건물이 디미고 본관인가봐!");
 }
 
 void SceneDimigo_on_hakbonggwan(int st, int dir)
@@ -158,30 +158,30 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 	if (dir != LEFT)
 		return;
 
-	Game_speechbubble("학봉관이다. 금요귀가 하고 싶게 생겼다.");
-	Game_system_message("쌤한테 허락맡고 하면 된다.");
+	Game_speechbubble("여기는 우리들의 보금자리 학봉관이군!");
+	Game_system_message("주현준의 집이기도 하다");
 }
 
 void SceneDimigo_on_door(int st, int dir)
 {
-	Game_speechbubble("왠지 나가면 무단외출로 경위서를 쓰게 될 것 같다!");
+	Game_speechbubble("학교 밖으로 나가면 안 될것 같아!");
 }
 
 void SceneDimigo_on_ujunghaksa(int st, int dir)
 {
-	Game_speechbubble("우정학사 공사 중이다. 우정학사 공사는 3년 전에 끝나지 않았나?");
+	Game_speechbubble("저기에 뭐라고 써져있는 거지? 도.. 서관 공사중?");
 }
 
 void SceneDimigo_on_singwan(int st, int dir)
 {
 	if (dir == UP)
 	{
-		Game_speechbubble("신관이다. 내가 만든 사물인터넷 프로젝트가 저기에 있다.");
+		Game_speechbubble("이 건물은 3학년들이 있는 신관이구나!");
 		return;
 	}
 	else if (dir == LEFT)
 	{
-		Game_speechbubble("매점이다. 왠지 모구모구가 팔고 있을 것만 같다.");
+		Game_speechbubble("엇, 여기는 매점인가 봐! 아쉽지만 닫혀 있네.");
 	}
 }
 
