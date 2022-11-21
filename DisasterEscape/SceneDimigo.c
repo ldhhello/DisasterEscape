@@ -89,7 +89,7 @@ Structure* SceneDimigo_load_structure(int* sz)
 		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
 		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
 		{3, 24, 4, 8, bitmap_house, false, true, NULL, 1},
-		{7, 7, 0, 0, bitmap_water, true, true, NULL},
+		{7, 7, 0, 0, bitmap_water, true, true, NULL, 2},
 		{3, 11, 1, 4, NULL, false, false, SceneDimigo_on_door},
 		{9, 22, 3, 1, NULL, false, false, SceneDimigo_on_door},
 		{37, 0, 1, 20, NULL, false, false, SceneDimigo_on_ujunghaksa}
@@ -144,7 +144,7 @@ void SceneDimigo_on_key_pressed(char ch)
 		if (player_idx != 0)
 			return;
 
-		scene_dimigo_structure[5].x = player_x; scene_dimigo_structure[5].y = player_y-3;
+		scene_dimigo_structure[5].x = player_x; scene_dimigo_structure[5].y = player_y-2;
 
 		scene_dimigo_structure[5].is_hide = false;
 		Game_print_map(false);
@@ -164,6 +164,9 @@ void SceneDimigo_on_key_pressed(char ch)
 
 			Game_speechbubble("와 불길이 멈췄어!!");
 			Game_speechbubble("와샌즈!@!@#@@@");
+
+			Game_system_message("퀘스트 완료: 급식실 화재");
+
 			quest_progress_cafeteria = 11;
 		}
 	}

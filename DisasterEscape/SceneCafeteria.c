@@ -126,8 +126,11 @@ Structure* SceneCafeteria_load_structure(int* sz)
 
 void SceneCafeteria_on_start()
 {
-	Game_speechbubble("아, 배고파!");
-	Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
+	if (quest_progress_cafeteria == 0)
+	{
+		Game_speechbubble("아, 배고파!");
+		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
+	}
 }
 
 void SceneCafeteria_on_door(int st, int dir)
