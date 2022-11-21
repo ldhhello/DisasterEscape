@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "Include.h"
 #include "StartWindow.h"
+#include "Music.h"
 
 //#include <gdiplusflat.h>
 
@@ -136,6 +137,8 @@ void initialize_screen()
 
 int main()
 {
+	//Music_play("D:\\faded.wav");
+
 	initialize();
 	initialize_screen();
 
