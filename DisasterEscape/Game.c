@@ -312,7 +312,7 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 
 	int last_image_cnt = image_layer.imageCount;
 
-	int now = 0;
+	int now = cnt-1;
 
 	//Image im = {"", ((player_x-map_x)*16*8) + 10, ((player_y-map_y)*16*8) + 10, 0, 0,}
 	//image_layer.appendImage(&image_layer, )
@@ -333,8 +333,8 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 		printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 - 85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, speech);
 
 		// 180 * 16 - 10 - 200, 52 * 16 - 10 - 200
-		Rectangle_(image_layer.bufferDC, 180 * 16 - 10 - width, 52 * 16 - 10 - 40*cnt,
-			180 * 16 - 10, 52 * 16 - 10);
+		//Rectangle_(image_layer.bufferDC, 180 * 16 - 10 - width, 52 * 16 - 10 - 40*cnt,
+		//	180 * 16 - 10, 52 * 16 - 10);
 
 		for (int i = 0; i < cnt; i++)
 		{
@@ -342,18 +342,22 @@ int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 			if (i == now)
 				color = RGB(255, 0, 0);
 
-			printText(image_layer.bufferDC, 180 * 16 - 10 - width, 52*16 - 10 - 40*cnt + 40 * i,
+			/*printText(image_layer.bufferDC, 180 * 16 - 10 - width, 52 * 16 - 10 - 40 * cnt + 40 * i,
 				180*16 - 10, 52*16 - 10 - 40*cnt + 40 * i + 40,
-				"강원교육튼튼", 40, color, DT_CENTER, str[i]);
+				"강원교육튼튼", 40, color, DT_CENTER, str[i]);*/
+
+			printText(image_layer.bufferDC, 168 * 16 - 10 - width, 86 * 16 - 10 - 0 * cnt - 92 * i,
+				170 * 16 + (335%300) , 90 * 16 - 10 - 0 * cnt + 100 * i + 60,
+				"강원교육튼튼", 63, color, DT_RIGHT, str[i]);
 		}
 
 		image_layer.endRender(&image_layer);
 
 		int ch = _getch();
 
-		if (ch == UP && now > 0)
+		if (ch == DOWN && now > 0)
 			now--;
-		else if (ch == DOWN && now < cnt - 1)
+		else if (ch == UP && now < cnt - 1)
 			now++;
 		else if (ch == VK_SPACE || ch == VK_RETURN)
 		{
