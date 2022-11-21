@@ -257,6 +257,25 @@ void SceneDimigo_on_bongwan(int st, int dir)
 		Game_die();
 		return;
 	}
+	else {
+		char oong[3][100] = {
+		"피하지 말고 즐기자!",
+		"배가 아픈 것 같아. 빨리 돌아가야겠어.",
+		"아니야. 하지 말자"
+		//답변
+		};
+		if (Game_modal_select_box_speech("그래도 재밌을 것 같아. 다시 한번 생각해보자!", oong, 3) == 0)
+		{
+			Game_speechbubble("으악!!!!!");
+			Game_print_earthquake(1000);
+			Game_system_message("벽에 돌진하면 심각한 부상을 입을 수 있습니다.");
+			Game_die();
+			return;
+		}
+		else {
+			Game_speechbubble("살았다.");
+		}
+	}
 }
 
 void SceneDimigo_on_hakbonggwan(int st, int dir)
