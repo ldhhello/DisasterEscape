@@ -241,6 +241,18 @@ void SceneDimigo_on_bongwan(int st, int dir)
 		return;
 
 	Game_speechbubble("오, 이 건물이 디미고 본관인가봐!");
+	char oong[2][100] = {
+		"여기는 문이 아닌데, 벽을 부시고 들어갈까?",
+		"들어가지 말자.",
+		//답변
+	};
+	if (Game_modal_select_box_speech("들어가 볼까?", oong, 2) == 0)
+	{
+		Game_speechbubble("으악!!!!!");
+		Game_system_message("벽에 돌진하면 심각한 부상을 입을 수 있습니다.");
+		Game_die();
+	
+	}
 
 	Game_print_earthquake(1000);
 }
@@ -265,7 +277,7 @@ void SceneDimigo_on_ujunghaksa(int st, int dir)
 
 	if (Game_modal_select_box_speech("저기 팻말에 뭐라고 써져있는 거지?\n\n도.. 서관 공사중?", str, 2) == 0)
 	{
-
+		Game_system_message("공사중인 장소에 들어가는 것은 매우 위험한 행동입니다.");
 		Game_die();
 	}
 }
