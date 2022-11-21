@@ -257,7 +257,20 @@ void SceneCafeteria_on_water(int st, int dir)
 {
 	if (quest_progress != 2)
 	{
-		Game_speechbubble("수돗물이다. 먹으면 안 될 것 같다.");
+		char oong[3][100] = {
+		"인생은 스릴이야! 피하지 말고 마시자!",
+		"양잿..물? 좋은 물인것 같으니 바로 마시자!",
+		"먹으면 안 될것 같아."
+		//답변
+		};
+		if (Game_modal_select_box_speech("여기 물이 왜 있지?\n\n자세히 보니 양잿물이라고 적혀 있어.", oong, 3) < 2)
+		{
+			Game_speechbubble("우웩! 너무 쓰잖아!\n\n켁켁! 맛은 또 왜 이래! 우웩! 크억!");
+			Game_system_message("양잿");
+			Game_die();
+		}else{
+			Game_speechbubble("휴.. 먹었으면 큰일 날 뻔 했어.");
+		}
 		return;
 	}
 
