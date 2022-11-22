@@ -151,6 +151,7 @@ void SceneDimigo_clear()
 {
 	Sleep(1000);
 
+
 	Game_ending_credit("당신은 디미고에서의 재난 상황에서 살아남았습니다.\n\n"
 		"디미고에서 오늘 겪은 것과 비슷한 재난이 발생한다면\n\n"
 		"지금 한것처럼 효과적으로 대처해 주세요.\n\n"
