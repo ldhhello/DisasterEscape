@@ -166,7 +166,7 @@ void Game_ending_credit(const char* str)
 	}
 	
 
-	Sleep(1500);
+	Sleep(500);
 }
 
 int map_x = 0, map_y = 0;
