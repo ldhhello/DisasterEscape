@@ -160,7 +160,7 @@ void SceneDimigo_clear()
 		"\n이동현"
 		"\n\n\n\n제작에 사용된 프로그램"
 		"\nVisual Studio"
-		"\nFigma"
+		"\nFigma" 
 		"\n그림판"
 		"\nGoldWave"
 		"\nMicrosoft Edge"
