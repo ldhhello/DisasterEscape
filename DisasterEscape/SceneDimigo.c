@@ -208,6 +208,7 @@ void SceneDimigo_on_key_pressed(char ch)
 			{
 				Game_speechbubble("신이 노하셨다!! 우어억!!");
 				Game_print_earthquake(1000);
+
 				Game_die();
 				return;
 			}
