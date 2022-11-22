@@ -139,6 +139,11 @@ void Game_system_message(const char* str)
 	image_layer.renderAll(&image_layer);
 }
 
+void Game_ending_credit(const char* str)
+{
+
+}
+
 int map_x = 0, map_y = 0;
 int player_x = 10, player_y = 10;
 
