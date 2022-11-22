@@ -53,21 +53,20 @@ Structure* SceneBongwan_load_structure(int* sz)
 {
 	Structure* structure = scene_bongwan_structure;
 
-	Structure st[8] = {
+	Structure st[9] = {
 		{2, -2, 0, 0, bitmap_bongwan_inside, false, true, NULL, 1.2},
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
 		{10, 10, 1, 1, bitmap_towel, false, false, Scenebongwan_on_clean_air, 2},
 		{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
-
+		{2, 5, 10, 2, bitmap_house, false, false},
 		{0, 12, 21, 1, NULL, false, false, SceneBongwan_on_door},
-		//{15, 7, 4, 8, bitmap_house, false, true},
 		//{17, 14, 4, 8, bitmap_house},
 		{0, 12, 14, 1, NULL},
 		{1, 0, 1, 20, NULL},
 		{21, 0, 1, 20, NULL}
 	};
 
-	scene_bongwan_struct_cnt = 8;
+	scene_bongwan_struct_cnt = 9;
 	*sz = scene_bongwan_struct_cnt;
 
 	if (struct_loaded_bongwan)
@@ -116,7 +115,7 @@ void Scenebongwan_on_clean_air(int st, int dir)
 
 			char oonng[3][100] = {
 				"지진, 까짓거 몸으로 맞자!",
-				"신이 나를 구원해 줄테니 가만히 있자.",
+				"엄마한테 가야겠어!",
 				"책상 밑으로 재빠르게 들어가자!"
 				//답변
 			};
@@ -124,6 +123,7 @@ void Scenebongwan_on_clean_air(int st, int dir)
 
 			if (Game_modal_select_box_speech("엇, 이건 휴대폰 진동이 아닌 지진이잖아!", oonng, 3) != 2)
 			{
+				Game_print_earthquake(1000);
 				Game_system_message("지진 상황에서 섣불리 움직이는 것은\n\n매우 위험한 행동입니다.");
 				Game_die();
 				return;
@@ -131,6 +131,7 @@ void Scenebongwan_on_clean_air(int st, int dir)
 			}
 			else {
 				Game_system_message("책상 밑으로 이동하세요!");
+				quest_progress_bongwan = 3;
 			}
 		}
 	}
