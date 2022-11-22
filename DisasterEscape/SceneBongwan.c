@@ -58,7 +58,7 @@ Structure* SceneBongwan_load_structure(int* sz)
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
 		{10, 10, 1, 1, bitmap_towel, false, false, Scenebongwan_on_clean_air, 2},
 		{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
-		{2, 5, 10, 2, bitmap_house, false, false},
+		{2, 5, 10, 2, NULL, false, false, SceneBongwan_on_table},
 		{0, 12, 21, 1, NULL, false, false, SceneBongwan_on_door},
 		//{17, 14, 4, 8, bitmap_house},
 		{0, 12, 14, 1, NULL},
@@ -85,6 +85,15 @@ void SceneBongwan_on_start()
 		Game_speechbubble("휴, 이제야 마음이 놓이네!");
 		Game_speechbubble("공기 청정기를 켜서 공기를 정화시켜 보자.");
 		quest_progress_bongwan = 2;
+	}
+}
+
+void SceneBongwan_on_table(int st, int dir)
+{
+	if (quest_progress_bongwan == 3)
+	{
+		Game_speechbubble("책상 아래로 들어왓다!!!! 와샌즈!!");
+		return;
 	}
 }
 
