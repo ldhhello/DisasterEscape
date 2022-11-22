@@ -171,6 +171,7 @@ void SceneDimigo_clear()
 		"\nIntel NUC i5"
 		"\nMacBook Pro 14"
 		"\nHP 250 G7"
+		"\nLG UltraGear 15.6"
 		"\niPhone 14 Pro"
 		"\niPhone 13 Mini"
 		"\nLG V50 ThinQ"
