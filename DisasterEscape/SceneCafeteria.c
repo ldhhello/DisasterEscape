@@ -99,7 +99,7 @@ void SceneCafeteria_on_door(int st, int dir)
 	{
 		if (quest_progress_cafeteria != 0 && quest_progress_cafeteria != 3)
 		{
-			Game_speechbubble("나갔을때 나오는 메시지");
+			Game_speechbubble("문이 안 열려! 으악!");
 			Game_die();
 			return;
 		}
