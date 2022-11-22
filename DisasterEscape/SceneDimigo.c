@@ -157,7 +157,7 @@ void SceneDimigo_clear()
 		"\n\n\n\n만든이들"
 		"\n정현우"
 		"\n이동현"
-		"\n\n\n\n클리어를 축하드립니다!"
+		"\n\n\n\n클리어를 축하드립니다!");
 
 	Game_clear();
 
