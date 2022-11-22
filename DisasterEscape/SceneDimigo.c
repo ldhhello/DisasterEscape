@@ -363,6 +363,16 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 void SceneDimigo_on_door(int st, int dir)
 {
 	Game_speechbubble("학교 밖으로 나가면 안 될것 같아!");
+	Game_ending_credit("엔딩 크레딧 테스트!!\n\n"
+		"ssib.al 개발한 사람 - 이진서\n\n"
+		"내일 있는 것 - 모의고사\n\n"
+		"지금 하고 있는 것 - 개발\n\n"
+		"\n\n\n\n감사합니다!"
+		"\n감사링 감사띠~!!~@!~"
+		"\n와  샌즈 아시는구나!!@#!@#!@#!@##"
+		"\n겁나 어렵습니다!");
+
+	Game_die();
 }
 
 void SceneDimigo_on_ujunghaksa(int st, int dir)

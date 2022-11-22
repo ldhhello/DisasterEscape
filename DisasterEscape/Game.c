@@ -141,7 +141,22 @@ void Game_system_message(const char* str)
 
 void Game_ending_credit(const char* str)
 {
+	image_layer.fadeOut(&image_layer, NULL);
+	image_layer.clearImage(&image_layer, false);
 
+	int center_x = SCREEN_X * 16 / 2;
+
+	int lines = 1;
+	for (int i = 0; str[i] != 0; i++)
+	{
+		if (str[i] == '\n')
+			lines++;
+	}
+
+	printText(image_layer._consoleDC, 10, 10, SCREEN_X * 16 - 10, 10 + 60 * lines, "강원교육튼튼", 54, RGB(255, 255, 255),
+		DT_CENTER | DT_WORDBREAK, str);
+
+	Sleep(3000);
 }
 
 int map_x = 0, map_y = 0;
