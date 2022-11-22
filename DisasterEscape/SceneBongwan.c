@@ -111,7 +111,7 @@ void Scenebongwan_on_clean_air(int st, int dir)
 
 			Game_print_earthquake(1000);
 
-			Game_system_message("누가 핸드폰을 진동으로 해 두었나 봐.\n\n왜 이렇게 흔들리지?");
+			Game_speechbubble("누가 핸드폰을 진동으로 해 두었나 봐.\n\n왜 이렇게 흔들리지?");
 
 			char oonng[3][100] = {
 				"지진, 까짓거 몸으로 맞자!",
