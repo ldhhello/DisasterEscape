@@ -285,11 +285,11 @@ void SceneDimigo_on_tick()
 		Game_print_map(false);
 	}
 
-	if (outside_time <= 300000)
+	if (outside_time <= 300000 && (quest_progress_cafeteria == 0 || quest_progress_cafeteria == 11))
 	{
 		outside_time += 50;
 
-		if (outside_time == 600)
+		if (outside_time == 60000)
 		{
 			Game_speechbubble("바깥에 너무 오래 있었다.");
 
@@ -440,7 +440,16 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 		return;
 
 	Game_speechbubble("여기는 우리들의 보금자리 학봉관이군!");
-	Game_system_message("주현준의 집이기도 하다.");
+	
+	char str[2][100] = {
+		"들어가보자!",
+		"돌아가자."
+	};
+
+	if (Game_modal_select_box_speech("학봉관에 들어갈까?", str, 2) == 0)
+	{
+		Game_change_scene(SceneCafeteria_load(), true);
+	}
 }
 //
 void SceneDimigo_on_door(int st, int dir)
