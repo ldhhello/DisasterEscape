@@ -83,8 +83,8 @@ void SceneBongwan_on_start()
 {
 	if (quest_progress_bongwan == 1)
 	{
-		Game_speechbubble("본관에 왔더니 배고파!");
-		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
+		Game_speechbubble("휴, 이제야 마음이 놓이네!");
+		Game_speechbubble("공기 청정기를 켜서 공기를 정화시켜 보자.");
 		quest_progress_bongwan = 2;
 	}
 }
@@ -93,9 +93,46 @@ void Scenebongwan_on_clean_air(int st, int dir)
 {
 	if (quest_progress_bongwan == 2)
 	{
-		Game_speechbubble("환기 시스템이 가동되지 않았다!");
-		Game_die();
-		return;
+		char oong[3][100] = {
+		"전기 아까워! 먼지 필터는 코털로도 충분해.",
+		"어서 공기 청정기를 켜 보자!",
+		"공기 청정? 기? 그게 뭐지?"
+		//답변
+		};
+		if (Game_modal_select_box_speech("공기 청정기를 켜 볼까?", oong, 3) != 1)
+		{
+			Game_system_message("숨이 안 쉬어져!");
+			Game_die();
+			return;
+
+		}
+		else {
+			Game_speechbubble("이제야 살 것 같아!");
+			Game_system_message("퀘스트 완료: 초고농도 미세먼지");
+
+			Game_print_earthquake(1000);
+
+			Game_system_message("누가 핸드폰을 진동으로 해 두었나 봐.\n\n왜 이렇게 흔들리지?");
+
+			char oonng[3][100] = {
+				"지진, 까짓거 몸으로 맞자!",
+				"신이 나를 구원해 줄테니 가만히 있자.",
+				"책상 밑으로 재빠르게 들어가자!"
+				//답변
+			};
+
+
+			if (Game_modal_select_box_speech("엇, 이건 휴대폰 진동이 아닌 지진이잖아!", oonng, 3) != 2)
+			{
+				Game_system_message("지진 상황에서 섣불리 움직이는 것은\n\n매우 위험한 행동입니다.");
+				Game_die();
+				return;
+
+			}
+			else {
+				Game_system_message("책상 밑으로 이동하세요!");
+			}
+		}
 	}
 }
 
