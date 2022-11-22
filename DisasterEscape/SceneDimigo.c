@@ -2,8 +2,8 @@
 #include "Game.h"
 
 #include "SceneCafeteria.h"
-
 #include "SceneBongwan.h"
+#include "SceneHakbonggwan.h"
 
 int scene_dimigo_map[100][100] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -476,7 +476,7 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 
 	if (Game_modal_select_box_speech("학봉관에 들어갈까?", str, 2) == 0)
 	{
-		Game_change_scene(SceneCafeteria_load(), true);
+		Game_change_scene(SceneHakbonggwan_load(), true);
 	}
 }
 //

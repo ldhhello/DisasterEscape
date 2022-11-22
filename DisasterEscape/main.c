@@ -74,6 +74,10 @@ HBITMAP bitmap_bongwan_inside;
 
 HBITMAP bitmap_puricare;
 
+HBITMAP bitmap_hakbonggwan_inside;
+HBITMAP bitmap_singwan_inside;
+HBITMAP bitmap_gangdang_inside;
+
 void clear_cursor()
 {
 	CONSOLE_CURSOR_INFO cc;
@@ -147,6 +151,10 @@ void load_image()
 	bitmap_bongwan_inside = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_INSIDE), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_puricare = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PURICARE), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_hakbonggwan_inside = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_HAKBONGGWAN_INSIDE), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_singwan_inside = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN_INSIDE), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_gangdang_inside = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GANGDANG_INSIDE), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;
