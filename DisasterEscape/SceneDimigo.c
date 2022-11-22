@@ -158,6 +158,32 @@ void SceneDimigo_clear()
 		"\n\n\n\n만든이들"
 		"\n정현우"
 		"\n이동현"
+		"\n\n\n\n제작에 사용된 프로그램"
+		"\nVisual Studio"
+		"\nFigma"
+		"\n그림판"
+		"\nGoldWave"
+		"\nMicrosoft Edge"
+		"\nSafari"
+		"\nMicrosoft Remote Desktop"
+		"\n파일 탐색기"
+		"\n\n\n\n제작에 사용된 장비"
+		"\nIntel NUC i5"
+		"\nMacBook Pro 14"
+		"\nHP 250 G7"
+		"\niPhone 14 Pro"
+		"\niPhone 13 Mini"
+		"\nLG V50 ThinQ"
+		"\niPad Mini 5"
+		"\niPad Mini 6"
+		"\nApple Pencil (1st generation)"
+		"\nApple Pencil (2nd generation)"
+		"\nAirPods Pro"
+		"\nEarPods"
+		"\nPolishing Cloth"
+		"\niPhone 74 Air"
+
+
 		"\n\n\n\n클리어를 축하드립니다!");
 
 	Game_clear();
