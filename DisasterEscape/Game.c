@@ -3,6 +3,7 @@
 
 #include "SceneDimigo.h"
 #include "SceneCafeteria.h"
+#include "SceneBongwan.h"
 
 Image game_image[1500];
 
@@ -128,7 +129,7 @@ void Game_system_message(const char* str)
 	//image_layer.startRender(&image_layer);
 	_renderAndFade_value(&image_layer, NULL, false, 90);
 
-	printText(image_layer._consoleDC, 0, center_y - 30, center_x * 2, center_y + 30, 
+	printText(image_layer._consoleDC, 0, center_y - 30, center_x * 2, center_y + 400, 
 		"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
 
 	Sleep(1500);
@@ -549,15 +550,18 @@ void Game_clear()
 	image_layer.clearImage(&image_layer, false);
 
 	Sleep(1000);
+}
 
+void Game_reset_all()
+{
 	Game_return_val = -1;
 
 	SceneDimigo_reset();
 	SceneCafeteria_reset();
+	SceneBongwan_reset();
 
 	is_died = true;
 }
-
 
 void Game_set_return(int ret)
 {

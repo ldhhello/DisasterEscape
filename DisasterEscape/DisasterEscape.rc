@@ -142,6 +142,14 @@ IDB_BITMAP_CLEAR        BITMAP                  "Clear.bmp"
 
 IDB_BITMAP_BONGWAN_INSIDE BITMAP                  "bongwan.bmp"
 
+IDB_BITMAP_PURICARE     BITMAP                  "puricare.bmp"
+
+IDB_BITMAP_SINGWAN_INSIDE BITMAP                  "singwan_inside.bmp"
+
+IDB_BITMAP_HAKBONGGWAN_INSIDE BITMAP                  "hakbonggwan_inside.bmp"
+
+IDB_BITMAP_GANGDANG_INSIDE BITMAP                  "gangdang.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

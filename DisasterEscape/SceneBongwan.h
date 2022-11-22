@@ -13,3 +13,5 @@ extern void SceneBongwan_on_table(int st, int dir);
 extern void Scenebongwan_on_clean_air(int st, int dir);
 extern void SceneBongwan_on_door(int st, int dir);
 extern void SceneBongwan_on_structure_active(int st, int dir);
+
+extern void SceneBongwan_reset();

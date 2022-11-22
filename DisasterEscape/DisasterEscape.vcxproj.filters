@@ -240,5 +240,17 @@
     <Image Include="bongwan.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="puricare.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="singwan_inside.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="hakbonggwan_inside.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="gangdang.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

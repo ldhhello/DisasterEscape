@@ -134,7 +134,50 @@ void SceneDimigo_on_return(int ret)
 		
 		Game_system_message("퀘스트 완료 : 지진 발생");
 		quest_progress_bongwan = 10;
+
+		if (SceneDimigo_check_end())
+			SceneDimigo_clear();
+
 		return;
+	}
+}
+
+bool SceneDimigo_check_end()
+{
+	return quest_progress_bongwan == 10 && quest_progress_cafeteria == 11;
+}
+
+void SceneDimigo_clear()
+{
+	Sleep(1000);
+
+	Game_ending_credit("엔딩 크레딧 테스트!!\n\n"
+		"ssib.al 개발한 사람 - 이진서\n\n"
+		"내일 있는 것 - 모의고사\n\n"
+		"지금 하고 있는 것 - 개발\n\n"
+		"\n\n\n\n감사합니다!"
+		"\n감사링 감사띠~!!~@!~"
+		"\n와 샌즈 아시는구나!!@#!@#!@#!@##"
+		"\n겁나 어렵습니다!"
+		"\n책상 밑으로 이동하세여`~~!~!");
+
+	Game_clear();
+
+	char str[2][100] = {
+		"끝내기",
+		"디미고 탐방하기"
+	};
+
+	int res = Game_modal_select_box_speech("모든 재난 상황에서 탈출했어! 게임을 끝낼까?", str, 2);
+
+	if (res == 0)
+	{
+		Game_reset_all();
+		return;
+	}
+	else if (res == 1)
+	{
+		Game_print_map(true);
 	}
 }
 
@@ -176,6 +219,11 @@ void SceneDimigo_change_cafeteria_skin()
 
 void SceneDimigo_on_key_pressed(char ch)
 {
+	if (ch == 'a')
+	{
+		//SceneDimigo_clear();
+	}
+
 	if ((ch == 'n' || ch == 'N') && quest_progress_cafeteria == 10)
 	{
 		//Game_speechbubble("왠지 불을 끌수 있을것 같은 버튼이다!");
@@ -207,6 +255,9 @@ void SceneDimigo_on_key_pressed(char ch)
 			Game_system_message("퀘스트 완료: 급식실 화재");
 
 			quest_progress_cafeteria = 11;
+
+			if (SceneDimigo_check_end())
+				SceneDimigo_clear();
 		}
 	}
 }
@@ -240,7 +291,7 @@ void SceneDimigo_on_tick()
 	{
 		outside_time += 50;
 
-		if (outside_time == 60000)
+		if (outside_time == 600)
 		{
 			Game_speechbubble("바깥에 너무 오래 있었다.");
 
@@ -396,18 +447,7 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 //
 void SceneDimigo_on_door(int st, int dir)
 {
-	Game_speechbubble("학교 밖으로 나가면 안 될것 같아!");
-	Game_ending_credit("엔딩 크레딧 테스트!!\n\n"
-		"ssib.al 개발한 사람 - 이진서\n\n"
-		"내일 있는 것 - 모의고사\n\n"
-		"지금 하고 있는 것 - 개발\n\n"
-		"\n\n\n\n감사합니다!"
-		"\n감사링 감사띠~!!~@!~"
-		"\n와  샌즈 아시는구나!!@#!@#!@#!@##"
-		"\n겁나 어렵습니다!"
-		"\n책상 밑으로 이동하세여`~~!~!");
-
-	Game_clear();
+	Game_speechbubble("학교 밖으로 나가면 안 될 것 같아!");
 }
 
 void SceneDimigo_on_ujunghaksa(int st, int dir)
@@ -476,4 +516,6 @@ void SceneDimigo_reset()
 {
 	struct_loaded_dimigo = false;
 	is_first_dimigo = true;
+
+	outside_time = 0;
 }

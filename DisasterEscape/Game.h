@@ -30,6 +30,7 @@ extern int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt);
 
 extern void Game_die();
 extern void Game_clear();
+extern void Game_reset_all();
 extern void Game_set_return(int ret);
 
 extern void Game_modal();

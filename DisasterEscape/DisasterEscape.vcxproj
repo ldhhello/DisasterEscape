@@ -188,7 +188,9 @@
     <Image Include="Frame 21.bmp" />
     <Image Include="gameinfo.bmp" />
     <Image Include="gameinfo.png" />
+    <Image Include="gangdang.bmp" />
     <Image Include="hakbonggwan.bmp" />
+    <Image Include="hakbonggwan_inside.bmp" />
     <Image Include="house.bmp" />
     <Image Include="jandi.bmp" />
     <Image Include="loading-none.bmp" />
@@ -200,7 +202,9 @@
     <Image Include="player-right.bmp" />
     <Image Include="player-up.bmp" />
     <Image Include="png1.png" />
+    <Image Include="puricare.bmp" />
     <Image Include="singwan.bmp" />
+    <Image Include="singwan_inside.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="towel.bmp" />
     <Image Include="water.bmp" />

@@ -53,20 +53,21 @@ Structure* SceneBongwan_load_structure(int* sz)
 {
 	Structure* structure = scene_bongwan_structure;
 
-	Structure st[9] = {
+	Structure st[10] = {
 		{2, -2, 0, 0, bitmap_bongwan_inside, false, true, NULL, 1.2},
 		//{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
-		{10, 10, 1, 1, bitmap_towel, false, false, Scenebongwan_on_clean_air, 2},
+		{10, 10, 1, 2, bitmap_puricare, false, false, Scenebongwan_on_clean_air, 0.25},
 		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
 		{2, 5, 10, 2, NULL, false, false, SceneBongwan_on_table},
 		{0, 12, 21, 1, NULL, false, false, SceneBongwan_on_door},
+		{15, 0, 6, 5, NULL, false, false, SceneBongwan_on_door},
 		//{17, 14, 4, 8, bitmap_house},
 		{0, 12, 14, 1, NULL},
 		{1, 0, 1, 20, NULL},
 		{21, 0, 1, 20, NULL}
 	};
 
-	scene_bongwan_struct_cnt = 9;
+	scene_bongwan_struct_cnt = 10;
 	*sz = scene_bongwan_struct_cnt;
 
 	if (struct_loaded_bongwan)
@@ -97,7 +98,7 @@ void SceneBongwan_on_table(int st, int dir)
 
 
 		char oonng[3][100] = {
-			"뭘 가디려! 그냥 뛰어 나가!",
+			"뭘 기다려! 그냥 뛰어 나가!",
 			"지진따위 두렵지 않아!!",
 			"침착하게 지진이 끝날 때까지 기다리자."
 			//답변
@@ -113,13 +114,16 @@ void SceneBongwan_on_table(int st, int dir)
 
 		}
 		else {
+			Game_print_earthquake(1000);
+
+			Sleep(1500);
+
 			char ooonng[3][100] = {
 			"엄마한테 전화하자!",
 			"화장실로 가서 숨자!",
 			"출입문 쪽으로 빠르게 나가자!"
 			//답변
 			};
-
 
 			if (Game_modal_select_box_speech("진동이 멈춘 것 같아! 이제 어떻게 하지?", ooonng, 3) != 2)
 			{
@@ -246,4 +250,12 @@ void SceneBongwan_on_structure_active(int st, int dir)
 		Game_speechbubble("집을 사용한다고??? 집 사용은 어떻게 하는 거니??");
 		break;
 	}
+}
+
+// 죽거나 등등의 이유로 게임을 종료할때 호출되는 코드
+void SceneBongwan_reset()
+{
+	struct_loaded_bongwan = false;
+	quest_progress_bongwan = 0;
+	//is_first_cafeteria = true;
 }
