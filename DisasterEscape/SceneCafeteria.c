@@ -55,7 +55,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 
 	Structure st[8] = {
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
-		{10, 7, 1, 1, bitmap_bibimbap, false, false, SceneCafeteria_on_rice, 1.6},
+		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneCafeteria_on_rice, 1.6},
 		{19, 7, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
 		{5,10, 1, 1, bitmap_naoh, false, false, SceneCafeteria_on_water, 2},
 
@@ -252,12 +252,15 @@ void SceneCafeteria_on_water(int st, int dir)
 	Sleep(300);
 
 	Game_speechbubble("물을 찾았어!");
-	char oong_[2][100] = {
+	char oong_[3][100] = {
 		"입을 막고 밖으로 나가자!",
-		"아잇! 수건이 너무 걸리적거려. 버리자!"
+		"아잇! 수건이 너무 걸리적거려. 버리자!",
+		"마침 목이 마른데 마셔버리자!"
 		//답변
 	};
-	if (Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2) == 0)
+
+	int whatt = Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2);
+	if (whatt == 0)
 	{
 		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");
 
@@ -266,8 +269,14 @@ void SceneCafeteria_on_water(int st, int dir)
 		//Game_change_scene(SceneDimigo_load(), false);
 		return;
 	}
-	else {
+	else if (whatt == 1) {
 		Game_system_message("화재 상황에서 젖은 수건은 입으로 들어가는 연기를 차단하기에 가장 효과적인 수단입니다.");
+		Game_die();
+	}
+	else {
+		Game_speechbubble("잠깐만.. 병에 뭐라고 써져 있는거지? 양..잿물?");
+		Game_speechbubble("우웩! 너무 쓰잖아!\n\n켁켁! 맛은 또 왜 이래! 우웩! 크억!");
+		Game_system_message("양잿물은 마시면 사망에 이를 수 있는 위험한 물질입니다.");
 		Game_die();
 	}
 
@@ -285,7 +294,7 @@ void SceneCafeteria_on_structure_active(int st, int dir)
 					"잡아먹기",
 					"사용하기"
 	};
-
+	 
 	switch (Game_modal_select_box_speech("집이다! 들어갈까?", str, 4))
 	{
 	case 0:
