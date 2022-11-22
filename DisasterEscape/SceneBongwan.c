@@ -55,9 +55,9 @@ Structure* SceneBongwan_load_structure(int* sz)
 
 	Structure st[9] = {
 		{2, -2, 0, 0, bitmap_bongwan_inside, false, true, NULL, 1.2},
-		{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
+		//{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
 		{10, 10, 1, 1, bitmap_towel, false, false, Scenebongwan_on_clean_air, 2},
-		{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
+		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
 		{2, 5, 10, 2, NULL, false, false, SceneBongwan_on_table},
 		{0, 12, 21, 1, NULL, false, false, SceneBongwan_on_door},
 		//{17, 14, 4, 8, bitmap_house},
