@@ -71,3 +71,4 @@ const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;
 
 #define RETURNVAL_CAFETERIA_MISSION 1
+#define RETURNVAL_EARTHQUAKE_MISSION 2

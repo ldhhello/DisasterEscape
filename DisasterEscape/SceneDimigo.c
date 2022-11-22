@@ -126,6 +126,16 @@ void SceneDimigo_on_return(int ret)
 		quest_progress_cafeteria = 10;
 		return;
 	}
+	else if (ret == RETURNVAL_EARTHQUAKE_MISSION)
+	{
+		Game_print_earthquake(1000);
+
+		Game_speechbubble("와! 지진이 멈췄다!");
+		
+		Game_system_message("퀘스트 완료 : 지진 발생");
+		quest_progress_bongwan = 10;
+		return;
+	}
 }
 
 void SceneDimigo_on_start()
@@ -197,11 +207,47 @@ void SceneDimigo_on_key_pressed(char ch)
 			Game_system_message("퀘스트 완료: 급식실 화재");
 
 			quest_progress_cafeteria = 11;
+		}
+	}
+}
+
+int outside_time = 0;
+
+// 50ms마다 호출됨
+void SceneDimigo_on_tick()
+{
+	if (quest_progress_cafeteria == 10)
+	{
+		cafeteria_health++;
+		SceneDimigo_change_cafeteria_skin();
+
+		if (cafeteria_health > 100)
+		{
+			scene_dimigo_structure[1].bitmap = bitmap_bongwan[5][0];
+			scene_dimigo_structure[2].bitmap = bitmap_bongwan[5][1];
+
+			Game_print_map(false);
+
+			Game_speechbubble("이런! 디미고가 전소되었어.");
+			Game_die();
+			return;
+		}
+
+		Game_print_map(false);
+	}
+
+	if (outside_time <= 300000)
+	{
+		outside_time += 50;
+
+		if (outside_time == 60000)
+		{
+			Game_speechbubble("바깥에 너무 오래 있었다.");
 
 			char oong[2][100] = {
 			"미세먼지인가 봐!",
 			"하늘이 내린 저주야!",
-			
+
 			//답변
 			};
 			if (Game_modal_select_box_speech("콜록콜록! 켁켁! 숨이 안 쉬어져.", oong, 2) == 1)
@@ -228,38 +274,14 @@ void SceneDimigo_on_key_pressed(char ch)
 					Game_speechbubble("켁켁! 숨이 안 쉬어져!");
 					Game_system_message("미세먼지 농도가 높은 곳에서 오래 노출되는 경우 \n\n심혈관질환, 호흡기질환, 폐암 등에 걸릴 수 있습니다.");
 
-					
+
 					Game_die();
 					return;
 
 				}
 			}
-
-			
-		}
-	}
-}
-
-void SceneDimigo_on_tick()
-{
-	if (quest_progress_cafeteria == 10)
-	{
-		cafeteria_health++;
-		SceneDimigo_change_cafeteria_skin();
-
-		if (cafeteria_health > 100)
-		{
-			scene_dimigo_structure[1].bitmap = bitmap_bongwan[5][0];
-			scene_dimigo_structure[2].bitmap = bitmap_bongwan[5][1];
-
-			Game_print_map(false);
-
-			Game_speechbubble("이런! 디미고가 전소되었어.");
-			Game_die();
 			return;
 		}
-
-		Game_print_map(false);
 	}
 }
 

@@ -131,6 +131,7 @@ void SceneBongwan_on_table(int st, int dir)
 			}
 			else {
 				Game_system_message("건물 밖으로 대피하세요!");
+				Game_set_return(RETURNVAL_EARTHQUAKE_MISSION);
 				quest_progress_bongwan = 4;
 			}
 		}
