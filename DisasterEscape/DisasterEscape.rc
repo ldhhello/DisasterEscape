@@ -140,6 +140,8 @@ IDB_BITMAP_HOUSE        BITMAP                  "house.bmp"
 
 IDB_BITMAP_CLEAR        BITMAP                  "Clear.bmp"
 
+IDB_BITMAP_BONGWAN_INSIDE BITMAP                  "bongwan.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

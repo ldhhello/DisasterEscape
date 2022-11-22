@@ -164,6 +164,7 @@
     <Image Include="background.bmp" />
     <Image Include="bibimbap.bmp" />
     <Image Include="bitmap1.bmp" />
+    <Image Include="bongwan.bmp" />
     <Image Include="bongwan_1.bmp" />
     <Image Include="bongwan_2.bmp" />
     <Image Include="bongwan_fire1_1.bmp" />

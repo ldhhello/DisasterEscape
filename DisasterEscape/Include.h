@@ -65,6 +65,8 @@ extern HBITMAP bitmap_bibimbap;
 extern HBITMAP bitmap_arrow;
 extern HBITMAP bitmap_clear;
 
+extern HBITMAP bitmap_bongwan_inside;
+
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;
 
