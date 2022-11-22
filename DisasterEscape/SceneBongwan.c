@@ -131,6 +131,7 @@ void SceneBongwan_on_table(int st, int dir)
 			}
 			else {
 				Game_system_message("건물 밖으로 대피하세요!");
+				quest_progress_bongwan = 4;
 			}
 		}
 		return;
@@ -194,7 +195,18 @@ void SceneBongwan_on_door(int st, int dir)
 	};
 
 	if (Game_modal_select_box_speech("밖으로 나가볼까?", str, 2) == 0)
+	{
+		if (quest_progress_bongwan != 0 && quest_progress_bongwan != 4)
+		{
+			Game_speechbubble("으악! 건물이 무너진다!!");
+			Game_print_earthquake(1000);
+
+			Game_die();
+			return;
+		}
+
 		Game_change_scene(SceneDimigo_load(), false);
+	}
 }
 
 void SceneBongwan_on_structure_active(int st, int dir)
