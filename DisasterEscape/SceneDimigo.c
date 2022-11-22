@@ -222,7 +222,7 @@ void SceneDimigo_on_key_pressed(char ch)
 				if (Game_modal_select_box_speech("마스크를 써야 할 것 같아..", ooong, 2) == 1)
 				{
 					Game_speechbubble("휴, 살았다.\n\n미세먼지를 피해 본관 안으로 들어가보자.");
-					
+					quest_progress_bongwan = 1;
 				}
 				else {
 					Game_system_message("숨이 안 쉬어져!");

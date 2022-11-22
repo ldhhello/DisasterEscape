@@ -2,6 +2,8 @@
 
 #include "Scene.h"
 
+extern int quest_progress_bongwan;
+
 extern Scene SceneBongwan_load();
 extern int** SceneBongwan_load_map(int* x, int* y);
 extern Structure* SceneBongwan_load_structure(int* sz);
