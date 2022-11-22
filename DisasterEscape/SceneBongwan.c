@@ -56,7 +56,7 @@ Structure* SceneBongwan_load_structure(int* sz)
 	Structure st[8] = {
 		{2, -2, 0, 0, bitmap_bongwan_inside, false, true, NULL, 1.2},
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
-		{10, 10, 1, 1, bitmap_towel, false, false, NULL/*Scenebongwan_on_towel*/, 2},
+		{10, 10, 1, 1, bitmap_towel, false, false, Scenebongwan_on_clean_air, 2},
 		{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
 
 		{0, 12, 21, 1, NULL, false, false, SceneBongwan_on_door},
@@ -86,6 +86,16 @@ void SceneBongwan_on_start()
 		Game_speechbubble("본관에 왔더니 배고파!");
 		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
 		quest_progress_bongwan = 2;
+	}
+}
+
+void Scenebongwan_on_clean_air(int st, int dir)
+{
+	if (quest_progress_bongwan == 2)
+	{
+		Game_speechbubble("환기 시스템이 가동되지 않았다!");
+		Game_die();
+		return;
 	}
 }
 
