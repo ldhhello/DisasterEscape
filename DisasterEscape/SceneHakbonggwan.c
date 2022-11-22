@@ -54,10 +54,10 @@ Structure* SceneHakbonggwan_load_structure(int* sz)
 	Structure* structure = scene_hakbonggwan_structure;
 
 	Structure st[5] = {
-		{2, -3, 0, 0, bitmap_hakbonggwan_inside, false, true, NULL, 1.6},
+		{2, -5, 0, 0, bitmap_hakbonggwan_inside, false, true, NULL, 1.6},
 		//{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*SceneHakbonggwan_on_rice*/, 1.6},
 		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*SceneHakbonggwan_on_water*/, 2},
-		{15, 0, 6, 5, NULL, false, false, SceneHakbonggwan_on_door},
+		{0, 12, 21, 1, NULL, false, false, SceneHakbonggwan_on_door},
 		//{17, 14, 4, 8, bitmap_house},
 		{0, 12, 14, 1, NULL},
 		{1, 0, 1, 20, NULL},

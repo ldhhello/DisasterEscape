@@ -247,7 +247,7 @@ void SceneDimigo_on_key_pressed(char ch)
 {
 	if (ch == 'a')
 	{
-		//SceneDimigo_clear();
+		SceneDimigo_clear();
 	}
 
 	if ((ch == 'n' || ch == 'N') && quest_progress_cafeteria == 10)
