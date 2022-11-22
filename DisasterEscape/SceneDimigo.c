@@ -190,7 +190,7 @@ void SceneDimigo_on_key_pressed(char ch)
 			scene_dimigo_structure[1].bitmap = bitmap_bongwan[0][0];
 			scene_dimigo_structure[2].bitmap = bitmap_bongwan[0][1];
 			Game_print_map(false);
-			Game_system_message("화재 진압 성공!");
+			Game_system_message("화재 진압에 성공했습니다.");
 			Game_speechbubble("소방관을 도와 불을 끄는데 성공했어!");
 			Game_speechbubble("너무 보람찬 하루인 것 같아.");
 
@@ -225,7 +225,9 @@ void SceneDimigo_on_key_pressed(char ch)
 					quest_progress_bongwan = 1;
 				}
 				else {
-					Game_system_message("숨이 안 쉬어져!");
+					Game_speechbubble("켁켁! 숨이 안 쉬어져!");
+					Game_system_message("미세먼지 농도가 높은 곳에서 오래 노출되는 경우 \n\n심혈관질환, 호흡기질환, 폐암 등에 걸릴 수 있습니다.");
+
 					
 					Game_die();
 					return;
@@ -278,7 +280,9 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 	{
 		if (quest_progress_cafeteria == 10)
 		{
-			Game_speechbubble("으악! 뜨거워!");
+			Game_speechbubble("앗! 뜨거워!");
+			Game_system_message("화재 현장에 다시 들어가는 것은 매우 위험한 행동입니다.");
+
 
 			Game_die();
 			return;
@@ -294,13 +298,21 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 void SceneDimigo_on_bongwan_clear(int st, int dir)
 {
 	char oong[2][100] = {
-		"들어가자",
-		"들어가지 말자"
+		"들어가자!",
+		"아니야, 안 갈래."
 	};
 
 	if (Game_modal_select_box_speech("본관에 들어갈까?", oong, 2) == 0)
 	{
 		Game_change_scene(SceneBongwan_load(), true);
+	}
+	else {
+
+		Game_speechbubble("켁켁! 숨이 안 쉬어져!");
+		Game_system_message("미세먼지 농도가 높은 곳에서 오래 노출되는 경우 \n\n심혈관질환, 호흡기질환, 폐암 등에 걸릴 수 있습니다.");
+
+		Game_die();
+		return;
 	}
 }
 
