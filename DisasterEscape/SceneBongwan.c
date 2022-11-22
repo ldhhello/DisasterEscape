@@ -86,7 +86,7 @@ void SceneBongwan_on_start()
 		Game_speechbubble("공기 청정기를 켜서 공기를 정화시켜 보자.");
 		quest_progress_bongwan = 2;
 	}
-}
+}//
 
 void SceneBongwan_on_table(int st, int dir)
 {
