@@ -309,7 +309,7 @@ void SceneDimigo_on_bongwan(int st, int dir)
 	if (dir != UP)
 		return;
 
-	if (quest_progress_cafeteria == 11)
+	if (quest_progress_bongwan == 1)
 	{
 		SceneDimigo_on_bongwan_clear(st, dir);
 		return;

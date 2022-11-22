@@ -81,10 +81,11 @@ Structure* SceneBongwan_load_structure(int* sz)
 
 void SceneBongwan_on_start()
 {
-	if (quest_progress_bongwan == 0)
+	if (quest_progress_bongwan == 1)
 	{
 		Game_speechbubble("본관에 왔더니 배고파!");
 		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
+		quest_progress_bongwan = 2;
 	}
 }
 
