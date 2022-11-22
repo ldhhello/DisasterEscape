@@ -290,10 +290,21 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 	}
 }
 
+void SceneDimigo_on_bongwan_clear(int st, int dir)
+{
+	Game_speechbubble("oong nice");
+}
+
 void SceneDimigo_on_bongwan(int st, int dir)
 {
 	if (dir != UP)
 		return;
+
+	if (quest_progress_cafeteria == 11)
+	{
+		SceneDimigo_on_bongwan_clear(st, dir);
+		return;
+	}
 
 	Game_speechbubble("오, 이 건물이 디미고 본관인가봐!");
 	char oong[2][100] = {
