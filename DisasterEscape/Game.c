@@ -153,10 +153,19 @@ void Game_ending_credit(const char* str)
 			lines++;
 	}
 
-	printText(image_layer._consoleDC, 10, 10, SCREEN_X * 16 - 10, 10 + 60 * lines, "강원교육튼튼", 54, RGB(255, 255, 255),
-		DT_CENTER | DT_WORDBREAK, str);
+	for (int i = 0; i < SCREEN_Y * 16 + 59 * lines; i += 3)
+	{
+		image_layer.startRender(&image_layer);
 
-	Sleep(3000);
+		printText(image_layer.bufferDC, 10, SCREEN_Y*16 + 50 - i, SCREEN_X * 16 - 10, SCREEN_Y*16 - i + 59 * lines,
+			"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
+
+		image_layer.endRender(&image_layer);
+		Sleep(20);
+	}
+	
+
+	Sleep(1500);
 }
 
 int map_x = 0, map_y = 0;
@@ -519,6 +528,36 @@ void Game_die()
 
 	is_died = true;
 }
+
+void Game_clear()
+{
+	image_layer.fadeOut(&image_layer, NULL);
+
+	Sleep(1000);
+
+	image_layer.clearImage(&image_layer, false);
+
+	Image im = { "", 0, 0, 2, 0, bitmap_clear };
+	image_layer.appendImage(&image_layer, im, false);
+
+	image_layer.fadeIn(&image_layer, NULL);
+
+	Sleep(2000);
+
+	image_layer.fadeOut(&image_layer, NULL);
+
+	image_layer.clearImage(&image_layer, false);
+
+	Sleep(1000);
+
+	Game_return_val = -1;
+
+	SceneDimigo_reset();
+	SceneCafeteria_reset();
+
+	is_died = true;
+}
+
 
 void Game_set_return(int ret)
 {

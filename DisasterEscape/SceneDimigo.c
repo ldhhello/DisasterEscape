@@ -373,7 +373,7 @@ void SceneDimigo_on_door(int st, int dir)
 		"\n겁나 어렵습니다!"
 		"\n책상 밑으로 이동하세여`~~!~!");
 
-	Game_die();
+	Game_clear();
 }
 
 void SceneDimigo_on_ujunghaksa(int st, int dir)
