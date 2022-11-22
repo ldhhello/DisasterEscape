@@ -92,7 +92,47 @@ void SceneBongwan_on_table(int st, int dir)
 {
 	if (quest_progress_bongwan == 3)
 	{
-		Game_speechbubble("책상 아래로 들어왓다!!!! 와샌즈!!");
+
+		Game_print_earthquake(1000);
+
+
+		char oonng[3][100] = {
+			"뭘 가디려! 그냥 뛰어 나가!",
+			"지진따위 두렵지 않아!!",
+			"침착하게 지진이 끝날 때까지 기다리자."
+			//답변
+		};
+
+
+		if (Game_modal_select_box_speech("책상 밑으로 왔으니 이제 진동이 멈출 때까지 기다리자!", oonng, 3) != 2)
+		{
+			Game_print_earthquake(1000);
+			Game_system_message("지진 상황에서 섣불리 움직이는 것은\n\n매우 위험한 행동입니다.");
+			Game_die();
+			return;
+
+		}
+		else {
+			char ooonng[3][100] = {
+			"엄마한테 전화하자!",
+			"화장실로 가서 숨자!",
+			"출입문 쪽으로 빠르게 나가자!"
+			//답변
+			};
+
+
+			if (Game_modal_select_box_speech("진동이 멈춘 것 같아! 이제 어떻게 하지?", ooonng, 3) != 2)
+			{
+				Game_print_earthquake(1000);
+				Game_system_message("진동이 멈추면 최대한 신속하게 나가야 합니다.");
+				Game_die();
+				return;
+
+			}
+			else {
+				Game_system_message("건물 밖으로 대피하세요!");
+			}
+		}
 		return;
 	}
 }
