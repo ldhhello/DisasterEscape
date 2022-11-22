@@ -691,6 +691,12 @@ void Game_modal()
 					Game_on_structure_active(check_st, ch);
 			}
 
+			if (is_died)
+			{
+				is_died = false;
+				break;
+			}
+
 			Game_modify_player_pos();
 			Game_print_map(false);
 		}
