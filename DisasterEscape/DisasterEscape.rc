@@ -150,6 +150,8 @@ IDB_BITMAP_HAKBONGGWAN_INSIDE BITMAP                  "hakbonggwan_inside.bmp"
 
 IDB_BITMAP_GANGDANG_INSIDE BITMAP                  "gangdang.bmp"
 
+IDB_BITMAP_UNDONGJANG   BITMAP                  "undongjang.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

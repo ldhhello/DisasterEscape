@@ -87,19 +87,23 @@ Structure* SceneDimigo_load_structure(int* sz)
 {
 	Structure* structure = scene_dimigo_structure;
 
-	Structure st[9] = {
+	Structure st[13] = {
 		{3, 15, 6, 8, bitmap_hakbonggwan, false, false, SceneDimigo_on_hakbonggwan, 4},
 		{3, 1, 6, 10, bitmap_bongwan1, false, false, SceneDimigo_on_active_cafeteria, 4.5},
 		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
 		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
 		{3, 24, 4, 8, bitmap_house, false, true, NULL, 1},
 		{7, 7, 0, 0, bitmap_water, true, true, NULL, 2},
+		{11, 13, 0, 0, bitmap_gangdang, false, true, NULL, 4},
+		{12, 22, 50, 1, NULL, false, false, NULL},
+		{32, 6, 5, 1, NULL, false, false, NULL},
+		{17, 1, 3, 1, NULL, false, false, SceneDimigo_on_door},
 		{3, 11, 1, 4, NULL, false, false, SceneDimigo_on_door},
 		{9, 22, 3, 1, NULL, false, false, SceneDimigo_on_door},
-		{37, 0, 1, 20, NULL, false, false, SceneDimigo_on_ujunghaksa}
+		{37, 0, 1, 22, NULL, false, false, SceneDimigo_on_ujunghaksa}
 	};
 
-	scene_dimigo_struct_cnt = 9;
+	scene_dimigo_struct_cnt = 13;
 	*sz = scene_dimigo_struct_cnt;
 
 	if (struct_loaded_dimigo)
@@ -549,8 +553,8 @@ void SceneDimigo_on_singwan(int st, int dir)
 
 void SceneDimigo_on_structure_active(int st, int dir)
 {
-	if (dir != UP)
-		return;
+	//if (dir != UP)
+	return;
 
 	char str[4][100] = {
 					"들어가기",

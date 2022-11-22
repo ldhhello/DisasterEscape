@@ -211,6 +211,7 @@
     <Image Include="singwan_inside.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="towel.bmp" />
+    <Image Include="undongjang.bmp" />
     <Image Include="water.bmp" />
     <Image Include="you-die.bmp" />
   </ItemGroup>
