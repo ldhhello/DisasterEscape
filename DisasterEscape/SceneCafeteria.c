@@ -56,7 +56,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 	Structure st[8] = {
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneCafeteria_on_rice, 1.6},
-		{10, 10, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
+		{19, 7, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
 		{6, 8, 1, 1, bitmap_naoh, false, false, SceneCafeteria_on_water, 2},
 
 		{0, 12, 21, 1, NULL, false, false, SceneCafeteria_on_door},
