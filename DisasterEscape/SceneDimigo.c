@@ -292,7 +292,15 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 
 void SceneDimigo_on_bongwan_clear(int st, int dir)
 {
-	Game_speechbubble("oong nice");
+	char oong[2][100] = {
+		"들어가자",
+		"들어가지 말자"
+	};
+
+	if (Game_modal_select_box_speech("본관에 들어갈까?", oong, 2) == 0)
+	{
+		Game_change_scene(SceneBongwan_load(), true);
+	}
 }
 
 void SceneDimigo_on_bongwan(int st, int dir)
@@ -337,7 +345,7 @@ void SceneDimigo_on_bongwan(int st, int dir)
 		}
 		else {
 			Game_speechbubble("살았다.");
-			Game_change_scene(SceneBongwan_load(), true);
+			
 		}
 	}
 }
