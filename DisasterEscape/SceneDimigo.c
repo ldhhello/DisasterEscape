@@ -369,7 +369,7 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 		return;
 
 	Game_speechbubble("여기는 우리들의 보금자리 학봉관이군!");
-	Game_system_message("주현준의 집이기도 하다");
+	Game_system_message("주현준의 집이기도 하다.");
 }
 //
 void SceneDimigo_on_door(int st, int dir)
