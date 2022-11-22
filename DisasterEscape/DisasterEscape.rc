@@ -136,6 +136,8 @@ IDB_BITMAP_BONGWAN_FIRE5_2 BITMAP                  "Frame 21.bmp"
 
 IDB_BITMAP_ARROW        BITMAP                  "arrow.bmp"
 
+IDB_BITMAP_HOUSE        BITMAP                  "house.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

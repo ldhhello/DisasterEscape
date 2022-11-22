@@ -231,5 +231,8 @@
     <Image Include="arrow.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="house.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

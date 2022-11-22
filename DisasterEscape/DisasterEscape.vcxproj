@@ -187,6 +187,7 @@
     <Image Include="gameinfo.bmp" />
     <Image Include="gameinfo.png" />
     <Image Include="hakbonggwan.bmp" />
+    <Image Include="house.bmp" />
     <Image Include="jandi.bmp" />
     <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
