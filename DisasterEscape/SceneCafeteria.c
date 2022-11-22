@@ -96,7 +96,16 @@ void SceneCafeteria_on_door(int st, int dir)
 	};
 
 	if (Game_modal_select_box_speech("밖으로 나가볼까?", str, 2) == 0)
+	{
+		if (quest_progress_cafeteria != 0 && quest_progress_cafeteria != 3)
+		{
+			Game_speechbubble("나갔을때 나오는 메시지");
+			Game_die();
+			return;
+		}
+
 		Game_change_scene(SceneDimigo_load(), false);
+	}
 }
 
 void SceneCafeteria_on_rice(int st, int dir)
