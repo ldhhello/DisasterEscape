@@ -4,6 +4,7 @@
 #include "SceneCafeteria.h"
 #include "SceneBongwan.h"
 #include "SceneHakbonggwan.h"
+#include "SceneSingwan.h"
 
 int scene_dimigo_map[100][100] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -501,6 +502,15 @@ void SceneDimigo_on_singwan(int st, int dir)
 	if (dir == UP)
 	{
 		Game_speechbubble("이 건물은 3학년들이 있는 신관이구나!");
+		char str[2][100] = {
+			"들어가보자!",
+			"돌아가자."
+		};
+
+		if (Game_modal_select_box_speech("신관에 들어갈까?", str, 2) == 0)
+		{
+			Game_change_scene(SceneSingwan_load(), true);
+		}
 		return;
 	}
 	else if (dir == LEFT)

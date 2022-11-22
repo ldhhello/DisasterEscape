@@ -135,6 +135,7 @@
     <ClCompile Include="SceneCafeteria.c" />
     <ClCompile Include="SceneDimigo.c" />
     <ClCompile Include="SceneHakbonggwan.c" />
+    <ClCompile Include="SceneSingwan.c" />
     <ClCompile Include="StartWindow.c" />
     <ClCompile Include="Utils.c" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="SceneCafeteria.h" />
     <ClInclude Include="SceneDimigo.h" />
     <ClInclude Include="SceneHakbonggwan.h" />
+    <ClInclude Include="SceneSingwan.h" />
     <ClInclude Include="StartWindow.h" />
     <ClInclude Include="Structure.h" />
   </ItemGroup>
