@@ -54,12 +54,12 @@ Structure* SceneBongwan_load_structure(int* sz)
 	Structure* structure = scene_bongwan_structure;
 
 	Structure st[8] = {
-		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
+		{2, -2, 0, 0, bitmap_bongwan_inside, false, true, NULL, 1.2},
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*Scenebongwan_on_rice*/, 1.6},
 		{10, 10, 1, 1, bitmap_towel, false, false, NULL/*Scenebongwan_on_towel*/, 2},
 		{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*Scenebongwan_on_water*/, 2},
 
-		{0, 12, 21, 1, NULL, false, false, NULL/*Scenebongwan_on_door*/},
+		{0, 12, 21, 1, NULL, false, false, SceneBongwan_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
 		//{17, 14, 4, 8, bitmap_house},
 		{0, 12, 14, 1, NULL},
@@ -86,6 +86,17 @@ void SceneBongwan_on_start()
 		Game_speechbubble("본관에 왔더니 배고파!");
 		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
 	}
+}
+
+void SceneBongwan_on_door(int st, int dir)
+{
+	char str[2][100] = {
+		"나가기",
+		"머무르기"
+	};
+
+	if (Game_modal_select_box_speech("밖으로 나가볼까?", str, 2) == 0)
+		Game_change_scene(SceneDimigo_load(), false);
 }
 
 void SceneBongwan_on_structure_active(int st, int dir)

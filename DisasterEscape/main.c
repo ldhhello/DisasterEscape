@@ -70,6 +70,8 @@ HBITMAP bitmap_bibimbap;
 HBITMAP bitmap_arrow;
 HBITMAP bitmap_clear;
 
+HBITMAP bitmap_bongwan_inside;
+
 void clear_cursor()
 {
 	CONSOLE_CURSOR_INFO cc;
@@ -139,6 +141,8 @@ void load_image()
 
 	bitmap_arrow = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_ARROW), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_clear = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_CLEAR), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_bongwan_inside = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN_INSIDE), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;
