@@ -285,7 +285,7 @@ void SceneCafeteria_on_structure_active(int st, int dir)
 					"잡아먹기",
 					"사용하기"
 	};
-
+	 
 	switch (Game_modal_select_box_speech("집이다! 들어갈까?", str, 4))
 	{
 	case 0:
