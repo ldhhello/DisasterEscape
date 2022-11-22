@@ -175,6 +175,7 @@
     <Image Include="button_start.bmp" />
     <Image Include="button_start_active.bmp" />
     <Image Include="cafeteria.bmp" />
+    <Image Include="Clear.bmp" />
     <Image Include="disasterescape.ico" />
     <Image Include="Frame 14.bmp" />
     <Image Include="Frame 15.bmp" />

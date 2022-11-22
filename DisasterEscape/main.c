@@ -5,27 +5,27 @@
 
 //#include <gdiplusflat.h>
 
-#pragma comment(lib, "gdiplus.lib")
-
-struct GdiplusStartupInput {
-	UINT32         GdiplusVersion;
-	void* DebugEventCallback;
-	BOOL           SuppressBackgroundThread;
-	BOOL           SuppressExternalCodecs;
-};
-
-struct GdiplusStartupOutput {
-	void *a, *b;
-};
-
-extern int __stdcall
-GdipCreateBitmapFromFile(const char* filename, void** image);
-
-extern int GdiplusStartup(ULONG_PTR* token, const void* input, void* output);
-
-extern int GdipCreateHBITMAPFromBitmap(void* image, HBITMAP* hbitmap, int background);
-
-extern int GdipCreateBitmapFromResource(HINSTANCE hInstance, const char* lpBitmapName, void** image);
+//#pragma comment(lib, "gdiplus.lib")
+//
+//struct GdiplusStartupInput {
+//	UINT32         GdiplusVersion;
+//	void* DebugEventCallback;
+//	BOOL           SuppressBackgroundThread;
+//	BOOL           SuppressExternalCodecs;
+//};
+//
+//struct GdiplusStartupOutput {
+//	void *a, *b;
+//};
+//
+//extern int __stdcall
+//GdipCreateBitmapFromFile(const char* filename, void** image);
+//
+//extern int GdiplusStartup(ULONG_PTR* token, const void* input, void* output);
+//
+//extern int GdipCreateHBITMAPFromBitmap(void* image, HBITMAP* hbitmap, int background);
+//
+//extern int GdipCreateBitmapFromResource(HINSTANCE hInstance, const char* lpBitmapName, void** image);
 
 HWND hWnd;
 ImageLayer image_layer;
@@ -68,6 +68,7 @@ HBITMAP bitmap_towel;
 HBITMAP bitmap_bibimbap;
 
 HBITMAP bitmap_arrow;
+HBITMAP bitmap_clear;
 
 void clear_cursor()
 {
@@ -137,6 +138,7 @@ void load_image()
 	bitmap_bibimbap = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BIBIMBAP), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_arrow = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_ARROW), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_clear = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_CLEAR), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

@@ -58,7 +58,7 @@ int getTextWidth(HDC hdc, char* fontName, int size, char* text)
 	return strlen(text) * 27;
 }
 
-void printText(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, char* text)
+void printText(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, const char* text)
 {
 	int weight = 1;
 	int angle = 0;

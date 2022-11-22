@@ -44,15 +44,16 @@
 #define IDB_BITMAP_BONGWAN_FIRE5_1      146
 #define IDB_BITMAP_BONGWAN_FIRE5_2      147
 #define IDB_BITMAP_ARROW                148
-#define IDB_BITMAP1                     149
 #define IDB_BITMAP_HOUSE                149
+#define IDB_BITMAP1                     150
+#define IDB_BITMAP_CLEAR                150
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        150
+#define _APS_NEXT_RESOURCE_VALUE        151
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

@@ -138,6 +138,8 @@ IDB_BITMAP_ARROW        BITMAP                  "arrow.bmp"
 
 IDB_BITMAP_HOUSE        BITMAP                  "house.bmp"
 
+IDB_BITMAP_CLEAR        BITMAP                  "Clear.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 
