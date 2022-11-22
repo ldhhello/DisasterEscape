@@ -35,7 +35,7 @@ bool _trace(TCHAR* format, ...);
 
 // ¸»Ç³¼± ¶ç¿ì´Â ÇÔ¼ö
 // ¾ê´Â ¸»Ç³¼±¸¸ µü ¶ç¿ì°í ±×´ë·Î Á¾·áµÈ´Ù!
-void Game_speech_nowait(const char* str)
+void Game_speech_nowait(const char* str, bool is_arrow)
 {
 	Image im = { "", 40, 60 * 16, 2, 0, bitmap_speech_bubble };
 	//Game_append_image(im, true);
@@ -61,8 +61,9 @@ void Game_speech_nowait(const char* str)
 
 			memcpy(now_str, str, sz + 1);
 
-			Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 50, 1, 0, bitmap_arrow, true };
-			image_layer.appendImage(&image_layer, im, false);
+			Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 60, 1, 0, bitmap_arrow, true };
+			if(is_arrow)
+				image_layer.appendImage(&image_layer, im, false);
 
 			image_layer.startRender(&image_layer);
 
@@ -79,9 +80,9 @@ void Game_speech_nowait(const char* str)
 		{
 			//image_layer.renderAll(&image_layer);
 
-			if (i == sz - 1)
+			if (i == sz - 1 && is_arrow)
 			{
-				Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 50, 1, 0, bitmap_arrow, true };
+				Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 60, 1, 0, bitmap_arrow, true };
 				image_layer.appendImage(&image_layer, im, false);
 			}
 
@@ -103,7 +104,7 @@ void Game_speech_nowait(const char* str)
 
 void Game_speechbubble(const char* str)
 {
-	Game_speech_nowait(str);
+	Game_speech_nowait(str, true);
 
 	int a = _getch();
 
@@ -111,6 +112,7 @@ void Game_speechbubble(const char* str)
 		_getch();
 
 	//Game_erase_image();
+	image_layer.eraseImage(&image_layer, false);
 	image_layer.eraseImage(&image_layer, true);
 }
 
@@ -348,7 +350,7 @@ int Game_modal_select_box(char (*str)[100], int cnt)
 
 int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 {
-	Game_speech_nowait(speech);
+	Game_speech_nowait(speech, false);
 
 	int last_image_cnt = image_layer.imageCount;
 
