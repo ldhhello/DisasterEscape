@@ -61,7 +61,7 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 
 			memcpy(now_str, str, sz + 1);
 
-			Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 60, 1, 0, bitmap_arrow, true };
+			Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 70, 1, 0, bitmap_arrow, true };
 			if(is_arrow)
 				image_layer.appendImage(&image_layer, im, false);
 
@@ -82,7 +82,7 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 
 			if (i == sz - 1 && is_arrow)
 			{
-				Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 60, 1, 0, bitmap_arrow, true };
+				Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 - 70, 1, 0, bitmap_arrow, true };
 				image_layer.appendImage(&image_layer, im, false);
 			}
 
