@@ -134,7 +134,9 @@
     <ClCompile Include="SceneBongwan.c" />
     <ClCompile Include="SceneCafeteria.c" />
     <ClCompile Include="SceneDimigo.c" />
+    <ClCompile Include="SceneGangdang.c" />
     <ClCompile Include="SceneHakbonggwan.c" />
+    <ClCompile Include="SceneHealthjang.c" />
     <ClCompile Include="SceneSingwan.c" />
     <ClCompile Include="StartWindow.c" />
     <ClCompile Include="Utils.c" />
@@ -153,7 +155,9 @@
     <ClInclude Include="SceneBongwan.h" />
     <ClInclude Include="SceneCafeteria.h" />
     <ClInclude Include="SceneDimigo.h" />
+    <ClInclude Include="SceneGangdang.h" />
     <ClInclude Include="SceneHakbonggwan.h" />
+    <ClInclude Include="SceneHealthjang.h" />
     <ClInclude Include="SceneSingwan.h" />
     <ClInclude Include="StartWindow.h" />
     <ClInclude Include="Structure.h" />
@@ -195,6 +199,7 @@
     <Image Include="gangdang.bmp" />
     <Image Include="hakbonggwan.bmp" />
     <Image Include="hakbonggwan_inside.bmp" />
+    <Image Include="healthjang.bmp" />
     <Image Include="house.bmp" />
     <Image Include="jandi.bmp" />
     <Image Include="loading-none.bmp" />

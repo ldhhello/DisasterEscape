@@ -51,6 +51,12 @@
     <ClCompile Include="SceneSingwan.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="SceneGangdang.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneHealthjang.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h">
@@ -102,6 +108,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="SceneSingwan.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGangdang.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneHealthjang.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -265,6 +277,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="undongjang.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="healthjang.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

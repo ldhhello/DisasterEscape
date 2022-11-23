@@ -74,6 +74,7 @@ extern HBITMAP bitmap_singwan_inside;
 extern HBITMAP bitmap_gangdang_inside;
 
 extern HBITMAP bitmap_gangdang;
+extern HBITMAP bitmap_healthjang;
 
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;

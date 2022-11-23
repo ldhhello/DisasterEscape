@@ -5,6 +5,7 @@
 #include "SceneBongwan.h"
 #include "SceneHakbonggwan.h"
 #include "SceneSingwan.h"
+#include "SceneGangdang.h"
 
 int scene_dimigo_map[100][100] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -87,12 +88,12 @@ Structure* SceneDimigo_load_structure(int* sz)
 {
 	Structure* structure = scene_dimigo_structure;
 
-	Structure st[13] = {
+	Structure st[15] = {
 		{3, 15, 6, 8, bitmap_hakbonggwan, false, false, SceneDimigo_on_hakbonggwan, 4},
 		{3, 1, 6, 10, bitmap_bongwan1, false, false, SceneDimigo_on_active_cafeteria, 4.5},
 		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
 		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
-		{3, 24, 4, 8, bitmap_house, false, true, NULL, 1},
+		{3, 24, 4, 8, bitmap_house, true, true, NULL, 1},
 		{7, 7, 0, 0, bitmap_water, true, true, NULL, 2},
 		{11, 13, 0, 0, bitmap_gangdang, false, true, NULL, 4},
 		{12, 22, 50, 1, NULL, false, false, NULL},
@@ -100,10 +101,12 @@ Structure* SceneDimigo_load_structure(int* sz)
 		{17, 1, 3, 1, NULL, false, false, SceneDimigo_on_door},
 		{3, 11, 1, 4, NULL, false, false, SceneDimigo_on_door},
 		{9, 22, 3, 1, NULL, false, false, SceneDimigo_on_door},
-		{37, 0, 1, 22, NULL, false, false, SceneDimigo_on_ujunghaksa}
+		{37, 0, 1, 22, NULL, false, false, SceneDimigo_on_ujunghaksa},
+		{11, 19, 1, 1, NULL, false, false, SceneDimigo_on_gangdang},
+		{12, 19, 1, 4, NULL, false, false, NULL}
 	};
 
-	scene_dimigo_struct_cnt = 13;
+	scene_dimigo_struct_cnt = 15;
 	*sz = scene_dimigo_struct_cnt;
 
 	if (struct_loaded_dimigo)
@@ -512,7 +515,25 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 		Game_change_scene(SceneHakbonggwan_load(), true);
 	}
 }
-//
+
+void SceneDimigo_on_gangdang(int st, int dir)
+{
+	if (dir != UP)
+		return;
+
+	Game_speechbubble("여기는 체육관이구나!");
+
+	char str[2][100] = {
+		"들어가보자!",
+		"돌아가자."
+	};
+
+	if (Game_modal_select_box_speech("체육관에 들어갈까?", str, 2) == 0)
+	{
+		Game_change_scene(SceneGangdang_load(), true);
+	}
+}
+
 void SceneDimigo_on_door(int st, int dir)
 {
 	Game_speechbubble("학교 밖으로 나가면 안 될 것 같아!");

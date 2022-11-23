@@ -51,15 +51,16 @@
 #define IDB_BITMAP_SINGWAN_INSIDE       153
 #define IDB_BITMAP_HAKBONGGWAN_INSIDE   154
 #define IDB_BITMAP_GANGDANG_INSIDE      155
-#define IDB_BITMAP1                     156
 #define IDB_BITMAP_UNDONGJANG           156
+#define IDB_BITMAP1                     157
+#define IDB_BITMAP_HEALTHJANG           157
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        157
+#define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

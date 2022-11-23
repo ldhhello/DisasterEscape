@@ -16,6 +16,7 @@ extern void SceneDimigo_on_tick();
 extern void SceneDimigo_on_active_cafeteria(int st, int dir);
 extern void SceneDimigo_on_bongwan(int st, int dir);
 extern void SceneDimigo_on_hakbonggwan(int st, int dir);
+extern void SceneDimigo_on_gangdang(int st, int dir);
 extern void SceneDimigo_on_door(int st, int dir);
 extern void SceneDimigo_on_ujunghaksa(int st, int dir);
 extern void SceneDimigo_on_singwan(int st, int dir);
