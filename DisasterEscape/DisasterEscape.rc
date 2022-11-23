@@ -154,6 +154,8 @@ IDB_BITMAP_UNDONGJANG   BITMAP                  "undongjang.bmp"
 
 IDB_BITMAP_HEALTHJANG   BITMAP                  "healthjang.bmp"
 
+IDB_BITMAP_BIGGANGDANG  BITMAP                  "biggangdang.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

@@ -2,6 +2,7 @@
 #include "Game.h"
 
 #include "SceneDimigo.h"
+#include "SceneBiggangdang.h"
 
 int scene_singwan_map[100][100] = { 0, };
 int scene_singwan_x = 100, scene_singwan_y = 20;
@@ -59,7 +60,7 @@ Structure* SceneSingwan_load_structure(int* sz)
 		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*SceneSingwan_on_water*/, 2},
 		{0, 12, 21, 1, NULL, false, false, SceneSingwan_on_door},
 		//{17, 14, 4, 8, bitmap_house},
-		{0, 12, 14, 1, NULL},
+		{0, 0, 9, 10, NULL, false, false, SceneSingwan_on_biggangdang},
 		{1, 0, 1, 20, NULL},
 		{21, 0, 1, 20, NULL}
 	};
@@ -91,6 +92,19 @@ void SceneSingwan_on_door(int st, int dir)
 	if (Game_modal_select_box_speech("밖으로 나가볼까?", str, 2) == 0)
 	{
 		Game_change_scene(SceneDimigo_load(), false);
+	}
+}
+
+void SceneSingwan_on_biggangdang(int st, int dir)
+{
+	char str[2][100] = {
+		"들어가보자!",
+		"돌아가자."
+	};
+
+	if (Game_modal_select_box_speech("강당에 들어갈까?", str, 2) == 0)
+	{
+		Game_change_scene(SceneBiggangdang_load(), true);
 	}
 }
 

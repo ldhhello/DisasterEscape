@@ -131,6 +131,7 @@
     <ClCompile Include="GameInfo.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Music.c" />
+    <ClCompile Include="SceneBiggangdang.c" />
     <ClCompile Include="SceneBongwan.c" />
     <ClCompile Include="SceneCafeteria.c" />
     <ClCompile Include="SceneDimigo.c" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Music.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneBiggangdang.h" />
     <ClInclude Include="SceneBongwan.h" />
     <ClInclude Include="SceneCafeteria.h" />
     <ClInclude Include="SceneDimigo.h" />
@@ -171,6 +173,7 @@
     <Image Include="arrow.bmp" />
     <Image Include="background.bmp" />
     <Image Include="bibimbap.bmp" />
+    <Image Include="biggangdang.bmp" />
     <Image Include="bitmap1.bmp" />
     <Image Include="bongwan.bmp" />
     <Image Include="bongwan_1.bmp" />
