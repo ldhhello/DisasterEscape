@@ -17,6 +17,8 @@ Scene SceneCafeteria_load()
 	Scene scene;
 	memset(&scene, 0, sizeof(Scene));
 
+	scene.scene_id = SCENE_CAFETERIA;
+
 	scene.load_map = SceneCafeteria_load_map;
 	scene.load_structure = SceneCafeteria_load_structure;
 	scene.on_structure_active = SceneCafeteria_on_structure_active;

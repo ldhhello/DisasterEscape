@@ -52,6 +52,8 @@ Scene SceneDimigo_load()
 	Scene scene;
 	memset(&scene, 0, sizeof(Scene));
 
+	scene.scene_id = SCENE_DIMIGO;
+
 	scene.load_map = SceneDimigo_load_map;
 	scene.load_structure = SceneDimigo_load_structure;
 	scene.on_structure_active = SceneDimigo_on_structure_active;

@@ -77,8 +77,19 @@ extern HBITMAP bitmap_gangdang;
 extern HBITMAP bitmap_healthjang;
 extern HBITMAP bitmap_biggangdang;
 
+extern HBITMAP bitmap_save;
+
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;
 
 #define RETURNVAL_CAFETERIA_MISSION 1
 #define RETURNVAL_EARTHQUAKE_MISSION 2
+
+#define SCENE_DIMIGO 1
+#define SCENE_CAFETERIA 2
+#define SCENE_BONGWAN 3
+#define SCENE_GANGDANG 4
+#define SCENE_HEALTHJANG 5
+#define SCENE_SINGWAN 6
+#define SCENE_BIGGANGDANG 7
+#define SCENE_HAKBONGGWAN 8

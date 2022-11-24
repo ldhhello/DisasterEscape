@@ -33,4 +33,6 @@ extern void Game_clear();
 extern void Game_reset_all();
 extern void Game_set_return(int ret);
 
+extern void Game_save(int slot);
+
 extern void Game_modal();

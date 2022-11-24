@@ -17,6 +17,8 @@ Scene SceneBongwan_load()
 	Scene scene;
 	memset(&scene, 0, sizeof(Scene));
 
+	scene.scene_id = SCENE_BONGWAN;
+
 	scene.load_map = SceneBongwan_load_map;
 	scene.load_structure = SceneBongwan_load_structure;
 	scene.on_structure_active = SceneBongwan_on_structure_active;

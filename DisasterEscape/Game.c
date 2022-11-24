@@ -1,9 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Game.h"
 #include "Structure.h"
 
 #include "SceneDimigo.h"
 #include "SceneCafeteria.h"
 #include "SceneBongwan.h"
+#include "SceneGangdang.h"
+#include "SceneHealthjang.h"
+#include "SceneSingwan.h"
+#include "SceneBiggangdang.h"
+#include "SceneHakbonggwan.h"
 
 #include "Music.h"
 
@@ -12,6 +19,13 @@ Image game_image[1500];
 int Game_return_val = -1;
 
 int player_idx = 0; // 플레이어 사진 뭐띄울지
+
+// Include.h에 정의된거랑 같은 순서임
+Scene* scene_load_function[] = {
+	NULL, SceneDimigo_load, SceneCafeteria_load, SceneBongwan_load,
+	SceneGangdang_load, SceneHealthjang_load, SceneSingwan_load,
+	SceneBiggangdang_load, SceneHakbonggwan_load
+};
 
 #ifdef _DEBUG
 bool _trace(TCHAR* format, ...)
@@ -180,6 +194,7 @@ bool is_died = 0;
 // 이거는 스택처럼 사용됨
 int last_x_arr[100];
 int last_y_arr[100];
+int last_scene[100];
 
 int last_arr_sz = 0;
 
@@ -197,6 +212,8 @@ int last_arr_sz = 0;
 
 int** map_;
 int max_x, max_y;
+
+int current_scene_id;
 
 bool fixed_map;
 
@@ -476,9 +493,11 @@ void Game_change_scene(Scene sc, bool is_enter)
 	{
 		last_x_arr[last_arr_sz] = player_x;
 		last_y_arr[last_arr_sz] = player_y;
+		last_scene[last_arr_sz] = current_scene_id;
 		last_arr_sz++;
 
 		player_x = sc.start_x; player_y = sc.start_y;
+		current_scene_id = sc.scene_id;
 		map_x = 0; map_y = 0;
 
 		Game_modify_player_pos();
@@ -489,6 +508,7 @@ void Game_change_scene(Scene sc, bool is_enter)
 	{
 		player_x = last_x_arr[last_arr_sz - 1];
 		player_y = last_y_arr[last_arr_sz - 1];
+		current_scene_id = last_scene[last_arr_sz - 1];
 		last_arr_sz--;
 
 		Game_modify_player_pos();
@@ -575,15 +595,67 @@ void Game_set_return(int ret)
 
 int Game_select_save_file()
 {
-	Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 / 2, 1.8, 0, bitmap_youdie, true };
+	Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 / 2, 2, 0, bitmap_save, true };
 
-	image_layer.appendImage(&image_layer, im, true);
+	image_layer.appendImage(&image_layer, im, false);
 
-	_getch();
+	int cursor = 0;
+	int print_pos = 0;
+
+	int max_file = 3;
+
+	int start_x = SCREEN_X * 16 / 2 - 600 - 300;
+
+	while (true)
+	{
+		image_layer.startRender(&image_layer);
+
+		for (int i = 0; i < 3; i++)
+		{
+			int k = print_pos + i;
+
+			char buf[50];
+			sprintf(buf, "슬롯 %d", k+1);
+
+			if(cursor == k)
+				printText(image_layer.bufferDC, start_x + 600*i, 1150, start_x + 600 + 600*i, 1150 + 75, "강원교육튼튼", 80, RGB(255, 0, 0), DT_CENTER, buf);
+			else
+				printText(image_layer.bufferDC, start_x + 600*i, 1150, start_x + 600 + 600*i, 1150 + 75, "강원교육튼튼", 80, RGB(255, 255, 255), DT_CENTER, buf);
+		}
+
+		image_layer.endRender(&image_layer);
+
+		int ch = _getch();
+
+		if (ch == LEFT)
+		{
+			if (cursor > 0)
+				cursor--;
+		}
+		else if (ch == RIGHT)
+		{
+			if (cursor < max_file - 1)
+				cursor++;
+		}
+		else if (ch == VK_ESCAPE)
+			break;
+		else if (ch == VK_RETURN || ch == VK_SPACE)
+		{
+			Game_save(cursor);
+			break;
+		}
+	}
 
 	image_layer.eraseImage(&image_layer, true);
 
 	return 1;
+}
+
+void Game_save(int slot)
+{
+	char buf[110];
+	sprintf(buf, "슬롯 %d에 저장되었습니다!", slot+1);
+	Game_speechbubble(buf);
 }
 
 void Game_modal()
@@ -591,6 +663,8 @@ void Game_modal()
 	sleep_(500);
 
 	Scene sc = SceneDimigo_load();
+
+	current_scene_id = sc.scene_id;
 
 	map_ = sc.load_map(&max_x, &max_y);
 	structure = sc.load_structure(&structure_cnt);

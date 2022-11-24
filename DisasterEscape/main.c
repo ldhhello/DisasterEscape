@@ -82,6 +82,8 @@ HBITMAP bitmap_gangdang;
 HBITMAP bitmap_healthjang;
 HBITMAP bitmap_biggangdang;
 
+HBITMAP bitmap_save;
+
 void clear_cursor()
 {
 	CONSOLE_CURSOR_INFO cc;
@@ -163,6 +165,8 @@ void load_image()
 	bitmap_gangdang = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_UNDONGJANG), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_healthjang = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_HEALTHJANG), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_biggangdang = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BIGGANGDANG), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_save = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SAVE), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

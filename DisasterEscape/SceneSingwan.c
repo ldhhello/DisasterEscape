@@ -18,6 +18,8 @@ Scene SceneSingwan_load()
 	Scene scene;
 	memset(&scene, 0, sizeof(Scene));
 
+	scene.scene_id = SCENE_SINGWAN;
+
 	scene.load_map = SceneSingwan_load_map;
 	scene.load_structure = SceneSingwan_load_structure;
 	scene.on_structure_active = SceneSingwan_on_structure_active;

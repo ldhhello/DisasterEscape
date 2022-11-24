@@ -17,4 +17,6 @@ typedef struct
 
 	void (*on_key_pressed)(char ch);
 	void (*on_tick)();
+
+	int scene_id;
 } Scene;

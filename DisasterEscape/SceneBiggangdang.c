@@ -18,6 +18,8 @@ Scene SceneBiggangdang_load()
 	Scene scene;
 	memset(&scene, 0, sizeof(Scene));
 
+	scene.scene_id = SCENE_BIGGANGDANG;
+
 	scene.load_map = SceneBiggangdang_load_map;
 	scene.load_structure = SceneBiggangdang_load_structure;
 	scene.on_structure_active = SceneBiggangdang_on_structure_active;

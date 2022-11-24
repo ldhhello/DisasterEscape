@@ -18,6 +18,8 @@ Scene SceneHealthjang_load()
 	Scene scene;
 	memset(&scene, 0, sizeof(Scene));
 
+	scene.scene_id = SCENE_HEALTHJANG;
+
 	scene.load_map = SceneHealthjang_load_map;
 	scene.load_structure = SceneHealthjang_load_structure;
 	scene.on_structure_active = SceneHealthjang_on_structure_active;
