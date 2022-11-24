@@ -1,6 +1,7 @@
 #include "StartWindow.h"
 #include "Game.h"
 #include "GameInfo.h"
+#include "Music.h"
 
 Image startwindow_image[12];
 
@@ -44,6 +45,8 @@ void StartWindow_modal()
 
 	StartWindow_draw();
 
+	Music_play("main_bgm.wav");
+
 	while (1)
 	{
 		int ch = _getch();
@@ -79,7 +82,9 @@ void StartWindow_select()
 {
 	if (current_idx == 0) // 시작하기
 	{
+		Music_stop("main_bgm.wav");
 		Game_modal();
+		Music_play("main_bgm.wav");
 	}
 	else if (current_idx == 1)
 	{

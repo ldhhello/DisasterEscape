@@ -203,8 +203,6 @@ void initialize_screen()
 
 int main()
 {
-	//Music_play("D:\\faded.wav");
-
 	initialize();
 	initialize_screen();
 
