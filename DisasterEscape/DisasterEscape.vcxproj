@@ -175,6 +175,7 @@
     <Image Include="bibimbap.bmp" />
     <Image Include="biggangdang.bmp" />
     <Image Include="bitmap1.bmp" />
+    <Image Include="bitmap4.bmp" />
     <Image Include="bongwan.bmp" />
     <Image Include="bongwan_1.bmp" />
     <Image Include="bongwan_2.bmp" />
@@ -215,6 +216,7 @@
     <Image Include="player-up.bmp" />
     <Image Include="png1.png" />
     <Image Include="puricare.bmp" />
+    <Image Include="save.bmp" />
     <Image Include="singwan.bmp" />
     <Image Include="singwan_inside.bmp" />
     <Image Include="speechbubble.bmp" />
