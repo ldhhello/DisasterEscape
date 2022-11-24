@@ -45,35 +45,46 @@ void StartWindow_modal()
 
 	StartWindow_draw();
 
-	Music_play("main_bgm.wav");
+	Music_set_background("main_bgm.wav");
+
+	time_t last_time = time(NULL);
 
 	while (1)
 	{
-		int ch = _getch();
-
-		if (ch == DOWN)
+		if (_kbhit())
 		{
-			current_idx++;
-			if (current_idx >= menu_cnt)
-				current_idx = menu_cnt - 1;
+			int ch = _getch();
 
-			StartWindow_draw();
+			if (ch == DOWN)
+			{
+				current_idx++;
+				if (current_idx >= menu_cnt)
+					current_idx = menu_cnt - 1;
+
+				StartWindow_draw();
+			}
+			else if (ch == UP)
+			{
+				current_idx--;
+				if (current_idx < 0)
+					current_idx = 0;
+
+				StartWindow_draw();
+			}
+			else if (ch == VK_SPACE || ch == VK_RETURN) // select
+			{
+				image_layer.fadeOut(&image_layer, NULL);
+
+				//printf("selected #%d", current_idx);
+
+				StartWindow_select();
+			}
 		}
-		else if (ch == UP)
+
+		if (time(NULL) - last_time >= 80) // 1분 20초: 노래 시간
 		{
-			current_idx--;
-			if (current_idx < 0)
-				current_idx = 0;
-
-			StartWindow_draw();
-		}
-		else if (ch == VK_SPACE || ch == VK_RETURN) // select
-		{
-			image_layer.fadeOut(&image_layer, NULL);
-
-			//printf("selected #%d", current_idx);
-
-			StartWindow_select();
+			Music_set_background("main_bgm.wav");
+			last_time = time(NULL);
 		}
 	}
 }
@@ -83,8 +94,9 @@ void StartWindow_select()
 	if (current_idx == 0) // 시작하기
 	{
 		Music_stop("main_bgm.wav");
+
 		Game_modal();
-		Music_play("main_bgm.wav");
+		Music_set_background("main_bgm.wav");
 	}
 	else if (current_idx == 1)
 	{

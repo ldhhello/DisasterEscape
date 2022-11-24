@@ -5,6 +5,8 @@
 #include "SceneCafeteria.h"
 #include "SceneBongwan.h"
 
+#include "Music.h"
+
 Image game_image[1500];
 
 int Game_return_val = -1;
@@ -145,6 +147,8 @@ void Game_ending_credit(const char* str)
 	image_layer.fadeOut(&image_layer, NULL);
 	image_layer.clearImage(&image_layer, false);
 
+	Music_set_background("ending.wav");
+
 	int center_x = SCREEN_X * 16 / 2;
 
 	int lines = 1;
@@ -154,7 +158,7 @@ void Game_ending_credit(const char* str)
 			lines++;
 	}
 
-	for (int i = 0; i < SCREEN_Y * 16 + 59 * lines; i += 3)
+	for (int i = 0; i < SCREEN_Y * 16 + 59 * lines; i += 1)
 	{
 		image_layer.startRender(&image_layer);
 
@@ -165,8 +169,7 @@ void Game_ending_credit(const char* str)
 		sleep_(20);
 	}
 	
-
-	sleep_(500);
+	Music_stop("ending.wav");
 }
 
 int map_x = 0, map_y = 0;
@@ -513,6 +516,8 @@ void Game_die()
 	image_layer.appendImage(&image_layer, im, false);
 
 	image_layer.fadeIn(&image_layer, NULL);
+
+	Music_play("youdie.wav");
 
 	sleep_(2000);
 
