@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "ImageLayer.h"
 
 #include "resource.h"
@@ -25,13 +26,6 @@ extern void printText(HDC hdc, int left, int top, int right, int bottom, char* f
 extern void Rectangle_(HDC hdc, int left, int top, int right, int bottom);
 extern int getTextWidth(HDC hdc, char* fontName, int size, char* text);
 extern int next_start_pos(int prev, int cursor, int screen_size, int max_pos);
-
-typedef char bool;
-//const static bool false = 0;
-//const static bool true = 1;
-
-#define false 0
-#define true 1
 
 // on main.c
 extern HBITMAP bitmap_start_screen;
@@ -78,6 +72,9 @@ extern HBITMAP bitmap_healthjang;
 extern HBITMAP bitmap_biggangdang;
 
 extern HBITMAP bitmap_save;
+
+extern TCHAR appdata_path[MAX_PATH];
+extern TCHAR save_path[MAX_PATH];
 
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;

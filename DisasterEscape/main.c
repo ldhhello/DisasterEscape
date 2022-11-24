@@ -1,7 +1,11 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include "Include.h"
 #include "StartWindow.h"
 #include "Music.h"
+
+#include <shlobj_core.h>
 
 //#include <gdiplusflat.h>
 
@@ -83,6 +87,9 @@ HBITMAP bitmap_healthjang;
 HBITMAP bitmap_biggangdang;
 
 HBITMAP bitmap_save;
+
+TCHAR appdata_path[MAX_PATH];
+TCHAR save_path[MAX_PATH];
 
 void clear_cursor()
 {
@@ -191,6 +198,16 @@ void initialize()
 	image_layer.transparentColor = RGB(29, 222, 38);
 
 	image_layer.initialize(&image_layer);
+
+	if (!SUCCEEDED(SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, appdata_path)))
+	{
+		printf("Error: failed to load appdata path!!");
+		return 0;
+	}
+
+	sprintf(save_path, "%s\\DisasterEscape", appdata_path);
+
+	CreateDirectory(save_path, NULL);
 
 	srand(time(NULL));
 }

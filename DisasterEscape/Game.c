@@ -13,6 +13,7 @@
 #include "SceneHakbonggwan.h"
 
 #include "Music.h"
+#include "SaveFile.h"
 
 Image game_image[1500];
 
@@ -614,7 +615,7 @@ int Game_select_save_file()
 		{
 			int k = print_pos + i;
 
-			char buf[50];
+			char buf[15];
 			sprintf(buf, "슬롯 %d", k+1);
 
 			if(cursor == k)
@@ -653,6 +654,34 @@ int Game_select_save_file()
 
 void Game_save(int slot)
 {
+	SaveFile* sf = SaveFile_new(100);
+
+	SaveFile_append(sf, player_x);
+	SaveFile_append(sf, player_y);
+	SaveFile_append(sf, player_idx);
+
+	SaveFile_append(sf, current_scene_id);
+	SaveFile_append(sf, Game_return_val);
+
+	SaveFile_append(sf, last_arr_sz);
+
+	for (int i = 0; i < last_arr_sz; i++)
+	{
+		SaveFile_append(sf, last_x_arr[i]);
+		SaveFile_append(sf, last_y_arr[i]);
+		SaveFile_append(sf, last_scene[i]);
+	}
+
+	SaveFile_append(sf, quest_progress_cafeteria);
+	SaveFile_append(sf, quest_progress_bongwan);
+
+	char filename[MAX_PATH];
+	sprintf(filename, "%s\\save%d.data", save_path, slot + 1);
+
+	SaveFile_write(sf, filename);
+
+	SaveFile_free(sf);
+
 	char buf[110];
 	sprintf(buf, "슬롯 %d에 저장되었습니다!", slot+1);
 	Game_speechbubble(buf);
@@ -682,9 +711,6 @@ void Game_modal()
 	Game_on_tick = sc.on_tick;
 
 	player_idx = 0;
-
-	Game game;
-	memset(&game, 0, sizeof(Game));
 
 	Image a = { "", 0, 0, 2, 0, bitmap_loading_none };
 	game_image[0] = a;

@@ -1,6 +1,8 @@
 #include "StartWindow.h"
 #include "Game.h"
 #include "GameInfo.h"
+#include "LoadGameWindow.h"
+
 #include "Music.h"
 
 Image startwindow_image[12];
@@ -100,9 +102,7 @@ void StartWindow_select()
 	}
 	else if (current_idx == 1)
 	{
-		// 여기에 코드 추가
-
-
+		LoadGame_modal();
 	}
 	else if (current_idx == 2)
 	{

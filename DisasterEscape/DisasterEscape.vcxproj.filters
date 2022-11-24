@@ -60,6 +60,12 @@
     <ClCompile Include="SceneBiggangdang.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="SaveFile.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadGameWindow.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageFading.h">
@@ -120,6 +126,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="SceneBiggangdang.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveFile.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadGameWindow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

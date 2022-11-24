@@ -129,8 +129,10 @@
   <ItemGroup>
     <ClCompile Include="Game.c" />
     <ClCompile Include="GameInfo.c" />
+    <ClCompile Include="LoadGameWindow.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Music.c" />
+    <ClCompile Include="SaveFile.c" />
     <ClCompile Include="SceneBiggangdang.c" />
     <ClCompile Include="SceneBongwan.c" />
     <ClCompile Include="SceneCafeteria.c" />
@@ -150,8 +152,10 @@
     <ClInclude Include="ImageLayerImpl.h" />
     <ClInclude Include="ImageLayerInterface.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="LoadGameWindow.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SaveFile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneBiggangdang.h" />
     <ClInclude Include="SceneBongwan.h" />
