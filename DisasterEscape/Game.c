@@ -22,7 +22,7 @@ int Game_return_val = -1;
 int player_idx = 0; // 플레이어 사진 뭐띄울지
 
 // Include.h에 정의된거랑 같은 순서임
-Scene* scene_load_function[] = {
+Scene (*scene_load_function[])() = {
 	NULL, SceneDimigo_load, SceneCafeteria_load, SceneBongwan_load,
 	SceneGangdang_load, SceneHealthjang_load, SceneSingwan_load,
 	SceneBiggangdang_load, SceneHakbonggwan_load
@@ -654,7 +654,7 @@ int Game_select_save_file()
 
 void Game_save(int slot)
 {
-	SaveFile* sf = SaveFile_new(100);
+	SaveFile* sf = SaveFile_new(200);
 
 	SaveFile_append(sf, player_x);
 	SaveFile_append(sf, player_y);
@@ -682,35 +682,14 @@ void Game_save(int slot)
 
 	SaveFile_free(sf);
 
-	char buf[110];
-	sprintf(buf, "슬롯 %d에 저장되었습니다!", slot+1);
-	Game_speechbubble(buf);
+	//char buf[110];
+	//sprintf(buf, "슬롯 %d에 저장되었습니다!", slot+1);
+	//Game_speechbubble(buf);
 }
 
 void Game_modal()
 {
 	sleep_(500);
-
-	Scene sc = SceneDimigo_load();
-
-	current_scene_id = sc.scene_id;
-
-	map_ = sc.load_map(&max_x, &max_y);
-	structure = sc.load_structure(&structure_cnt);
-
-	player_x = sc.start_x;
-	player_y = sc.start_y;
-
-	Game_on_structure_active = sc.on_structure_active;
-	Game_on_start = sc.on_start;
-
-	fixed_map = sc.fixed_map;
-
-	Game_on_key_pressed = sc.on_key_pressed;
-
-	Game_on_tick = sc.on_tick;
-
-	player_idx = 0;
 
 	Image a = { "", 0, 0, 2, 0, bitmap_loading_none };
 	game_image[0] = a;
@@ -735,10 +714,7 @@ void Game_modal()
 
 	Game_modify_player_pos();
 
-	//Game_speechbubble("안녕하세요!, Hello!d sfdfsdfsdf sdfdfsf dfsdfs dfsdfsd fsdfsdf");
-
 	Game_print_map(true);
-	//sleep_(1000);
 
 	Game_on_start();
 
@@ -824,4 +800,74 @@ void Game_modal()
 
 		//sleep_(50);
 	}
+}
+
+void Game_modal_new()
+{
+	Scene sc = SceneDimigo_load();
+
+	current_scene_id = sc.scene_id;
+
+	map_ = sc.load_map(&max_x, &max_y);
+	structure = sc.load_structure(&structure_cnt);
+
+	player_x = sc.start_x;
+	player_y = sc.start_y;
+
+	Game_on_structure_active = sc.on_structure_active;
+	Game_on_start = sc.on_start;
+
+	fixed_map = sc.fixed_map;
+
+	Game_on_key_pressed = sc.on_key_pressed;
+
+	Game_on_tick = sc.on_tick;
+
+	player_idx = 0;
+
+	Game_modal();
+}
+
+void Game_modal_load(int slot)
+{
+	char filename[MAX_PATH];
+	sprintf(filename, "%s\\save%d.data", save_path, slot + 1);
+
+	SaveFile* sf = SaveFile_load(filename);
+
+	player_x = SaveFile_read(sf);
+	player_y = SaveFile_read(sf);
+	player_idx = SaveFile_read(sf);
+
+	current_scene_id = SaveFile_read(sf);
+	Game_return_val = SaveFile_read(sf);
+
+	last_arr_sz = SaveFile_read(sf);
+
+	for (int i = 0; i < last_arr_sz; i++)
+	{
+		last_x_arr[i] = SaveFile_read(sf);
+		last_y_arr[i] = SaveFile_read(sf);
+		last_scene[i] = SaveFile_read(sf);
+	}
+
+	quest_progress_cafeteria = SaveFile_read(sf);
+	quest_progress_bongwan = SaveFile_read(sf);
+
+	SaveFile_free(sf);
+
+	Scene sc = scene_load_function[current_scene_id]();
+	map_ = sc.load_map(&max_x, &max_y);
+	structure = sc.load_structure(&structure_cnt);
+
+	Game_on_structure_active = sc.on_structure_active;
+	Game_on_start = sc.on_start;
+
+	fixed_map = sc.fixed_map;
+
+	Game_on_key_pressed = sc.on_key_pressed;
+
+	Game_on_tick = sc.on_tick;
+
+	Game_modal();
 }

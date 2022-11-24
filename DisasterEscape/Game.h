@@ -27,3 +27,6 @@ extern void Game_set_return(int ret);
 extern void Game_save(int slot);
 
 extern void Game_modal();
+
+extern void Game_modal_new();
+extern void Game_modal_load(int slot);

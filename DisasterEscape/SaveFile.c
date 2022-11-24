@@ -27,6 +27,7 @@ SaveFile* SaveFile_load(const char* filename)
 		return NULL;
 
 	SaveFile* sf = malloc(sizeof(SaveFile) + sizeof(int) * sz);
+	memset(sf, 0, sizeof(SaveFile) + sizeof(int) * sz);
 
 	fread(sf->data, 4, sz, fp);
 

@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "GameInfo.h"
+#include "LoadGameWindow.h"
+#include "Game.h"
 
 void LoadGame_modal()
 {
@@ -54,7 +55,7 @@ void LoadGame_modal()
 			break;
 		else if (ch == VK_RETURN || ch == VK_SPACE)
 		{
-
+			Game_modal_load(cursor);
 			break;
 		}
 	}
