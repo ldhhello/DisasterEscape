@@ -132,7 +132,7 @@ void Game_system_message(const char* str)
 	printText(image_layer._consoleDC, 0, center_y - 30, center_x * 2, center_y + 400, 
 		"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
 
-	Sleep(1500);
+	sleep_(1500);
 
 	//image_layer.endRender(&image_layer);
 	_renderAndFade_value(&image_layer, NULL, true, 90);
@@ -162,11 +162,11 @@ void Game_ending_credit(const char* str)
 			"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
 
 		image_layer.endRender(&image_layer);
-		Sleep(20);
+		sleep_(20);
 	}
 	
 
-	Sleep(500);
+	sleep_(500);
 }
 
 int map_x = 0, map_y = 0;
@@ -305,7 +305,7 @@ void Game_print_earthquake(int ms)
 
 		Game_print_map_impl(false, ax, ay);
 
-		Sleep(25);
+		sleep_(25);
 	}
 }
 
@@ -491,7 +491,7 @@ void Game_change_scene(Scene sc, bool is_enter)
 		Game_modify_player_pos();
 	}
 
-	Sleep(1000);
+	sleep_(1000);
 
 	Game_print_map(true);
 
@@ -505,7 +505,7 @@ void Game_die()
 {
 	image_layer.fadeOut(&image_layer, NULL);
 
-	Sleep(1000);
+	sleep_(1000);
 
 	image_layer.clearImage(&image_layer, false);
 
@@ -514,13 +514,13 @@ void Game_die()
 
 	image_layer.fadeIn(&image_layer, NULL);
 
-	Sleep(2000);
+	sleep_(2000);
 
 	image_layer.fadeOut(&image_layer, NULL);
 
 	image_layer.clearImage(&image_layer, false);
 
-	Sleep(1000);
+	sleep_(1000);
 
 	Game_return_val = -1;
 
@@ -534,7 +534,7 @@ void Game_clear()
 {
 	image_layer.fadeOut(&image_layer, NULL);
 
-	Sleep(1000);
+	sleep_(1000);
 
 	image_layer.clearImage(&image_layer, false);
 
@@ -543,13 +543,13 @@ void Game_clear()
 
 	image_layer.fadeIn(&image_layer, NULL);
 
-	Sleep(2000);
+	sleep_(2000);
 
 	image_layer.fadeOut(&image_layer, NULL);
 
 	image_layer.clearImage(&image_layer, false);
 
-	Sleep(1000);
+	sleep_(1000);
 }
 
 void Game_reset_all()
@@ -583,7 +583,7 @@ int Game_select_save_file()
 
 void Game_modal()
 {
-	Sleep(500);
+	sleep_(500);
 
 	Scene sc = SceneDimigo_load();
 
@@ -615,25 +615,25 @@ void Game_modal()
 
 	image_layer.fadeIn(&image_layer, NULL);
 
-	Sleep(1000);
+	sleep_(1000);
 
 	game_image[0].bitmap = bitmap_loading_image;
 
 	image_layer.renderAll(&image_layer);
 
-	Sleep(2000);
+	sleep_(2000);
 
 	image_layer.fadeOut(&image_layer, NULL);
 	image_layer.clearImage(&image_layer, false);
 
-	Sleep(1000);
+	sleep_(1000);
 
 	Game_modify_player_pos();
 
 	//Game_speechbubble("안녕하세요!, Hello!d sfdfsdfsdf sdfdfsf dfsdfs dfsdfsd fsdfsdf");
 
 	Game_print_map(true);
-	//Sleep(1000);
+	//sleep_(1000);
 
 	Game_on_start();
 
@@ -717,6 +717,6 @@ void Game_modal()
 			last = now;
 		}
 
-		//Sleep(50);
+		//sleep_(50);
 	}
 }

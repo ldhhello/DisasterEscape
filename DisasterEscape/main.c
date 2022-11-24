@@ -198,7 +198,7 @@ void initialize_screen()
 	system("mode con cols=180 lines=48");
 	clear_cursor();
 
-	Sleep(500);
+	sleep_(500);
 }
 
 int main()

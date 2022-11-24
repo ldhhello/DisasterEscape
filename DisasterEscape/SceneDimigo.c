@@ -157,7 +157,7 @@ bool SceneDimigo_check_end()
 
 void SceneDimigo_clear()
 {
-	Sleep(1000);
+	sleep_(1000);
 
 
 	Game_ending_credit("당신은 디미고에서의 재난 상황에서 살아남았습니다.\n\n"
@@ -298,7 +298,7 @@ void SceneDimigo_on_key_pressed(char ch)
 		scene_dimigo_structure[5].is_hide = false;
 		Game_print_map(false);
 
-		Sleep(50);
+		sleep_(50);
 
 		scene_dimigo_structure[5].is_hide = true;
 		Game_print_map(false);
@@ -424,7 +424,7 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 		}
 
 		//image_layer.fadeOut(&image_layer, NULL);
-		//Sleep(1000);
+		//sleep_(1000);
 
 		Game_change_scene(SceneCafeteria_load(), true);
 	}
@@ -596,9 +596,9 @@ void SceneDimigo_on_structure_active(int st, int dir)
 		//Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
 		scene_dimigo_structure[st].is_hide = true;
 
-		Sleep(100);
+		sleep_(100);
 		Game_print_map(false);
-		Sleep(1000);
+		sleep_(1000);
 
 		Game_speechbubble("집을 잡아먹었다!!");
 

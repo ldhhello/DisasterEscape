@@ -116,7 +116,7 @@ void SceneBongwan_on_table(int st, int dir)
 		else {
 			Game_print_earthquake(1000);
 
-			Sleep(1500);
+			sleep_(1500);
 
 			char ooonng[3][100] = {
 			"엄마한테 전화하자!",
@@ -239,9 +239,9 @@ void SceneBongwan_on_structure_active(int st, int dir)
 		//Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
 		scene_bongwan_structure[st].is_hide = true;
 
-		Sleep(100);
+		sleep_(100);
 		Game_print_map(false);
-		Sleep(500);
+		sleep_(500);
 
 		Game_speechbubble("집을 잡아먹었다!!");
 

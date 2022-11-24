@@ -21,7 +21,7 @@ inline void _fade(HDC consoleDC, HDC backDC, BLENDFUNCTION bf, int alpha) {
 		backDC, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, bf);
 	applyToDC(consoleDC, alphaDC);
 	DeleteDC(alphaDC);
-	Sleep(FADING_DELAY);
+	sleep_(FADING_DELAY);
 }
 
 inline void _renderAndFade(ImageLayer* self, void(*applyToBackDC)(HDC), int isFadeIn) {

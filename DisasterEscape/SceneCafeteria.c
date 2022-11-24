@@ -217,7 +217,7 @@ void SceneCafeteria_on_towel(int st, int dir)
 	scene_cafeteria_structure[2].is_hide = true;
 	Game_print_map(false);
 
-	Sleep(300);
+	sleep_(300);
 
 	Game_speechbubble("수건을 찾았어! 이제 물을 찾으러 가 보자.");
 	Game_system_message("급식실에서 물을 찾아보자!");
@@ -249,7 +249,7 @@ void SceneCafeteria_on_water(int st, int dir)
 	scene_cafeteria_structure[3].is_hide = true;
 	Game_print_map(false);
 
-	Sleep(300);
+	sleep_(300);
 
 	Game_speechbubble("물을 찾았어!");
 	char oong_[3][100] = {
@@ -308,9 +308,9 @@ void SceneCafeteria_on_structure_active(int st, int dir)
 		//Game_speechbubble("집을 잡아먹는다고??? 난 못 먹어..");
 		scene_cafeteria_structure[st].is_hide = true;
 
-		Sleep(100);
+		sleep_(100);
 		Game_print_map(false);
-		Sleep(500);
+		sleep_(500);
 
 		Game_speechbubble("집을 잡아먹었다!!");
 

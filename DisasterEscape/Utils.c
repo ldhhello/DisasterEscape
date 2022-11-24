@@ -107,3 +107,10 @@ int next_start_pos(int prev, int cursor, int screen_size, int max_pos)
 
 	return res;
 }
+
+int sleep_(int ms)
+{
+	Sleep(ms);
+	
+	while (_kbhit()) _getch();
+}
