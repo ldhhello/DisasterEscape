@@ -158,11 +158,11 @@ void Game_ending_credit(const char* str)
 			lines++;
 	}
 
-	for (int i = 0; i < SCREEN_Y * 16 + 59 * lines; i += 1)
+	for (int i = 0; i < SCREEN_Y * 16 + 58 * lines; i += 1)
 	{
 		image_layer.startRender(&image_layer);
 
-		printText(image_layer.bufferDC, 10, SCREEN_Y*16 + 50 - i, SCREEN_X * 16 - 10, SCREEN_Y*16 - i + 59 * lines,
+		printText(image_layer.bufferDC, 10, SCREEN_Y*16 + 50 - i, SCREEN_X * 16 - 10, SCREEN_Y*16 - i + 58 * lines,
 			"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
 
 		image_layer.endRender(&image_layer);
