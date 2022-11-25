@@ -688,9 +688,9 @@ void Game_save(int slot)
 
 	SaveFile_free(sf);
 
-	//char buf[110];
-	//sprintf(buf, "슬롯 %d에 저장되었습니다!", slot+1);
-	//Game_speechbubble(buf);
+	char buf[110];
+	sprintf(buf, "슬롯 %d에 저장되었습니다!", slot+1);
+	Game_system_message(buf);
 }
 
 void Game_modal()
