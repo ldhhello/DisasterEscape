@@ -204,6 +204,7 @@
     <Image Include="Frame 21.bmp" />
     <Image Include="gameinfo.bmp" />
     <Image Include="gameinfo.png" />
+    <Image Include="gameload.bmp" />
     <Image Include="gangdang.bmp" />
     <Image Include="hakbonggwan.bmp" />
     <Image Include="hakbonggwan_inside.bmp" />

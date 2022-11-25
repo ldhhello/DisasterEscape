@@ -87,6 +87,7 @@ HBITMAP bitmap_healthjang;
 HBITMAP bitmap_biggangdang;
 
 HBITMAP bitmap_save;
+HBITMAP bitmap_game_load;
 
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
@@ -174,6 +175,7 @@ void load_image()
 	bitmap_biggangdang = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BIGGANGDANG), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_save = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SAVE), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_game_load = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_GAME_LOAD), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;
