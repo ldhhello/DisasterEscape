@@ -20,11 +20,17 @@ SaveFile* SaveFile_load(const char* filename)
 {
 	FILE* fp = fopen(filename, "r");
 
+	if (fp == NULL)
+		return NULL;
+
 	int sz;
 	fread(&sz, 4, 1, fp);
 
 	if (sz > 10000)
+	{
+		fclose(fp);
 		return NULL;
+	}
 
 	SaveFile* sf = malloc(sizeof(SaveFile) + sizeof(int) * sz);
 	memset(sf, 0, sizeof(SaveFile) + sizeof(int) * sz);

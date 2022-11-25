@@ -836,12 +836,17 @@ void Game_modal_new()
 	Game_modal();
 }
 
-void Game_modal_load(int slot)
+bool Game_modal_load(int slot)
 {
 	char filename[MAX_PATH];
 	sprintf(filename, "%s\\save%d.data", save_path, slot + 1);
 
 	SaveFile* sf = SaveFile_load(filename);
+
+	if (sf == NULL)
+		return false;
+
+	image_layer.fadeOut(&image_layer, NULL);
 
 	player_x = SaveFile_read(sf);
 	player_y = SaveFile_read(sf);
@@ -880,4 +885,6 @@ void Game_modal_load(int slot)
 	Game_on_tick = sc.on_tick;
 
 	Game_modal();
+
+	return true;
 }

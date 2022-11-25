@@ -3,6 +3,8 @@
 #include "LoadGameWindow.h"
 #include "Game.h"
 
+Image loadgame_images[20];
+
 void LoadGame_modal()
 {
 	//image_layer.clearImage(&image_layer, false);
@@ -10,8 +12,10 @@ void LoadGame_modal()
 	Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 / 2, 2, 0, bitmap_game_load, true };
 
 	//image_layer.appendImage(&image_layer, im, false);
-	image_layer.images = &im;
-	image_layer.imageCount = 1;
+	image_layer.images = loadgame_images;
+	image_layer.imageCount = 0;
+
+	image_layer.appendImage(&image_layer, im, false);
 
 	image_layer.fadeIn(&image_layer, NULL);
 
@@ -57,10 +61,12 @@ void LoadGame_modal()
 			break;
 		else if (ch == VK_RETURN || ch == VK_SPACE)
 		{
-			image_layer.fadeOut(&image_layer, NULL);
-
-			Game_modal_load(cursor);
-			break;
+			if (!Game_modal_load(cursor))
+			{
+				Game_system_message("비어있는 슬롯입니다.");
+			}
+			else
+				break;
 		}
 	}
 
