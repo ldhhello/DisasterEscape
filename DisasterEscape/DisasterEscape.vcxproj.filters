@@ -313,4 +313,15 @@
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="main_bgm.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="youdie.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="Ending.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

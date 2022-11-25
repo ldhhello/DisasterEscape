@@ -50,7 +50,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -229,6 +229,11 @@
     <Image Include="undongjang.bmp" />
     <Image Include="water.bmp" />
     <Image Include="you-die.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Ending.wav" />
+    <Media Include="main_bgm.wav" />
+    <Media Include="youdie.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

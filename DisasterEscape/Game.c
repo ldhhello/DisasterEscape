@@ -164,7 +164,7 @@ void Game_ending_credit(const char* str)
 	image_layer.fadeOut(&image_layer, NULL);
 	image_layer.clearImage(&image_layer, false);
 
-	Music_set_background("ending.wav");
+	Music_set_background(MAKEINTRESOURCE(IDR_WAVE_ENDING));
 
 	int center_x = SCREEN_X * 16 / 2;
 
@@ -542,7 +542,7 @@ void Game_die()
 
 	image_layer.fadeIn(&image_layer, NULL);
 
-	Music_play("youdie.wav");
+	Music_play(MAKEINTRESOURCE(IDR_WAVE_YOUDIE));
 
 	sleep_(2000);
 
@@ -722,7 +722,7 @@ void Game_modal()
 
 	Game_print_map(true);
 
-	Music_set_background("main_bgm.wav");
+	Music_set_background(MAKEINTRESOURCE(IDR_WAVE_MAINBGM));
 
 	Game_on_start();
 

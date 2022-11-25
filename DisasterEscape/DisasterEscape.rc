@@ -160,6 +160,18 @@ IDB_BITMAP_SAVE         BITMAP                  "save.bmp"
 
 IDB_BITMAP_GAME_LOAD    BITMAP                  "gameload.bmp"
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+IDR_WAVE_MAINBGM        WAVE                    "main_bgm.wav"
+
+IDR_WAVE_YOUDIE         WAVE                    "youdie.wav"
+
+IDR_WAVE_ENDING         WAVE                    "Ending.wav"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

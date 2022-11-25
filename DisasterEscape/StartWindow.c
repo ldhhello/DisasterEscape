@@ -47,7 +47,8 @@ void StartWindow_modal()
 
 	StartWindow_draw();
 
-	Music_set_background("main_bgm.wav");
+	Music_set_background(MAKEINTRESOURCE(IDR_WAVE_MAINBGM));
+	//PlaySound(MAKEINTRESOURCE(IDR_WAVE_MAINBGM), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 
 	time_t last_time = time(NULL);
 
@@ -92,13 +93,13 @@ void StartWindow_select()
 		Music_stop_background();
 
 		Game_modal_new();
-		Music_set_background("main_bgm.wav");
+		Music_set_background(MAKEINTRESOURCE(IDR_WAVE_MAINBGM));
 	}
 	else if (current_idx == 1)
 	{
 		LoadGame_modal();
 
-		Music_set_background("main_bgm.wav");
+		Music_set_background(MAKEINTRESOURCE(IDR_WAVE_MAINBGM));
 	}
 	else if (current_idx == 2)
 	{
