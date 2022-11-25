@@ -159,6 +159,8 @@ void Game_system_message(const char* str)
 
 void Game_ending_credit(const char* str)
 {
+	Music_stop_background();
+
 	image_layer.fadeOut(&image_layer, NULL);
 	image_layer.clearImage(&image_layer, false);
 
@@ -184,7 +186,7 @@ void Game_ending_credit(const char* str)
 		sleep_(20);
 	}
 	
-	Music_stop("ending.wav");
+	Music_stop_background("ending.wav");
 }
 
 int map_x = 0, map_y = 0;
@@ -527,6 +529,8 @@ void Game_change_scene(Scene sc, bool is_enter)
 
 void Game_die()
 {
+	Music_stop_background();
+
 	image_layer.fadeOut(&image_layer, NULL);
 
 	sleep_(1000);
@@ -717,6 +721,8 @@ void Game_modal()
 	Game_modify_player_pos();
 
 	Game_print_map(true);
+
+	Music_set_background("main_bgm.wav");
 
 	Game_on_start();
 

@@ -82,12 +82,6 @@ void StartWindow_modal()
 				StartWindow_select();
 			}
 		}
-
-		if (time(NULL) - last_time >= 80) // 1분 20초: 노래 시간
-		{
-			Music_set_background("main_bgm.wav");
-			last_time = time(NULL);
-		}
 	}
 }
 
@@ -95,7 +89,7 @@ void StartWindow_select()
 {
 	if (current_idx == 0) // 시작하기
 	{
-		Music_stop("main_bgm.wav");
+		Music_stop_background();
 
 		Game_modal_new();
 		Music_set_background("main_bgm.wav");

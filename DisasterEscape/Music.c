@@ -21,9 +21,16 @@ void Music_stop(const char* music)
 
 void Music_set_background(const char* music)
 {
-	if (music_background != NULL)
+	/*if (music_background != NULL)
 		Music_stop(music);
 
 	music_background = music;
-	Music_play(music);
+	Music_play(music);*/
+
+	PlaySound(music, 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
+}
+
+void Music_stop_background()
+{
+	PlaySound(0, 0, 0);
 }
