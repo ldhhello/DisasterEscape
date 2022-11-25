@@ -226,8 +226,8 @@ void initialize_screen()
 
 int main()
 {
-	printf("DisasterEscape by LDH, JHU (KDMHS 21WP)\n");
-	printf("https://github.com/ldhhello\nhttps://github.com/budung");
+	//printf("DisasterEscape by LDH, JHU (KDMHS 21WP)\n");
+	//printf("https://github.com/ldhhello\nhttps://github.com/budung");
 
 	initialize();
 	initialize_screen();
