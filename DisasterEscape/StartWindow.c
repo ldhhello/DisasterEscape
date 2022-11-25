@@ -97,6 +97,8 @@ void StartWindow_select()
 	else if (current_idx == 1)
 	{
 		LoadGame_modal();
+
+		Music_set_background("main_bgm.wav");
 	}
 	else if (current_idx == 2)
 	{

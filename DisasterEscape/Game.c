@@ -847,6 +847,7 @@ bool Game_modal_load(int slot)
 		return false;
 
 	image_layer.fadeOut(&image_layer, NULL);
+	Music_stop_background();
 
 	player_x = SaveFile_read(sf);
 	player_y = SaveFile_read(sf);
