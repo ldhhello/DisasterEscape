@@ -31,6 +31,8 @@ SaveFile* SaveFile_load(const char* filename)
 
 	fread(sf->data, 4, sz, fp);
 
+	sf->sz = sz;
+
 	fclose(fp);
 
 	return sf;
@@ -44,6 +46,9 @@ void SaveFile_append(SaveFile* sf, int a)
 
 int SaveFile_read(SaveFile* sf)
 {
+	if (sf->cursor_in >= sf->sz)
+		return 0;
+
 	int res = sf->data[sf->cursor_in];
 
 	sf->cursor_in++;

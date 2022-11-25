@@ -675,6 +675,8 @@ void Game_save(int slot)
 	SaveFile_append(sf, quest_progress_cafeteria);
 	SaveFile_append(sf, quest_progress_bongwan);
 
+	SceneDimigo_save(sf);
+
 	char filename[MAX_PATH];
 	sprintf(filename, "%s\\save%d.data", save_path, slot + 1);
 
@@ -853,6 +855,8 @@ void Game_modal_load(int slot)
 
 	quest_progress_cafeteria = SaveFile_read(sf);
 	quest_progress_bongwan = SaveFile_read(sf);
+
+	SceneDimigo_load_file(sf);
 
 	SaveFile_free(sf);
 

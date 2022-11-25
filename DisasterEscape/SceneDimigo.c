@@ -7,6 +7,8 @@
 #include "SceneSingwan.h"
 #include "SceneGangdang.h"
 
+#include "SaveFile.h"
+
 int scene_dimigo_map[100][100] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -618,4 +620,16 @@ void SceneDimigo_reset()
 	is_first_dimigo = true;
 
 	outside_time = 0;
+}
+
+void SceneDimigo_save(SaveFile* sf)
+{
+	SaveFile_append(sf, is_first_dimigo);
+	SaveFile_append(sf, outside_time);
+}
+
+void SceneDimigo_load_file(SaveFile* sf)
+{
+	is_first_dimigo = SaveFile_read(sf);
+	outside_time = SaveFile_read(sf);
 }

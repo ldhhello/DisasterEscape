@@ -55,6 +55,8 @@ void LoadGame_modal()
 			break;
 		else if (ch == VK_RETURN || ch == VK_SPACE)
 		{
+			image_layer.fadeOut(&image_layer, NULL);
+
 			Game_modal_load(cursor);
 			break;
 		}

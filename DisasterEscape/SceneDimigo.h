@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include "SaveFile.h"
 
 extern Scene SceneDimigo_load();
 extern int** SceneDimigo_load_map(int* x, int* y);
@@ -23,3 +24,6 @@ extern void SceneDimigo_on_singwan(int st, int dir);
 extern void SceneDimigo_on_structure_active(int st, int dir);
 
 extern void SceneDimigo_reset();
+
+extern void SceneDimigo_save(SaveFile* sf);
+extern void SceneDimigo_load_file(SaveFile* sf);
