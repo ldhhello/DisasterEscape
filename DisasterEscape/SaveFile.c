@@ -18,7 +18,7 @@ SaveFile* SaveFile_new(int sz)
 
 SaveFile* SaveFile_load(const char* filename)
 {
-	FILE* fp = fopen(filename, "r");
+	FILE* fp = fopen(filename, "rb");
 
 	if (fp == NULL)
 		return NULL;
@@ -64,7 +64,7 @@ int SaveFile_read(SaveFile* sf)
 // 얘는 구조체 전체 크기가 아니라 append 된 만큼만 write함
 bool SaveFile_write(SaveFile* sf, const char* filename)
 {
-	FILE* fp = fopen(filename, "w");
+	FILE* fp = fopen(filename, "wb");
 
 	fwrite(&sf->cursor_out, 4, 1, fp);
 
