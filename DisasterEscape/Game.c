@@ -600,9 +600,11 @@ void Game_set_return(int ret)
 
 int Game_select_save_file()
 {
-	Image im = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 / 2, 2, 0, bitmap_save, true };
+	Image im1 = { "", 0, 0, 2, 0, bitmap_loading_none };
+	Image im2 = { "", SCREEN_X * 16 / 2, SCREEN_Y * 16 / 2, 2, 0, bitmap_save, true };
 
-	image_layer.appendImage(&image_layer, im, false);
+	image_layer.appendImage(&image_layer, im1, false);
+	image_layer.appendImage(&image_layer, im2, false);
 
 	int cursor = 0;
 	int print_pos = 0;
@@ -651,6 +653,7 @@ int Game_select_save_file()
 		}
 	}
 
+	image_layer.eraseImage(&image_layer, false);
 	image_layer.eraseImage(&image_layer, true);
 
 	return 1;
