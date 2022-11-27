@@ -358,7 +358,7 @@ void SceneDimigo_on_tick()
 	{
 		outside_time += 50;
 
-		if (outside_time == 600)
+		if (outside_time == 60000)
 		{
 			Game_speechbubble("바깥에 너무 오래 있었다.");
 
