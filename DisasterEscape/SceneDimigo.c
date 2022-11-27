@@ -156,7 +156,7 @@ void SceneDimigo_on_return(int ret)
 
 bool SceneDimigo_check_end()
 {
-	return quest_progress_bongwan == 10 && quest_progress_cafeteria == 11;
+	return quest_progress_bongwan == 10 && quest_progress_cafeteria == 11 && quest_progress_misemonji == 20;
 }
 
 void SceneDimigo_clear()
@@ -261,12 +261,12 @@ void SceneDimigo_on_start()
 
 void SceneDimigo_change_cafeteria_skin()
 {
-	if (70 < cafeteria_health && cafeteria_health <= 100)
+	if (80 < cafeteria_health && cafeteria_health <= 100)
 	{
 		scene_dimigo_structure[1].bitmap = bitmap_bongwan[4][0];
 		scene_dimigo_structure[2].bitmap = bitmap_bongwan[4][1];
 	}
-	else if (50 < cafeteria_health && cafeteria_health <= 70)
+	else if (50 < cafeteria_health && cafeteria_health <= 80)
 	{
 		scene_dimigo_structure[1].bitmap = bitmap_bongwan[3][0];
 		scene_dimigo_structure[2].bitmap = bitmap_bongwan[3][1];
@@ -285,10 +285,10 @@ void SceneDimigo_change_cafeteria_skin()
 
 void SceneDimigo_on_key_pressed(char ch)
 {
-	if (ch == 'a')
+	/*if (ch == 'a')
 	{
 		SceneDimigo_clear();
-	}
+	}*/
 
 	if ((ch == 'n' || ch == 'N') && quest_progress_cafeteria == 10)
 	{
@@ -357,7 +357,7 @@ void SceneDimigo_on_tick()
 	{
 		outside_time += 50;
 
-		if (outside_time == 60000)
+		if (outside_time == 600)
 		{
 			Game_speechbubble("바깥에 너무 오래 있었다.");
 
@@ -384,8 +384,9 @@ void SceneDimigo_on_tick()
 				};
 				if (Game_modal_select_box_speech("마스크를 써야 할 것 같아..", ooong, 2) == 1)
 				{
-					Game_speechbubble("휴, 살았다.\n\n미세먼지를 피해 본관 안으로 들어가보자.");
-					quest_progress_bongwan = 1;
+					//Game_speechbubble("휴, 살았다.\n\n미세먼지를 피해 본관 안으로 들어가보자.");
+					Game_system_message("마스크를 찾으러 디미고를 돌아다녀 보자!");
+					quest_progress_misemonji = 2;
 				}
 				else {
 					Game_speechbubble("켁켁! 숨이 안 쉬어져!");
@@ -460,7 +461,7 @@ void SceneDimigo_on_bongwan(int st, int dir)
 	if (dir != UP)
 		return;
 
-	if (quest_progress_bongwan == 1)
+	if (quest_progress_misemonji == 10)
 	{
 		SceneDimigo_on_bongwan_clear(st, dir);
 		return;
