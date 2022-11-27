@@ -154,6 +154,7 @@ void SceneDimigo_on_return(int ret)
 	}
 }
 
+
 bool SceneDimigo_check_end()
 {
 	return quest_progress_bongwan == 10 && quest_progress_cafeteria == 11;
