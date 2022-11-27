@@ -160,6 +160,8 @@ IDB_BITMAP_SAVE         BITMAP                  "save.bmp"
 
 IDB_BITMAP_GAME_LOAD    BITMAP                  "gameload.bmp"
 
+IDB_BITMAP_KF94         BITMAP                  "kf94.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -211,6 +211,7 @@
     <Image Include="healthjang.bmp" />
     <Image Include="house.bmp" />
     <Image Include="jandi.bmp" />
+    <Image Include="kf94.bmp" />
     <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
     <Image Include="NaOH.bmp" />

@@ -10,6 +10,7 @@ extern Structure* SceneHealthjang_load_structure(int* sz);
 extern void SceneHealthjang_on_start();
 
 extern void SceneHealthjang_on_door(int st, int dir);
+extern void SceneHealthjang_on_kf94(int st, int dir);
 extern void SceneHealthjang_on_structure_active(int st, int dir);
 
 extern void SceneHealthjang_reset();

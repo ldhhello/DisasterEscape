@@ -74,6 +74,8 @@ extern HBITMAP bitmap_biggangdang;
 extern HBITMAP bitmap_save;
 extern HBITMAP bitmap_game_load;
 
+extern HBITMAP bitmap_kf94;
+
 extern TCHAR appdata_path[MAX_PATH];
 extern TCHAR save_path[MAX_PATH];
 

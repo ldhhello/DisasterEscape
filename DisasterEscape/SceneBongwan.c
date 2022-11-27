@@ -6,6 +6,7 @@
 int scene_bongwan_map[100][100] = { 0, };
 int scene_bongwan_x = 100, scene_bongwan_y = 20;
 int quest_progress_bongwan = 0;
+int quest_progress_misemonji = 0;
 
 Structure scene_bongwan_structure[100];
 int scene_bongwan_struct_cnt = 0;
@@ -83,11 +84,11 @@ Structure* SceneBongwan_load_structure(int* sz)
 
 void SceneBongwan_on_start()
 {
-	if (quest_progress_bongwan == 1)
+	if (quest_progress_misemonji == 10)
 	{
 		Game_speechbubble("휴, 이제야 마음이 놓이네!");
 		Game_speechbubble("공기 청정기를 켜서 공기를 정화시켜 보자.");
-		quest_progress_bongwan = 2;
+		quest_progress_misemonji = 11;
 	}
 }//
 
@@ -97,6 +98,7 @@ void SceneBongwan_on_table(int st, int dir)
 	{
 
 		Game_print_earthquake(1000);
+		Sleep(500);
 
 
 		char oonng[3][100] = {
@@ -147,7 +149,7 @@ void SceneBongwan_on_table(int st, int dir)
 
 void Scenebongwan_on_clean_air(int st, int dir)
 {
-	if (quest_progress_bongwan == 2)
+	if (quest_progress_misemonji == 11)
 	{
 		char oong[3][100] = {
 		"전기 아까워! 먼지 필터는 코털로도 충분해.",
@@ -188,6 +190,7 @@ void Scenebongwan_on_clean_air(int st, int dir)
 			}
 			else {
 				Game_system_message("책상 밑으로 이동하세요!");
+				quest_progress_misemonji = 20;
 				quest_progress_bongwan = 3;
 			}
 		}
