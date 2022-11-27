@@ -681,6 +681,7 @@ void Game_save(int slot)
 
 	SaveFile_append(sf, quest_progress_cafeteria);
 	SaveFile_append(sf, quest_progress_bongwan);
+	SaveFile_append(sf, quest_progress_misemonji);
 
 	SceneDimigo_save(sf);
 
@@ -870,6 +871,7 @@ bool Game_modal_load(int slot)
 
 	quest_progress_cafeteria = SaveFile_read(sf);
 	quest_progress_bongwan = SaveFile_read(sf);
+	quest_progress_misemonji = SaveFile_read(sf);
 
 	SceneDimigo_load_file(sf);
 

@@ -6,6 +6,7 @@
 int scene_bongwan_map[100][100] = { 0, };
 int scene_bongwan_x = 100, scene_bongwan_y = 20;
 int quest_progress_bongwan = 0;
+int quest_progress_misemonji = 0;
 
 Structure scene_bongwan_structure[100];
 int scene_bongwan_struct_cnt = 0;
