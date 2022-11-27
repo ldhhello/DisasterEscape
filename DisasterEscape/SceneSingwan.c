@@ -100,8 +100,8 @@ void SceneSingwan_on_door(int st, int dir)
 void SceneSingwan_on_biggangdang(int st, int dir)
 {
 	char str[2][100] = {
-		"들어가보자!",
-		"돌아가자."
+		"좋아! 들어가자.",
+		"싫어! 안 갈래."
 	};
 
 	if (Game_modal_select_box_speech("강당에 들어갈까?", str, 2) == 0)

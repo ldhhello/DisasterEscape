@@ -208,7 +208,7 @@ void SceneBongwan_on_door(int st, int dir)
 	{
 		if (quest_progress_bongwan != 0 && quest_progress_bongwan != 4)
 		{
-			Game_speechbubble("으악! 건물이 무너지고 있어!!");
+			Game_speechbubble("으악! 건물이 무너지고 있어!");
 			Game_print_earthquake(1000);
 
 			Game_die();

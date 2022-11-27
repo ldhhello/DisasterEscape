@@ -512,8 +512,8 @@ void SceneDimigo_on_hakbonggwan(int st, int dir)
 	Game_speechbubble("여기는 우리들의 보금자리 학봉관이군!");
 	
 	char str[2][100] = {
-		"들어가보자!",
-		"돌아가자."
+		"좋아! 들어가자.",
+		"싫어! 안 갈래."
 	};
 
 	if (Game_modal_select_box_speech("학봉관에 들어갈까?", str, 2) == 0)
@@ -530,8 +530,8 @@ void SceneDimigo_on_gangdang(int st, int dir)
 	Game_speechbubble("여기는 체육관이구나!");
 
 	char str[2][100] = {
-		"들어가보자!",
-		"돌아가자."
+		"좋아! 들어가자.",
+		"싫어! 안 갈래."
 	};
 
 	if (Game_modal_select_box_speech("체육관에 들어갈까?", str, 2) == 0)
@@ -562,8 +562,8 @@ void SceneDimigo_on_singwan(int st, int dir)
 	{
 		Game_speechbubble("이 건물은 3학년들이 있는 신관이구나!");
 		char str[2][100] = {
-			"들어가보자!",
-			"돌아가자."
+			"좋아! 들어가자.",
+			"싫어! 안 갈래."
 		};
 
 		if (Game_modal_select_box_speech("신관에 들어갈까?", str, 2) == 0)

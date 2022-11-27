@@ -103,11 +103,11 @@ void SceneHealthjang_on_kf94(int st, int dir)
 {
 	if (quest_progress_misemonji != 2)
 	{
-		Game_speechbubble("KF -3000 마스크다. 누군가가 운동 하다 두고 간 것 같다.");
+		Game_speechbubble("마스크가 여기 왜 있지?");
 		return;
 	}
 
-	Game_speechbubble("와 마스크를 찾았어!!!!!");
+	Game_speechbubble("마스크를 찾았어!");
 	Game_system_message("본관으로 가자.");
 	scene_healthjang_structure[1].is_hide = true;
 	quest_progress_misemonji = 10;

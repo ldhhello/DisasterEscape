@@ -100,8 +100,8 @@ void SceneGangdang_on_door(int st, int dir)
 void SceneGangdang_on_healthjang(int st, int dir)
 {
 	char str[2][100] = {
-		"들어가보자!",
-		"돌아가자."
+		"좋아! 들어가자.",
+		"싫어! 안 갈래."
 	};
 
 	if (Game_modal_select_box_speech("헬스장에 들어갈까?", str, 2) == 0)
