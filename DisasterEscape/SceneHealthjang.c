@@ -59,7 +59,7 @@ Structure* SceneHealthjang_load_structure(int* sz)
 
 	Structure st[6] = {
 		{2, -5, 0, 0, bitmap_healthjang, false, true, NULL, 1.6},
-		{4, 4, 1, 2, bitmap_kf94, false, false, SceneHealthjang_on_kf94, 0.5},
+		{5, 4, 1, 2, bitmap_kf94, false, false, SceneHealthjang_on_kf94, 0.5},
 		//{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*SceneHealthjang_on_rice*/, 1.6},
 		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*SceneHealthjang_on_water*/, 2},
 		{0, 12, 21, 1, NULL, false, false, SceneHealthjang_on_door},
