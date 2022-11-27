@@ -589,6 +589,7 @@ void Game_reset_all()
 	SceneDimigo_reset();
 	SceneCafeteria_reset();
 	SceneBongwan_reset();
+	SceneHealthjang_reset();
 
 	is_died = true;
 }
@@ -722,6 +723,7 @@ void Game_modal()
 
 	sleep_(1000);
 
+	map_x = 0; map_y = 0;
 	Game_modify_player_pos();
 
 	Game_print_map(true);

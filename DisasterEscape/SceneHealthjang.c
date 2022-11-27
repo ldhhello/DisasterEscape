@@ -83,7 +83,13 @@ Structure* SceneHealthjang_load_structure(int* sz)
 
 void SceneHealthjang_on_start()
 {
-
+	if (quest_progress_misemonji >= 10)
+	{
+		scene_healthjang_structure[1].is_hide = true;
+		Game_print_map(false);
+	}
+	else
+		scene_healthjang_structure[1].is_hide = false;
 }
 
 void SceneHealthjang_on_door(int st, int dir)
