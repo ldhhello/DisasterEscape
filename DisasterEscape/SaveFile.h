@@ -7,14 +7,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// Struct Hack!!!!
 typedef struct
 {
 	int sz;
 	int cursor_in;
 	int cursor_out;
 
-	int data[0];
+	int data[0]; // Struct Hack!!!!
 } SaveFile;
 
 extern SaveFile* SaveFile_new(int sz); // 새 SaveFile 객체를 만든다

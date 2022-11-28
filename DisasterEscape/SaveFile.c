@@ -32,6 +32,7 @@ SaveFile* SaveFile_load(const char* filename)
 		return NULL;
 	}
 
+	// Struct Hack: 구조체 맨 뒤에 data 배열의 크기를 0으로 잡고, sizeof(int)*sz 를 더해 가변 배열을 만든다!
 	SaveFile* sf = malloc(sizeof(SaveFile) + sizeof(int) * sz);
 	memset(sf, 0, sizeof(SaveFile) + sizeof(int) * sz);
 
