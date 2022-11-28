@@ -23,6 +23,7 @@ extern ImageLayer image_layer;
 // on Utils.c
 extern void printTextWithAngle(HDC hdc, int x, int y, char* fontName, int size, int weight, int angle, COLORREF textColor, int align, char* text);
 extern void printText(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, const char* text);
+extern void printTextW(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, const char* text);
 extern void Rectangle_(HDC hdc, int left, int top, int right, int bottom);
 extern int getTextWidth(HDC hdc, char* fontName, int size, char* text);
 extern int next_start_pos(int prev, int cursor, int screen_size, int max_pos);
@@ -32,6 +33,7 @@ extern HBITMAP bitmap_start_screen;
 extern HBITMAP bitmap_loading_image;
 extern HBITMAP bitmap_loading_none;
 extern HBITMAP bitmap_speech_bubble;
+extern HBITMAP bitmap_speech_bubble_ldh;
 extern HBITMAP bitmap_player[4];
 extern HBITMAP bitmap_house;
 extern HBITMAP bitmap_hakbonggwan;
@@ -77,6 +79,7 @@ extern HBITMAP bitmap_game_load;
 extern HBITMAP bitmap_kf94;
 
 extern HBITMAP bitmap_donghyun;
+extern HBITMAP bitmap_ziaoming;
 
 extern TCHAR appdata_path[MAX_PATH];
 extern TCHAR save_path[MAX_PATH];

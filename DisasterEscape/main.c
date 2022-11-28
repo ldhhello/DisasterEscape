@@ -45,6 +45,7 @@ HBITMAP bitmap_start_screen;
 HBITMAP bitmap_loading_image;
 HBITMAP bitmap_loading_none;
 HBITMAP bitmap_speech_bubble;
+HBITMAP bitmap_speech_bubble_ldh;
 HBITMAP bitmap_jandi; // 잔디 테스트
 HBITMAP bitmap_player[4]; // 플레이어 테스트
 HBITMAP bitmap_house; // 집 테스트
@@ -92,6 +93,7 @@ HBITMAP bitmap_game_load;
 HBITMAP bitmap_kf94;
 
 HBITMAP bitmap_donghyun;
+HBITMAP bitmap_ziaoming;
 
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
@@ -114,6 +116,7 @@ void load_image()
 	bitmap_loading_image = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_loading_none = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING_NONE), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_speech_bubble = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MESSAGEBOX), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_speech_bubble_ldh = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SPEECHBUBBLE_LDH), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_tile[0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_JANDI), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_tile[1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PATH), IMAGE_BITMAP, 0, 0, 0);
@@ -186,6 +189,7 @@ void load_image()
 	bitmap_kf94 = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_KF94), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_donghyun = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_DONGHYUN), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_ziaoming = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_ZIAOMING), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

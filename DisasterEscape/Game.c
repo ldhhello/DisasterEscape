@@ -53,7 +53,7 @@ bool _trace(TCHAR* format, ...);
 
 // 말풍선 띄우는 함수
 // 얘는 말풍선만 딱 띄우고 그대로 종료된다!
-void Game_speech_nowait(const char* str, bool is_arrow)
+void Game_speech_nowait(const char* str, bool is_arrow, bool is_wide)
 {
 	Image im = { "", 40, 60 * 16, 2, 0, bitmap_speech_bubble };
 	//Game_append_image(im, true);
@@ -61,12 +61,20 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 
 	int sz = strlen(str);
 
-	char* now_str = malloc(sz + 1);
+	if (is_wide)
+		sz = lstrlenW(str) * 2;
+
+	char* now_str = malloc(sz + 2);
 
 	// 글자 하나씩 하나씩 출력하는 코드
 	// 1바이트씩 해도 되지 않냐고 할 수 있지만 그러면 문제가 한글이 2바이트다! (ansi 인코딩 기준)
 	// 그래서 그거 해결하기 위해 이런 코드를 구현했다!!
 	bool ignored = false;
+
+	void (*print_text)(HDC, int, int, int, int, char*, int, COLORREF, int, const char*) = printText;
+
+	if (is_wide)
+		print_text = printTextW;
 
 	for (int i = 0; i < sz; i++)
 	{
@@ -85,7 +93,7 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 -85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			print_text(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 -85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 
@@ -93,8 +101,9 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 		}
 		now_str[i] = str[i];
 		now_str[i + 1] = 0;
+		now_str[i + 2] = 0; // for wide string
 
-		if (now_str[i] >= 0 || ignored)
+		if ((!is_wide && now_str[i] >= 0) || ignored)
 		{
 			//image_layer.renderAll(&image_layer);
 
@@ -106,7 +115,7 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 
 			image_layer.startRender(&image_layer);
 
-			printText(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 - 85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
+			print_text(image_layer.bufferDC, 100, 70 * 16 + 20, 180 * 16 - 85, 96 * 16 - 20, "강원교육튼튼", 54, RGB(0, 0, 0), DT_LEFT | DT_WORDBREAK, now_str);
 
 			image_layer.endRender(&image_layer);
 			Sleep(45);
@@ -122,14 +131,26 @@ void Game_speech_nowait(const char* str, bool is_arrow)
 
 void Game_speechbubble(const char* str)
 {
-	Game_speech_nowait(str, true);
+	Game_speech_nowait(str, true, false);
 
 	int a = _getch();
 
 	if (a == 224)
 		_getch();
 
-	//Game_erase_image();
+	image_layer.eraseImage(&image_layer, false);
+	image_layer.eraseImage(&image_layer, true);
+}
+
+void Game_speechbubbleW(const wchar_t* str)
+{
+	Game_speech_nowait(str, true, true);
+
+	int a = _getch();
+
+	if (a == 224)
+		_getch();
+
 	image_layer.eraseImage(&image_layer, false);
 	image_layer.eraseImage(&image_layer, true);
 }
@@ -403,7 +424,7 @@ int Game_modal_select_box(char (*str)[100], int cnt)
 
 int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 {
-	Game_speech_nowait(speech, false);
+	Game_speech_nowait(speech, false, false);
 
 	int last_image_cnt = image_layer.imageCount;
 

@@ -145,6 +145,7 @@
     <ClCompile Include="Utils.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChineseConstant.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInfo.h" />
     <ClInclude Include="ImageFading.h" />
@@ -227,10 +228,12 @@
     <Image Include="singwan.bmp" />
     <Image Include="singwan_inside.bmp" />
     <Image Include="speechbubble.bmp" />
+    <Image Include="speechbubble_ldh.bmp" />
     <Image Include="towel.bmp" />
     <Image Include="undongjang.bmp" />
     <Image Include="water.bmp" />
     <Image Include="you-die.bmp" />
+    <Image Include="ziaoming.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Ending.wav" />

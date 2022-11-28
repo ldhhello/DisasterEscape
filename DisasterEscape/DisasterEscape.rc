@@ -164,6 +164,10 @@ IDB_BITMAP_KF94         BITMAP                  "kf94.bmp"
 
 IDB_BITMAP_DONGHYUN     BITMAP                  "donghyun.bmp"
 
+IDB_BITMAP_SPEECHBUBBLE_LDH BITMAP                  "speechbubble_ldh.bmp"
+
+IDB_BITMAP_ZIAOMING     BITMAP                  "ziaoming.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

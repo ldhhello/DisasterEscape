@@ -86,6 +86,34 @@ void printText(HDC hdc, int left, int top, int right, int bottom, char* fontName
 	DeleteObject(font);
 }
 
+void printTextW(HDC hdc, int left, int top, int right, int bottom, char* fontName, int size, COLORREF textColor, int align, const char* text)
+{
+	int weight = 1;
+	int angle = 0;
+	if (weight == 0) weight = 900;
+	size = (int)(size * RESOLUTION_MULTIPLIER);
+	const HFONT font = CreateFont(size, 0, angle, 0, weight, 0, 0, 0, HANGEUL_CHARSET,
+		0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT(fontName));
+
+	SelectObject(hdc, font);
+	SetBkMode(hdc, TRANSPARENT);
+	SetTextColor(hdc, textColor);
+	//SetTextAlign(hdc, align);
+
+	left = (int)(left * RESOLUTION_MULTIPLIER);
+	top = (int)(top * RESOLUTION_MULTIPLIER);
+	right = (int)(right * RESOLUTION_MULTIPLIER);
+	bottom = (int)(bottom * RESOLUTION_MULTIPLIER);
+	//TextOut(hdc, x, y, text, lstrlen(text));
+	RECT rect = { left, top, right, bottom };
+	DrawTextW(hdc, text, -1, &rect, align);
+
+	PAINTSTRUCT paint;
+	EndPaint(hWnd, &paint);
+
+	DeleteObject(font);
+}
+
 int next_start_pos(int prev, int cursor, int screen_size, int max_pos)
 {
 	int s = prev + 3, e = prev + screen_size - 3;

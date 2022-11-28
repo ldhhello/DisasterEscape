@@ -12,6 +12,7 @@ extern void Game_print_earthquake(int ms);
 extern void Game_change_scene(Scene sc, bool is_enter);
 
 extern void Game_speechbubble(const char* str);
+extern void Game_speechbubbleW(const wchar_t* str);
 extern void Game_system_message(const char* str);
 
 extern void Game_ending_credit(const char* str);

@@ -4,6 +4,8 @@
 #include "SceneDimigo.h"
 #include "SceneSingwan.h"
 
+#include "ChineseConstant.h"
+
 int scene_biggangdang_map[100][100] = { 0, };
 int scene_biggangdang_x = 100, scene_biggangdang_y = 20;
 int quest_progress_biggangdang = 0;
@@ -56,8 +58,9 @@ Structure* SceneBiggangdang_load_structure(int* sz)
 {
 	Structure* structure = scene_biggangdang_structure;
 
-	Structure st[5] = {
+	Structure st[6] = {
 		{2, -1, 0, 0, bitmap_biggangdang, false, true, NULL, 1.22},
+		{7, 11, 1, 1, bitmap_ziaoming, false, false, SceneBiggangdang_on_ziaoming, 0.16},
 		//{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*SceneBiggangdang_on_rice*/, 1.6},
 		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*SceneBiggangdang_on_water*/, 2},
 		{0, 12, 21, 1, NULL, false, false, SceneBiggangdang_on_door},
@@ -67,7 +70,7 @@ Structure* SceneBiggangdang_load_structure(int* sz)
 		{21, 0, 1, 20, NULL}
 	};
 
-	scene_biggangdang_struct_cnt = 5;
+	scene_biggangdang_struct_cnt = 6;
 	*sz = scene_biggangdang_struct_cnt;
 
 	if (struct_loaded_biggangdang)
@@ -95,6 +98,12 @@ void SceneBiggangdang_on_door(int st, int dir)
 	{
 		Game_change_scene(SceneSingwan_load(), false);
 	}
+}
+
+void SceneBiggangdang_on_ziaoming(int st, int dir)
+{
+	Game_speechbubbleW(constant_i_am_chinese);
+	Game_speechbubbleW(constant_do_you_love_beijing_tienanmen);
 }
 
 void SceneBiggangdang_on_structure_active(int st, int dir)
