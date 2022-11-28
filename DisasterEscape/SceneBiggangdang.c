@@ -103,7 +103,7 @@ void SceneBiggangdang_on_door(int st, int dir)
 void SceneBiggangdang_on_ziaoming(int st, int dir)
 {
 	Game_speechbubble_ziaoming(constant_i_am_chinese);
-	//Game_speechbubble_ziaoming(constant_do_you_love_beijing_tienanmen);
+	Game_speechbubble_ziaoming(constant_im_from_beijing);
 
 	char oong[2][100] = {
 		"..? ³×..",
