@@ -99,9 +99,11 @@ void clear_cursor()
 	CONSOLE_CURSOR_INFO cc;
 	cc.bVisible = FALSE;
 	cc.dwSize = 1;
-	SetConsoleCursorInfo
-	(GetStdHandle(STD_OUTPUT_HANDLE),
-		&cc);
+	if (!SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cc))
+	{
+		printf("Error: Failed to hide console cursor!!");
+		exit(0);
+	}
 }
 
 void load_image()
@@ -200,6 +202,13 @@ void initialize()
 	load_image();
 
 	hWnd = GetConsoleWindow();
+
+	if (hWnd == NULL)
+	{
+		printf("Error: failed to get console handle!");
+		exit(0);
+	}
+
 	image_layer = DEFAULT_IMAGE_LAYER;
 	image_layer.transparentColor = RGB(29, 222, 38);
 
@@ -213,7 +222,10 @@ void initialize()
 
 	sprintf(save_path, "%s\\DisasterEscape", appdata_path);
 
-	CreateDirectory(save_path, NULL);
+	if (CreateDirectory(save_path, NULL))
+	{
+		printf("Directory is not exist. Created new");
+	}
 
 	srand(time(NULL));
 }
