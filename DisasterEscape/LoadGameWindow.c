@@ -71,6 +71,4 @@ void LoadGame_modal()
 	}
 
 	image_layer.fadeOut(&image_layer, NULL);
-
-	return 1;
 }
