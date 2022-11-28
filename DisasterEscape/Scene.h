@@ -1,3 +1,6 @@
+// Scene: 게임의 장면을 나타내는 인터페이스
+// 게임의 모든 장면은 Scene으로 추상화되어 
+
 #pragma once
 
 #include "Include.h"

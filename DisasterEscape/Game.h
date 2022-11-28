@@ -1,3 +1,6 @@
+// 전체 인게임 화면을 관할하는 파일
+// 무조건 Game_modal(), Game_modal_load() 둘중 하나로 시작한다!
+
 #pragma once
 
 #include "Include.h"

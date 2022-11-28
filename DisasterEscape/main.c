@@ -99,6 +99,7 @@ HBITMAP bitmap_ziaoming;
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
 
+// 커서 지우는 함수
 void clear_cursor()
 {
 	CONSOLE_CURSOR_INFO cc;
@@ -111,6 +112,7 @@ void clear_cursor()
 	}
 }
 
+// 비트맵 로딩하는 함수
 void load_image()
 {
 	bitmap_start_screen = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAINSCREEN), IMAGE_BITMAP, 0, 0, 0);
@@ -207,6 +209,7 @@ void load_image()
 	//int res3 = GdipCreateHBITMAPFromBitmap(bitmap, &bitmap_start_screen, 0xff000000);
 }
 
+// 전체 시스템 초기화
 void initialize()
 {
 	load_image();
@@ -240,6 +243,7 @@ void initialize()
 	srand(time(NULL));
 }
 
+// 화면 초기화
 void initialize_screen()
 {
 	system("title 재난 탈출 시뮬레이션");

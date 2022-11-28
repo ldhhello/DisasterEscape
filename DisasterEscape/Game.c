@@ -132,6 +132,7 @@ void Game_speech_nowait(const char* str, bool is_arrow, bool is_wide, int bubble
 	free(now_str);
 }
 
+// 기본 말풍선 띄우는 함수!
 void Game_speechbubble(const char* str)
 {
 	Game_speech_nowait(str, true, false, 0);
@@ -145,6 +146,7 @@ void Game_speechbubble(const char* str)
 	image_layer.eraseImage(&image_layer, true);
 }
 
+// ziaoming 말풍선 띄우는 함수! (얘는 중국어를 띄워야 해서 약간 구현이 다르다!)
 void Game_speechbubble_ziaoming(const wchar_t* str)
 {
 	Game_speech_nowait(str, true, true, 2);
@@ -158,6 +160,7 @@ void Game_speechbubble_ziaoming(const wchar_t* str)
 	image_layer.eraseImage(&image_layer, true);
 }
 
+// 동현이 말풍선 띄우는 함수!
 void Game_speechbubble_ldh(const char* str)
 {
 	Game_speech_nowait(str, true, false, 1);
@@ -194,6 +197,7 @@ void Game_system_message(const char* str)
 	image_layer.renderAll(&image_layer);
 }
 
+// 엔딩크레딧 출력!
 void Game_ending_credit(const char* str)
 {
 	Music_stop_background();
@@ -226,15 +230,15 @@ void Game_ending_credit(const char* str)
 	Music_stop_background("ending.wav");
 }
 
-int map_x = 0, map_y = 0;
-int player_x = 10, player_y = 10;
+int map_x = 0, map_y = 0; // 현재 화면에 보이는 맵의 시작 x, y좌표
+int player_x = 10, player_y = 10; // 현재 플레이어의 x, y좌표
 
-bool is_died = 0;
+bool is_died = 0; // 플레이어가 죽었는지 여부 (Game_die() 로 인해 죽었으면 Game_modal()의 메인 loop에서 이걸 다시 0으로 만들고 게임을 초기화하고 끝낸다)
 
 // 이거는 스택처럼 사용됨
 int last_x_arr[100];
 int last_y_arr[100];
-int last_scene[100];
+int last_scene[100]; // 여기에 SCENE_XXX define 들이 사용됨!
 
 int last_arr_sz = 0;
 
@@ -250,16 +254,18 @@ int last_arr_sz = 0;
 //Structure structure[100];
 //int structure_cnt;
 
-int** map_;
-int max_x, max_y;
+int** map_; // 현재 맵
+int max_x, max_y; // 현재 맵의 크기
 
-int current_scene_id;
+int current_scene_id; // 현재 보이는 장면의 id (이거도 SCENE_XXX define 들이 사용된다!)
 
-bool fixed_map;
+bool fixed_map; // 맵의 시점 고정 여부! 이게 true이면 사람이 맵 경계쪽으로 움직여도 시점이 바뀌지 않는다
 
+// 현재 맵의 구조물 관련된 정보!
 Structure* structure;
 int structure_cnt;
 
+// 플레이어가 맵경계를 넘어가거나 맵경계쪽으로 가거나 할때 플레이어 위치나 시점 위치를 수정한다!
 void Game_modify_player_pos()
 {
 	if (player_x < 0)
@@ -278,6 +284,9 @@ void Game_modify_player_pos()
 	map_y = next_start_pos(map_y, player_y, SCREEN_Y / 8-1, max_y);
 }
 
+// 화면에 맵을 출력한다
+// fade_in: 맵을 페이드인 하며 출력할지 여부
+// x_offset, y_offset: 화면 좌표상에서 이 전체 이미지의 offset 크기 (지진 출력 시에 사용된다)
 void Game_print_map_impl(bool fade_in, int x_offset, int y_offset)
 {
 	image_layer.imageCount = 0;
@@ -349,6 +358,8 @@ void Game_print_map_impl(bool fade_in, int x_offset, int y_offset)
 		image_layer.renderAll(&image_layer);
 }
 
+// 화면에 맵을 출력한다
+// fade_in : 페이드 인 여부
 void Game_print_map(bool fade_in)
 {
 	Game_print_map_impl(fade_in, 0, 0);
@@ -356,6 +367,8 @@ void Game_print_map(bool fade_in)
 	//TRACE("image_layer size: %d\n", image_layer.imageCount);
 }
 
+// 화면에 맵을 지진 효과를 내서 출력한다
+// ms: 몇 밀리초동안 지진 효과를 낼지
 void Game_print_earthquake(int ms)
 {
 	for (int i = 0; i < ms; i += 25)
@@ -367,6 +380,8 @@ void Game_print_earthquake(int ms)
 
 		sleep_(25);
 	}
+
+	Game_print_map_impl(false, 0, 0);
 }
 
 // 건물에 막혀서 앞으로 갈수 없는 지 판단하는 함수
@@ -389,6 +404,11 @@ int Game_check_block()
 	return -1;
 }
 
+// 선택 창을 띄운다
+// 기본값으로 플레이어 오른쪽 아래에 선택창이 뜬다!
+// 근데 지금 이 코드를 쓰는 곳은 없는것같다..
+// 이 함수와 이 아래의 select_box 뜨는 모든 함수들은 str가 선택지 배열, cnt가 선택지 개수이다
+// 반환값은 뭐가 선택됐는지 0부터 cnt-1까지 중에 반환된다 (Game_modal_select_box 한정 esc를 누르면 -1이 반환된다)
 int Game_modal_select_box(char (*str)[100], int cnt)
 {
 	int last_image_cnt = image_layer.imageCount;
@@ -438,6 +458,8 @@ int Game_modal_select_box(char (*str)[100], int cnt)
 	//image_layer.renderAll(&image_layer);
 }
 
+// 말풍선 + 선택창을 띄운다!
+// bubble_type에 따라 말풍선이 결정된다 (0: 김산천, 1: 동현이, 2: ziaoming)
 int Game_modal_select_box_speech_person(char* speech, char(*str)[100], int cnt, int bubble_type)
 {
 	bool is_wide = (bubble_type == 2);
@@ -497,16 +519,25 @@ int Game_modal_select_box_speech_person(char* speech, char(*str)[100], int cnt, 
 	}
 }
 
+// 위의 일반화된 함수
+// 무조건 김산천 말풍선을 띄운다
 int Game_modal_select_box_speech(char* speech, char(*str)[100], int cnt)
 {
 	return Game_modal_select_box_speech_person(speech, str, cnt, 0);
 }
 
-void (*Game_on_structure_active)(int st, int dir);
-void (*Game_on_start)();
-void (*Game_on_key_pressed)(char ch);
-void (*Game_on_tick)();
+// 이 함수 포인터들은 모두 Scene 객체를 읽어와서 만들어진다
+// Game_modal, Game_change_scene 에서 아마 객체를 읽는다!
 
+void (*Game_on_structure_active)(int st, int dir); // 구조물이 활성화됐을때 (플레이어가 구조물에 다가갔을때), 기본값으로 호출되는 함수 (Structure::on_active가 NULL이면 기본값으로 이 함수가 호출된다)
+void (*Game_on_start)(); // 새 장면이 시작됐을 때 호출되는 함수!
+void (*Game_on_key_pressed)(char ch); // 무언가 내부 시스템 키 (방향키, esc) 가 아닌 것이 입력됐을때 호출되는 함수!
+void (*Game_on_tick)(); // 매 50ms마다 호출되는 함수! (말풍선 등으로 스레드를 잡고있으면 그럴때에는 호출되지 않고 대기하다가 나중에 호출된다)
+
+// 현재 장면을 바꾸는 함수
+// sc : 바꿀 장면을 나타내는 객체
+// is_enter : 어떤 공간으로 들어가는지 여부 (true면 들어가고 false면 나간다)
+// 들어가는지/나가는지 차이는 스택에 쌓이는지 안쌓이는지 여부가 가장 크다
 void Game_change_scene(Scene sc, bool is_enter)
 {
 	image_layer.fadeOut(&image_layer, NULL);
@@ -559,6 +590,7 @@ void Game_change_scene(Scene sc, bool is_enter)
 		sc.on_return(Game_return_val);
 }
 
+// 죽을때 호출되는 함수!
 void Game_die()
 {
 	Music_stop_background();
@@ -592,6 +624,8 @@ void Game_die()
 	is_died = true;
 }
 
+// 클리어했을때 호출되는 함수!
+// 사실 엔딩크레딧이랑 이 함수는 별개다 둘이 따로따로 호출해줘야 한다!
 void Game_clear()
 {
 	image_layer.fadeOut(&image_layer, NULL);
@@ -614,6 +648,7 @@ void Game_clear()
 	sleep_(1000);
 }
 
+// 전체 게임 시스템을 리셋하는 함수!
 void Game_reset_all()
 {
 	Game_return_val = -1;
@@ -626,11 +661,15 @@ void Game_reset_all()
 	is_died = true;
 }
 
+// 장면을 나올때 반환값을 지정하는 함수!
+// 이 함수가 호출되면 반환값을 가지고 있다가 장면을 나갈 때 Scene::on_return()의 인자로 넘어간다!
 void Game_set_return(int ret)
 {
 	Game_return_val = ret;
 }
 
+// 파일 저장 창을 띄우는 함수!
+// 기본적으로 esc를 눌렀을때 호출되고, 반환값은 뭔가 하려고 했는데 쓸데없는 것 같다..
 int Game_select_save_file()
 {
 	Image im1 = { "", 0, 0, 2, 0, bitmap_loading_none };
@@ -692,6 +731,7 @@ int Game_select_save_file()
 	return 1;
 }
 
+// 게임을 slot 번째 슬롯에 저장한다!
 void Game_save(int slot)
 {
 	SaveFile* sf = SaveFile_new(200);
@@ -730,6 +770,9 @@ void Game_save(int slot)
 	Game_system_message(buf);
 }
 
+// 게임 창을 만든다!
+// 코드 구조가 수정되면서 이거만 호출해서 새 창을 만들수 없게 되었다!
+// 이 함수 대신 Game_modal_new() 또는 Game_modal_load()를 사용해야 한다
 void Game_modal()
 {
 	sleep_(500);
@@ -848,6 +891,7 @@ void Game_modal()
 	}
 }
 
+// 새 게임을 만든다!
 void Game_modal_new()
 {
 	Scene sc = SceneDimigo_load();
@@ -874,6 +918,7 @@ void Game_modal_new()
 	Game_modal();
 }
 
+// 파일에서 게임을 불러온다!
 bool Game_modal_load(int slot)
 {
 	char filename[MAX_PATH];

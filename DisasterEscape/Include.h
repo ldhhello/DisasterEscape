@@ -1,3 +1,6 @@
+// 전체 시스템에 필요한 함수 / 변수 / define 들을 모아놓은 파일!
+// 전체 시스템이랑 관련 없이 돌아가는 코드 (ImageLayer나 SaveFile 같은 것들..) 이 아니면 이 파일을 include 해야 한다
+
 #pragma once
 
 #include <stdio.h>
@@ -27,6 +30,7 @@ extern void printTextW(HDC hdc, int left, int top, int right, int bottom, char* 
 extern void Rectangle_(HDC hdc, int left, int top, int right, int bottom);
 extern int getTextWidth(HDC hdc, char* fontName, int size, char* text);
 extern int next_start_pos(int prev, int cursor, int screen_size, int max_pos);
+extern int sleep_(int ms);
 
 // on main.c
 extern HBITMAP bitmap_start_screen;
@@ -88,9 +92,11 @@ extern TCHAR save_path[MAX_PATH];
 const static int SCREEN_X = 180;
 const static int SCREEN_Y = 96;
 
+// Game_set_return(), Scene::on_return() 에 사용됨
 #define RETURNVAL_CAFETERIA_MISSION 1
 #define RETURNVAL_EARTHQUAKE_MISSION 2
 
+// Scene::scene_id, Game에 있는 여러 변수들.. 에서 사용됨
 #define SCENE_DIMIGO 1
 #define SCENE_CAFETERIA 2
 #define SCENE_BONGWAN 3
