@@ -102,8 +102,19 @@ void SceneBiggangdang_on_door(int st, int dir)
 
 void SceneBiggangdang_on_ziaoming(int st, int dir)
 {
-	Game_speechbubbleW(constant_i_am_chinese);
-	Game_speechbubbleW(constant_do_you_love_beijing_tienanmen);
+	Game_speechbubble_ziaoming(constant_i_am_chinese);
+	//Game_speechbubble_ziaoming(constant_do_you_love_beijing_tienanmen);
+
+	char oong[2][100] = {
+		"..? 네..",
+		"아니요..?"
+	};
+
+	if (Game_modal_select_box_speech_person(constant_do_you_love_beijing_tienanmen, oong, 2, 2) == 0)
+	{
+		Game_die();
+		return;
+	}
 }
 
 void SceneBiggangdang_on_structure_active(int st, int dir)

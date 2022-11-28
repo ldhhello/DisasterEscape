@@ -168,6 +168,8 @@ IDB_BITMAP_SPEECHBUBBLE_LDH BITMAP                  "speechbubble_ldh.bmp"
 
 IDB_BITMAP_ZIAOMING     BITMAP                  "ziaoming.bmp"
 
+IDB_BITMAP_SPEECHBUBBLE_ZIAOMING BITMAP                  "speechbubble_ziaoming.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

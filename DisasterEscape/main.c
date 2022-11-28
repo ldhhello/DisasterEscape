@@ -46,6 +46,7 @@ HBITMAP bitmap_loading_image;
 HBITMAP bitmap_loading_none;
 HBITMAP bitmap_speech_bubble;
 HBITMAP bitmap_speech_bubble_ldh;
+HBITMAP bitmap_speech_bubble_ziaoming;
 HBITMAP bitmap_jandi; // 잔디 테스트
 HBITMAP bitmap_player[4]; // 플레이어 테스트
 HBITMAP bitmap_house; // 집 테스트
@@ -117,6 +118,7 @@ void load_image()
 	bitmap_loading_none = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_LOADING_NONE), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_speech_bubble = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MESSAGEBOX), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_speech_bubble_ldh = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SPEECHBUBBLE_LDH), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_speech_bubble_ziaoming = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SPEECHBUBBLE_ZIAOMING), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_tile[0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_JANDI), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_tile[1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_PATH), IMAGE_BITMAP, 0, 0, 0);

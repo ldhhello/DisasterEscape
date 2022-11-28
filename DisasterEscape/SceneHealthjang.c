@@ -124,7 +124,28 @@ void SceneHealthjang_on_kf94(int st, int dir)
 
 void SceneHealthjang_on_donghyun(int st, int dir)
 {
-	Game_speechbubble("마스크를 어디서 찾아..");
+	if (quest_progress_misemonji < 10)
+	{
+		Game_speechbubble_ldh("내 마스크 어디 갔지..?ㅠㅠ");
+	}
+	else
+	{
+		char oong[2][100] = {
+			"미안.. 내가 훔쳤어ㅠㅠ",
+			"뭔소리야 내가 그걸 왜 훔쳐!!"
+		};
+
+		if (Game_modal_select_box_speech_person("혹시 네가 내 마스크 훔쳐갔니?", oong, 2, 1) == 0)
+		{
+			Game_speechbubble_ldh("너 그렇게 안 봤는데..");
+			Game_die();
+		}
+		else
+		{
+			Game_speechbubble_ldh("거짓말 하지 마, 내가 다 봤어.");
+			Game_die();
+		}
+	}
 }
 
 void SceneHealthjang_on_structure_active(int st, int dir)

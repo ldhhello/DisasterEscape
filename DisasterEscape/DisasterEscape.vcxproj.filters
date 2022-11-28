@@ -327,6 +327,9 @@
     <Image Include="ziaoming.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="speechbubble_ziaoming.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="main_bgm.wav">
