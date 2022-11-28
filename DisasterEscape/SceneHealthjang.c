@@ -90,6 +90,8 @@ void SceneHealthjang_on_start()
 	}
 	else
 		scene_healthjang_structure[1].is_hide = false;
+
+	outside_time += 5000;
 }
 
 void SceneHealthjang_on_door(int st, int dir)

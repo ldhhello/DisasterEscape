@@ -81,7 +81,7 @@ Structure* SceneSingwan_load_structure(int* sz)
 
 void SceneSingwan_on_start()
 {
-
+	outside_time += 10000;
 }
 
 void SceneSingwan_on_door(int st, int dir)

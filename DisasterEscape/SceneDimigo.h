@@ -3,6 +3,8 @@
 #include "Scene.h"
 #include "SaveFile.h"
 
+extern int outside_time; // in SceneDimigo.c 330¡Ÿ¡§µµ?
+
 extern Scene SceneDimigo_load();
 extern int** SceneDimigo_load_map(int* x, int* y);
 extern Structure* SceneDimigo_load_structure(int* sz);

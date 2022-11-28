@@ -354,11 +354,11 @@ void SceneDimigo_on_tick()
 		Game_print_map(false);
 	}
 
-	if (outside_time <= 300000 && (quest_progress_cafeteria == 0 || quest_progress_cafeteria == 11))
+	if (outside_time <= 300000000 && (quest_progress_cafeteria == 0 || quest_progress_cafeteria == 11))
 	{
 		outside_time += 50;
 
-		if (outside_time == 60000)
+		if (outside_time >= 70000)
 		{
 			Game_speechbubble("바깥에 너무 오래 있었다.");
 
@@ -388,6 +388,7 @@ void SceneDimigo_on_tick()
 					//Game_speechbubble("휴, 살았다.\n\n미세먼지를 피해 본관 안으로 들어가보자.");
 					Game_system_message("마스크를 찾으러 디미고를 돌아다녀 보자!");
 					quest_progress_misemonji = 2;
+					outside_time = 500000000;
 				}
 				else {
 					Game_speechbubble("켁켁! 숨이 안 쉬어져!");

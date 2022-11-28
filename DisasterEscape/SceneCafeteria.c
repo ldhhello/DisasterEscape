@@ -88,6 +88,8 @@ void SceneCafeteria_on_start()
 		Game_speechbubble("아, 배고파!");
 		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
 	}
+
+	outside_time += 10000;
 }
 
 void SceneCafeteria_on_door(int st, int dir)
@@ -261,7 +263,7 @@ void SceneCafeteria_on_water(int st, int dir)
 		//답변
 	};
 
-	int whatt = Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2);
+	int whatt = Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 3);
 	if (whatt == 0)
 	{
 		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");

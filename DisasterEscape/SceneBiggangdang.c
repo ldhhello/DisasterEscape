@@ -81,7 +81,7 @@ Structure* SceneBiggangdang_load_structure(int* sz)
 
 void SceneBiggangdang_on_start()
 {
-
+	outside_time += 5000;
 }
 
 void SceneBiggangdang_on_door(int st, int dir)

@@ -80,7 +80,7 @@ Structure* SceneHakbonggwan_load_structure(int* sz)
 
 void SceneHakbonggwan_on_start()
 {
-
+	outside_time += 10000;
 }
 
 void SceneHakbonggwan_on_door(int st, int dir)
