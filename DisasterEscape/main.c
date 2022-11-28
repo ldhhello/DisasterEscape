@@ -208,7 +208,7 @@ void initialize()
 	if (!SUCCEEDED(SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, appdata_path)))
 	{
 		printf("Error: failed to load appdata path!!");
-		return 0;
+		exit(0);
 	}
 
 	sprintf(save_path, "%s\\DisasterEscape", appdata_path);
