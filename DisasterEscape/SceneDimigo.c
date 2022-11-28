@@ -582,7 +582,7 @@ void SceneDimigo_on_singwan(int st, int dir)
 void SceneDimigo_on_structure_active(int st, int dir)
 {
 	//if (dir != UP)
-	return;
+	return; // 코드 작동 안되게!
 
 	char str[4][100] = {
 					"들어가기",
