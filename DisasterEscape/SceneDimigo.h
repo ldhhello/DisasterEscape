@@ -1,3 +1,7 @@
+// SceneXXXX 들은 모두 장면을 나타내는 친구들이다!
+// SceneXXXX_load가 메인 Scene 객체를 반환하며, Game에서의 모든 장면 처리는 SceneXXXX_load() 및 Scene 객체만으로 이루어진다
+// 내부 세부적인 구현 빼면 SceneXXXX 는 사실 다 똑같은 물건이다!!!
+
 #pragma once
 
 #include "Scene.h"
