@@ -59,15 +59,16 @@
 #define IDR_WAVE_MAINBGM                162
 #define IDR_WAVE_YOUDIE                 163
 #define IDR_WAVE_ENDING                 164
-#define IDB_BITMAP1                     165
 #define IDB_BITMAP_KF94                 165
+#define IDB_BITMAP1                     166
+#define IDB_BITMAP_DONGHYUN             166
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        166
+#define _APS_NEXT_RESOURCE_VALUE        167
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

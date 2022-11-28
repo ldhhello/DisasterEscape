@@ -315,6 +315,9 @@
     <Image Include="kf94.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="donghyun.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="main_bgm.wav">

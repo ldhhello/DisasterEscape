@@ -162,6 +162,8 @@ IDB_BITMAP_GAME_LOAD    BITMAP                  "gameload.bmp"
 
 IDB_BITMAP_KF94         BITMAP                  "kf94.bmp"
 
+IDB_BITMAP_DONGHYUN     BITMAP                  "donghyun.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
