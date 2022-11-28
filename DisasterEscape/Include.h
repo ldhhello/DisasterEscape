@@ -86,6 +86,8 @@ extern HBITMAP bitmap_kf94;
 extern HBITMAP bitmap_donghyun;
 extern HBITMAP bitmap_ziaoming;
 
+extern HBITMAP bitmap_fire;
+
 extern TCHAR appdata_path[MAX_PATH];
 extern TCHAR save_path[MAX_PATH];
 

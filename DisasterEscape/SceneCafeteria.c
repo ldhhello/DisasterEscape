@@ -55,11 +55,13 @@ Structure* SceneCafeteria_load_structure(int* sz)
 {
 	Structure* structure = scene_cafeteria_structure;
 
-	Structure st[8] = {
+	Structure st[9] = {
 		{2, -1, 0, 0, bitmap_cafeteria, false, true, NULL, 2.1},
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneCafeteria_on_rice, 1.6},
 		{19, 7, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
 		{5,10, 1, 1, bitmap_naoh, false, false, SceneCafeteria_on_water, 2},
+
+		{18, 3, 1, 1, bitmap_fire, true, true, NULL, 4.3},
 
 		{0, 12, 21, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
@@ -69,7 +71,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 		{21, 0, 1, 20, NULL}
 	};
 
-	scene_cafeteria_struct_cnt = 8;
+	scene_cafeteria_struct_cnt = 9;
 	*sz = scene_cafeteria_struct_cnt;
 
 	if (struct_loaded_cafeteria)
@@ -120,19 +122,6 @@ void SceneCafeteria_on_rice(int st, int dir)
 	if (quest_progress_cafeteria != 0)
 		return;
 
-	char str[9][100] = {
-		"먹는다",
-		"먹지 않는다",
-		"가까이 가본다",
-		"도망간다",
-		"불이야라고 외치자!",
-		"나만 살면 되지, 조용히 도망가!",
-		"화재..? 그게 뭐지..? 먹는 건가?",
-		"그래, 이 또한 나의 운명. 받아들이자",
-		"그래도 크게 외쳐보자"
-	};
-
-
 	char talk[3][100] = {
 		"먹어보자!",
 		"허락도 없이 먹는건 아닌 것 같아.",
@@ -143,6 +132,12 @@ void SceneCafeteria_on_rice(int st, int dir)
 
 	if (result == 0) {
 		Game_speechbubble("너무 맛있는걸!\n\n덕분에 배를 채웠어!");
+
+		Sleep(1000);
+		scene_cafeteria_structure[4].is_hide = false;
+		Game_print_map(false);
+		Sleep(1000);
+
 		Game_speechbubble("엇, 저게 뭐지? 불꽃인것 같아!");
 		
 		char oong[3][100] = {

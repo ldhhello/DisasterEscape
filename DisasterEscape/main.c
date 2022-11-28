@@ -96,6 +96,8 @@ HBITMAP bitmap_kf94;
 HBITMAP bitmap_donghyun;
 HBITMAP bitmap_ziaoming;
 
+HBITMAP bitmap_fire;
+
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
 
@@ -194,6 +196,8 @@ void load_image()
 
 	bitmap_donghyun = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_DONGHYUN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_ziaoming = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_ZIAOMING), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_fire = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_FIRE), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;
