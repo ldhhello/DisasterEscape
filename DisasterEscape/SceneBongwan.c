@@ -219,6 +219,8 @@ void SceneBongwan_on_door(int st, int dir)
 	}
 }
 
+// 쓸데없는 코드다 사실!ㅋㅋ
+// 개발 초기에 테스트하려고 넣어놓은 코드!!
 void SceneBongwan_on_structure_active(int st, int dir)
 {
 	if (dir != UP)
