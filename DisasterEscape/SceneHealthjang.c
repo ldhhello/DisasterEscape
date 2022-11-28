@@ -57,9 +57,10 @@ Structure* SceneHealthjang_load_structure(int* sz)
 {
 	Structure* structure = scene_healthjang_structure;
 
-	Structure st[6] = {
+	Structure st[7] = {
 		{2, -5, 0, 0, bitmap_healthjang, false, true, NULL, 1.6},
 		{5, 4, 1, 2, bitmap_kf94, false, false, SceneHealthjang_on_kf94, 0.5},
+		{14, 6, 2, 6, bitmap_donghyun, false, false, SceneHealthjang_on_donghyun, 0.25},
 		//{10, 6, 1, 1, bitmap_bibimbap, false, false, NULL/*SceneHealthjang_on_rice*/, 1.6},
 		//{6, 8, 1, 1, bitmap_naoh, false, false, NULL/*SceneHealthjang_on_water*/, 2},
 		{0, 12, 21, 1, NULL, false, false, SceneHealthjang_on_door},
@@ -69,7 +70,7 @@ Structure* SceneHealthjang_load_structure(int* sz)
 		{21, 0, 1, 20, NULL}
 	};
 
-	scene_healthjang_struct_cnt = 6;
+	scene_healthjang_struct_cnt = 7;
 	*sz = scene_healthjang_struct_cnt;
 
 	if (struct_loaded_healthjang)
@@ -119,6 +120,11 @@ void SceneHealthjang_on_kf94(int st, int dir)
 	Game_system_message("본관으로 가자.");
 	scene_healthjang_structure[1].is_hide = true;
 	quest_progress_misemonji = 10;
+}
+
+void SceneHealthjang_on_donghyun(int st, int dir)
+{
+	Game_speechbubble("마스크를 어디서 찾아..");
 }
 
 void SceneHealthjang_on_structure_active(int st, int dir)
