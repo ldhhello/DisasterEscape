@@ -13,7 +13,8 @@ void GameInfo_modal()
 
 	while (true)
 	{
-		if (_getch() == VK_RETURN)
+		int a = _getch();
+		if (a == VK_RETURN || a == VK_SPACE)
 			break;
 	}
 
