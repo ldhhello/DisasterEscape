@@ -56,7 +56,7 @@ Structure* SceneMaejom_load_structure(int* sz)
 	Structure* structure = scene_maejom_structure;
 
 	Structure st[9] = {
-		{2, -1, 0, 0, bitmap_maejom_inside, false, true, NULL, 2.1},
+		{2, -7, 0, 0, bitmap_maejom_inside, false, true, NULL, 1.6},
 		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneMaejom_on_snack, 1.6},
 		{19, 7, 1, 1, bitmap_towel, false, false, SceneMaejom_on_towel, 2},
 		{5,10, 1, 1, bitmap_naoh, false, false, SceneMaejom_on_water, 2},

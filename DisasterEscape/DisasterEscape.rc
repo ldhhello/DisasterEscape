@@ -184,6 +184,8 @@ IDB_BITMAP_SINGWAN_FIRE5 BITMAP                  "singwan5.bmp"
 
 IDB_BITMAP_MAEJOM       BITMAP                  "maejom.bmp"
 
+IDB_BITMAP_MAEJOM_DARK  BITMAP                  "maejom_dark.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

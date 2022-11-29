@@ -220,6 +220,7 @@
     <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
     <Image Include="maejom.bmp" />
+    <Image Include="maejom_dark.bmp" />
     <Image Include="NaOH.bmp" />
     <Image Include="path.bmp" />
     <Image Include="player-down.bmp" />
