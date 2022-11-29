@@ -65,6 +65,8 @@ Scene SceneDimigo_load()
 	scene.on_key_pressed = SceneDimigo_on_key_pressed;
 	scene.on_tick = SceneDimigo_on_tick;
 
+	//scene.background_music = MAKEINTRESOURCE(IDR_WAVE_YOUDIE);
+
 	scene.start_x = 10; scene.start_y = 10;
 
 	return scene;

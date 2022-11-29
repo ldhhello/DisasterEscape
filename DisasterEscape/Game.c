@@ -543,6 +543,7 @@ void (*Game_on_tick)(); // 매 50ms마다 호출되는 함수! (말풍선 등으로 스레드를 잡
 void Game_change_scene(Scene sc, bool is_enter)
 {
 	image_layer.fadeOut(&image_layer, NULL);
+	Music_stop_background();
 
 	map_ = sc.load_map(&max_x, &max_y);
 	structure = sc.load_structure(&structure_cnt);
@@ -583,6 +584,13 @@ void Game_change_scene(Scene sc, bool is_enter)
 	}
 
 	sleep_(1000);
+
+	const char* bgm = MAKEINTRESOURCE(IDR_WAVE_MAINBGM);
+
+	if (sc.background_music != NULL)
+		bgm = sc.background_music;
+
+	Music_set_background(bgm);
 
 	Game_print_map(true);
 

@@ -1,5 +1,5 @@
 // Scene: 게임의 장면을 나타내는 인터페이스
-// 게임의 모든 장면은 Scene으로 추상화되어 
+// 게임의 모든 장면은 Scene으로 추상화되어 작동한다!
 
 #pragma once
 
@@ -22,4 +22,6 @@ typedef struct
 	void (*on_tick)();
 
 	int scene_id;
+
+	const char* background_music; // NULL이면 기본값!
 } Scene;
