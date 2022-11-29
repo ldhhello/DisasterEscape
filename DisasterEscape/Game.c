@@ -659,6 +659,7 @@ void Game_reset_all()
 	SceneCafeteria_reset();
 	SceneBongwan_reset();
 	SceneHealthjang_reset();
+	SceneMaejom_reset();
 
 	is_died = true;
 }
@@ -757,6 +758,7 @@ void Game_save(int slot)
 	SaveFile_append(sf, quest_progress_cafeteria);
 	SaveFile_append(sf, quest_progress_bongwan);
 	SaveFile_append(sf, quest_progress_misemonji);
+	SaveFile_append(sf, quest_progress_maejom);
 
 	SceneDimigo_save(sf);
 
@@ -953,6 +955,7 @@ bool Game_modal_load(int slot)
 	quest_progress_cafeteria = SaveFile_read(sf);
 	quest_progress_bongwan = SaveFile_read(sf);
 	quest_progress_misemonji = SaveFile_read(sf);
+	quest_progress_maejom = SaveFile_read(sf);
 
 	SceneDimigo_load_file(sf);
 
