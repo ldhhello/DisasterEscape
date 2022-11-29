@@ -261,7 +261,6 @@ void initialize()
 void initialize_screen()
 {
 	system("title Àç³­ Å»Ãâ ½Ã¹Ä·¹ÀÌ¼Ç");
-	//SetWindowPos(hWnd, HWND_TOP, 0, 0, 1366, 768, SWP_NOMOVE);
 	system("mode con cols=180 lines=48");
 	clear_cursor();
 
