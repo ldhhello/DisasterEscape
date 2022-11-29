@@ -158,7 +158,8 @@ void SceneDimigo_on_return(int ret)
 
 bool SceneDimigo_check_end()
 {
-	return quest_progress_bongwan == 10 && quest_progress_cafeteria == 11 && quest_progress_misemonji == 20;
+	return quest_progress_bongwan == 10 && quest_progress_cafeteria == 11 && quest_progress_misemonji == 20 && 
+		quest_progress_maejom == 11;
 }
 
 void SceneDimigo_clear()

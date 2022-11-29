@@ -265,7 +265,7 @@ void SceneMaejom_on_water(int st, int dir)
 	{
 		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");
 
-		Game_set_return(RETURNVAL_CAFETERIA_MISSION);
+		Game_set_return(RETURNVAL_MAEJOM_MISSION);
 		quest_progress_maejom = 3;
 		//Game_change_scene(SceneDimigo_load(), false);
 		return;
