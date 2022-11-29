@@ -126,23 +126,26 @@ void SceneHealthjang_on_donghyun(int st, int dir)
 {
 	if (quest_progress_misemonji < 10)
 	{
-		Game_speechbubble_ldh("내 마스크 어디 갔지..?ㅠㅠ");
+		Game_speechbubble_ldh("마스크가 없어졌어!");
 	}
 	else
 	{
 		char oong[2][100] = {
-			"미안.. 내가 훔쳤어ㅠㅠ",
-			"뭔소리야 내가 그걸 왜 훔쳐!!"
+			"미안.. 너꺼인지 모르고 가져갔어.",
+			"사람을 왜 의심하는거야?"
 		};
 
-		if (Game_modal_select_box_speech_person("혹시 네가 내 마스크 훔쳐갔니?", oong, 2, 1) == 0)
+		if (Game_modal_select_box_speech_person("너가 내 마스크 가져갔니?", oong, 2, 1) == 0)
 		{
-			Game_speechbubble_ldh("너 그렇게 안 봤는데..");
+			Game_speechbubble_ldh("그럼 마스크 값 줘!");
+			sleep_(2000);
+
+			Game_speechbubble_ldh("왜 돈 안주는 거야?\n\n안줄거면 죽어라!");
 			Game_die();
 		}
 		else
 		{
-			Game_speechbubble_ldh("거짓말 하지 마, 내가 다 봤어.");
+			Game_speechbubble_ldh("거짓말 하지 마! 내가 다 봤어.");
 			Game_die();
 		}
 	}
