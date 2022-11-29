@@ -166,6 +166,7 @@
     <ClInclude Include="SceneGangdang.h" />
     <ClInclude Include="SceneHakbonggwan.h" />
     <ClInclude Include="SceneHealthjang.h" />
+    <ClInclude Include="SceneMaejom.h" />
     <ClInclude Include="SceneSingwan.h" />
     <ClInclude Include="StartWindow.h" />
     <ClInclude Include="Structure.h" />

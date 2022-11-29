@@ -43,6 +43,7 @@ int scene_dimigo_map[100][100] = {
 int scene_dimigo_x = 100, scene_dimigo_y = 100;
 
 int cafeteria_health = 100;
+int maejom_health = 100;
 
 Structure scene_dimigo_structure[100];
 int scene_dimigo_struct_cnt = 0;
@@ -155,6 +156,14 @@ void SceneDimigo_on_return(int ret)
 
 		return;
 	}
+	else if (ret == RETURNVAL_MAEJOM_MISSION)
+	{
+		Game_print_map(false);
+
+		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
+		Game_speechbubble("소방관을 도와 불을 꺼보자!\n\n[N]키를 누르면 물을 발사할 수 있어.");
+		quest_progress_maejom = 10;
+	}
 }
 
 
@@ -223,6 +232,26 @@ void SceneDimigo_change_cafeteria_skin()
 	{
 		scene_dimigo_structure[1].bitmap = bitmap_bongwan[1][0];
 		scene_dimigo_structure[2].bitmap = bitmap_bongwan[1][1];
+	}
+}
+
+void SceneDimigo_change_maejom_skin()
+{
+	if (80 < maejom_health && maejom_health <= 100)
+	{
+		scene_dimigo_structure[3].bitmap = bitmap_singwan[4];
+	}
+	else if (50 < maejom_health && maejom_health <= 80)
+	{
+		scene_dimigo_structure[3].bitmap = bitmap_singwan[3];
+	}
+	else if (20 < maejom_health && maejom_health <= 50)
+	{
+		scene_dimigo_structure[3].bitmap = bitmap_singwan[2];
+	}
+	else if (0 < maejom_health && maejom_health <= 20)
+	{
+		scene_dimigo_structure[3].bitmap = bitmap_singwan[1];
 	}
 }
 

@@ -57,7 +57,7 @@ Structure* SceneMaejom_load_structure(int* sz)
 
 	Structure st[9] = {
 		{2, -1, 0, 0, bitmap_maejom_inside, false, true, NULL, 2.1},
-		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneMaejom_on_rice, 1.6},
+		{10, 6, 1, 1, bitmap_bibimbap, false, false, SceneMaejom_on_snack, 1.6},
 		{19, 7, 1, 1, bitmap_towel, false, false, SceneMaejom_on_towel, 2},
 		{5,10, 1, 1, bitmap_naoh, false, false, SceneMaejom_on_water, 2},
 
@@ -87,8 +87,8 @@ void SceneMaejom_on_start()
 {
 	if (quest_progress_maejom == 0)
 	{
-		Game_speechbubble("아, 배고파!");
-		Game_speechbubble("저기 밥이 보이는데, 먹어보자!");
+		Game_speechbubble("와 매점이당!");
+		Game_speechbubble("와샌즈!");
 	}
 
 	outside_time += 10000;
@@ -114,7 +114,7 @@ void SceneMaejom_on_door(int st, int dir)
 	}
 }
 
-void SceneMaejom_on_rice(int st, int dir)
+void SceneMaejom_on_snack(int st, int dir)
 {
 	if (dir != UP)
 		return;
@@ -128,7 +128,7 @@ void SceneMaejom_on_rice(int st, int dir)
 		"비빔밥이 뭐지? 먹는 건가?"
 		//답변
 	};
-	int result = Game_modal_select_box_speech("비빔밥을 먹어볼까?", talk, 3);
+	int result = Game_modal_select_box_speech("과자를 사 갈까?", talk, 3);
 
 	if (result == 0) {
 		Game_speechbubble("너무 맛있는걸!\n\n덕분에 배를 채웠어!");
