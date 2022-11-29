@@ -118,7 +118,7 @@ void SceneHealthjang_on_kf94(int st, int dir)
 
 	Game_speechbubble("마스크를 찾았어!");
 	Game_system_message("본관으로 가자.");
-	scene_healthjang_structure[1].is_hide = true;
+	scene_healthjang_structure[1].is_hide = true; 
 	quest_progress_misemonji = 10;
 }
 
