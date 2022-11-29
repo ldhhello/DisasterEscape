@@ -6,6 +6,7 @@
 #include "SceneHakbonggwan.h"
 #include "SceneSingwan.h"
 #include "SceneGangdang.h"
+#include "SceneMaejom.h"
 
 #include "SaveFile.h"
 
@@ -513,7 +514,16 @@ void SceneDimigo_on_singwan(int st, int dir)
 	}
 	else if (dir == LEFT)
 	{
-		Game_speechbubble("엇, 여기는 매점인가 봐! 아쉽지만 닫혀 있네.");
+		//Game_speechbubble("엇, 여기는 매점인가 봐! 아쉽지만 닫혀 있네.");
+		char str[2][100] = {
+			"좋아! 들어가자.",
+			"싫어! 안 갈래."
+		};
+
+		if (Game_modal_select_box_speech("매점에 들어갈까?", str, 2) == 0)
+		{
+			Game_change_scene(SceneMaejom_load(), true);
+		}
 	}
 }
 

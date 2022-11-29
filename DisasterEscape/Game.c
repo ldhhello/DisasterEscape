@@ -11,6 +11,7 @@
 #include "SceneSingwan.h"
 #include "SceneBiggangdang.h"
 #include "SceneHakbonggwan.h"
+#include "SceneMaejom.h"
 
 #include "Music.h"
 #include "SaveFile.h"
@@ -25,7 +26,8 @@ int player_idx = 0; // 플레이어 사진 뭐띄울지
 Scene (*scene_load_function[])() = {
 	NULL, SceneDimigo_load, SceneCafeteria_load, SceneBongwan_load,
 	SceneGangdang_load, SceneHealthjang_load, SceneSingwan_load,
-	SceneBiggangdang_load, SceneHakbonggwan_load
+	SceneBiggangdang_load, SceneHakbonggwan_load,
+	SceneMaejom_load
 };
 
 #ifdef _DEBUG

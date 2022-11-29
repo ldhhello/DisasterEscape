@@ -110,6 +110,7 @@ const static int SCREEN_Y = 96;
 #define SCENE_SINGWAN 6
 #define SCENE_BIGGANGDANG 7
 #define SCENE_HAKBONGGWAN 8
+#define SCENE_MAEJOM 9
 
 static const char* ending_credit_str = "당신은 디미고에서의 재난 상황에서 살아남았습니다.\n\n"
 "디미고에서 오늘 겪은 것과 비슷한 재난이 발생한다면\n\n"
