@@ -172,6 +172,18 @@ IDB_BITMAP_SPEECHBUBBLE_ZIAOMING BITMAP                  "speechbubble_ziaoming.
 
 IDB_BITMAP_FIRE         BITMAP                  "fireeeee.bmp"
 
+IDB_BITMAP_SINGWAN_FIRE1 BITMAP                  "singwan1.bmp"
+
+IDB_BITMAP_SINGWAN_FIRE2 BITMAP                  "singwan2.bmp"
+
+IDB_BITMAP_SINGWAN_FIRE3 BITMAP                  "singwan3.bmp"
+
+IDB_BITMAP_SINGWAN_FIRE4 BITMAP                  "singwan4.bmp"
+
+IDB_BITMAP_SINGWAN_FIRE5 BITMAP                  "singwan5.bmp"
+
+IDB_BITMAP_MAEJOM       BITMAP                  "maejom.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

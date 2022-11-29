@@ -42,7 +42,7 @@ extern HBITMAP bitmap_speech_bubble_ziaoming;
 extern HBITMAP bitmap_player[4];
 extern HBITMAP bitmap_house;
 extern HBITMAP bitmap_hakbonggwan;
-extern HBITMAP bitmap_singwan;
+extern HBITMAP bitmap_singwan[6];
 extern HBITMAP bitmap_cafeteria;
 extern HBITMAP bitmap_system_msg;
 extern HBITMAP bitmap_youdie;
@@ -88,6 +88,8 @@ extern HBITMAP bitmap_ziaoming;
 
 extern HBITMAP bitmap_fire;
 
+extern HBITMAP bitmap_maejom_inside;
+
 extern TCHAR appdata_path[MAX_PATH];
 extern TCHAR save_path[MAX_PATH];
 
@@ -97,6 +99,7 @@ const static int SCREEN_Y = 96;
 // Game_set_return(), Scene::on_return() 에 사용됨
 #define RETURNVAL_CAFETERIA_MISSION 1
 #define RETURNVAL_EARTHQUAKE_MISSION 2
+#define RETURNVAL_MAEJOM_MISSION 3
 
 // Scene::scene_id, Game에 있는 여러 변수들.. 에서 사용됨
 #define SCENE_DIMIGO 1

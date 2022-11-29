@@ -96,7 +96,7 @@ Structure* SceneDimigo_load_structure(int* sz)
 		{3, 15, 6, 8, bitmap_hakbonggwan, false, false, SceneDimigo_on_hakbonggwan, 4},
 		{3, 1, 6, 10, bitmap_bongwan1, false, false, SceneDimigo_on_active_cafeteria, 4.5},
 		{9, 1, 8, 4, bitmap_bongwan2, false, false, SceneDimigo_on_bongwan, 4.5},
-		{20, 1, 12, 9, bitmap_singwan, false, false, SceneDimigo_on_singwan, 4.5},
+		{20, 1, 12, 9, bitmap_singwan[0], false, false, SceneDimigo_on_singwan, 4.5},
 		{3, 24, 4, 8, bitmap_house, true, true, NULL, 1},
 		{7, 7, 0, 0, bitmap_water, true, true, NULL, 2},
 		{11, 13, 0, 0, bitmap_gangdang, false, true, NULL, 4},

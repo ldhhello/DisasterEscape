@@ -64,15 +64,21 @@
 #define IDB_BITMAP_SPEECHBUBBLE_LDH     167
 #define IDB_BITMAP_ZIAOMING             168
 #define IDB_BITMAP_SPEECHBUBBLE_ZIAOMING 169
-#define IDB_BITMAP1                     170
 #define IDB_BITMAP_FIRE                 170
+#define IDB_BITMAP_SINGWAN_FIRE1        171
+#define IDB_BITMAP_SINGWAN_FIRE2        172
+#define IDB_BITMAP_SINGWAN_FIRE3        173
+#define IDB_BITMAP_SINGWAN_FIRE4        174
+#define IDB_BITMAP_SINGWAN_FIRE5        175
+#define IDB_BITMAP1                     176
+#define IDB_BITMAP_MAEJOM               176
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        171
+#define _APS_NEXT_RESOURCE_VALUE        177
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

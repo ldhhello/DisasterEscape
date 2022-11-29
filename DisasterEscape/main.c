@@ -53,7 +53,7 @@ HBITMAP bitmap_house; // 집 테스트
 HBITMAP bitmap_hakbonggwan;
 HBITMAP bitmap_bongwan1;
 HBITMAP bitmap_bongwan2;
-HBITMAP bitmap_singwan;
+HBITMAP bitmap_singwan[6];
 HBITMAP bitmap_cafeteria;
 HBITMAP bitmap_youdie;
 
@@ -98,6 +98,8 @@ HBITMAP bitmap_ziaoming;
 
 HBITMAP bitmap_fire;
 
+HBITMAP bitmap_maejom_inside;
+
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
 
@@ -139,8 +141,14 @@ void load_image()
 	bitmap_hakbonggwan = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_HAKBONGGWAN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_bongwan1 = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN1), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_bongwan2 = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_BONGWAN2), IMAGE_BITMAP, 0, 0, 0);
-	bitmap_singwan = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN), IMAGE_BITMAP, 0, 0, 0);
 	bitmap_cafeteria = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_CAFETERIA), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_singwan[0] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_singwan[1] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN_FIRE1), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_singwan[2] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN_FIRE2), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_singwan[3] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN_FIRE3), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_singwan[4] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN_FIRE4), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_singwan[5] = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SINGWAN_FIRE5), IMAGE_BITMAP, 0, 0, 0);
 
 	//bitmap_system_msg = (HBITMAP)LoadImage(NULL, "D:\\system-msg.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
@@ -198,6 +206,8 @@ void load_image()
 	bitmap_ziaoming = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_ZIAOMING), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_fire = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_FIRE), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_maejom_inside = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAEJOM), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

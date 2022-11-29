@@ -333,6 +333,24 @@
     <Image Include="fireeeee.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="singwan1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="singwan2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="singwan3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="singwan4.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="singwan5.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="maejom.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="main_bgm.wav">

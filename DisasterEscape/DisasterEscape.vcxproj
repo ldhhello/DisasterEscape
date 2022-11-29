@@ -217,6 +217,7 @@
     <Image Include="kf94.bmp" />
     <Image Include="loading-none.bmp" />
     <Image Include="loading.bmp" />
+    <Image Include="maejom.bmp" />
     <Image Include="NaOH.bmp" />
     <Image Include="path.bmp" />
     <Image Include="player-down.bmp" />
@@ -227,6 +228,11 @@
     <Image Include="puricare.bmp" />
     <Image Include="save.bmp" />
     <Image Include="singwan.bmp" />
+    <Image Include="singwan1.bmp" />
+    <Image Include="singwan2.bmp" />
+    <Image Include="singwan3.bmp" />
+    <Image Include="singwan4.bmp" />
+    <Image Include="singwan5.bmp" />
     <Image Include="singwan_inside.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="speechbubble_ldh.bmp" />
