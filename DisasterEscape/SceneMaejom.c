@@ -116,9 +116,6 @@ void SceneMaejom_on_door(int st, int dir)
 
 void SceneMaejom_on_snack(int st, int dir)
 {
-	if (dir != UP)
-		return;
-
 	if (quest_progress_maejom != 0)
 		return;
 
