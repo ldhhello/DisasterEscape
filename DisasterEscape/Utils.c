@@ -150,7 +150,7 @@ int next_start_pos(int prev, int cursor, int screen_size, int max_pos)
 // sleep_ 정의가 ImageLayer에 없어서 컴파일에 약간 warning이 뜨긴 하는데
 // C는 생각보다 컴파일에 관대해서 extern이 없어도 암시적으로 지가 extern해줘서
 // 알아서 돌아가긴 하는것같다..
-// 원래 이렇게하면 안되는데 되니까 놔두는걸로!!
+// 원래 이렇게하면 안되는데 일단 되니까 놔두는걸로!!
 int sleep_(int ms)
 {
 	Sleep(ms);
