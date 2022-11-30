@@ -230,7 +230,7 @@ void Game_ending_credit(const char* str)
 			"강원교육튼튼", 54, RGB(255, 255, 255), DT_CENTER | DT_WORDBREAK, str);
 
 		image_layer.endRender(&image_layer);
-		sleep_(20);
+		Sleep(20);
 		uptime += 20;
 
 		if (uptime >= 10000 && !skip_button_loaded)
@@ -240,8 +240,18 @@ void Game_ending_credit(const char* str)
 			Image skip = { "", SCREEN_X * 16 - 600, SCREEN_Y * 16 - 140, 2, 0, bitmap_skip };
 			image_layer.appendImage(&image_layer, skip, false);
 		}
+
+		if (_kbhit())
+		{
+			while (_kbhit()) _getch();
+
+			if (skip_button_loaded)
+				break;
+		}
 	}
 	
+	image_layer.clearImage(&image_layer, true);
+
 	Music_stop_background("ending.wav");
 }
 
