@@ -118,6 +118,9 @@ inline void _renderAll(ImageLayer* self) {
 	DeleteDC(backDC);
 }
 
+// _startRender, _endRender: 렌더링을 시작/중지한다
+// _startRender가 호출되면 현재 imagelayer 상황을 bufferDC에 저장하고, _endRender가 호출되면 bufferDC를 화면에 쓴 뒤 bufferDC를 지운다
+// 이미지 위에 텍스트 등을 그릴 때 유용하게 쓸 수 있다 (더블 버퍼링이 제대로 돼서 화면이 깜박거리지 않음)
 inline void _startRender(ImageLayer* self) {
 	if (self->bufferDC != NULL)
 		return;
@@ -136,6 +139,10 @@ inline void _endRender(ImageLayer* self) {
 	self->bufferDC = NULL;
 }
 
+// _appendImage, _eraseImage, _clearImage : ImageLayer를 스택처럼 쓸수 있게 해주는 함수
+// _appendImage는 이미지레이어의 images 배열 맨 뒤에 이미지를 하나 추가한다
+// _eraseImage는 하나 없애고, _clearImage는 모두 없앤다!
+// 이걸 제대로 사용하기 위해서는 images 배열에 여유 공간이 충분히 있어야 한다 (특히 appendImage는 images 배열 크기보다 imageCount가 작아야 한다)
 inline void _appendImage(ImageLayer* self, Image im, int redraw)
 {
 	self->images[self->imageCount] = im;
