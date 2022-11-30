@@ -120,10 +120,10 @@ void SceneMaejom_on_snack(int st, int dir)
 
 	char talk[2][100] = {
 		"맛있겠다! 먹자!",
-		"뒤에 누가 있어!",
+		"뒤에 누가 있어!"
 		//답변
 	};
-	int result = Game_modal_select_box_speech("디미깡을 먹을까?", talk, 3);
+	int result = Game_modal_select_box_speech("디미깡을 먹을까?", talk, 2);
 
 	if (result == 0) {
 		Game_speechbubble("정직하게 행동했더니 새우깡을 ");
