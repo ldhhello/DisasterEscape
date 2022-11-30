@@ -140,7 +140,7 @@ void SceneHealthjang_on_donghyun(int st, int dir)
 			Game_speechbubble_ldh("그럼 마스크 값 줘!");
 			sleep_(2000);
 
-			Game_speechbubble_ldh("왜 돈 안주는 거야?\n\n안줄거면 죽어라!");
+			Game_speechbubble_ldh("왜 안주는 거야?\n\n안줄거면 죽어라!");
 			Game_die();
 		}
 		else

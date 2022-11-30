@@ -1,4 +1,4 @@
-#include "SceneBiggangdang.h"
+Ôªø#include "SceneBiggangdang.h"
 #include "Game.h"
 
 #include "SceneDimigo.h"
@@ -90,11 +90,11 @@ void SceneBiggangdang_on_start()
 void SceneBiggangdang_on_door(int st, int dir)
 {
 	char str[2][100] = {
-		"≥™∞°±‚",
-		"∏”π´∏£±‚"
+		"ÎÇòÍ∞ÄÍ∏∞",
+		"Î®∏Î¨¥Î•¥Í∏∞"
 	};
 
-	if (Game_modal_select_box_speech("π€¿∏∑Œ ≥™∞°∫º±Ó?", str, 2) == 0)
+	if (Game_modal_select_box_speech("Î∞ñÏúºÎ°ú ÎÇòÍ∞ÄÎ≥ºÍπå?", str, 2) == 0)
 	{
 		Game_change_scene(SceneSingwan_load(), false);
 	}
@@ -106,12 +106,13 @@ void SceneBiggangdang_on_ziaoming(int st, int dir)
 	Game_speechbubble_ziaoming(constant_im_from_beijing);
 
 	char oong[2][100] = {
-		"..? ≥◊..",
-		"æ∆¥œø‰..?"
+		"Hola!",
+		"ÂÖàÊòØ‰∏ÄÁÑ∂Âêé"
 	};
 
-	if (Game_modal_select_box_speech_person(constant_do_you_love_beijing_tienanmen, oong, 2, 2) == 0)
+	if (Game_modal_select_box_speech_person(constant_do_you_love_beijing_tienanmen, oong, 2, 2) >= 0)
 	{
+		Game_system_message("–ö—Ä–∞—Å–Ω—ã–π –õ–æ—Ä–æ –ë—É–ª–≥–∞–≥–æ–≥–∏!");
 		Game_die();
 		return;
 	}
