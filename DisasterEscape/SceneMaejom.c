@@ -126,34 +126,34 @@ void SceneMaejom_on_snack(int st, int dir)
 	int result = Game_modal_select_box_speech("디미깡을 먹을까?", talk, 2);
 
 	if (result == 0) {
-		Game_speechbubble("정직하게 행동했더니 새우깡을 ");
+		Game_speechbubble("냠냠.");
 
 		Sleep(1000);
 		scene_maejom_structure[4].is_hide = false;
 		Game_print_map(false);
 		Sleep(1000);
 
-		Game_speechbubble("엇, 저게 뭐지? 불꽃인것 같아!");
+		Game_speechbubble("새로 나온 불과자인가봐!\n\n어서 먹자!");
 
 		char oong[3][100] = {
-		"그래, 이 또한 나의 운명. 상황을 받아들이자.",
-		"'불이야'라고 크게 외쳐보자!",
-		"나만 살면 되는거야! 혼자 도망가자."
+		"저건 과자가 아니고 화재야!",
+		"오히려 좋아! 이열치열!",
+		"모르겠고 먹자!"
 		//답변
 		};
-		if (Game_modal_select_box_speech("콜록콜록! 불이야!", oong, 3) == 0)
+		if (Game_modal_select_box_speech("근데, 과자가 뜨겁고 연기가 나는데?", oong, 3) == 0)
 		{
-			Game_speechbubble("다행히 주변 모두가 나의 목소리를 들은 것 같아!");
+			Game_speechbubble("어서 신고해서 화재 발생을 알려야겠어!");
 			char oong_[2][100] = {
-				"엄마한테 전화하자!",
-				"119에 전화해서 화재 사실을 알리자!"
+				"교육청에 신고하자!",
+				"119에 전화하자!"
 				//답변
 			};
 			if (Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2) == 1)
 			{
 				Game_speechbubble("신고에 성공했어!\n\n이제 젖은 수건을 찾으러 가보자!");
 
-				Game_system_message("급식실에서 수건을 찾아보자!");
+				Game_system_message("매점에서 수건을 찾아보자!");
 				quest_progress_maejom = 1;
 				return;
 			}
@@ -165,7 +165,7 @@ void SceneMaejom_on_snack(int st, int dir)
 
 		}
 		else {
-			Game_system_message("절도는 범죄입니다.");
+			Game_system_message("화재 상황에서 불꽃을 과자로 오인한다면 \n\n큰 피해로 이어질 수 있습니다.");
 			Game_die();
 
 		}
