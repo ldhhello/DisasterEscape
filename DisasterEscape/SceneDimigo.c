@@ -363,8 +363,26 @@ void SceneDimigo_on_tick()
 
 		Game_print_map(false);
 	}
+	if (quest_progress_maejom == 10)
+	{
+		maejom_health++;
+		SceneDimigo_change_maejom_skin();
 
-	if (outside_time <= 300000000 && (quest_progress_cafeteria == 0 || quest_progress_cafeteria == 11))
+		if (maejom_health > 100)
+		{
+			scene_dimigo_structure[3].bitmap = bitmap_singwan[5];
+
+			Game_print_map(false);
+
+			Game_speechbubble("이런! 디미고가 전소되었어.");
+			Game_die();
+			return;
+		}
+
+		Game_print_map(false);
+	}
+
+	if (outside_time <= 300000000 && (quest_progress_cafeteria == 0 || quest_progress_cafeteria == 11) && (quest_progress_maejom == 0 || quest_progress_maejom == 11))
 	{
 		outside_time += 50;
 
@@ -424,6 +442,9 @@ void SceneDimigo_on_active_cafeteria(int st, int dir)
 	}
 
 	if (dir != UP)
+		return;
+
+	if (quest_progress_maejom == 10)
 		return;
 
 	char str[2][100] = { "들어가보자!","아니야, 안 갈래."};
@@ -585,6 +606,9 @@ void SceneDimigo_on_singwan(int st, int dir)
 	}
 	else if (dir == LEFT)
 	{
+		if (quest_progress_cafeteria == 10)
+			return;
+
 		//Game_speechbubble("엇, 여기는 매점인가 봐! 아쉽지만 닫혀 있네.");
 		char str[2][100] = {
 			"좋아! 들어가자.",
