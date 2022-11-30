@@ -11,6 +11,7 @@ extern void SceneMaejom_on_door(int st, int dir);
 extern void SceneMaejom_on_snack(int st, int dir);
 extern void SceneMaejom_on_towel(int st, int dir);
 extern void SceneMaejom_on_water(int st, int dir);
+extern void SceneMaejom_on_fire(int st, int dir);
 extern void SceneMaejom_on_structure_active(int st, int dir);
 
 extern void SceneMaejom_reset();

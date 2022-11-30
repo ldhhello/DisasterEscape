@@ -61,7 +61,7 @@ Structure* SceneMaejom_load_structure(int* sz)
 		{19, 8, 1, 1, bitmap_towel, false, false, SceneMaejom_on_towel, 2},
 		{8, 10, 1, 2, bitmap_aloe, false, false, SceneMaejom_on_water, 0.5},
 
-		{18, 3, 1, 1, bitmap_fire, true, true, NULL, 4.3},
+		{18, 3, 4, 4, bitmap_fire, true, false, SceneMaejom_on_fire, 4.3},
 
 		{0, 12, 21, 1, NULL, false, false, SceneMaejom_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
@@ -253,6 +253,13 @@ void SceneMaejom_on_water(int st, int dir)
 	}
 
 
+}
+
+void SceneMaejom_on_fire(int st, int dir)
+{
+	Game_speechbubble("으악 뜨거워!!");
+	Game_system_message("화재 상황에서 불에 가까이 다가가면 화상을 입을수 있습니다.");
+	Game_die();
 }
 
 void SceneMaejom_on_structure_active(int st, int dir)
