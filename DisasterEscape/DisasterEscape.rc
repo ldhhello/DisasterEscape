@@ -186,6 +186,8 @@ IDB_BITMAP_MAEJOM       BITMAP                  "maejom.bmp"
 
 IDB_BITMAP_MAEJOM_DARK  BITMAP                  "maejom_dark.bmp"
 
+IDB_BITMAP_SKIP         BITMAP                  "skip.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

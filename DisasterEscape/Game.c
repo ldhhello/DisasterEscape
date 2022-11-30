@@ -219,6 +219,9 @@ void Game_ending_credit(const char* str)
 			lines++;
 	}
 
+	bool skip_button_loaded = false;
+	int uptime = 0;
+
 	for (int i = 0; i < SCREEN_Y * 16 + 58 * lines; i += 1)
 	{
 		image_layer.startRender(&image_layer);
@@ -228,6 +231,15 @@ void Game_ending_credit(const char* str)
 
 		image_layer.endRender(&image_layer);
 		sleep_(20);
+		uptime += 20;
+
+		if (uptime >= 10000 && !skip_button_loaded)
+		{
+			skip_button_loaded = true;
+
+			Image skip = { "", SCREEN_X * 16 - 600, SCREEN_Y * 16 - 140, 2, 0, bitmap_skip };
+			image_layer.appendImage(&image_layer, skip, false);
+		}
 	}
 	
 	Music_stop_background("ending.wav");

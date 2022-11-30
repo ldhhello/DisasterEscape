@@ -237,6 +237,7 @@
     <Image Include="singwan4.bmp" />
     <Image Include="singwan5.bmp" />
     <Image Include="singwan_inside.bmp" />
+    <Image Include="skip.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="speechbubble_ldh.bmp" />
     <Image Include="speechbubble_ziaoming.bmp" />

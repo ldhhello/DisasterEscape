@@ -360,6 +360,9 @@
     <Image Include="maejom_dark.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="skip.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="main_bgm.wav">
