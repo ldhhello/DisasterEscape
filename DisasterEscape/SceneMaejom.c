@@ -87,8 +87,7 @@ void SceneMaejom_on_start()
 {
 	if (quest_progress_maejom == 0)
 	{
-		Game_speechbubble("와 매점이당!");
-		Game_speechbubble("와샌즈!");
+		Game_speechbubble("여기가 매점인가 봐!");
 	}
 
 	outside_time += 10000;
