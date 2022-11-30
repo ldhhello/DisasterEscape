@@ -5,6 +5,7 @@
 
 Image loadgame_images[20];
 
+// 게임 로딩 창을 띄운다!
 void LoadGame_modal()
 {
 	//image_layer.clearImage(&image_layer, false);

@@ -246,6 +246,7 @@
     <Image Include="water.bmp" />
     <Image Include="you-die.bmp" />
     <Image Include="ziaoming.bmp" />
+    <Image Include="디미깡.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Ending.wav" />

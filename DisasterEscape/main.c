@@ -47,17 +47,17 @@ HBITMAP bitmap_loading_none;
 HBITMAP bitmap_speech_bubble;
 HBITMAP bitmap_speech_bubble_ldh;
 HBITMAP bitmap_speech_bubble_ziaoming;
-HBITMAP bitmap_jandi; // 잔디 테스트
-HBITMAP bitmap_player[4]; // 플레이어 테스트
+HBITMAP bitmap_jandi;
+HBITMAP bitmap_player[4]; // 플레이어 (0 1 2 3 은 4개 방향임)
 HBITMAP bitmap_house; // 집 테스트
 HBITMAP bitmap_hakbonggwan;
 HBITMAP bitmap_bongwan1;
 HBITMAP bitmap_bongwan2;
-HBITMAP bitmap_singwan[6];
+HBITMAP bitmap_singwan[6]; // 0으로갈수록 불이 안난거, 5로갈수록 불이 많이난거
 HBITMAP bitmap_cafeteria;
 HBITMAP bitmap_youdie;
 
-HBITMAP bitmap_bongwan[6][2];
+HBITMAP bitmap_bongwan[6][2]; // 첫번째 인자: 0으로갈수록 불이 안난거, 5로갈수록 불이 많이난거 두번째인자: bongwan1인지 2인지 (왼쪽 절반, 오른쪽 절반)
 
 HBITMAP bitmap_system_msg;
 
@@ -102,6 +102,8 @@ HBITMAP bitmap_maejom_inside;
 HBITMAP bitmap_maejom_dark;
 
 HBITMAP bitmap_skip;
+
+HBITMAP bitmap_dimigang;
 
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
@@ -214,6 +216,8 @@ void load_image()
 	bitmap_maejom_dark = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_MAEJOM_DARK), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_skip = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SKIP), IMAGE_BITMAP, 0, 0, 0);
+
+	bitmap_dimigang = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_DIMIGANG), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

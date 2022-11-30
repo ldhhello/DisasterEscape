@@ -72,15 +72,16 @@
 #define IDB_BITMAP_SINGWAN_FIRE5        175
 #define IDB_BITMAP_MAEJOM               176
 #define IDB_BITMAP_MAEJOM_DARK          177
-#define IDB_BITMAP1                     178
 #define IDB_BITMAP_SKIP                 178
+#define IDB_BITMAP1                     179
+#define IDB_BITMAP_DIMIGANG             179
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        179
+#define _APS_NEXT_RESOURCE_VALUE        180
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

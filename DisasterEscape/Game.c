@@ -30,6 +30,7 @@ Scene (*scene_load_function[])() = {
 	SceneMaejom_load
 };
 
+// 디버그용으로 만든 함수 (디버깅중에 시스템 출력창에 메시지가 뜬다)
 #ifdef _DEBUG
 bool _trace(TCHAR* format, ...)
 {
