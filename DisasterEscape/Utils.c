@@ -62,7 +62,7 @@ int getTextWidth(HDC hdc, char* fontName, int size, char* text)
 
 	//return sz.cx / RESOLUTION_MULTIPLIER;
 
-	return strlen(text) * 27;
+	return strlen(text) * 30;
 }
 
 // 얘를 쓰면 DT_LEFT, DT_RIGHT 같은걸 지정해서 가운데정렬, 왼쪽정렬, 오른쪽정렬 이런걸 할수있다!

@@ -70,6 +70,7 @@ void Game_speech_nowait(const char* str, bool is_arrow, bool is_wide, int bubble
 		sz = lstrlenW(str) * 2;
 
 	char* now_str = malloc(sz + 2);
+	memset(now_str, 0, sz + 2);
 
 	// 글자 하나씩 하나씩 출력하는 코드
 	// 1바이트씩 해도 되지 않냐고 할 수 있지만 그러면 문제가 한글이 2바이트다! (ansi 인코딩 기준)
