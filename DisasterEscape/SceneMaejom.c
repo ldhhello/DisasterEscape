@@ -121,16 +121,15 @@ void SceneMaejom_on_snack(int st, int dir)
 	if (quest_progress_maejom != 0)
 		return;
 
-	char talk[3][100] = {
-		"먹어보자!",
-		"허락도 없이 먹는건 아닌 것 같아.",
-		"비빔밥이 뭐지? 먹는 건가?"
+	char talk[2][100] = {
+		"맛있겠다! 먹자!",
+		"뒤에 누가 있어!",
 		//답변
 	};
-	int result = Game_modal_select_box_speech("과자를 사 갈까?", talk, 3);
+	int result = Game_modal_select_box_speech("디미깡을 먹을까?", talk, 3);
 
 	if (result == 0) {
-		Game_speechbubble("너무 맛있는걸!\n\n덕분에 배를 채웠어!");
+		Game_speechbubble("정직하게 행동했더니 새우깡을 ");
 
 		Sleep(1000);
 		scene_maejom_structure[4].is_hide = false;
@@ -145,7 +144,7 @@ void SceneMaejom_on_snack(int st, int dir)
 		"나만 살면 되는거야! 혼자 도망가자."
 		//답변
 		};
-		if (Game_modal_select_box_speech("콜록콜록! 불이야!", oong, 3) == 1)
+		if (Game_modal_select_box_speech("콜록콜록! 불이야!", oong, 3) == 0)
 		{
 			Game_speechbubble("다행히 주변 모두가 나의 목소리를 들은 것 같아!");
 			char oong_[2][100] = {
@@ -169,39 +168,15 @@ void SceneMaejom_on_snack(int st, int dir)
 
 		}
 		else {
-			Game_system_message("화재를 재때 알리지 않으면 대형 인명피해로 이어집니다.");
+			Game_system_message("절도는 범죄입니다.");
 			Game_die();
 
 		}
 	}
 	else if (result == 1) {
-		Game_speechbubble("윽.. 배가 너무 고파.");
-		char oong[2][100] = {
-		"나는 정직한 아이야. 허락을 맡고 먹어야지!",
-		"배가 너무 고파서 앞이 안 보여. 으윽..",
-		//답변
-		};
-		if (Game_modal_select_box_speech("다시 한번 생각해보자. 비빔밥을 먹을까?", oong, 2) < 10)
-		{
-			Game_system_message("밥을 재때 먹지 못하여 아사했습니다.");
-			Game_die();
+		Game_system_message("으악!");
+		Game_die();
 
-		}
-
-	}
-	else if (result == 2) {
-		char oong[3][100] = {
-		"1+1은 뭘까? 3인가?",
-		"여기가 어디지?",
-		"나는 누구지?"
-		//답변
-		};
-		if (Game_modal_select_box_speech("나는 아는게 뭘까?", oong, 3) < 10)
-		{
-			Game_system_message("지식을 수양하기 위해 광덕산으로 떠납니다.");
-			Game_die();
-
-		}
 	}
 }
 
