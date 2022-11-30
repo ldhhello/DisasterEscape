@@ -104,6 +104,7 @@ HBITMAP bitmap_maejom_dark;
 HBITMAP bitmap_skip;
 
 HBITMAP bitmap_dimigang;
+HBITMAP bitmap_aloe;
 
 TCHAR appdata_path[MAX_PATH];
 TCHAR save_path[MAX_PATH];
@@ -218,6 +219,7 @@ void load_image()
 	bitmap_skip = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_SKIP), IMAGE_BITMAP, 0, 0, 0);
 
 	bitmap_dimigang = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_DIMIGANG), IMAGE_BITMAP, 0, 0, 0);
+	bitmap_aloe = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_BITMAP_ALOE), IMAGE_BITMAP, 0, 0, 0);
 
 	//ULONG_PTR gp_token;
 	//struct GdiplusStartupInput gpsi;

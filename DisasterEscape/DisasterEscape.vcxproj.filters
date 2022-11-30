@@ -366,6 +366,9 @@
     <Image Include="디미깡.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="aloe.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="main_bgm.wav">

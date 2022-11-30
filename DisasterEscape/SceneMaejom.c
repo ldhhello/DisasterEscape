@@ -58,8 +58,8 @@ Structure* SceneMaejom_load_structure(int* sz)
 	Structure st[9] = {
 		{2, -7, 0, 0, bitmap_maejom_inside, false, true, NULL, 1.6},
 		{7, 5, 2, 2, bitmap_dimigang, false, false, SceneMaejom_on_snack, 0.4},
-		{19, 7, 1, 1, bitmap_towel, false, false, SceneMaejom_on_towel, 2},
-		{5,10, 1, 1, bitmap_naoh, false, false, SceneMaejom_on_water, 2},
+		{19, 8, 1, 1, bitmap_towel, false, false, SceneMaejom_on_towel, 2},
+		{8, 10, 1, 2, bitmap_aloe, false, false, SceneMaejom_on_water, 0.5},
 
 		{18, 3, 1, 1, bitmap_fire, true, true, NULL, 4.3},
 
@@ -115,9 +115,6 @@ void SceneMaejom_on_door(int st, int dir)
 
 void SceneMaejom_on_snack(int st, int dir)
 {
-	if (dir != UP)
-		return;
-
 	if (quest_progress_maejom != 0)
 		return;
 

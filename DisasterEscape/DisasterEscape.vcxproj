@@ -177,6 +177,7 @@
   <ItemGroup>
     <Image Include="..\..\..\icon1.ico" />
     <Image Include="..\..\..\test3.bmp" />
+    <Image Include="aloe.bmp" />
     <Image Include="arrow.bmp" />
     <Image Include="background.bmp" />
     <Image Include="bibimbap.bmp" />
