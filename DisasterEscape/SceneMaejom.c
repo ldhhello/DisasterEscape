@@ -258,7 +258,7 @@ void SceneMaejom_on_water(int st, int dir)
 void SceneMaejom_on_fire(int st, int dir)
 {
 	Game_speechbubble("으악 뜨거워!!");
-	Game_system_message("화재 상황에서 불에 가까이 다가가면 화상을 입을수 있습니다.");
+	Game_system_message("화재 상황에서 불에 가까이 다가가면 화상을 입을 수 있습니다.");
 	Game_die();
 }
 

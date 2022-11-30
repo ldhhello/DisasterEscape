@@ -28,7 +28,7 @@ Scene SceneCafeteria_load()
 	scene.start_y = 11;
 	scene.fixed_map = true;
 
-	scene.background_music = MAKEINTRESOURCE(IDR_WAVE_ENDING);
+	//scene.background_music = MAKEINTRESOURCE(IDR_WAVE_ENDING);
 
 	return scene;
 }
@@ -63,7 +63,7 @@ Structure* SceneCafeteria_load_structure(int* sz)
 		{19, 7, 1, 1, bitmap_towel, false, false, SceneCafeteria_on_towel, 2},
 		{5,10, 1, 1, bitmap_naoh, false, false, SceneCafeteria_on_water, 2},
 
-		{18, 3, 1, 1, bitmap_fire, true, true, NULL, 4.3},
+		{18, 3, 4, 4, bitmap_fire, true, false, SceneCafeteria_on_fire, 4.3},
 
 		{0, 12, 21, 1, NULL, false, false, SceneCafeteria_on_door},
 		//{15, 7, 4, 8, bitmap_house, false, true},
@@ -279,9 +279,14 @@ void SceneCafeteria_on_water(int st, int dir)
 		Game_speechbubble("우웩! 너무 쓰잖아!\n\n켁켁! 맛은 또 왜 이래! 우웩! 크억!");
 		Game_system_message("양잿물은 마시면 사망에 이를 수 있는 위험한 물질입니다.");
 		Game_die();
-	}
+	}	
+}
 
-	
+void SceneCafeteria_on_fire(int st, int dir)
+{
+	Game_speechbubble("으악 뜨거워!!");
+	Game_system_message("화재 상황에서 불에 가까이 다가가면 화상을 입을 수 있습니다.");
+	Game_die();
 }
 
 void SceneCafeteria_on_structure_active(int st, int dir)
