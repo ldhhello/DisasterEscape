@@ -30,6 +30,8 @@ Scene SceneHealthjang_load()
 	scene.start_y = 11;
 	scene.fixed_map = true;
 
+	scene.background_music = MAKEINTRESOURCE(IDR_WAVE_HEALTHJANG);
+
 	return scene;
 }
 

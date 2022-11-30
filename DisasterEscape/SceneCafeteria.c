@@ -28,7 +28,7 @@ Scene SceneCafeteria_load()
 	scene.start_y = 11;
 	scene.fixed_map = true;
 
-	//scene.background_music = MAKEINTRESOURCE(IDR_WAVE_ENDING);
+	scene.background_music = MAKEINTRESOURCE(IDR_WAVE_CAFETERIA);
 
 	return scene;
 }

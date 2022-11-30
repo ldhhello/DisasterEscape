@@ -380,5 +380,32 @@
     <Media Include="Ending.wav">
       <Filter>리소스 파일</Filter>
     </Media>
+    <Media Include="biggangdang.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="bongwan.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="cafeteria.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="dimigo.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="gangdang.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="hakbonggwan.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="healthjang.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="maejom.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="singwan.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
   </ItemGroup>
 </Project>

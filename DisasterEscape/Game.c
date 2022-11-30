@@ -806,6 +806,8 @@ void Game_save(int slot)
 	Game_system_message(buf);
 }
 
+const char* first_bgm;
+
 // 게임 창을 만든다!
 // 코드 구조가 수정되면서 이거만 호출해서 새 창을 만들수 없게 되었다!
 // 이 함수 대신 Game_modal_new() 또는 Game_modal_load()를 사용해야 한다
@@ -839,7 +841,7 @@ void Game_modal()
 
 	Game_print_map(true);
 
-	Music_set_background(MAKEINTRESOURCE(IDR_WAVE_MAINBGM));
+	Music_set_background(first_bgm);
 
 	Game_on_start();
 
@@ -951,6 +953,8 @@ void Game_modal_new()
 
 	player_idx = 0;
 
+	first_bgm = sc.background_music;
+
 	Game_modal();
 }
 
@@ -1005,6 +1009,8 @@ bool Game_modal_load(int slot)
 	Game_on_key_pressed = sc.on_key_pressed;
 
 	Game_on_tick = sc.on_tick;
+
+	first_bgm = sc.background_music;
 
 	Game_modal();
 

@@ -204,6 +204,24 @@ IDR_WAVE_YOUDIE         WAVE                    "youdie.wav"
 
 IDR_WAVE_ENDING         WAVE                    "Ending.wav"
 
+IDR_WAVE_BIGGANGDANG    WAVE                    "biggangdang.wav"
+
+IDR_WAVE_BONGWAN        WAVE                    "bongwan.wav"
+
+IDR_WAVE_CAFETERIA      WAVE                    "cafeteria.wav"
+
+IDR_WAVE_DIMIGO         WAVE                    "dimigo.wav"
+
+IDR_WAVE_GANGDANG       WAVE                    "gangdang.wav"
+
+IDR_WAVE_HAKBONGGWAN    WAVE                    "hakbonggwan.wav"
+
+IDR_WAVE_HEALTHJANG     WAVE                    "healthjang.wav"
+
+IDR_WAVE_MAEJOM         WAVE                    "maejom.wav"
+
+IDR_WAVE_SINGWAN        WAVE                    "singwan.wav"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

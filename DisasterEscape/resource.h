@@ -74,15 +74,24 @@
 #define IDB_BITMAP_MAEJOM_DARK          177
 #define IDB_BITMAP_SKIP                 178
 #define IDB_BITMAP_DIMIGANG             179
-#define IDB_BITMAP1                     180
 #define IDB_BITMAP_ALOE                 180
+#define IDR_WAVE_BIGGANGDANG            181
+#define IDR_WAVE_BONGWAN                182
+#define IDR_WAVE_CAFETERIA              183
+#define IDR_WAVE_DIMIGO                 184
+#define IDR_WAVE_GANGDANG               185
+#define IDR_WAVE_HAKBONGGWAN            186
+#define IDR_WAVE_HEALTHJANG             187
+#define IDR_WAVE_MAEJOM                 188
+#define IDR_WAVE9                       189
+#define IDR_WAVE_SINGWAN                189
 #define I                               65535
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        181
+#define _APS_NEXT_RESOURCE_VALUE        190
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101
