@@ -18,6 +18,7 @@ extern bool SceneDimigo_check_end();
 extern void SceneDimigo_clear();
 extern void SceneDimigo_on_start();
 extern void SceneDimigo_change_cafeteria_skin();
+extern void SceneDimigo_change_maejom_skin();
 extern void SceneDimigo_on_key_pressed(char ch);
 extern void SceneDimigo_on_tick();
 extern void SceneDimigo_on_active_cafeteria(int st, int dir);

@@ -158,11 +158,15 @@ void SceneDimigo_on_return(int ret)
 	}
 	else if (ret == RETURNVAL_MAEJOM_MISSION)
 	{
+		maejom_health = 50;
+		SceneDimigo_change_maejom_skin();
 		Game_print_map(false);
 
 		Game_speechbubble("휴.. 밖으로 나왔다. 하마터면 죽을 뻔했어.");
 		Game_speechbubble("소방관을 도와 불을 꺼보자!\n\n[N]키를 누르면 물을 발사할 수 있어.");
 		quest_progress_maejom = 10;
+
+		return 0;
 	}
 }
 
@@ -293,6 +297,41 @@ void SceneDimigo_on_key_pressed(char ch)
 			Game_system_message("퀘스트 완료: 급식실 화재");
 
 			quest_progress_cafeteria = 11;
+
+			if (SceneDimigo_check_end())
+				SceneDimigo_clear();
+		}
+	}
+	else if ((ch == 'n' || ch == 'N') && quest_progress_maejom == 10)
+	{
+		//Game_speechbubble("왠지 불을 끌수 있을것 같은 버튼이다!");
+
+		if (player_idx != 2) // left
+			return;
+
+		scene_dimigo_structure[5].x = player_x-2; scene_dimigo_structure[5].y = player_y;
+
+		scene_dimigo_structure[5].is_hide = false;
+		Game_print_map(false);
+
+		sleep_(50);
+
+		scene_dimigo_structure[5].is_hide = true;
+		Game_print_map(false);
+
+		maejom_health -= 5;
+
+		if (maejom_health <= 0)
+		{
+			scene_dimigo_structure[3].bitmap = bitmap_singwan[0];
+			Game_print_map(false);
+			Game_system_message("화재 진압에 성공했습니다.");
+			Game_speechbubble("소방관을 도와 불을 끄는데 성공했어!");
+			Game_speechbubble("너무 보람찬 하루인 것 같아.");
+
+			Game_system_message("퀘스트 완료: 매점 화재");
+
+			quest_progress_maejom = 11;
 
 			if (SceneDimigo_check_end())
 				SceneDimigo_clear();
