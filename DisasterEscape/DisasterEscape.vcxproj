@@ -237,6 +237,7 @@
     <Image Include="singwan4.bmp" />
     <Image Include="singwan5.bmp" />
     <Image Include="singwan_inside.bmp" />
+    <Image Include="skip.bmp" />
     <Image Include="speechbubble.bmp" />
     <Image Include="speechbubble_ldh.bmp" />
     <Image Include="speechbubble_ziaoming.bmp" />
@@ -245,6 +246,7 @@
     <Image Include="water.bmp" />
     <Image Include="you-die.bmp" />
     <Image Include="ziaoming.bmp" />
+    <Image Include="디미깡.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Ending.wav" />

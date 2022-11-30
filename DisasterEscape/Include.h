@@ -91,6 +91,10 @@ extern HBITMAP bitmap_fire;
 extern HBITMAP bitmap_maejom_inside;
 extern HBITMAP bitmap_maejom_dark;
 
+extern HBITMAP bitmap_skip;
+
+extern HBITMAP bitmap_dimigang;
+
 extern TCHAR appdata_path[MAX_PATH];
 extern TCHAR save_path[MAX_PATH];
 

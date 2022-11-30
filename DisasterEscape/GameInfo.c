@@ -1,5 +1,6 @@
 #include "GameInfo.h"
 
+// 게임 정보창을 띄운다!
 void GameInfo_modal()
 {
 	//image_layer.clearImage(&image_layer, false);
