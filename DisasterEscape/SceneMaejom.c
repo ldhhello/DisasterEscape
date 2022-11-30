@@ -160,7 +160,7 @@ void SceneMaejom_on_snack(int st, int dir)
 				return;
 			}
 			else {
-				Game_system_message("엄마가 전화를 안 받아!");
+				Game_system_message("전화기가 어디 있지?");
 				Game_die();
 
 			}
@@ -193,7 +193,7 @@ void SceneMaejom_on_towel(int st, int dir)
 	sleep_(300);
 
 	Game_speechbubble("수건을 찾았어! 이제 물을 찾으러 가 보자.");
-	Game_system_message("급식실에서 물을 찾아보자!");
+	Game_system_message("매점에서 물을 찾아보자!");
 
 	quest_progress_maejom = 2;
 }
@@ -202,16 +202,14 @@ void SceneMaejom_on_water(int st, int dir)
 {
 	if (quest_progress_maejom != 2)
 	{
-		char oong[3][100] = {
-		"인생은 스릴이야! 피하지 말고 마시자!",
-		"양잿..물? 좋은 물인것 같으니 바로 마시자!",
+		char oong[2][100] = {
+		"상한 냄새가 나기는 하지만 죽기야 하겠어?",
 		"먹으면 안 될것 같아."
 		//답변
 		};
-		if (Game_modal_select_box_speech("여기 물이 왜 있지?\n\n자세히 보니 양잿물이라고 적혀 있어.", oong, 3) < 2)
+		if (Game_modal_select_box_speech("여기 알로에 주스가 왜 있지?", oong, 2) ==0)
 		{
-			Game_speechbubble("우웩! 너무 쓰잖아!\n\n켁켁! 맛은 또 왜 이래! 우웩! 크억!");
-			Game_system_message("양잿물은 마시면 사망에 이를 수 있는 위험한 물질입니다.");
+	
 			Game_die();
 		}
 		else {
@@ -226,31 +224,25 @@ void SceneMaejom_on_water(int st, int dir)
 	sleep_(300);
 
 	Game_speechbubble("물을 찾았어!");
-	char oong_[3][100] = {
-		"입을 막고 밖으로 나가자!",
-		"아잇! 수건이 너무 걸리적거려. 버리자!",
+	char oong_[2][100] = {
+		"입을 막고 매점 밖으로 가자!",
 		"마침 목이 마른데 마셔버리자!"
 		//답변
 	};
 
-	int whatt = Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 3);
+	int whatt = Game_modal_select_box_speech("이제 어떻게 해야 하지?", oong_, 2);
 	if (whatt == 0)
 	{
-		Game_speechbubble("아래쪽으로 내려가서 밖으로 나가자!");
+		Game_speechbubble("아래쪽으로 내려가서 매점 밖으로 가자!");
 
 		Game_set_return(RETURNVAL_MAEJOM_MISSION);
 		quest_progress_maejom = 3;
 		//Game_change_scene(SceneDimigo_load(), false);
 		return;
 	}
-	else if (whatt == 1) {
-		Game_system_message("화재 상황에서 젖은 수건은 입으로 들어가는 연기를 차단하기에 가장 효과적인 수단입니다.");
-		Game_die();
-	}
+	
 	else {
-		Game_speechbubble("잠깐만.. 병에 뭐라고 써져 있는거지? 양..잿물?");
-		Game_speechbubble("우웩! 너무 쓰잖아!\n\n켁켁! 맛은 또 왜 이래! 우웩! 크억!");
-		Game_system_message("양잿물은 마시면 사망에 이를 수 있는 위험한 물질입니다.");
+		Game_speechbubble("연기 때문에 숨이 안 쉬어져! 으악!");
 		Game_die();
 	}
 
@@ -259,7 +251,7 @@ void SceneMaejom_on_water(int st, int dir)
 
 void SceneMaejom_on_fire(int st, int dir)
 {
-	Game_speechbubble("으악 뜨거워!!");
+	Game_speechbubble("으악 뜨거워!");
 	Game_system_message("화재 상황에서 불에 가까이 다가가면 화상을 입을 수 있습니다.");
 	Game_die();
 }
