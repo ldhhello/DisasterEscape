@@ -24,4 +24,7 @@ typedef struct
 	int scene_id;
 
 	const char* background_music; // NULL이면 기본값!
+
+	void (*on_load)(); // 내가 지금 파일로 로드됐을때 호출됨! (처음 1번)
+	// on_load는 
 } Scene;

@@ -68,6 +68,8 @@ Scene SceneDimigo_load()
 
 	scene.background_music = MAKEINTRESOURCE(IDR_WAVE_DIMIGO);
 
+	scene.on_load = SceneDimigo_on_load;
+
 	scene.start_x = 10; scene.start_y = 10;
 
 	return scene;
@@ -678,4 +680,9 @@ void SceneDimigo_load_file(SaveFile* sf)
 {
 	is_first_dimigo = SaveFile_read(sf);
 	outside_time = SaveFile_read(sf);
+}
+
+void SceneDimigo_on_load()
+{
+	// 파일로 로딩됐을때 호출될 코드
 }

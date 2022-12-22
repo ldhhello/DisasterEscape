@@ -1012,6 +1012,9 @@ bool Game_modal_load(int slot)
 
 	first_bgm = sc.background_music;
 
+	// 여기서 Scene::on_load 호출하면 안되겠다
+	// on_load 호출 타이밍은 조금 생각해봐야 할듯 load_map이라던지..
+
 	Game_modal();
 
 	return true;

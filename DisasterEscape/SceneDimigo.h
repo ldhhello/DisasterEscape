@@ -34,3 +34,5 @@ extern void SceneDimigo_reset();
 
 extern void SceneDimigo_save(SaveFile* sf);
 extern void SceneDimigo_load_file(SaveFile* sf);
+
+extern void SceneDimigo_on_load();
