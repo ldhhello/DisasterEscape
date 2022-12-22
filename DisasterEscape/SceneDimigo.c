@@ -215,6 +215,8 @@ void SceneDimigo_on_start()
 	Game_speechbubble("나는 1학년 7반 김산천.");
 	Game_speechbubble("오늘 학교에 입학해서 아직 아무것도 모르겠다.");
 	Game_speechbubble("학교를 탐방해보면서 학교에 대해서 익혀봐야겠군!");
+	
+	Game_system_message("Tip: ESC 키를 눌러 게임을 저장할 수 있습니다!");
 }
 
 void SceneDimigo_change_cafeteria_skin()
